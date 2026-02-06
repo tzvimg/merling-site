@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="modelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E6AB3"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E5A823"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E74C3C"/>
+    </marker>
+  </defs>
+  
+  <!-- Input Data Box -->
+  <rect x="50" y="170" width="140" height="160" rx="10" fill="#E8F4FD" stroke="#2E6AB3" stroke-width="2"/>
+  <text x="120" y="200" text-anchor="middle" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Input Data</text>
+  <text x="120" y="220" text-anchor="middle" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="11">(Features)</text>
+  
+  <!-- Sample data rows -->
+  <rect x="65" y="235" width="110" height="22" rx="4" fill="white" stroke="#2E6AB3"/>
+  <text x="120" y="251" text-anchor="middle" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="11">🏠 Size: 120m²</text>
+  <rect x="65" y="262" width="110" height="22" rx="4" fill="white" stroke="#2E6AB3"/>
+  <text x="120" y="278" text-anchor="middle" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="11">📍 Location: A</text>
+  <rect x="65" y="289" width="110" height="22" rx="4" fill="white" stroke="#2E6AB3"/>
+  <text x="120" y="305" text-anchor="middle" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="11">🛏️ Rooms: 4</text>
+  
+  <!-- Labels Box -->
+  <rect x="50" y="50" width="140" height="90" rx="10" fill="#D5F5E3" stroke="#27AE60" stroke-width="2"/>
+  <text x="120" y="80" text-anchor="middle" fill="#27AE60" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Labels</text>
+  <text x="120" y="100" text-anchor="middle" fill="#27AE60" font-family="Arial, sans-serif" font-size="11">(Correct Answers)</text>
+  <rect x="65" y="110" width="110" height="22" rx="4" fill="white" stroke="#27AE60"/>
+  <text x="120" y="126" text-anchor="middle" fill="#27AE60" font-family="Arial, sans-serif" font-size="12">💰 $500,000</text>
+  
+  <!-- Arrow from Labels to Model -->
+  <path d="M 190 95 Q 280 95 310 170" stroke="#27AE60" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <!-- Arrow from Input to Model -->
+  <path d="M 190 250 L 290 250" stroke="#2E6AB3" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Model Box -->
+  <rect x="300" y="150" width="200" height="200" rx="12" fill="#FEF9E7" stroke="#E5A823" stroke-width="2"/>
+  <text x="400" y="185" text-anchor="middle" fill="#E5A823" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Model</text>
+  <text x="400" y="210" text-anchor="middle" fill="#E5A823" font-family="Arial, sans-serif" font-size="12">(Learning Algorithm)</text>
+  
+  <!-- Neural network mini diagram -->
+  <circle cx="340" cy="270" r="10" fill="url(#inputGrad)"/>
+  <circle cx="340" cy="305" r="10" fill="url(#inputGrad)"/>
+  <circle cx="400" cy="270" r="12" fill="url(#modelGrad)"/>
+  <circle cx="400" cy="305" r="12" fill="url(#modelGrad)"/>
+  <circle cx="460" cy="287" r="10" fill="url(#outputGrad)"/>
+  <line x1="350" y1="270" x2="388" y2="270" stroke="#E5A823" stroke-width="1.5"/>
+  <line x1="350" y1="305" x2="388" y2="305" stroke="#E5A823" stroke-width="1.5"/>
+  <line x1="350" y1="270" x2="388" y2="305" stroke="#E5A823" stroke-width="1.5"/>
+  <line x1="350" y1="305" x2="388" y2="270" stroke="#E5A823" stroke-width="1.5"/>
+  <line x1="412" y1="270" x2="450" y2="287" stroke="#E5A823" stroke-width="1.5"/>
+  <line x1="412" y1="305" x2="450" y2="287" stroke="#E5A823" stroke-width="1.5"/>
+  
+  <!-- Arrow from Model to Output -->
+  <path d="M 500 250 L 570 250" stroke="#E5A823" stroke-width="2.5" fill="none" marker-end="url(#arrowOrange)"/>
+  
+  <!-- Output/Prediction Box -->
+  <rect x="580" y="170" width="170" height="160" rx="10" fill="#D5F5E3" stroke="#27AE60" stroke-width="2"/>
+  <text x="665" y="205" text-anchor="middle" fill="#27AE60" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Prediction</text>
+  <text x="665" y="225" text-anchor="middle" fill="#27AE60" font-family="Arial, sans-serif" font-size="11">(Output)</text>
+  <rect x="600" y="245" width="130" height="28" rx="6" fill="white" stroke="#27AE60"/>
+  <text x="665" y="265" text-anchor="middle" fill="#27AE60" font-family="Arial, sans-serif" font-size="13">💰 $485,000</text>
+  
+  <!-- Error calculation -->
+  <rect x="600" y="285" width="130" height="28" rx="6" fill="#FDEDEC" stroke="#E74C3C"/>
+  <text x="665" y="305" text-anchor="middle" fill="#E74C3C" font-family="Arial, sans-serif" font-size="11">Error: $15,000</text>
+  
+  <!-- Feedback Loop -->
+  <path d="M 665 330 L 665 400 L 400 400 L 400 360" stroke="#E74C3C" stroke-width="2.5" stroke-dasharray="8,4" fill="none" marker-end="url(#arrowRed)"/>
+  
+  <!-- Feedback label -->
+  <rect x="480" y="385" width="130" height="30" rx="8" fill="#FDEDEC" stroke="#E74C3C"/>
+  <text x="545" y="405" text-anchor="middle" fill="#E74C3C" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Error Feedback</text>
+  
+  <!-- Examples at bottom -->
+  <text x="400" y="465" text-anchor="middle" fill="currentColor" font-family="Arial, sans-serif" font-size="13">
+    Examples: Spam Detection, Image Classification, Price Prediction
+  </text>
+</svg>

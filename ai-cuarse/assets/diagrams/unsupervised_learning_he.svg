@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="algoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="cluster1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E74C3C"/>
+      <stop offset="100%" style="stop-color:#C0392B"/>
+    </linearGradient>
+    <linearGradient id="cluster2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <linearGradient id="cluster3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B59B6"/>
+      <stop offset="100%" style="stop-color:#8E44AD"/>
+    </linearGradient>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E6AB3"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E5A823"/>
+    </marker>
+  </defs>
+  
+  <!-- Unlabeled Data Box -->
+  <rect x="40" y="130" width="160" height="240" rx="10" fill="var(--color-surface, #E8F4FD)" stroke="#2E6AB3" stroke-width="2"/>
+  <text x="120" y="160" text-anchor="middle" direction="rtl" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="14" font-weight="bold">נתונים ללא תוויות</text>
+  <text x="120" y="180" text-anchor="middle" direction="rtl" fill="#2E6AB3" font-family="Arial, sans-serif" font-size="11">(ללא תיוג!)</text>
+  
+  <!-- Random scattered dots representing unlabeled data -->
+  <circle cx="70" cy="215" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="100" cy="240" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="140" cy="210" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="165" cy="250" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="80" cy="275" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="120" cy="295" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="155" cy="280" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="60" cy="320" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="130" cy="340" r="8" fill="#2E6AB3" opacity="0.6"/>
+  <circle cx="175" cy="325" r="8" fill="#2E6AB3" opacity="0.6"/>
+  
+  <!-- Question marks -->
+  <text x="85" y="230" fill="#2E6AB3" font-family="Arial" font-size="12" opacity="0.7">?</text>
+  <text x="150" y="270" fill="#2E6AB3" font-family="Arial" font-size="12" opacity="0.7">?</text>
+  <text x="100" y="315" fill="#2E6AB3" font-family="Arial" font-size="12" opacity="0.7">?</text>
+  
+  <!-- Arrow to Algorithm -->
+  <path d="M 200 250 L 270 250" stroke="#2E6AB3" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Algorithm Box -->
+  <rect x="280" y="150" width="180" height="200" rx="12" fill="var(--color-surface, #FEF9E7)" stroke="#E5A823" stroke-width="2"/>
+  <text x="370" y="185" text-anchor="middle" direction="rtl" fill="#E5A823" font-family="Arial, sans-serif" font-size="16" font-weight="bold">אלגוריתם</text>
+  <text x="370" y="210" text-anchor="middle" direction="rtl" fill="#E5A823" font-family="Arial, sans-serif" font-size="11">(גילוי דפוסים)</text>
+  
+  <!-- Magnifying glass icon -->
+  <circle cx="370" cy="280" r="30" stroke="#E5A823" stroke-width="3" fill="none"/>
+  <line x1="391" y1="301" x2="415" y2="325" stroke="#E5A823" stroke-width="4" stroke-linecap="round"/>
+  <text x="370" y="288" text-anchor="middle" fill="#E5A823" font-family="Arial" font-size="24">🔍</text>
+  
+  <!-- Arrow to Output -->
+  <path d="M 460 250 L 530 250" stroke="#E5A823" stroke-width="2.5" fill="none" marker-end="url(#arrowOrange)"/>
+  
+  <!-- Output: Discovered Clusters -->
+  <rect x="540" y="70" width="220" height="360" rx="10" fill="var(--color-surface, #FAFAFA)" stroke="var(--color-border, #BDC3C7)" stroke-width="2"/>
+  <text x="650" y="100" text-anchor="middle" direction="rtl" fill="var(--color-text, #333333)" font-family="Arial, sans-serif" font-size="14" font-weight="bold">דפוסים שהתגלו</text>
+  
+  <!-- Cluster 1 (Red) -->
+  <ellipse cx="600" cy="175" rx="50" ry="40" fill="var(--color-surface, #FDEDEC)" stroke="#E74C3C" stroke-width="2"/>
+  <circle cx="580" cy="165" r="8" fill="#E74C3C"/>
+  <circle cx="605" cy="180" r="8" fill="#E74C3C"/>
+  <circle cx="625" cy="165" r="8" fill="#E74C3C"/>
+  <circle cx="595" cy="195" r="8" fill="#E74C3C"/>
+  <text x="600" y="230" text-anchor="middle" direction="rtl" fill="#E74C3C" font-family="Arial, sans-serif" font-size="12" font-weight="bold">אשכול A</text>
+  
+  <!-- Cluster 2 (Green) -->
+  <ellipse cx="700" cy="285" rx="50" ry="40" fill="var(--color-surface, #D5F5E3)" stroke="#27AE60" stroke-width="2"/>
+  <circle cx="680" cy="275" r="8" fill="#27AE60"/>
+  <circle cx="705" cy="290" r="8" fill="#27AE60"/>
+  <circle cx="725" cy="275" r="8" fill="#27AE60"/>
+  <circle cx="695" cy="305" r="8" fill="#27AE60"/>
+  <text x="700" y="340" text-anchor="middle" direction="rtl" fill="#27AE60" font-family="Arial, sans-serif" font-size="12" font-weight="bold">אשכול B</text>
+  
+  <!-- Cluster 3 (Purple) -->
+  <ellipse cx="600" cy="380" rx="50" ry="35" fill="var(--color-surface, #F5EEF8)" stroke="#8E44AD" stroke-width="2"/>
+  <circle cx="580" cy="370" r="8" fill="#8E44AD"/>
+  <circle cx="605" cy="385" r="8" fill="#8E44AD"/>
+  <circle cx="625" cy="370" r="8" fill="#8E44AD"/>
+  <circle cx="595" cy="400" r="8" fill="#8E44AD"/>
+  <text x="600" y="425" text-anchor="middle" direction="rtl" fill="#8E44AD" font-family="Arial, sans-serif" font-size="12" font-weight="bold">אשכול C</text>
+  
+  <!-- Examples at bottom -->
+  <text x="400" y="475" text-anchor="middle" direction="rtl" fill="var(--color-text, #333333)" font-family="Arial, sans-serif" font-size="13">
+    דוגמאות: פילוח לקוחות, זיהוי חריגות, הפחתת ממדים
+  </text>
+</svg>

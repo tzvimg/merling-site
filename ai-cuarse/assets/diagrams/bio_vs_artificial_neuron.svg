@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1200 500"
+   version="1.1"
+   id="svg30"
+   sodipodi:docname="bio_vs_artificial_neuron.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview30"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="1.2466667"
+     inkscape:cx="265.90909"
+     inkscape:cy="246.25668"
+     inkscape:window-width="1600"
+     inkscape:window-height="930"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg30" />
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       markerWidth="10"
+       markerHeight="10"
+       refX="9"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0, 10 3, 0 6"
+         fill="currentColor"
+         id="polygon1" />
+    </marker>
+  </defs>
+  <!-- Background removed to allow theme background to show through -->
+  <!-- Biological Neuron -->
+  <text
+     x="250"
+     y="50"
+     font-size="32"
+     font-weight="bold"
+     fill="var(--color-text, #333333)"
+     text-anchor="middle"
+     id="text1">Biological Neuron</text>
+  <!-- Dendrites -->
+  <line
+     x1="60"
+     y1="160"
+     x2="160"
+     y2="200"
+     stroke="#8b5cf6"
+     stroke-width="4"
+     id="line1" />
+  <line
+     x1="60"
+     y1="220"
+     x2="160"
+     y2="220"
+     stroke="#8b5cf6"
+     stroke-width="4"
+     id="line2" />
+  <line
+     x1="60"
+     y1="280"
+     x2="160"
+     y2="240"
+     stroke="#8b5cf6"
+     stroke-width="4"
+     id="line3" />
+  <circle
+     cx="60"
+     cy="160"
+     r="8"
+     fill="#8b5cf6"
+     id="circle3" />
+  <circle
+     cx="60"
+     cy="220"
+     r="8"
+     fill="#8b5cf6"
+     id="circle4" />
+  <circle
+     cx="60"
+     cy="280"
+     r="8"
+     fill="#8b5cf6"
+     id="circle5" />
+  <text
+     x="60"
+     y="330"
+     font-size="18"
+     fill="#8b5cf6"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text5">Dendrites</text>
+  <!-- Synapses -->
+  <circle
+     cx="140"
+     cy="195"
+     r="10"
+     fill="#ec4899"
+     id="circle6" />
+  <circle
+     cx="140"
+     cy="220"
+     r="10"
+     fill="#ec4899"
+     id="circle7" />
+  <circle
+     cx="140"
+     cy="245"
+     r="10"
+     fill="#ec4899"
+     id="circle8" />
+  <text
+     x="140"
+     y="380"
+     font-size="18"
+     fill="#ec4899"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text8">Synapses</text>
+  <!-- Soma -->
+  <ellipse
+     cx="260"
+     cy="220"
+     rx="80"
+     ry="65"
+     fill="#10b981"
+     opacity="0.3"
+     stroke="#10b981"
+     stroke-width="4"
+     id="ellipse8" />
+  <text
+     x="260"
+     y="230"
+     font-size="22"
+     font-weight="bold"
+     fill="#047857"
+     text-anchor="middle"
+     id="text9">Soma</text>
+  <text
+     x="260"
+     y="330"
+     font-size="18"
+     fill="#10b981"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text10">Sum</text>
+  <!-- Axon -->
+  <line
+     x1="340"
+     y1="220"
+     x2="450"
+     y2="220"
+     stroke="#f59e0b"
+     stroke-width="5"
+     id="line10" />
+  <circle
+     cx="450"
+     cy="220"
+     r="12"
+     fill="#f59e0b"
+     id="circle10" />
+  <text
+     x="400"
+     y="330"
+     font-size="18"
+     fill="#f59e0b"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text11">Axon</text>
+  <!-- Arrow between sections -->
+  <text
+     x="600"
+     y="220"
+     font-size="48"
+     fill="#3b82f6"
+     text-anchor="middle"
+     id="text12">→</text>
+  <!-- Artificial Neuron -->
+  <text
+     x="950"
+     y="50"
+     font-size="32"
+     font-weight="bold"
+     fill="var(--color-text, #333333)"
+     text-anchor="middle"
+     id="text13">Artificial Neuron</text>
+  <!-- Inputs -->
+  <line
+     x1="720"
+     y1="160"
+     x2="860"
+     y2="220"
+     stroke="#8b5cf6"
+     stroke-width="3"
+     id="line13" />
+  <line
+     x1="720"
+     y1="220"
+     x2="860"
+     y2="220"
+     stroke="#8b5cf6"
+     stroke-width="3"
+     id="line14" />
+  <line
+     x1="720"
+     y1="280"
+     x2="860"
+     y2="220"
+     stroke="#8b5cf6"
+     stroke-width="3"
+     id="line15" />
+  <circle
+     cx="720"
+     cy="160"
+     r="8"
+     fill="#8b5cf6"
+     id="circle15" />
+  <circle
+     cx="720"
+     cy="220"
+     r="8"
+     fill="#8b5cf6"
+     id="circle16" />
+  <circle
+     cx="720"
+     cy="280"
+     r="8"
+     fill="#8b5cf6"
+     id="circle17" />
+  <text
+     x="690"
+     y="165"
+     font-size="20"
+     fill="var(--color-text, #333333)"
+     text-anchor="end"
+     id="text17">x₁</text>
+  <text
+     x="690"
+     y="225"
+     font-size="20"
+     fill="var(--color-text, #333333)"
+     text-anchor="end"
+     id="text18">x₂</text>
+  <text
+     x="690"
+     y="285"
+     font-size="20"
+     fill="var(--color-text, #333333)"
+     text-anchor="end"
+     id="text19">x₃</text>
+  <text
+     x="720"
+     y="330"
+     font-size="18"
+     fill="#8b5cf6"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text20">Inputs</text>
+  <!-- Weights -->
+  <text
+     x="780"
+     y="180"
+     font-size="18"
+     fill="#ec4899"
+     font-weight="bold"
+     id="text21">w₁</text>
+  <text
+     x="780"
+     y="215"
+     font-size="18"
+     fill="#ec4899"
+     font-weight="bold"
+     id="text22">w₂</text>
+  <text
+     x="790.4278"
+     y="266.41711"
+     font-size="18px"
+     fill="#ec4899"
+     font-weight="bold"
+     id="text23">w₃</text>
+  <text
+     x="800"
+     y="380"
+     font-size="18"
+     fill="#ec4899"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text24">Weights</text>
+  <!-- Sum -->
+  <circle
+     cx="920"
+     cy="220"
+     r="55"
+     fill="#10b981"
+     opacity="0.3"
+     stroke="#10b981"
+     stroke-width="4"
+     id="circle24" />
+  <text
+     x="920"
+     y="235"
+     font-size="36"
+     fill="#047857"
+     text-anchor="middle"
+     font-weight="bold"
+     id="text25">Σ</text>
+  <text
+     x="920"
+     y="330"
+     font-size="18"
+     fill="#10b981"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text26">Sum</text>
+  <!-- Activation -->
+  <rect
+     x="1010"
+     y="185"
+     width="70"
+     height="70"
+     rx="8"
+     fill="#f59e0b"
+     opacity="0.3"
+     stroke="#f59e0b"
+     stroke-width="3"
+     id="rect26" />
+  <text
+     x="1045"
+     y="230"
+     font-size="24"
+     fill="#d97706"
+     text-anchor="middle"
+     font-weight="bold"
+     id="text27">f</text>
+  <line
+     x1="975"
+     y1="220"
+     x2="1010"
+     y2="220"
+     stroke="var(--color-text, #333333)"
+     stroke-width="3"
+     marker-end="url(#arrow)"
+     id="line27" />
+  <line
+     x1="1080"
+     y1="220"
+     x2="1140"
+     y2="220"
+     stroke="#f59e0b"
+     stroke-width="4"
+     marker-end="url(#arrow)"
+     id="line28" />
+  <text
+     x="1160"
+     y="228"
+     font-size="22"
+     fill="var(--color-text, #333333)"
+     font-weight="bold"
+     id="text28">ŷ</text>
+  <text
+     x="1045"
+     y="330"
+     font-size="18"
+     fill="#f59e0b"
+     font-weight="bold"
+     text-anchor="middle"
+     id="text29">Activation</text>
+  <!-- Bottom insight -->
+  <rect
+     x="100"
+     y="420"
+     width="1000"
+     height="60"
+     fill="var(--color-surface, #e0f2fe)"
+     stroke="var(--color-border, #0284c7)"
+     stroke-width="2"
+     rx="10"
+     id="rect29" />
+  <text
+     x="600"
+     y="460"
+     font-size="22"
+     fill="var(--color-text, #333333)"
+     text-anchor="middle"
+     id="text30">Artificial neurons mimic biological neurons mathematically</text>
+</svg>

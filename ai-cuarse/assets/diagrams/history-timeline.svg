@@ -1,0 +1,111 @@
+<svg width="1400" height="500" viewBox="0 100 1400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_0_1)">
+<!-- Main timeline -->
+<path d="M80 320H1350" stroke="#888888" stroke-width="3"/>
+<path d="M1350 320L1341.34 325V315L1350 320Z" fill="#888888"/>
+
+<!-- Timeline dots -->
+<circle cx="120" cy="320" r="10" fill="#555555" stroke="#333" stroke-width="2"/>
+<circle cx="220" cy="320" r="8" fill="#B05050" stroke="#333" stroke-width="2"/>
+<circle cx="320" cy="320" r="8" fill="#555555" stroke="#333" stroke-width="2"/>
+<circle cx="420" cy="320" r="6" fill="#50A050" stroke="#333" stroke-width="2"/>
+<circle cx="520" cy="320" r="12" fill="#B05050" stroke="#333" stroke-width="2"/>
+<circle cx="650" cy="320" r="10" fill="#5070B0" stroke="#333" stroke-width="2"/>
+<circle cx="780" cy="320" r="8" fill="#50A050" stroke="#333" stroke-width="2"/>
+<circle cx="910" cy="320" r="10" fill="#5070B0" stroke="#333" stroke-width="2"/>
+<circle cx="1040" cy="320" r="12" fill="#B05050" stroke="#333" stroke-width="2"/>
+<circle cx="1170" cy="320" r="10" fill="#B05050" stroke="#333" stroke-width="2"/>
+<circle cx="1300" cy="320" r="8" fill="#B05050" stroke="#333" stroke-width="2"/>
+
+<!-- Year labels -->
+<text x="120" y="355" fill="currentColor" font-size="14" text-anchor="middle" font-weight="bold">2012</text>
+<text x="220" y="355" fill="currentColor" font-size="14" text-anchor="middle">2013</text>
+<text x="320" y="355" fill="currentColor" font-size="14" text-anchor="middle">2014</text>
+<text x="420" y="355" fill="currentColor" font-size="14" text-anchor="middle">2015</text>
+<text x="520" y="355" fill="currentColor" font-size="14" text-anchor="middle" font-weight="bold">2017</text>
+<text x="650" y="355" fill="currentColor" font-size="14" text-anchor="middle">2018</text>
+<text x="780" y="355" fill="currentColor" font-size="14" text-anchor="middle">2019</text>
+<text x="910" y="355" fill="currentColor" font-size="14" text-anchor="middle">2020</text>
+<text x="1040" y="355" fill="currentColor" font-size="14" text-anchor="middle" font-weight="bold">2022</text>
+<text x="1170" y="355" fill="currentColor" font-size="14" text-anchor="middle">2023</text>
+<text x="1300" y="355" fill="currentColor" font-size="14" text-anchor="middle">2024</text>
+
+<!-- AlexNet (2012) - above, THE BEGINNING -->
+<path d="M120 310V220" stroke="#555555" stroke-width="2"/>
+<rect x="35" y="175" width="170" height="45" rx="8" fill="#555555" stroke="#333333" stroke-width="2"/>
+<text x="120" y="195" fill="white" font-size="13" text-anchor="middle" font-weight="bold">AlexNet</text>
+<text x="120" y="212" fill="white" font-size="11" text-anchor="middle">Deep Learning פריצה</text>
+
+<!-- Word2Vec (2013) - below -->
+<path d="M220 330V400" stroke="#B05050" stroke-width="2"/>
+<rect x="145" y="400" width="150" height="40" rx="8" fill="#B05050" stroke="#333333" stroke-width="2"/>
+<text x="220" y="425" fill="white" font-size="14" text-anchor="middle" font-weight="bold">Word2Vec</text>
+
+<!-- Seq2Seq Attention (2014) - above -->
+<path d="M320 310V240" stroke="#555555" stroke-width="2"/>
+<rect x="235" y="195" width="170" height="45" rx="8" fill="#555555" stroke="#333333" stroke-width="2"/>
+<text x="320" y="215" fill="white" font-size="13" text-anchor="middle" font-weight="bold">Attention</text>
+<text x="320" y="232" fill="white" font-size="11" text-anchor="middle">Seq2Seq</text>
+
+<!-- ResNet (2015) - below small -->
+<path d="M420 330V385" stroke="#50A050" stroke-width="2"/>
+<rect x="360" y="385" width="120" height="35" rx="6" fill="#50A050" stroke="#333333" stroke-width="2"/>
+<text x="420" y="407" fill="white" font-size="12" text-anchor="middle">ResNet</text>
+
+<!-- Transformer (2017) - above, PROMINENT -->
+<path d="M520 308V180" stroke="#B05050" stroke-width="3"/>
+<rect x="420" y="130" width="200" height="50" rx="8" fill="#B05050" stroke="#333333" stroke-width="2"/>
+<text x="520" y="155" fill="white" font-size="16" text-anchor="middle" font-weight="bold">Transformer</text>
+<text x="520" y="173" fill="white" font-size="11" text-anchor="middle">Attention Is All You Need</text>
+
+<!-- BERT (2018) - below -->
+<path d="M650 330V400" stroke="#5070B0" stroke-width="2"/>
+<rect x="575" y="400" width="150" height="40" rx="8" fill="#5070B0" stroke="#333333" stroke-width="2"/>
+<text x="650" y="425" fill="white" font-size="14" text-anchor="middle" font-weight="bold">BERT</text>
+
+<!-- GPT-2 / T5 (2019) - above -->
+<path d="M780 310V240" stroke="#50A050" stroke-width="2"/>
+<rect x="705" y="195" width="150" height="45" rx="8" fill="#50A050" stroke="#333333" stroke-width="2"/>
+<text x="780" y="215" fill="white" font-size="13" text-anchor="middle" font-weight="bold">GPT-2 / T5</text>
+<text x="780" y="232" fill="white" font-size="11" text-anchor="middle">Scaling up</text>
+
+<!-- GPT-3 (2020) - below -->
+<path d="M910 330V400" stroke="#5070B0" stroke-width="2"/>
+<rect x="835" y="400" width="150" height="40" rx="8" fill="#5070B0" stroke="#333333" stroke-width="2"/>
+<text x="910" y="425" fill="white" font-size="14" text-anchor="middle" font-weight="bold">GPT-3</text>
+
+<!-- ChatGPT (2022) - above, PROMINENT -->
+<path d="M1040 308V180" stroke="#B05050" stroke-width="3"/>
+<rect x="950" y="130" width="180" height="50" rx="8" fill="#B05050" stroke="#333333" stroke-width="2"/>
+<text x="1040" y="155" fill="white" font-size="16" text-anchor="middle" font-weight="bold">ChatGPT</text>
+<text x="1040" y="173" fill="white" font-size="11" text-anchor="middle">AI for everyone</text>
+
+<!-- GPT-4 (2023) - below -->
+<path d="M1170 330V400" stroke="#B05050" stroke-width="2"/>
+<rect x="1095" y="400" width="150" height="40" rx="8" fill="#B05050" stroke="#333333" stroke-width="2"/>
+<text x="1170" y="425" fill="white" font-size="14" text-anchor="middle" font-weight="bold">GPT-4</text>
+
+<!-- Claude/Gemini (2024) - above -->
+<path d="M1300 310V240" stroke="#B05050" stroke-width="2"/>
+<rect x="1210" y="195" width="180" height="45" rx="8" fill="#B05050" stroke="#333333" stroke-width="2"/>
+<text x="1300" y="215" fill="white" font-size="13" text-anchor="middle" font-weight="bold">Claude / Gemini</text>
+<text x="1300" y="232" fill="white" font-size="11" text-anchor="middle">Competition</text>
+
+<!-- Legend Box -->
+<rect direction="ltr" x="100" y="460" width="620" height="70" rx="8" fill="none" stroke="#888888" stroke-width="1.5"/>
+<rect direction="ltr" x="120" y="480" width="16" height="16" rx="3" fill="#555555"/>
+<text direction="ltr" x="145" y="493" fill="currentColor" font-size="12">Pre-Transformer</text>
+<rect direction="ltr" x="280" y="480" width="16" height="16" rx="3" fill="#B05050"/>
+<text direction="ltr" x="305" y="493" fill="currentColor" font-size="12">NLP / Decoder</text>
+<rect direction="ltr" x="440" y="480" width="16" height="16" rx="3" fill="#5070B0"/>
+<text direction="ltr" x="465" y="493" fill="currentColor" font-size="12">Encoder / Enc-Dec</text>
+<rect direction="ltr" x="600" y="480" width="16" height="16" rx="3" fill="#50A050"/>
+<text direction="ltr" x="625" y="493" fill="currentColor" font-size="12">Vision / Scaling</text>
+
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="1400" height="600" fill="white"/>
+</clipPath>
+</defs>
+</svg>

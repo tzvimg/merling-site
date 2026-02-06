@@ -1,0 +1,426 @@
+meta:
+  title: "בינה מלאכותית: שיעור 02"
+  author: "Tzvi Merling"
+  aspectRatio: "responsive"
+
+slides:
+  # ===========================================
+  # LESSON 02: Recent AI History & NLP
+  # ===========================================
+  - id: slide-001
+    layout: title
+    direction: rtl
+    background: "/assets/images/lesson02_history_nlp_bg.png"
+    content:
+      - type: title
+        text: ""
+
+
+  - id: slide-002
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ציר הזמן של מודלי השפה"
+      - type: diagram
+        src: "/assets/diagrams/history-timeline.svg"
+
+  # -------------------------------------------
+  # AlexNet & Convolutions (2 slides)
+  # -------------------------------------------
+  - id: slide-030
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "רשתות קונבולוציה"
+      - type: subtitle
+        text: "Convolutional Neural Networks (CNNs)"
+
+  - id: slide-031
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "AlexNet (2012)"
+      - type: subtitle
+        text: "רגע פריצת הדרך של הלמידה העמוקה"
+      - type: items
+        items:
+          - title: "תחרות ImageNet"
+            description: "ניצחון מוחץ בזיהוי תמונות - שגיאה של 15.3% לעומת 26.2% של המתחרה הקרוב"
+            icon: "🏆"
+          - title: "ארכיטקטורה חדשנית"
+            description: "8 שכבות עמוקות, 60 מיליון פרמטרים, שימוש ב-ReLU ו-Dropout"
+            icon: "🏗️"
+          - title: "GPU לאימון"
+            description: "לראשונה - אימון על שני כרטיסי GTX 580, שבועות במקום חודשים"
+            icon: "⚡"
+          - title: "השפעה היסטורית"
+            description: "הוכיח שרשתות עמוקות עובדות - פתח את עידן הלמידה העמוקה"
+            icon: "📈"
+
+  - id: slide-032
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ארכיטקטורת AlexNet"
+      - type: diagram
+        src: "/assets/diagrams/alexnet_architecture_he.svg"
+    notes: |
+      AlexNet הכיל 5 שכבות קונבולוציה ו-3 שכבות Fully Connected.
+      חידושים: ReLU (מהיר יותר מ-sigmoid), Dropout (מניעת overfitting), GPU training.
+
+  - id: slide-032a
+    layout: text-image
+    direction: rtl
+    content:
+      - type: title
+        text: "AlexNet - המבנה המלא"
+      - type: bullets
+        items:
+          - "5 שכבות קונבולוציה"
+          - "3 שכבות Fully Connected"
+          - "60 מיליון פרמטרים"
+      - type: image
+        src: "/assets/images/An-illustration-of-deep-CNN-based-AlexNet-model-Krizhevsky-et-al-2012.png"
+        alt: "AlexNet Architecture Diagram"
+
+  - id: slide-032b
+    layout: text-image
+    direction: rtl
+    content:
+      - type: title
+        text: "ImageNet - משימת הסיווג"
+      - type: bullets
+        items:
+          - "1.2 מיליון תמונות אימון"
+          - "1,000 קטגוריות שונות"
+          - "המודל מזהה מה בתמונה"
+      - type: image
+        src: "/assets/images/image-net.png"
+        alt: "ImageNet Classification Task"
+
+  # -------------------------------------------
+  # Convolutions (2 slides)
+  # -------------------------------------------
+  - id: slide-033
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "קונבולוציות"
+      - type: subtitle
+        text: "Convolutions - איך הרשת רואה תמונות"
+
+  - id: slide-034
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "פעולת הקונבולוציה"
+      - type: diagram
+        src: "/assets/diagrams/convolution_operation_he.svg"
+    notes: |
+      TODO: Create diagram showing convolution operation
+      - Filter/kernel sliding over image
+      - Feature detection (edges, shapes)
+      - Pooling layers
+
+  # -------------------------------------------
+  # ResNet (2015) - Skip Connections
+  # -------------------------------------------
+  - id: slide-035
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "ResNet (2015)"
+      - type: subtitle
+        text: "חיבורי קיצור - Skip Connections"
+
+  - id: slide-036
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ResNet - הרעיון שאפשר רשתות עמוקות מאוד"
+      - type: diagram
+        src: "/assets/diagrams/resnet_skip_connections_he.svg"
+    notes: |
+      ResNet פתר את בעיית ה-Degradation: רשתות עמוקות יותר נתנו תוצאות גרועות יותר.
+      הפתרון: Skip Connections - הקלט מדלג ישירות לפלט.
+      האינטואיציה: אם השכבות לא מועילות, הרשת יכולה "לדלג" עליהן.
+      הרעיון הזה נמצא היום בכל מודל גדול כולל Transformers!
+
+  # -------------------------------------------
+  # Bag of Words (2 slides)
+  # -------------------------------------------
+  - id: slide-010
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Bag of Words"
+      - type: subtitle
+        text: "ייצוג טקסט בסיסי"
+
+  - id: slide-011
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "Bag of Words"
+      - type: diagram
+        src: "/assets/diagrams/bag-of-words.svg"
+
+  # -------------------------------------------
+  # Tokens - How AI Reads Text
+  # -------------------------------------------
+  - id: slide-015
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "טוקנים"
+      - type: subtitle
+        text: "איך מודלים קוראים טקסט?"
+
+  - id: slide-016
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "מטקסט לטוקנים"
+      - type: diagram
+        src: "/assets/diagrams/tokenization_he.svg"
+    notes: |
+      המודל לא מבין טקסט ישירות - הוא עובד עם מספרים.
+      Tokenizer מפרק את הטקסט לחלקים קטנים (טוקנים) וממיר כל אחד למספר.
+      שימו לב: "playing" מתפרק ל-"play" + "##ing" - זה subword tokenization.
+
+  - id: slide-017
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "למה Subword Tokenization?"
+      - type: diagram
+        src: "/assets/diagrams/subword_tokenization_he.svg"
+    notes: |
+      הבעיה: אם כל מילה היא טוקן נפרד, צריך מילון ענק.
+      הפתרון: לפרק מילים לחלקים - שורש, תחילית, סיומת.
+      יתרונות: מילון קטן (~30K), כל מילה ניתנת לייצוג, מילים חדשות לא בעיה.
+
+  # -------------------------------------------
+  # Word2Vec (2 slides)
+  # -------------------------------------------
+  - id: slide-020
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Word2Vec"
+      - type: subtitle
+        text: "מילים כוקטורים (2013)"
+
+  - id: slide-021
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Word2Vec - מילים כוקטורים"
+      - type: diagram
+        src: "/assets/diagrams/word2vec_basics_he.svg"
+
+  - id: slide-022
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "Word2Vec - אריתמטיקה סמנטית"
+      - type: diagram
+        src: "/assets/diagrams/word2vec_arithmetic.svg"
+
+  - id: slide-023
+    layout: iframe
+    direction: rtl
+    content:
+      - type: title
+        text: "Word2Vec - מרחב תלת-ממדי"
+      - type: iframe
+        src: "/assets/visualizations/word2vec_3d_galaxy.html"
+
+  # -------------------------------------------
+  # RNN (2 slides)
+  # -------------------------------------------
+  - id: slide-040
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "רשתות נוירונים חוזרות"
+      - type: subtitle
+        text: "Recurrent Neural Networks (RNN)"
+
+  - id: slide-041
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ארכיטקטורת RNN"
+      - type: diagram
+        src: "/assets/diagrams/rnn_architecture_he.svg"
+    notes: |
+      TODO: Create diagram showing:
+      - Sequential processing
+      - Hidden state passing between time steps
+      - Vanishing gradient problem
+
+  # -------------------------------------------
+  # LSTM (2 slides)
+  # -------------------------------------------
+  - id: slide-050
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "LSTM"
+      - type: subtitle
+        text: "Long Short-Term Memory (1997)"
+
+  - id: slide-051
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ארכיטקטורת LSTM"
+      - type: diagram
+        src: "/assets/diagrams/lstm_architecture_he.svg"
+    notes: |
+      TODO: Create diagram showing:
+      - Cell state (memory)
+      - Gates: forget, input, output
+      - Solving vanishing gradient problem
+
+  # -------------------------------------------
+  # Attention Mechanism (2 slides)
+  # -------------------------------------------
+  - id: slide-060
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "מנגנון ה-Attention"
+      - type: subtitle
+        text: "הרעיון שהוביל לטרנספורמרים (2014)"
+
+  - id: slide-061
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Attention ב-Seq2Seq"
+      - type: diagram
+        src: "/assets/diagrams/seq2seq_attention_he.svg"
+    notes: |
+      הבעיה: לפני 2014, מודלים דחסו משפט שלם לוקטור אחד - במשפטים ארוכים המידע אבד.
+      הפתרון: מנגנון Attention מאפשר למפענח "להסתכל אחורה" על כל מילה בקלט.
+
+  # -------------------------------------------
+  # Self-Attention & Transformers (2 slides)
+  # -------------------------------------------
+  - id: slide-070
+    layout: text-image
+    direction: rtl
+    content:
+      - type: title
+        text: "הרגע שבו הכל השתנה"
+      - type: subtitle
+        text: "יוני 2017 - Attention Is All You Need"
+      - type: bullets
+        items:
+          - "\"Attention Is All You Need\" - צוות Google Brain"
+          - "הציג את ארכיטקטורת ה-Transformer"
+          - "הוכיח: לא צריך RNN או CNN - רק Attention"
+          - "הבסיס ל: GPT, BERT, ChatGPT, Claude, Gemini..."
+      - type: image
+        src: "/assets/images/attention-is-all-you-need-paper.svg"
+        alt: "Attention Is All You Need - the landmark paper"
+
+  - id: slide-071
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Self-Attention (קשב עצמי)"
+      - type: subtitle
+        text: "הרעיון המרכזי בטרנספורמרים"
+      - type: diagram
+        src: "/assets/diagrams/self_attention_he.svg"
+    notes: |
+      Self-Attention = כל מילה במשפט "מסתכלת" על כל המילים האחרות.
+      דוגמה: "החתול ישב על השטיח כי הוא היה עייף" - "הוא" מתייחסת ל"חתול".
+
+  - id: slide-072
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "מטריצת Self-Attention"
+      - type: subtitle
+        text: "כל מילה נותנת ציון לכל מילה אחרת"
+      - type: diagram
+        src: "/assets/diagrams/self_attention_matrix_he.svg"
+    notes: |
+      המטריצה מראה כמה תשומת לב כל מילה נותנת לכל מילה אחרת.
+      שורה = מילה ששואלת (Query), עמודה = מילה שעונה (Key).
+      הערכים מסתכמים ל-1 בכל שורה (softmax).
+
+  - id: slide-073
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ארכיטקטורת הטרנספורמר"
+      - type: subtitle
+        text: "המבנה המלא - Encoder-Decoder"
+      - type: diagram
+        src: "/assets/diagrams/transformer_architecture_he.svg"
+    notes: |
+      הטרנספורמר המקורי כולל מקודד (Encoder) ומפענח (Decoder).
+      כל בלוק מכיל: Multi-Head Attention, Feed Forward, Add & Norm.
+      Skip Connections מאפשרים אימון של רשתות עמוקות מאוד.
+
+  # -------------------------------------------
+  # Modern Models: BERT, GPT, T5 (2 slides)
+  # -------------------------------------------
+  - id: slide-080
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "מודלים מודרניים"
+      - type: subtitle
+        text: "BERT, GPT, T5 ועוד"
+
+  - id: slide-081
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "השוואת מודלים מודרניים"
+      - type: diagram
+        src: "/assets/diagrams/modern_models_comparison_he.svg"
+    notes: |
+      TODO: Create diagram/table comparing:
+      - BERT (2018) - Encoder only, bidirectional, good for understanding
+      - GPT (2018-2024) - Decoder only, autoregressive, good for generation
+      - T5 (2019) - Encoder-Decoder, text-to-text framework
+      - Key differences and use cases
+
+  # ===========================================
+  # END
+  # ===========================================
+  - id: slide-099
+    layout: blank
+    content: []

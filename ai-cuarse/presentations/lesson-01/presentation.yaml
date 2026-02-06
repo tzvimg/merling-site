@@ -1,0 +1,379 @@
+meta:
+  title: "בינה מלאכותית: שיעור 01"
+  author: "Tzvi Merling"
+  aspectRatio: "responsive"
+
+slides:
+  # ===========================================
+  # SECTION 1: Introduction
+  # ===========================================
+  # - id: slide-001
+  #   layout: title
+  #   direction: rtl
+  #   background: "/assets/images/ai-course-bg.svg"
+  #   content:
+  #     - type: title
+  #       text: "בינה מלאכותית"
+  #     - type: subtitle
+  #       text: "קורס מבוא ושיתוף ידע"
+
+  - id: slide-002
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "היסטוריה ורקע תרבותי של הבינה המלאכותית"
+      - type: subtitle
+        text: "מאריסטו ועד לעידן המחשבים"
+      - type: bullets
+        items:
+          - "אריסטו (350 לפנה\"ס): ניסח את חוקי ההיגיון הפורמלי - הבסיס לחשיבה מכנית"
+          - "מרי שלי (1818): \"פרנקנשטיין\" - יצירת חיים מלאכותיים וסכנותיה"
+          - "אלן טיורינג (1950): \"מכונות חושבות\" ומבחן טיורינג"
+          - "כנס דארטמות' (1956): לידתה הרשמית של הבינה המלאכותית כתחום מדעי"
+          - "HAL 9000 (1968): \"2001: אודיסיאה בחלל\" - החשש מבינה מלאכותית עצמאית"
+          - "שחמט נגד קספרוב (1997): Deep Blue מנצח את אלוף העולם"
+          - "עידן הלמידה העמוקה (2012+): פריצות דרך בזיהוי תמונה, שפה ועוד"
+
+  - id: slide-003
+    layout: iframe
+    direction: rtl
+    content:
+      - type: title
+        text: "החלום על מכונות חושבות"
+      - type: iframe
+        src: "https://www.youtube.com/embed/Wy4EfdnMZ5g"
+        aspectRatio: "16:9"
+
+  - id: slide-004
+    layout: items
+    direction: rtl
+    content:
+      - type: title
+        text: "ציוני דרך בתרבות הפופולרית"
+      - type: subtitle
+        text: "איך החברה דמיינה את הבינה המלאכותית?"
+      - type: items
+        items:
+          - title: "הרובוט המכני"
+            description: "מ\"מטרופוליס\" (1927) ועד C-3PO - רובוטים אנושיים כמשרתים וחברים"
+            icon: "🤖"
+          - title: "הסכנה הקיומית"
+            description: "\"טרמינטור\", \"מטריקס\" - פחד מהשתלטות מכונות על האנושות"
+            icon: "⚠️"
+          - title: "העוזר החכם"
+            description: "מ-JARVIS ועד ChatGPT - בינה מלאכותית כשותף ועוזר יום-יומי"
+            icon: "💡"
+
+  - id: slide-005
+    layout: items
+    direction: rtl
+    content:
+      - type: title
+        text: "על מה נדבר היום"
+      - type: subtitle
+        text: "מסע מהנוירון הביולוגי ועד למודלי השפה המתקדמים"
+      - type: items
+        items:
+          - title: "יסודות"
+            description: "נוירונים, פרספטרונים ורשתות נוירונים - אבני הבניין של הבינה המלאכותית"
+            icon: "🧠"
+          - title: "למידת מכונה"
+            description: "כיצד המחשב לומד מדוגמאות? Forward Pass, Backpropagation ואופטימיזציה"
+            icon: "⚡"
+          - title: "עיבוד שפה"
+            description: "מייצוג מילים כמספרים ועד Word2Vec - איך מחשבים מבינים טקסט"
+            icon: "💬"
+
+  - id: slide-006
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "מפת התחום"
+      - type: diagram
+        src: "/assets/diagrams/Artificial+Intelligence+Topology+v3.0.svg"
+
+  # ===========================================
+  # SECTION 2: Foundations - Brain & Neurons
+  # ===========================================
+  - id: slide-010
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "יסודות"
+      - type: subtitle
+        text: "מהמוח הביולוגי לרשתות נוירונים מלאכותיות"
+
+  - id: slide-011
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "המוח כמקור השראה"
+      - type: subtitle
+        text: "התפיסה של המוח האנושי כמערכת חישובית מאפשרת לנסות ולממש מנגנונים דומים במכונות"
+      - type: items
+        items:
+          - title: "זיכרון"
+            description: "אחסון ושליפה של מידע - בסיס למודלים עם קונטקסט וזיכרון ארוך טווח"
+            icon: "💾"
+          - title: "עיבוד מידע"
+            description: "קליטה, סינון ועיבוד של גירויים - השראה לארכיטקטורות רשתות נוירונים"
+            icon: "⚙️"
+          - title: "למידה"
+            description: "הסקת מסקנות מניסיון - הבסיס לאלגוריתמי למידת מכונה"
+            icon: "📈"
+          - title: "הפשטה"
+            description: "זיהוי דפוסים והכללה - יכולת מפתח במודלים מודרניים"
+            icon: "🔮"
+
+  - id: slide-012
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "מבנה הנוירון"
+      - type: diagram
+        src: "/assets/images/neuron.jpeg"
+
+  - id: slide-013
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "פוטנציאל פעולה"
+      - type: diagram
+        src: "/assets/images/potential action.jpeg"
+
+  - id: slide-014
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "Biological vs Artificial Neuron"
+      - type: diagram
+        src: "/assets/diagrams/bio_vs_artificial_neuron.svg"
+
+  # ===========================================
+  # SECTION 3: Perceptron
+  # ===========================================
+  - id: slide-020
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "הפרספטרון"
+      - type: subtitle
+        text: "אבן הבניין הבסיסית של רשתות נוירונים"
+
+  - id: slide-021
+    layout: diagram
+    direction: rtl
+    content:
+      - type: title
+        text: "פרספטרון - אבן הבניין של רשתות נוירונים"
+      - type: diagram
+        src: "/assets/diagrams/perceptron.svg"
+      - type: bullets
+        items:
+          - "קלטים (Inputs): ערכים מספריים x₁, x₂, ..., xₙ"
+          - "משקולות (Weights): כל קלט מוכפל במשקל w"
+          - "סכימה: z = Σ(xᵢ · wᵢ) + bias"
+          - "פונקציית אקטיבציה: הופכת את הסכום להחלטה"
+
+  - id: slide-022
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "דוגמא: זיהוי ספאם"
+      - type: subtitle
+        text: "מטרה: לסווג אימייל כ־ספאם (1) או לא ספאם (0)"
+      - type: bullets
+        items:
+          - "הפרספטרון מקבל מאפיינים מספריים של האימייל"
+          - "כל מאפיין מייצג תכונה שעשויה להעיד על ספאם"
+          - "המשקולות קובעות את החשיבות של כל מאפיין"
+          - "התוצאה: החלטה בינארית - ספאם או לא"
+
+  - id: slide-023
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "מאפייני הקלט (Features)"
+      - type: subtitle
+        text: "כיצד מתרגמים אימייל למספרים?"
+      - type: table
+        caption: "מאפייני הקלט לדוגמא"
+        headers: ["משתנה", "תיאור", "ערך", "הסבר"]
+        rows:
+          - ["x₁", "מילות מפתח חשודות", "1.0", "מכיל: 'FREE', 'WINNER'"]
+          - ["x₂", "מספר קישורים", "0.6", "6 קישורים (מנורמל)"]
+          - ["x₃", "מוניטין השולח", "0.2", "שולח לא מוכר"]
+          - ["x₄", "אורך ההודעה", "0.4", "הודעה קצרה"]
+          - ["x₅", "ALL CAPS", "1.0", "הרבה אותיות גדולות"]
+
+  - id: slide-024
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "משקולות (Weights)"
+      - type: subtitle
+        text: "המשקולות נלמדות מדוגמאות - כאן נציג ערכים לדוגמא"
+      - type: table
+        caption: "משקולות הפרספטרון"
+        headers: ["משקל", "תיאור", "ערך", "משמעות"]
+        rows:
+          - ["w₁", "מילות מפתח", "0.9", "השפעה חזקה לספאם"]
+          - ["w₂", "קישורים", "0.7", "הרבה קישורים = חשוד"]
+          - ["w₃", "מוניטין", "−0.8", "שולח אמין = לא ספאם"]
+          - ["w₄", "אורך", "0.2", "השפעה קטנה"]
+          - ["w₅", "CAPS", "0.6", "צעקות = חשוד"]
+      - type: text
+        text: "bias = −0.5 (סף ההחלטה)"
+
+  - id: slide-025
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "החישוב"
+      - type: subtitle
+        text: "שלב 1: סכימה משוקללת"
+      - type: text
+        text: "$$z = (x_1 \\cdot w_1) + (x_2 \\cdot w_2) + (x_3 \\cdot w_3) + (x_4 \\cdot w_4) + (x_5 \\cdot w_5) + b$$"
+      - type: text
+        text: "$$z = (1.0 \\times 0.9) + (0.6 \\times 0.7) + (0.2 \\times (-0.8)) + (0.4 \\times 0.2) + (1.0 \\times 0.6) + (-0.5)$$"
+      - type: text
+        text: "$$z = 0.90 + 0.42 - 0.16 + 0.08 + 0.60 - 0.50 = \\mathbf{1.34}$$"
+
+  - id: slide-026
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "ההחלטה"
+      - type: subtitle
+        text: "שלב 2: פונקציית אקטיבציה (Step Function)"
+      - type: text
+        text: "$$\\text{output} = \\begin{cases} 1 & \\text{if } z \\geq 1 \\text{ (spam)} \\\\ 0 & \\text{if } z < 1 \\text{ (not spam)} \\end{cases}$$"
+      - type: text
+        text: "$$z = 1.34 \\geq 1 \\Rightarrow \\text{output} = 1$$"
+      - type: subtitle
+        text: "✓ המסקנה: האימייל מסווג כספאם"
+
+  # ===========================================
+  # SECTION 4: Multi-Layer Perceptron (MLP)
+  # ===========================================
+  - id: slide-030
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "רשת נוירונים רב-שכבתית"
+      - type: subtitle
+        text: "Multi-Layer Perceptron (MLP)"
+
+  - id: slide-031
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "מפרספטרון ל-MLP"
+      - type: subtitle
+        text: "פרספטרון בודד יכול לפתור רק בעיות לינאריות. שכבות מרובות מאפשרות ללמוד דפוסים מורכבים"
+      - type: diagram
+        src: "/assets/diagrams/mlp_architecture_he.svg"
+
+  - id: slide-032
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "MLP Forward Pass"
+      - type: diagram
+        src: "/assets/diagrams/mlp_forward_pass_he.svg"
+
+  - id: slide-033
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "MLP Forward Pass Example"
+      - type: diagram
+        src: "/assets/diagrams/mlp_forward_pass_example_3class_he.svg"
+
+  - id: slide-034
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "MLP Backpropagation"
+      - type: diagram
+        src: "/assets/diagrams/mlp_backpropagation_he.svg"
+
+  - id: slide-035
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "MLP Backpropagation Example"
+      - type: diagram
+        src: "/assets/diagrams/mlp_backpropagation_example_he.svg"
+
+  # ===========================================
+  # SECTION 5: Learning Paradigms
+  # ===========================================
+  - id: slide-040
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "פרדיגמות למידה"
+      - type: subtitle
+        text: "שלוש גישות מרכזיות ללמידת מכונה"
+
+  - id: slide-041
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Supervised Learning - למידה מונחית"
+      - type: diagram
+        src: "/assets/diagrams/supervised_learning_he.svg"
+
+  - id: slide-042
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Unsupervised Learning - למידה לא מונחית"
+      - type: diagram
+        src: "/assets/diagrams/unsupervised_learning_he.svg"
+
+  - id: slide-043
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Reinforcement Learning - למידת חיזוקים"
+      - type: diagram
+        src: "/assets/diagrams/reinforcement_learning_he.svg"
+
+  # ===========================================
+  # HANDS-ON
+  # ===========================================
+  - id: slide-050
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "תרגול מעשי"
+      - type: subtitle
+        text: "[🔗 פתח את המחברת ב-Google Colab](https://colab.research.google.com/drive/1FTZJfyn72pQJnAwyKQQ4Qge1v5L328hP)"
+
+  # ===========================================
+  # END
+  # ===========================================
+  - id: slide-099
+    layout: blank
+    content: []

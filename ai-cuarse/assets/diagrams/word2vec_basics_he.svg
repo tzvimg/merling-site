@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="animalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="royalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFC107;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#FFA000;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="foodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF5722;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#E64A19;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <g transform="translate(30, 40)">
+    <text x="160" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Word2Vec</text>
+    <text x="160" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#666">Word to Vector</text>
+
+    <rect x="30" y="50" width="100" height="45" rx="8" fill="#E3F2FD" stroke="#1976D2" stroke-width="2"/>
+    <text x="80" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1976D2">cat</text>
+
+    <path d="M 140 72 L 180 72" stroke="#333" stroke-width="2" marker-end="url(#arrow1)"/>
+
+    <rect x="190" y="45" width="120" height="55" rx="8" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+    <text x="250" y="68" text-anchor="middle" font-family="monospace" font-size="11" fill="#E65100">[0.2, -0.5, 0.8,</text>
+    <text x="250" y="85" text-anchor="middle" font-family="monospace" font-size="11" fill="#E65100">0.1, -0.3, ...]</text>
+  </g>
+
+  <g transform="translate(420, 20)">
+    <text x="220" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Vector Space - Similar Words are Close</text>
+
+    <rect x="40" y="50" width="400" height="300" rx="10" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+
+    <line x1="60" y1="330" x2="420" y2="330" stroke="#BDBDBD" stroke-width="1"/>
+    <line x1="60" y1="330" x2="60" y2="70" stroke="#BDBDBD" stroke-width="1"/>
+
+    <ellipse cx="150" cy="120" rx="70" ry="50" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+    <circle cx="120" cy="110" r="10" fill="url(#animalGrad)"/>
+    <text x="120" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2E7D32">cat</text>
+    <circle cx="170" cy="100" r="10" fill="url(#animalGrad)"/>
+    <text x="170" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2E7D32">dog</text>
+    <circle cx="145" cy="145" r="10" fill="url(#animalGrad)"/>
+    <text x="145" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2E7D32">lion</text>
+    <text x="150" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#388E3C">Animals</text>
+
+    <ellipse cx="330" cy="130" rx="65" ry="55" fill="#FFF8E1" stroke="#FFC107" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+    <circle cx="300" cy="115" r="10" fill="url(#royalGrad)"/>
+    <text x="300" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#E65100">king</text>
+    <circle cx="360" cy="110" r="10" fill="url(#royalGrad)"/>
+    <text x="360" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#E65100">queen</text>
+    <circle cx="330" cy="155" r="10" fill="url(#royalGrad)"/>
+    <text x="330" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#E65100">prince</text>
+    <text x="330" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FF8F00">Royalty</text>
+
+    <ellipse cx="240" cy="280" rx="75" ry="45" fill="#FBE9E7" stroke="#FF5722" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+    <circle cx="200" cy="270" r="10" fill="url(#foodGrad)"/>
+    <text x="200" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#BF360C">apple</text>
+    <circle cx="260" cy="265" r="10" fill="url(#foodGrad)"/>
+    <text x="260" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#BF360C">banana</text>
+    <circle cx="280" cy="295" r="10" fill="url(#foodGrad)"/>
+    <text x="280" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#BF360C">orange</text>
+    <text x="240" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#E64A19">Fruits</text>
+
+    <line x1="130" y1="110" x2="165" y2="102" stroke="#1976D2" stroke-width="2"/>
+    <text x="148" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1976D2">close!</text>
+  </g>
+
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="800" height="80" rx="10" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+
+    <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2E7D32">Computing Similarity Between Words</text>
+
+    <text x="150" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">similarity(cat, dog) = 0.92</text>
+    <text x="150" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4CAF50">Very similar</text>
+
+    <text x="400" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">similarity(cat, apple) = 0.15</text>
+    <text x="400" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#F44336">Very different</text>
+
+    <text x="650" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">similarity(king, queen) = 0.88</text>
+    <text x="650" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4CAF50">Very similar</text>
+  </g>
+</svg>

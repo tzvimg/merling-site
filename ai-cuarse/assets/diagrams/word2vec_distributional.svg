@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="targetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E53935;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C62828;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="contextGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43A047;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="currentColor">The Distributional Hypothesis</text>
+  <text x="450" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-style="italic" fill="#666">"You shall know a word by the company it keeps" - J.R. Firth (1957)</text>
+
+  <!-- Example 1: Cat -->
+  <g transform="translate(50, 100)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="currentColor">Example sentences with "cat":</text>
+
+    <g transform="translate(0, 25)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">The</text>
+      <rect x="30" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="47" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">fluffy</text>
+      <rect x="75" y="-15" width="30" height="22" rx="3" fill="#FFCDD2"/>
+      <text x="90" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#C62828">cat</text>
+      <rect x="115" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="132" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">sleeps</text>
+      <text x="160" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">on the couch</text>
+    </g>
+
+    <g transform="translate(0, 55)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">My</text>
+      <rect x="25" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="42" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">little</text>
+      <rect x="70" y="-15" width="30" height="22" rx="3" fill="#FFCDD2"/>
+      <text x="85" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#C62828">cat</text>
+      <rect x="110" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="127" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">loves</text>
+      <text x="155" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">to play</text>
+    </g>
+
+    <g transform="translate(0, 85)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">The</text>
+      <rect x="30" y="-15" width="40" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="50" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">hungry</text>
+      <rect x="80" y="-15" width="30" height="22" rx="3" fill="#FFCDD2"/>
+      <text x="95" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#C62828">cat</text>
+      <rect x="120" y="-15" width="30" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="135" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">eats</text>
+      <text x="160" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">its food</text>
+    </g>
+  </g>
+
+  <!-- Example 2: Dog -->
+  <g transform="translate(450, 100)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="currentColor">Example sentences with "dog":</text>
+
+    <g transform="translate(0, 25)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">The</text>
+      <rect x="30" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="47" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">fluffy</text>
+      <rect x="75" y="-15" width="30" height="22" rx="3" fill="#BBDEFB"/>
+      <text x="90" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1565C0">dog</text>
+      <rect x="115" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="132" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">sleeps</text>
+      <text x="160" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">on the floor</text>
+    </g>
+
+    <g transform="translate(0, 55)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">My</text>
+      <rect x="25" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="42" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">little</text>
+      <rect x="70" y="-15" width="30" height="22" rx="3" fill="#BBDEFB"/>
+      <text x="85" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1565C0">dog</text>
+      <rect x="110" y="-15" width="35" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="127" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">loves</text>
+      <text x="155" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">to run</text>
+    </g>
+
+    <g transform="translate(0, 85)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">The</text>
+      <rect x="30" y="-15" width="40" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="50" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">hungry</text>
+      <rect x="80" y="-15" width="30" height="22" rx="3" fill="#BBDEFB"/>
+      <text x="95" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1565C0">dog</text>
+      <rect x="120" y="-15" width="30" height="22" rx="3" fill="#C8E6C9"/>
+      <text x="135" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#2E7D32">eats</text>
+      <text x="160" y="0" font-family="Arial, sans-serif" font-size="13" fill="#666">its food</text>
+    </g>
+  </g>
+
+  <!-- Arrow and insight -->
+  <g transform="translate(350, 280)">
+    <path d="M 100,0 L 100,40" stroke="#F57C00" stroke-width="3" fill="none" marker-end="url(#arrow1)"/>
+    <defs>
+      <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#F57C00"/>
+      </marker>
+    </defs>
+  </g>
+
+  <!-- Key insight box -->
+  <rect x="150" y="330" width="600" height="60" rx="10" fill="#FFF3E0" stroke="#F57C00" stroke-width="2"/>
+  <text x="450" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#E65100">Key Insight</text>
+  <text x="450" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">"cat" and "dog" appear in similar contexts → they should have similar vectors!</text>
+
+  <!-- Visual representation -->
+  <g transform="translate(100, 410)">
+    <text x="250" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="currentColor">Shared Context Words:</text>
+
+    <rect x="50" y="15" width="50" height="28" rx="5" fill="url(#contextGrad)"/>
+    <text x="75" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">fluffy</text>
+
+    <rect x="110" y="15" width="50" height="28" rx="5" fill="url(#contextGrad)"/>
+    <text x="135" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">little</text>
+
+    <rect x="170" y="15" width="55" height="28" rx="5" fill="url(#contextGrad)"/>
+    <text x="197" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">hungry</text>
+
+    <rect x="235" y="15" width="50" height="28" rx="5" fill="url(#contextGrad)"/>
+    <text x="260" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">sleeps</text>
+
+    <rect x="295" y="15" width="50" height="28" rx="5" fill="url(#contextGrad)"/>
+    <text x="320" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">loves</text>
+
+    <rect x="355" y="15" width="45" height="28" rx="5" fill="url(#contextGrad)"/>
+    <text x="377" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">eats</text>
+  </g>
+
+  <!-- Result arrow -->
+  <g transform="translate(550, 430)">
+    <path d="M 0,15 L 50,15" stroke="#4CAF50" stroke-width="3" fill="none" marker-end="url(#arrow2)"/>
+    <defs>
+      <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+      </marker>
+    </defs>
+  </g>
+
+  <!-- Result -->
+  <g transform="translate(620, 410)">
+    <rect x="0" y="0" width="230" height="60" rx="8" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+    <text x="115" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E7D32">Result:</text>
+    <text x="115" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">vec(cat) ≈ vec(dog)</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(30, 470)">
+    <rect x="0" y="0" width="20" height="15" rx="2" fill="#FFCDD2"/>
+    <text x="25" y="12" font-family="Arial, sans-serif" font-size="11" fill="#666">Target word (cat)</text>
+    <rect x="130" y="0" width="20" height="15" rx="2" fill="#BBDEFB"/>
+    <text x="155" y="12" font-family="Arial, sans-serif" font-size="11" fill="#666">Target word (dog)</text>
+    <rect x="260" y="0" width="20" height="15" rx="2" fill="#C8E6C9"/>
+    <text x="285" y="12" font-family="Arial, sans-serif" font-size="11" fill="#666">Context words (shared)</text>
+  </g>
+</svg>

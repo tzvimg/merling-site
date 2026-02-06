@@ -1,0 +1,753 @@
+meta:
+  title: "בינה מלאכותית: שיעור 04"
+  author: "Tzvi Merling"
+  aspectRatio: "responsive"
+
+slides:
+  # ===========================================
+  # TITLE
+  # ===========================================
+  - id: slide-001
+    layout: title
+    direction: rtl
+    background: "/assets/images/prompt_engineering_cover.png"
+    content:
+      - type: title
+        text: "הנדסת פרומפטים"
+      - type: subtitle
+        text: "Advanced Prompt Engineering"
+
+  # ===========================================
+  # SECTION 1: Academic Foundations
+  # ===========================================
+  - id: slide-010
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "יסודות אקדמיים"
+      - type: subtitle
+        text: "Taxonomy & Evolution"
+    notes: |
+      Based on: Sahoo et al. (2024) "A Systematic Survey of Prompt Engineering in Large Language Models"
+      arXiv:2402.07927 - Categorizes 29 distinct techniques by application area.
+
+  - id: slide-011
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "טקסונומיה של טכניקות פרומפטינג"
+      - type: subtitle
+        text: "Sahoo et al., 2024 - 29 Techniques Categorized"
+      - type: diagram
+        src: "/assets/diagrams/prompt_taxonomy_he.svg"
+    notes: |
+      Reference: arXiv:2402.07927v1
+      Categories: New Tasks (Zero/Few-Shot), Reasoning (CoT, ToT, GoT), 
+      Hallucination Reduction (RAG, CoN, CoK), Code Generation (SCoT, PoT, CoC),
+      Optimization (OPRO), Metacognition (Step-Back)
+
+  - id: slide-012
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "אבולוציה של טכניקות"
+      - type: items
+        items:
+          - title: "2019: Zero-Shot"
+            description: "Radford et al. - GPT-2 מבצע משימות ללא דוגמאות"
+            icon: "📄"
+          - title: "2020: Few-Shot"
+            description: "Brown et al. - GPT-3 לומד מ-2-5 דוגמאות בפרומפט"
+            icon: "📚"
+          - title: "2022: Chain-of-Thought"
+            description: "Wei et al. - חשיבה צעד-אחר-צעד משפרת reasoning"
+            icon: "🔗"
+          - title: "2023: Tree/Graph-of-Thoughts"
+            description: "Yao et al. - חקירת נתיבי חשיבה מרובים"
+            icon: "🌳"
+          - title: "2024: Agentic Workflows"
+            description: "Tool Use + Multi-step reasoning"
+            icon: "🤖"
+    notes: |
+      Key papers:
+      - Radford et al. (2019) "Language Models are Unsupervised Multitask Learners"
+      - Brown et al. (2020) "Language Models are Few-Shot Learners"
+      - Wei et al. (2022) "Chain-of-Thought Prompting Elicits Reasoning"
+      - Yao et al. (2023) "Tree of Thoughts: Deliberate Problem Solving"
+
+  # ===========================================
+  # SECTION 2: Reasoning Architectures
+  # ===========================================
+  - id: slide-020
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "ארכיטקטורות חשיבה"
+      - type: subtitle
+        text: "Reasoning Architectures"
+
+  - id: slide-021
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Chain-of-Thought (CoT)"
+      - type: subtitle
+        text: "Wei et al., 2022 | GSM8K: 17.9% → 58.1%"
+      - type: bullets
+        items:
+          - "הוספת \"Let's think step by step\" משפרת דיוק ב-40%+"
+          - "עובד בעיקר על מודלים גדולים (>100B parameters)"
+          - "יעיל במיוחד לבעיות מתמטיות והיגיון"
+      - type: code
+        language: text
+        code: |
+          Q: Roger has 5 tennis balls. He buys 2 cans 
+          of 3 balls each. How many balls now?
+          
+          A: Let's think step by step.
+          Roger started with 5 balls.
+          2 cans × 3 balls = 6 new balls.
+          5 + 6 = 11 balls total.
+          
+          The answer is 11.
+    notes: |
+      Wei et al. (2022) arXiv:2201.11903
+      PaLM 540B on GSM8K: 17.9% (standard) → 58.1% (CoT)
+      Key insight: Emergent ability in large models only.
+
+  - id: slide-022
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Self-Consistency"
+      - type: subtitle
+        text: "Wang et al., 2022 | +17.9% over CoT"
+      - type: bullets
+        items:
+          - "הרצת CoT מספר פעמים עם temperature > 0"
+          - "בחירת התשובה הנפוצה ביותר (majority voting)"
+          - "Trade-off: עלות גבוהה יותר, דיוק טוב יותר"
+      - type: code
+        language: python
+        code: |
+          def self_consistency(prompt, n=5):
+              answers = []
+              for _ in range(n):
+                  response = llm(prompt, temperature=0.7)
+                  answer = extract_answer(response)
+                  answers.append(answer)
+              return Counter(answers).most_common(1)[0][0]
+    notes: |
+      Wang et al. (2022) arXiv:2203.11171
+      GSM8K improvement: CoT 58.1% → Self-Consistency 76.0%
+      Optimal n: 5-10 samples for most tasks.
+
+  - id: slide-023
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "Tree-of-Thoughts (ToT)"
+      - type: subtitle
+        text: "Yao et al., 2023 | Game of 24: 4% → 74%"
+      - type: diagram
+        src: "/assets/diagrams/cot_reasoning_he.svg"
+    notes: |
+      Yao et al. (2023) arXiv:2305.10601
+      ToT extends CoT by exploring multiple reasoning paths.
+      Uses BFS/DFS with evaluation at each step.
+      Game of 24: CoT 4% → ToT 74% success rate.
+
+  - id: slide-024
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Graph-of-Thoughts (GoT)"
+      - type: subtitle
+        text: "Besta et al., 2023 | Beyond Linear Reasoning"
+      - type: bullets
+        items:
+          - "מרחיב ToT לגרף עם מיזוג ושכלול מחשבות"
+          - "מאפשר שילוב תובנות ממספר נתיבים"
+          - "יעיל למשימות שדורשות סינתזה"
+      - type: code
+        language: text
+        code: |
+          Operations:
+          ├── Generate: Create new thoughts
+          ├── Aggregate: Merge multiple thoughts  
+          ├── Refine: Improve existing thoughts
+          └── Score: Evaluate thought quality
+    notes: |
+      Besta et al. (2023) arXiv:2308.09687
+      GoT allows non-linear reasoning with thought aggregation.
+      Sorting task: 62% quality improvement over ToT.
+
+  # ===========================================
+  # SECTION 3: Structured Prompting
+  # ===========================================
+  - id: slide-030
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "פרומפטים מובנים"
+      - type: subtitle
+        text: "Structured Prompting Patterns"
+
+  - id: slide-031
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "XML Tags Pattern"
+      - type: subtitle
+        text: "Anthropic Best Practice"
+      - type: bullets
+        items:
+          - "Claude אומן עם XML tags - משפר parsing"
+          - "הפרדה ברורה בין הקשר, הוראות, ופלט"
+          - "מאפשר extraction מדויק של תוצאות"
+      - type: code
+        language: xml
+        code: |
+          <context>
+          You are a senior Python developer.
+          </context>
+          
+          <task>
+          Review this code for security issues.
+          </task>
+          
+          <code>
+          {user_code}
+          </code>
+          
+          <output_format>
+          Return JSON: {"issues": [], "severity": ""}
+          </output_format>
+    notes: |
+      Source: Anthropic Documentation
+      XML tags help Claude parse complex prompts.
+      Prefilling response with opening tag improves consistency.
+
+  - id: slide-032
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Prompt Anatomy"
+      - type: subtitle
+        text: "5 Components of Professional Prompts"
+      - type: bullets
+        items:
+          - "Role: הגדרת זהות ומומחיות"
+          - "Context: רקע ומידע רלוונטי"
+          - "Task: הוראה ברורה ומדויקת"
+          - "Format: מבנה הפלט הרצוי"
+          - "Constraints: מגבלות וכללים"
+      - type: code
+        language: text
+        code: |
+          [ROLE] Senior security engineer
+          [CONTEXT] Production Node.js API
+          [TASK] Identify SQL injection vectors
+          [FORMAT] Markdown table with severity
+          [CONSTRAINTS] Focus on user inputs only
+    notes: |
+      Professional prompt structure based on industry best practices.
+      Each component serves a specific purpose in guiding model behavior.
+
+  - id: slide-033
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Few-Shot with Delimiters"
+      - type: subtitle
+        text: "OpenAI Best Practice"
+      - type: bullets
+        items:
+          - "שימוש ב-### או ``` להפרדת דוגמאות"
+          - "דוגמאות מגוונות מכסות edge cases"
+          - "סדר הדוגמאות משפיע על התוצאה"
+      - type: code
+        language: text
+        code: |
+          Classify the sentiment:
+          
+          ###
+          Text: "This product exceeded expectations!"
+          Sentiment: positive
+          ###
+          Text: "Worst purchase I ever made."
+          Sentiment: negative
+          ###
+          Text: "It works as described."
+          Sentiment: neutral
+          ###
+          Text: "{user_input}"
+          Sentiment:
+    notes: |
+      Source: OpenAI Prompt Engineering Guide
+      Delimiters prevent prompt injection and improve parsing.
+      3-5 diverse examples typically optimal.
+
+  # ===========================================
+  # SECTION 4: Agentic Patterns
+  # ===========================================
+  - id: slide-040
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "תבניות אגנטיות"
+      - type: subtitle
+        text: "Agentic Design Patterns"
+
+  - id: slide-041
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ReAct Pattern"
+      - type: subtitle
+        text: "Yao et al., 2022 | Reasoning + Acting"
+      - type: diagram
+        src: "/assets/diagrams/react_pattern_he.svg"
+    notes: |
+      Yao et al. (2022) arXiv:2210.03629
+      ReAct interleaves reasoning traces with actions.
+      HotpotQA: +6% over CoT, +21% over Act-only.
+
+  - id: slide-042
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Tool Use Pattern"
+      - type: subtitle
+        text: "Function Calling Architecture"
+      - type: bullets
+        items:
+          - "המודל מחליט מתי לקרוא לכלי חיצוני"
+          - "תוצאת הכלי מוזנת חזרה להמשך reasoning"
+          - "מאפשר גישה למידע עדכני ופעולות"
+      - type: code
+        language: python
+        code: |
+          tools = [{
+              "name": "search_docs",
+              "description": "Search codebase",
+              "parameters": {
+                  "query": {"type": "string"}
+              }
+          }]
+          
+          # Model decides: call tool or respond
+          response = llm(prompt, tools=tools)
+          if response.tool_calls:
+              result = execute_tool(response.tool_calls)
+              response = llm(prompt + result)
+    notes: |
+      Tool use is a key agentic pattern (Andrew Ng, 2024).
+      Enables LLMs to interact with external systems.
+      Critical for production applications.
+
+  - id: slide-043
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Multi-Step Workflow"
+      - type: subtitle
+        text: "Decomposition Pattern"
+      - type: bullets
+        items:
+          - "פירוק משימה מורכבת לשלבים"
+          - "כל שלב עם פרומפט ייעודי"
+          - "תוצאת שלב מזינה את הבא"
+      - type: code
+        language: python
+        code: |
+          def code_review_workflow(code):
+              # Step 1: Understand
+              summary = llm(f"Summarize: {code}")
+              
+              # Step 2: Analyze
+              issues = llm(f"Find bugs in: {code}")
+              
+              # Step 3: Suggest
+              fixes = llm(f"Fix: {issues}")
+              
+              return {"summary": summary, 
+                      "issues": issues, 
+                      "fixes": fixes}
+    notes: |
+      Multi-step workflows outperform single-shot prompts.
+      Andrew Ng (2024): GPT-3.5 with workflow > GPT-4 zero-shot.
+      Key insight: Smaller models + smart architecture = better results.
+
+  # ===========================================
+  # SECTION 5: Code Generation Techniques
+  # ===========================================
+  - id: slide-050
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "טכניקות ליצירת קוד"
+      - type: subtitle
+        text: "Code Generation Techniques"
+
+  - id: slide-051
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Structured CoT (SCoT)"
+      - type: subtitle
+        text: "Li et al., 2023 | +13.79% Code Quality"
+      - type: bullets
+        items:
+          - "תכנון מבנה הקוד לפני כתיבה"
+          - "פסאודו-קוד → קוד אמיתי"
+          - "מפחית שגיאות לוגיות"
+      - type: code
+        language: text
+        code: |
+          Task: Implement binary search
+          
+          Plan:
+          1. Define function with array, target
+          2. Initialize left=0, right=len-1
+          3. While left <= right:
+             - Calculate mid
+             - Compare and adjust bounds
+          4. Return index or -1
+          
+          Code:
+          def binary_search(arr, target):
+              ...
+    notes: |
+      Li et al. (2023) - SCoT for code generation.
+      HumanEval improvement: +13.79% over standard CoT.
+      Key: Plan structure before implementation.
+
+  - id: slide-052
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Program-of-Thoughts (PoT)"
+      - type: subtitle
+        text: "Chen et al., 2022 | Code as Reasoning"
+      - type: bullets
+        items:
+          - "שימוש בקוד כמדיום לחשיבה"
+          - "הרצת הקוד לקבלת תשובה מדויקת"
+          - "מצוין לחישובים מתמטיים"
+      - type: code
+        language: python
+        code: |
+          # Q: A store has 45 apples. 
+          # 3/5 are sold. How many left?
+          
+          total_apples = 45
+          fraction_sold = 3/5
+          sold = total_apples * fraction_sold
+          remaining = total_apples - sold
+          
+          print(f"Remaining: {remaining}")
+          # Output: Remaining: 18.0
+    notes: |
+      Chen et al. (2022) arXiv:2211.12588
+      PoT delegates computation to Python interpreter.
+      GSM8K: PoT 71.6% vs CoT 56.9%.
+
+  - id: slide-053
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Chain-of-Code (CoC)"
+      - type: subtitle
+        text: "Li et al., 2023 | 84% on BIG-Bench Hard"
+      - type: bullets
+        items:
+          - "שילוב קוד וחשיבה סמנטית"
+          - "LMulator - סימולציה של קוד לא-ריצתי"
+          - "מטפל גם בלוגיקה וגם בחישובים"
+      - type: code
+        language: python
+        code: |
+          def solve(question):
+              # Semantic reasoning as pseudocode
+              entities = extract_entities(question)
+              relationships = find_relationships(entities)
+              
+              # Executable computation
+              result = compute(relationships)
+              
+              return result
+          
+          # LMulator simulates non-executable parts
+    notes: |
+      Li et al. (2023) arXiv:2312.04474
+      CoC achieves 84% on BIG-Bench Hard (+12% over CoT).
+      Key innovation: LMulator for semantic code simulation.
+
+  # ===========================================
+  # SECTION 6: Optimization & Evaluation
+  # ===========================================
+  - id: slide-060
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "אופטימיזציה והערכה"
+      - type: subtitle
+        text: "Optimization & Evaluation"
+
+  - id: slide-061
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "DSPy Framework"
+      - type: subtitle
+        text: "Stanford NLP | Automatic Prompt Optimization"
+      - type: bullets
+        items:
+          - "הגדרה דקלרטיבית של pipeline"
+          - "אופטימיזציה אוטומטית של פרומפטים"
+          - "מודולריות ו-composability"
+      - type: code
+        language: python
+        code: |
+          import dspy
+          
+          class CodeReview(dspy.Signature):
+              """Review code for issues."""
+              code = dspy.InputField()
+              issues = dspy.OutputField()
+          
+          reviewer = dspy.ChainOfThought(CodeReview)
+          
+          # Optimize with training data
+          optimizer = dspy.BootstrapFewShot()
+          optimized = optimizer.compile(reviewer, 
+                                        trainset=examples)
+    notes: |
+      DSPy: Stanford NLP framework for programmatic prompting.
+      Replaces manual prompt engineering with optimization.
+      Key: Define what, not how - framework optimizes prompts.
+
+  - id: slide-062
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "מדדי הערכה"
+      - type: subtitle
+        text: "Evaluation Metrics"
+      - type: items
+        items:
+          - title: "Accuracy / Exact Match"
+            description: "התאמה מדויקת לתשובה הנכונה"
+            icon: "🎯"
+          - title: "Pass@k"
+            description: "אחוז הצלחה ב-k ניסיונות (קוד)"
+            icon: "✅"
+          - title: "BLEU / ROUGE"
+            description: "דמיון טקסטואלי לתשובת reference"
+            icon: "📊"
+          - title: "LLM-as-Judge"
+            description: "הערכה אוטומטית ע\"י מודל אחר"
+            icon: "⚖️"
+          - title: "Human Evaluation"
+            description: "הערכה אנושית לאיכות ורלוונטיות"
+            icon: "👤"
+    notes: |
+      Metrics depend on task type:
+      - Classification: Accuracy, F1
+      - Generation: BLEU, ROUGE, Human eval
+      - Code: Pass@k, Functional correctness
+      - Reasoning: Exact Match, Chain validity
+
+  - id: slide-063
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Prompt Versioning"
+      - type: subtitle
+        text: "Treat Prompts as Code"
+      - type: bullets
+        items:
+          - "שמירת פרומפטים ב-Git"
+          - "בדיקות regression אוטומטיות"
+          - "A/B testing בפרודקשן"
+      - type: code
+        language: yaml
+        code: |
+          # prompts/code_review_v2.yaml
+          version: "2.0.1"
+          model: "claude-3-sonnet"
+          
+          system: |
+            You are a senior code reviewer.
+            Focus on security and performance.
+          
+          template: |
+            <code>{code}</code>
+            <checklist>{checklist}</checklist>
+          
+          tests:
+            - input: "sql_injection_example"
+              expected_contains: "SQL injection"
+    notes: |
+      Prompt versioning best practices:
+      - Version control all prompts
+      - Automated testing on changes
+      - Track performance metrics over time
+      - Rollback capability for production
+
+  # ===========================================
+  # SECTION 7: Hallucination Reduction
+  # ===========================================
+  - id: slide-070
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "הפחתת הזיות"
+      - type: subtitle
+        text: "Hallucination Reduction"
+
+  - id: slide-071
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "RAG Architecture"
+      - type: subtitle
+        text: "Lewis et al., 2020 | Retrieval-Augmented Generation"
+      - type: diagram
+        src: "/assets/diagrams/rag_flow_he.svg"
+    notes: |
+      Lewis et al. (2020) arXiv:2005.11401
+      RAG combines retrieval with generation.
+      Reduces hallucinations by grounding in retrieved documents.
+
+  - id: slide-072
+    layout: two-column
+    direction: rtl
+    content:
+      - type: title
+        text: "Chain-of-Verification (CoVe)"
+      - type: subtitle
+        text: "Dhuliawala et al., 2023 | Self-Verification"
+      - type: bullets
+        items:
+          - "המודל מייצר תשובה ראשונית"
+          - "מייצר שאלות אימות"
+          - "עונה על השאלות ומתקן"
+      - type: code
+        language: text
+        code: |
+          Step 1 - Generate:
+          "Python was created by Guido van Rossum 
+           in 1989 at CWI in Netherlands."
+          
+          Step 2 - Verify:
+          Q1: When was Python created?
+          Q2: Who created Python?
+          Q3: Where was it created?
+          
+          Step 3 - Correct:
+          A1: 1991 (first release)
+          A2: Guido van Rossum ✓
+          A3: CWI, Netherlands ✓
+          
+          Final: "...in 1991..."
+    notes: |
+      Dhuliawala et al. (2023) arXiv:2309.11495
+      CoVe reduces factual errors through self-verification.
+      Wikidata: +7.9 EM score improvement.
+
+  # ===========================================
+  # SUMMARY
+  # ===========================================
+  - id: slide-080
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "סיכום: בחירת טכניקה"
+      - type: items
+        items:
+          - title: "משימות פשוטות"
+            description: "Zero-Shot / Few-Shot"
+            icon: "1️⃣"
+          - title: "בעיות reasoning"
+            description: "CoT / Self-Consistency"
+            icon: "2️⃣"
+          - title: "בעיות מורכבות"
+            description: "ToT / GoT / Multi-step"
+            icon: "3️⃣"
+          - title: "יצירת קוד"
+            description: "SCoT / PoT / CoC"
+            icon: "4️⃣"
+          - title: "דיוק עובדתי"
+            description: "RAG / CoVe / CoN"
+            icon: "5️⃣"
+          - title: "פרודקשן"
+            description: "DSPy + Versioning + Eval"
+            icon: "6️⃣"
+    notes: |
+      Decision framework for technique selection.
+      Start simple, add complexity only when needed.
+      Always measure and iterate.
+
+  - id: slide-081
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "מקורות מומלצים"
+      - type: items
+        items:
+          - title: "Sahoo et al., 2024"
+            description: "A Systematic Survey of Prompt Engineering (arXiv:2402.07927)"
+            icon: "📄"
+          - title: "Anthropic Docs"
+            description: "docs.anthropic.com/claude/docs/prompt-engineering"
+            icon: "📘"
+          - title: "OpenAI Cookbook"
+            description: "cookbook.openai.com - GPT Prompting Guides"
+            icon: "📗"
+          - title: "DSPy"
+            description: "github.com/stanfordnlp/dspy"
+            icon: "🔧"
+          - title: "DeepLearning.AI"
+            description: "Prompt Engineering for Developers Course"
+            icon: "🎓"
+    notes: |
+      Key references for further learning.
+      Academic papers provide theoretical foundation.
+      Vendor docs provide practical implementation guidance.
+
+  # ===========================================
+  # END
+  # ===========================================
+  - id: slide-099
+    layout: blank
+    content: []

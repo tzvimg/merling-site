@@ -1,0 +1,1324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1100"
+   height="580"
+   viewBox="0 0 1100 580"
+   version="1.1"
+   id="svg99"
+   sodipodi:docname="mlp_forward_pass.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview99"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.83633664"
+     inkscape:cx="512.35349"
+     inkscape:cy="375.4469"
+     inkscape:window-width="1600"
+     inkscape:window-height="930"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg99" />
+  <defs
+     id="defs8">
+    <linearGradient
+       id="inputG"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         style="stop-color:#4A90D9"
+         id="stop1" />
+      <stop
+         offset="100%"
+         style="stop-color:#2E6AB3"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="hiddenG"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         style="stop-color:#F7C948"
+         id="stop3" />
+      <stop
+         offset="100%"
+         style="stop-color:#E5A823"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="outputG"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         style="stop-color:#2ECC71"
+         id="stop5" />
+      <stop
+         offset="100%"
+         style="stop-color:#27AE60"
+         id="stop6" />
+    </linearGradient>
+    <marker
+       id="arrowBlue"
+       markerWidth="10"
+       markerHeight="7"
+       refX="9"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0 0, 10 3.5, 0 7"
+         fill="#2E6AB3"
+         id="polygon6" />
+    </marker>
+    <marker
+       id="arrowOrange"
+       markerWidth="10"
+       markerHeight="7"
+       refX="9"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0 0, 10 3.5, 0 7"
+         fill="#E5A823"
+         id="polygon7" />
+    </marker>
+    <marker
+       id="arrowGreen"
+       markerWidth="10"
+       markerHeight="7"
+       refX="9"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0 0, 10 3.5, 0 7"
+         fill="#27AE60"
+         id="polygon8" />
+    </marker>
+  </defs>
+  <!-- Background removed to allow theme background to show through -->
+  <!-- Title -->
+  <text
+     x="550"
+     y="35"
+     text-anchor="middle"
+     font-family="Arial, sans-serif"
+     font-size="22"
+     font-weight="bold"
+     fill="currentColor"
+     id="text8">MLP Forward Pass Example with Numerical Values</text>
+  <!-- Input Vector Box -->
+  <g
+     id="input-vector"
+     transform="translate(30, 55)">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="170"
+       fill="#E8F4FD"
+       stroke="#2E6AB3"
+       stroke-width="2"
+       rx="8"
+       id="rect9" />
+    <text
+       x="50"
+       y="22"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="13"
+       font-weight="bold"
+       fill="#2E6AB3"
+       id="text9">Input x</text>
+    <!-- Vector with proper brackets -->
+    <g
+       transform="translate(20, 40)"
+       id="g12">
+      <!-- Left bracket -->
+      <path
+         d="M 15,0 L 5,0 L 5,95 L 15,95"
+         fill="none"
+         stroke="#2E6AB3"
+         stroke-width="2.5"
+         id="path9" />
+      <!-- Values -->
+      <text
+         x="35"
+         y="25"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="16"
+         font-weight="bold"
+         fill="currentColor"
+         id="text10">1.0</text>
+      <text
+         x="35"
+         y="55"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="16"
+         font-weight="bold"
+         fill="currentColor"
+         id="text11">0.5</text>
+      <text
+         x="35"
+         y="85"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="16"
+         font-weight="bold"
+         fill="currentColor"
+         id="text12">2.0</text>
+      <!-- Right bracket -->
+      <path
+         d="M 55,0 L 65,0 L 65,95 L 55,95"
+         fill="none"
+         stroke="#2E6AB3"
+         stroke-width="2.5"
+         id="path12" />
+    </g>
+    <text
+       x="50"
+       y="155"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="11"
+       fill="currentColor"
+       id="text13">(3×1)</text>
+  </g>
+  <!-- Arrow 1 -->
+  <g
+     transform="translate(135, 130)"
+     id="g14">
+    <line
+       x1="0"
+       y1="0"
+       x2="30"
+       y2="0"
+       stroke="#2E6AB3"
+       stroke-width="2"
+       marker-end="url(#arrowBlue)"
+       id="line13" />
+    <text
+       x="15"
+       y="-8"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       id="text14">×</text>
+  </g>
+  <!-- Weight Matrix W1 -->
+  <g
+     id="weight-matrix-1"
+     transform="translate(175, 55)">
+    <rect
+       x="0"
+       y="0"
+       width="150"
+       height="170"
+       fill="#FEF5DC"
+       stroke="#E5A823"
+       stroke-width="2"
+       rx="8"
+       id="rect14" />
+    <text
+       x="75"
+       y="22"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="13"
+       font-weight="bold"
+       fill="#B8860B"
+       id="text15">W⁽¹⁾</text>
+    <!-- Matrix with proper brackets -->
+    <g
+       transform="translate(10, 35)"
+       id="g27">
+      <!-- Left bracket -->
+      <path
+         d="M 12,0 L 2,0 L 2,100 L 12,100"
+         fill="none"
+         stroke="#E5A823"
+         stroke-width="2.5"
+         id="path15" />
+      <!-- Matrix values - 4 rows x 3 cols -->
+      <text
+         x="35"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text16">0.2</text>
+      <text
+         x="70"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text17">0.8</text>
+      <text
+         x="105"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text18">0.1</text>
+      <text
+         x="35"
+         y="45"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text19">0.5</text>
+      <text
+         x="70"
+         y="45"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text20">0.3</text>
+      <text
+         x="105"
+         y="45"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text21">0.7</text>
+      <text
+         x="35"
+         y="70"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text22">0.9</text>
+      <text
+         x="70"
+         y="70"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text23">0.4</text>
+      <text
+         x="105"
+         y="70"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text24">0.2</text>
+      <text
+         x="35"
+         y="95"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text25">0.1</text>
+      <text
+         x="70"
+         y="95"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text26">0.6</text>
+      <text
+         x="105"
+         y="95"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         fill="currentColor"
+         id="text27">0.5</text>
+      <!-- Right bracket -->
+      <path
+         d="M 118,0 L 128,0 L 128,100 L 118,100"
+         fill="none"
+         stroke="#E5A823"
+         stroke-width="2.5"
+         id="path27" />
+    </g>
+    <text
+       x="75"
+       y="155"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="11"
+       fill="currentColor"
+       id="text28">(4×3)</text>
+  </g>
+  <!-- Plus sign and bias -->
+  <g
+     transform="translate(330, 130)"
+     id="g30">
+    <text
+       x="0"
+       y="0"
+       font-family="Arial, sans-serif"
+       font-size="16"
+       fill="currentColor"
+       id="text29">+</text>
+    <text
+       x="0"
+       y="18"
+       font-family="Arial, sans-serif"
+       font-size="10"
+       fill="#888"
+       id="text30">b⁽¹⁾</text>
+  </g>
+  <!-- Arrow 2 -->
+  <g
+     transform="translate(350, 130)"
+     id="g31">
+    <line
+       x1="0"
+       y1="0"
+       x2="25"
+       y2="0"
+       stroke="#E5A823"
+       stroke-width="2"
+       marker-end="url(#arrowOrange)"
+       id="line30" />
+    <text
+       x="12"
+       y="-8"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="10"
+       fill="#E5A823"
+       id="text31">ReLU</text>
+  </g>
+  <!-- Hidden Layer Result -->
+  <g
+     id="hidden-result"
+     transform="translate(385, 55)">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="170"
+       fill="#FFF9E6"
+       stroke="#E5A823"
+       stroke-width="2"
+       rx="8"
+       id="rect31" />
+    <text
+       x="50"
+       y="22"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="13"
+       font-weight="bold"
+       fill="#B8860B"
+       id="text32">h⁽¹⁾</text>
+    <!-- Vector with proper brackets -->
+    <g
+       transform="translate(15, 35)"
+       id="g36">
+      <!-- Left bracket -->
+      <path
+         d="M 12,0 L 2,0 L 2,100 L 12,100"
+         fill="none"
+         stroke="#E5A823"
+         stroke-width="2.5"
+         id="path32" />
+      <!-- Values -->
+      <text
+         x="40"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="currentColor"
+         id="text33">0.90</text>
+      <text
+         x="40"
+         y="45"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="currentColor"
+         id="text34">2.25</text>
+      <text
+         x="40"
+         y="70"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="currentColor"
+         id="text35">1.60</text>
+      <text
+         x="40"
+         y="95"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="currentColor"
+         id="text36">1.70</text>
+      <!-- Right bracket -->
+      <path
+         d="M 58,0 L 68,0 L 68,100 L 58,100"
+         fill="none"
+         stroke="#E5A823"
+         stroke-width="2.5"
+         id="path36" />
+    </g>
+    <text
+       x="50"
+       y="155"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="11"
+       fill="currentColor"
+       id="text37">(4×1)</text>
+  </g>
+  <!-- Arrow 3 -->
+  <g
+     transform="translate(490, 130)"
+     id="g38">
+    <line
+       x1="0"
+       y1="0"
+       x2="30"
+       y2="0"
+       stroke="#E5A823"
+       stroke-width="2"
+       marker-end="url(#arrowOrange)"
+       id="line37" />
+    <text
+       x="15"
+       y="-8"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       id="text38">×</text>
+  </g>
+  <!-- Weight Matrix W2 -->
+  <g
+     id="g99">
+    <rect
+       x="530"
+       y="55"
+       width="160"
+       height="170"
+       fill="#e8f8ee"
+       stroke="#27ae60"
+       stroke-width="2"
+       rx="8"
+       id="rect38" />
+    <text
+       x="610"
+       y="77"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="13px"
+       font-weight="bold"
+       fill="#27ae60"
+       id="text39">W⁽²⁾</text>
+    <g
+       transform="matrix(0.95406156,0,0,1.0010334,540.06346,104.97158)"
+       id="g47">
+      <!-- Left bracket -->
+      <path
+         d="M 12,0 H 2 v 55 h 10"
+         fill="none"
+         stroke="#27ae60"
+         stroke-width="2.5"
+         id="path39" />
+      <!-- Matrix values - 2 rows x 4 cols -->
+      <text
+         x="35"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text40">0.3</text>
+      <text
+         x="65"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text41">0.7</text>
+      <text
+         x="95"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text42">0.2</text>
+      <text
+         x="125"
+         y="20"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text43">0.4</text>
+      <text
+         x="35"
+         y="48"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text44">0.6</text>
+      <text
+         x="65"
+         y="48"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text45">0.1</text>
+      <text
+         x="95"
+         y="48"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text46">0.8</text>
+      <text
+         x="125"
+         y="48"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12px"
+         fill="currentColor"
+         id="text47">0.3</text>
+      <!-- Right bracket -->
+      <path
+         d="m 138,0 h 10 v 55 h -10"
+         fill="none"
+         stroke="#27ae60"
+         stroke-width="2.5"
+         id="path47" />
+    </g>
+    <text
+       x="610"
+       y="210"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="11px"
+       fill="currentColor"
+       id="text48">(2×4)</text>
+  </g>
+  <!-- Plus sign and bias -->
+  <g
+     transform="translate(695, 130)"
+     id="g50">
+    <text
+       x="0"
+       y="0"
+       font-family="Arial, sans-serif"
+       font-size="16"
+       fill="currentColor"
+       id="text49">+</text>
+    <text
+       x="0"
+       y="18"
+       font-family="Arial, sans-serif"
+       font-size="10"
+       fill="#888"
+       id="text50">b⁽²⁾</text>
+  </g>
+  <!-- Arrow 4 -->
+  <g
+     transform="translate(715, 130)"
+     id="g51">
+    <line
+       x1="0"
+       y1="0"
+       x2="30"
+       y2="0"
+       stroke="#27AE60"
+       stroke-width="2"
+       marker-end="url(#arrowGreen)"
+       id="line50" />
+    <text
+       x="15"
+       y="-8"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="9"
+       fill="#27AE60"
+       id="text51">Softmax</text>
+  </g>
+  <!-- Output Result -->
+  <g
+     id="output-result"
+     transform="translate(755, 55)">
+    <rect
+       x="0"
+       y="0"
+       width="100"
+       height="170"
+       fill="#E8F8EE"
+       stroke="#27AE60"
+       stroke-width="2"
+       rx="8"
+       id="rect51" />
+    <text
+       x="50"
+       y="22"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="13"
+       font-weight="bold"
+       fill="#27AE60"
+       id="text52">Output y</text>
+    <!-- Vector with proper brackets -->
+    <g
+       transform="translate(15, 55)"
+       id="g54">
+      <!-- Left bracket -->
+      <path
+         d="M 12,0 L 2,0 L 2,55 L 12,55"
+         fill="none"
+         stroke="#27AE60"
+         stroke-width="2.5"
+         id="path52" />
+      <!-- Values -->
+      <text
+         x="42"
+         y="22"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="16"
+         font-weight="bold"
+         fill="#27AE60"
+         id="text53">0.55</text>
+      <text
+         x="42"
+         y="48"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="16"
+         font-weight="bold"
+         fill="#27AE60"
+         id="text54">0.45</text>
+      <!-- Right bracket -->
+      <path
+         d="M 60,0 L 70,0 L 70,55 L 60,55"
+         fill="none"
+         stroke="#27AE60"
+         stroke-width="2.5"
+         id="path54" />
+    </g>
+    <text
+       x="50"
+       y="155"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="11"
+       fill="currentColor"
+       id="text55">(2×1)</text>
+  </g>
+  <!-- Interpretation Box -->
+  <g
+     id="interpretation"
+     transform="translate(870, 55)">
+    <rect
+       x="0"
+       y="0"
+       width="200"
+       height="170"
+       fill="#fff"
+       stroke="#27AE60"
+       stroke-width="2"
+       rx="8"
+       id="rect55" />
+    <text
+       x="100"
+       y="22"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="13"
+       font-weight="bold"
+       fill="#27AE60"
+       id="text56">Interpretation</text>
+    <text
+       x="15"
+       y="50"
+       font-family="Arial, sans-serif"
+       font-size="11"
+       fill="currentColor"
+       id="text57">Class 1: 55%</text>
+    <text
+       x="15"
+       y="70"
+       font-family="Arial, sans-serif"
+       font-size="11"
+       fill="currentColor"
+       id="text58">Class 2: 45%</text>
+    <line
+       x1="15"
+       y1="85"
+       x2="185"
+       y2="85"
+       stroke="#ddd"
+       id="line58" />
+    <text
+       x="15"
+       y="105"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="#27AE60"
+       id="text59">Prediction: Class 1</text>
+    <text
+       x="15"
+       y="135"
+       font-family="Arial, sans-serif"
+       font-size="10"
+       fill="currentColor"
+       id="text60">Softmax ensures</text>
+    <text
+       x="15"
+       y="150"
+       font-family="Arial, sans-serif"
+       font-size="10"
+       fill="currentColor"
+       id="text61">probabilities sum to 1</text>
+  </g>
+  <!-- Network Diagram Below -->
+  <g
+     id="network-diagram"
+     transform="translate(0, 250)">
+    <!-- Background for diagram -->
+    <rect
+       x="30"
+       y="0"
+       width="1040"
+       height="310"
+       fill="none"
+       stroke="#ddd"
+       rx="10"
+       id="rect61" />
+    <text
+       x="550"
+       y="30"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="16"
+       font-weight="bold"
+       fill="currentColor"
+       id="text62">Network Visualization</text>
+    <!-- Connections Input to Hidden (shifted +180px) -->
+    <g
+       opacity="0.5"
+       id="g73">
+      <line
+         x1="325"
+         y1="100"
+         x2="525"
+         y2="80"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line62" />
+      <line
+         x1="325"
+         y1="100"
+         x2="525"
+         y2="140"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line63" />
+      <line
+         x1="325"
+         y1="100"
+         x2="525"
+         y2="200"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line64" />
+      <line
+         x1="325"
+         y1="100"
+         x2="525"
+         y2="260"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line65" />
+      <line
+         x1="325"
+         y1="160"
+         x2="525"
+         y2="80"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line66" />
+      <line
+         x1="325"
+         y1="160"
+         x2="525"
+         y2="140"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line67" />
+      <line
+         x1="325"
+         y1="160"
+         x2="525"
+         y2="200"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line68" />
+      <line
+         x1="325"
+         y1="160"
+         x2="525"
+         y2="260"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line69" />
+      <line
+         x1="325"
+         y1="220"
+         x2="525"
+         y2="80"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line70" />
+      <line
+         x1="325"
+         y1="220"
+         x2="525"
+         y2="140"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line71" />
+      <line
+         x1="325"
+         y1="220"
+         x2="525"
+         y2="200"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line72" />
+      <line
+         x1="325"
+         y1="220"
+         x2="525"
+         y2="260"
+         stroke="#4A90D9"
+         stroke-width="1.5"
+         id="line73" />
+    </g>
+    <!-- Connections Hidden to Output (shifted +180px) -->
+    <g
+       opacity="0.5"
+       id="g81">
+      <line
+         x1="575"
+         y1="80"
+         x2="775"
+         y2="130"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line74" />
+      <line
+         x1="575"
+         y1="80"
+         x2="775"
+         y2="210"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line75" />
+      <line
+         x1="575"
+         y1="140"
+         x2="775"
+         y2="130"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line76" />
+      <line
+         x1="575"
+         y1="140"
+         x2="775"
+         y2="210"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line77" />
+      <line
+         x1="575"
+         y1="200"
+         x2="775"
+         y2="130"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line78" />
+      <line
+         x1="575"
+         y1="200"
+         x2="775"
+         y2="210"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line79" />
+      <line
+         x1="575"
+         y1="260"
+         x2="775"
+         y2="130"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line80" />
+      <line
+         x1="575"
+         y1="260"
+         x2="775"
+         y2="210"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         id="line81" />
+    </g>
+    <!-- Input Neurons (shifted +180px: 120 -> 300) -->
+    <g
+       id="inputs">
+      <circle
+         cx="300"
+         cy="100"
+         r="25"
+         fill="url(#inputG)"
+         stroke="#2E6AB3"
+         stroke-width="2"
+         id="circle81" />
+      <text
+         x="300"
+         y="100"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="#FFFFFF"
+         id="text81">1.0</text>
+      <circle
+         cx="300"
+         cy="160"
+         r="25"
+         fill="url(#inputG)"
+         stroke="#2E6AB3"
+         stroke-width="2"
+         id="circle82" />
+      <text
+         x="300"
+         y="160"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="#FFFFFF"
+         id="text82">0.5</text>
+      <circle
+         cx="300"
+         cy="220"
+         r="25"
+         fill="url(#inputG)"
+         stroke="#2E6AB3"
+         stroke-width="2"
+         id="circle83" />
+      <text
+         x="300"
+         y="220"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="#FFFFFF"
+         id="text83">2.0</text>
+      <text
+         x="300"
+         y="265"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="13"
+         font-weight="bold"
+         fill="#2E6AB3"
+         id="text84">x</text>
+    </g>
+    <!-- Hidden Neurons (shifted +180px: 370 -> 550) -->
+    <g
+       id="hidden">
+      <circle
+         cx="550"
+         cy="80"
+         r="25"
+         fill="url(#hiddenG)"
+         stroke="#E5A823"
+         stroke-width="2"
+         id="circle84" />
+      <text
+         x="550"
+         y="80"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         font-weight="bold"
+         fill="#333333"
+         id="text85">0.90</text>
+      <circle
+         cx="550"
+         cy="140"
+         r="25"
+         fill="url(#hiddenG)"
+         stroke="#E5A823"
+         stroke-width="2"
+         id="circle85" />
+      <text
+         x="550"
+         y="140"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         font-weight="bold"
+         fill="#333333"
+         id="text86">2.25</text>
+      <circle
+         cx="550"
+         cy="200"
+         r="25"
+         fill="url(#hiddenG)"
+         stroke="#E5A823"
+         stroke-width="2"
+         id="circle86" />
+      <text
+         x="550"
+         y="200"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         font-weight="bold"
+         fill="#333333"
+         id="text87">1.60</text>
+      <circle
+         cx="550"
+         cy="260"
+         r="25"
+         fill="url(#hiddenG)"
+         stroke="#E5A823"
+         stroke-width="2"
+         id="circle87" />
+      <text
+         x="550"
+         y="260"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         font-weight="bold"
+         fill="#333333"
+         id="text88">1.70</text>
+      <text
+         x="550"
+         y="300"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="13"
+         font-weight="bold"
+         fill="#E5A823"
+         id="text89">h⁽¹⁾</text>
+    </g>
+    <!-- Output Neurons (shifted +180px: 620 -> 800) -->
+    <g
+       id="outputs">
+      <circle
+         cx="800"
+         cy="130"
+         r="28"
+         fill="url(#outputG)"
+         stroke="#27AE60"
+         stroke-width="2"
+         id="circle89" />
+      <text
+         x="800"
+         y="130"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="#FFFFFF"
+         id="text90">0.55</text>
+      <circle
+         cx="800"
+         cy="210"
+         r="28"
+         fill="url(#outputG)"
+         stroke="#27AE60"
+         stroke-width="2"
+         id="circle90" />
+      <text
+         x="800"
+         y="210"
+         text-anchor="middle"
+         dominant-baseline="middle"
+         font-family="Arial, sans-serif"
+         font-size="14"
+         font-weight="bold"
+         fill="#FFFFFF"
+         id="text91">0.45</text>
+      <text
+         x="800"
+         y="265"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="13"
+         font-weight="bold"
+         fill="#27AE60"
+         id="text92">y</text>
+    </g>
+    <!-- Activation Function Labels (shifted +180px) -->
+    <g
+       id="activation-labels">
+      <rect
+         x="400"
+         y="155"
+         width="60"
+         height="28"
+         fill="#fff"
+         stroke="#E5A823"
+         stroke-width="1.5"
+         rx="5"
+         id="rect92" />
+      <text
+         x="430"
+         y="174"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         font-weight="bold"
+         fill="#E5A823"
+         id="text93">ReLU</text>
+      <rect
+         x="660"
+         y="155"
+         width="70"
+         height="28"
+         fill="#fff"
+         stroke="#27AE60"
+         stroke-width="1.5"
+         rx="5"
+         id="rect93" />
+      <text
+         x="695"
+         y="174"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="12"
+         font-weight="bold"
+         fill="#27AE60"
+         id="text94">Softmax</text>
+    </g>
+    <!-- Layer labels (shifted +180px) -->
+    <g
+       id="layer-labels">
+      <text
+         x="300"
+         y="290"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="11"
+         fill="currentColor"
+         id="text95">Input Layer</text>
+      <text
+         x="550"
+         y="290"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="11"
+         fill="currentColor"
+         id="text96">Hidden Layer</text>
+      <text
+         x="800"
+         y="290"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="11"
+         fill="currentColor"
+         id="text97">Output Layer</text>
+    </g>
+    <!-- Weight labels on connections (shifted +180px) -->
+    <g
+       id="weight-labels">
+      <rect
+         x="395"
+         y="85"
+         width="45"
+         height="20"
+         fill="#fff"
+         stroke="#4A90D9"
+         rx="3"
+         id="rect97" />
+      <text
+         x="418"
+         y="99"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="10"
+         font-weight="bold"
+         fill="#2E6AB3"
+         id="text98">W⁽¹⁾</text>
+      <rect
+         x="655"
+         y="85"
+         width="45"
+         height="20"
+         fill="#fff"
+         stroke="#E5A823"
+         rx="3"
+         id="rect98" />
+      <text
+         x="678"
+         y="99"
+         text-anchor="middle"
+         font-family="Arial, sans-serif"
+         font-size="10"
+         font-weight="bold"
+         fill="#B8860B"
+         id="text99">W⁽²⁾</text>
+    </g>
+  </g>
+</svg>

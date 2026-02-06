@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="maleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1976D2"/>
+      <stop offset="100%" stop-color="#1565C0"/>
+    </linearGradient>
+    <linearGradient id="femaleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E91E63"/>
+      <stop offset="100%" stop-color="#C2185B"/>
+    </linearGradient>
+    <linearGradient id="royalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#FFA000"/>
+    </linearGradient>
+  </defs>
+
+  <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">Word2Vec: Semantic Arithmetic</text>
+
+  <g transform="translate(100, 80)">
+    <rect x="0" y="0" width="700" height="70" rx="10" fill="#FFFDE7" stroke="#FBC02D" stroke-width="2"/>
+    <rect x="30" y="15" width="80" height="40" rx="6" fill="url(#royalGrad)"/>
+    <text x="70" y="42" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#333">King</text>
+    <text x="135" y="42" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">-</text>
+    <rect x="160" y="15" width="80" height="40" rx="6" fill="url(#maleGrad)"/>
+    <text x="200" y="42" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="white">Man</text>
+    <text x="265" y="42" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">+</text>
+    <rect x="290" y="15" width="90" height="40" rx="6" fill="url(#femaleGrad)"/>
+    <text x="335" y="42" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="white">Woman</text>
+    <text x="410" y="42" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#333">=</text>
+    <rect x="440" y="15" width="80" height="40" rx="6" fill="url(#royalGrad)"/>
+    <text x="480" y="42" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#333">Queen</text>
+  </g>
+
+  <g transform="translate(100, 180)">
+    <rect x="0" y="0" width="300" height="280" rx="10" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="150" y="30" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">2D Vector Space</text>
+
+    <line x1="40" y1="250" x2="270" y2="250" stroke="#BDBDBD" stroke-width="1"/>
+    <line x1="40" y1="250" x2="40" y2="50" stroke="#BDBDBD" stroke-width="1"/>
+
+    <circle cx="80" cy="200" r="10" fill="url(#maleGrad)"/>
+    <text x="80" y="220" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#1565C0">Man</text>
+
+    <circle cx="220" cy="200" r="10" fill="url(#femaleGrad)"/>
+    <text x="220" y="220" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#C2185B">Woman</text>
+
+    <circle cx="80" cy="80" r="12" fill="url(#royalGrad)" stroke="#E65100" stroke-width="2"/>
+    <text x="80" y="65" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#E65100">King</text>
+
+    <circle cx="220" cy="80" r="12" fill="url(#royalGrad)" stroke="#E65100" stroke-width="2"/>
+    <text x="220" y="65" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#E65100">Queen</text>
+
+    <line x1="90" y1="200" x2="210" y2="200" stroke="#9C27B0" stroke-width="2" stroke-dasharray="5,3"/>
+    <line x1="92" y1="80" x2="208" y2="80" stroke="#9C27B0" stroke-width="2" stroke-dasharray="5,3"/>
+    <line x1="80" y1="190" x2="80" y2="92" stroke="#FF9800" stroke-width="2" stroke-dasharray="5,3"/>
+    <line x1="220" y1="190" x2="220" y2="92" stroke="#FF9800" stroke-width="2" stroke-dasharray="5,3"/>
+
+    <path d="M 80,200 L 80,80 L 220,80 L 220,200 Z" fill="none" stroke="#4CAF50" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  </g>
+
+  <g transform="translate(450, 180)">
+    <rect x="0" y="0" width="340" height="280" rx="10" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="170" y="30" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#333">More Examples</text>
+
+    <text x="30" y="70" font-family="Arial" font-size="13" font-weight="bold" fill="#1976D2">Countries:</text>
+    <text x="30" y="95" font-family="Arial" font-size="13" fill="#333">Paris - France + Italy = Rome</text>
+    <text x="30" y="120" font-family="Arial" font-size="13" fill="#333">Tokyo - Japan + Germany = Berlin</text>
+
+    <text x="30" y="160" font-family="Arial" font-size="13" font-weight="bold" fill="#388E3C">Verb Tenses:</text>
+    <text x="30" y="185" font-family="Arial" font-size="13" fill="#333">walking - walk + swim = swimming</text>
+    <text x="30" y="210" font-family="Arial" font-size="13" fill="#333">went - go + come = came</text>
+
+    <text x="30" y="250" font-family="Arial" font-size="13" font-weight="bold" fill="#E65100">Comparatives:</text>
+    <text x="30" y="275" font-family="Arial" font-size="13" fill="#333">bigger - big + small = smaller</text>
+  </g>
+
+  <rect x="100" y="470" width="700" height="25" rx="5" fill="#E8F5E9" stroke="#4CAF50" stroke-width="1"/>
+  <text x="450" y="488" text-anchor="middle" font-family="Arial" font-size="12" fill="#2E7D32">Vector directions encode semantic relationships</text>
+</svg>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="380" viewBox="0 0 680 380">
+
+<g id="trait-headers">
+<text x="135" y="18" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="currentColor">Trait #1</text>
+<text x="172" y="18" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="currentColor">Trait #2</text>
+<text x="209" y="18" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="currentColor">Trait #3</text>
+<text x="246" y="18" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="currentColor">Trait #4</text>
+<text x="283" y="18" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="currentColor">Trait #5</text>
+</g>
+<g id="jay-row">
+<text x="90" y="52" text-anchor="end" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#E65100">Jay</text>
+<rect x="115" y="38" width="35" height="28" rx="3" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="132.5" y="52.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="152" y="38" width="35" height="28" rx="3" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="169.5" y="52.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.8</text>
+<rect x="189" y="38" width="35" height="28" rx="3" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="206.5" y="52.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.5</text>
+<rect x="226" y="38" width="35" height="28" rx="3" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="243.5" y="52.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.2</text>
+<rect x="263" y="38" width="35" height="28" rx="3" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="280.5" y="52.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.3</text>
+</g>
+<g id="person1-row">
+<text x="90" y="92" text-anchor="end" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#2E7D32">Person #1</text>
+<rect x="115" y="78" width="35" height="28" rx="3" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="132.5" y="92.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.3</text>
+<rect x="152" y="78" width="35" height="28" rx="3" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="169.5" y="92.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.2</text>
+<rect x="189" y="78" width="35" height="28" rx="3" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="206.5" y="92.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.3</text>
+<rect x="226" y="78" width="35" height="28" rx="3" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="243.5" y="92.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="263" y="78" width="35" height="28" rx="3" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="280.5" y="92.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.9</text>
+</g>
+<g id="person2-row">
+<text x="90" y="132" text-anchor="end" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#795548">Person #2</text>
+<rect x="115" y="118" width="35" height="28" rx="3" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="132.5" y="132.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.5</text>
+<rect x="152" y="118" width="35" height="28" rx="3" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="169.5" y="132.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="189" y="118" width="35" height="28" rx="3" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="206.5" y="132.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.2</text>
+<rect x="226" y="118" width="35" height="28" rx="3" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="243.5" y="132.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">0.7</text>
+<rect x="263" y="118" width="35" height="28" rx="3" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="280.5" y="132.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="11" font-weight="normal" fill="#333333">-0.1</text>
+</g>
+<g id="equation1">
+<text x="258" y="195" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="normal" fill="#E65100">Jay</text>
+<text x="445" y="195" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="normal" fill="#2E7D32">Person #1</text>
+<text x="95" y="225" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="currentColor">cosine_similarity(</text>
+<rect x="210" y="210" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="224.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="240" y="210" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="254.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.8</text>
+<rect x="270" y="210" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="284.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.5</text>
+<rect x="300" y="210" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="314.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.2</text>
+<rect x="330" y="210" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="344.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.3</text>
+<text x="370" y="225" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="currentColor">,</text>
+<rect x="390" y="210" width="28" height="24" rx="2" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="404.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.3</text>
+<rect x="420" y="210" width="28" height="24" rx="2" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="434.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.2</text>
+<rect x="450" y="210" width="28" height="24" rx="2" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="464.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.3</text>
+<rect x="480" y="210" width="28" height="24" rx="2" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="494.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="510" y="210" width="28" height="24" rx="2" fill="#C8E6C9" stroke="#C8E6C9" stroke-width="1"/>
+<text x="524.0" y="222.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.9</text>
+<text x="545" y="225" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="currentColor">)  =  0.66</text>
+<path d="M 635 215 L 645 230 L 665 200" fill="none" stroke="#4CAF50" stroke-width="4"/>
+</g>
+<g id="equation2">
+<text x="258" y="285" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="normal" fill="#E65100">Jay</text>
+<text x="445" y="285" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="normal" fill="#795548">Person #2</text>
+<text x="95" y="315" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="currentColor">cosine_similarity(</text>
+<rect x="210" y="300" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="224.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="240" y="300" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="254.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.8</text>
+<rect x="270" y="300" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="284.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.5</text>
+<rect x="300" y="300" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="314.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.2</text>
+<rect x="330" y="300" width="28" height="24" rx="2" fill="#B3D9F7" stroke="#B3D9F7" stroke-width="1"/>
+<text x="344.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.3</text>
+<text x="370" y="315" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="currentColor">,</text>
+<rect x="390" y="300" width="28" height="24" rx="2" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="404.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.5</text>
+<rect x="420" y="300" width="28" height="24" rx="2" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="434.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.4</text>
+<rect x="450" y="300" width="28" height="24" rx="2" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="464.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.2</text>
+<rect x="480" y="300" width="28" height="24" rx="2" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="494.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">0.7</text>
+<rect x="510" y="300" width="28" height="24" rx="2" fill="#FFE0B2" stroke="#FFE0B2" stroke-width="1"/>
+<text x="524.0" y="312.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="9" font-weight="normal" fill="#333333">-0.1</text>
+<text x="545" y="315" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="currentColor">)  =  -0.37</text>
+</g>
+</svg>

@@ -1,0 +1,58 @@
+<svg width="700" height="450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Central AI Robot -->
+  <g transform="translate(350,225)">
+    <circle cx="0" cy="0" r="40" fill="#333" stroke="#666" stroke-width="2"/>
+    <circle cx="-12" cy="-8" r="4" fill="#00ff00"/>
+    <circle cx="12" cy="-8" r="4" fill="#00ff00"/>
+    <rect x="-15" y="5" width="30" height="8" rx="4" fill="#666"/>
+    <text x="0" y="65" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">🤖 AI</text>
+  </g>
+
+  <!-- Developer Role -->
+  <g transform="translate(150,125)">
+    <circle cx="0" cy="0" r="35" fill="#4A90E2" stroke="#2E5C8A" stroke-width="2"/>
+    <text x="0" y="8" text-anchor="middle" font-size="24">👨‍💻</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="14" fill="#2E5C8A">מפתח</text>
+  </g>
+  <path d="M 315 195 L 185 155" stroke="#4A90E2" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- Teacher Role -->
+  <g transform="translate(550,125)">
+    <circle cx="0" cy="0" r="35" fill="#F5A623" stroke="#D4841C" stroke-width="2"/>
+    <text x="0" y="8" text-anchor="middle" font-size="24">👩‍🏫</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="14" fill="#D4841C">מורה</text>
+  </g>
+  <path d="M 385 195 L 515 155" stroke="#F5A623" stroke-width="2" marker-end="url(#arrowYellow)"/>
+
+  <!-- Lawyer Role -->
+  <g transform="translate(150,325)">
+    <circle cx="0" cy="0" r="35" fill="#7ED321" stroke="#5BA016" stroke-width="2"/>
+    <text x="0" y="8" text-anchor="middle" font-size="24">👨‍⚖️</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="14" fill="#5BA016">עורך דין</text>
+  </g>
+  <path d="M 315 255 L 185 295" stroke="#7ED321" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- Doctor Role -->
+  <g transform="translate(550,325)">
+    <circle cx="0" cy="0" r="35" fill="#D0021B" stroke="#A00015" stroke-width="2"/>
+    <text x="0" y="8" text-anchor="middle" font-size="24">👩‍⚕️</text>
+    <text x="0" y="55" text-anchor="middle" font-family="Arial" font-size="14" fill="#A00015">רופא</text>
+  </g>
+  <path d="M 385 255 L 515 295" stroke="#D0021B" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#4A90E2"/>
+    </marker>
+    <marker id="arrowYellow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#F5A623"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7ED321"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#D0021B"/>
+    </marker>
+  </defs>
+</svg>

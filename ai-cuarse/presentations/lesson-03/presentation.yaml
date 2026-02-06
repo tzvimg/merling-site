@@ -1,0 +1,369 @@
+meta:
+  title: "בינה מלאכותית: שיעור 03"
+  author: "Tzvi Merling"
+  aspectRatio: "responsive"
+
+slides:
+  # ===========================================
+  # LESSON 03: Model Training
+  # ===========================================
+  - id: slide-001
+    layout: title
+    direction: rtl
+    background: "/assets/images/lesson03_training_bg.png"
+    content:
+      - type: title
+        text: ""
+    #   - type: subtitle
+    #     text: "Model Training - מושגי יסוד"
+
+  - id: slide-002
+    layout: itemsIconGrid
+    direction: rtl
+    content:
+      - type: title
+        text: "תוכן השיעור"
+      - type: items
+        items:
+          - title: "Batch & Mini-batch"
+            description: "כמה דוגמאות מעבדים בכל פעם?"
+            icon: "▣"
+          - title: "Epoch & Iteration"
+            description: "כמה פעמים עוברים על הנתונים?"
+            icon: "↻"
+          - title: "Learning Rate"
+            description: "באיזה קצב המודל לומד?"
+            icon: "λ"
+          - title: "Train / Validation / Test"
+            description: "איך מחלקים את הנתונים?"
+            icon: "◐"
+          - title: "Loss & Accuracy"
+            description: "איך מודדים הצלחה?"
+            icon: "∿"
+          - title: "Overfitting & Underfitting"
+            description: "מה יכול להשתבש?"
+            icon: "⊘"
+
+  # ===========================================
+  # SECTION 1: Batch & Mini-batch
+  # ===========================================
+  - id: slide-010
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Batch & Mini-batch"
+      - type: subtitle
+        text: "כמה דוגמאות מעבדים בכל צעד?"
+
+  - id: slide-011
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "שלוש גישות לעיבוד נתונים"
+      - type: diagram
+        src: "/assets/diagrams/batch_minibatch_he.svg"
+
+  - id: slide-012
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "השוואת גישות"
+      - type: items
+        items:
+          - title: "Stochastic (דוגמה אחת)"
+            description: "עדכון מהיר אך רועש, מתאים לדאטה גדול מאוד"
+            icon: "1️⃣"
+          - title: "Mini-batch (קבוצה קטנה)"
+            description: "איזון בין מהירות ליציבות - הגישה הנפוצה ביותר (32-256)"
+            icon: "📦"
+          - title: "Full Batch (כל הדאטה)"
+            description: "יציב אך איטי, דורש הרבה זיכרון"
+            icon: "📚"
+    notes: |
+      Mini-batch הוא הסטנדרט בתעשייה.
+      גדלים נפוצים: 32, 64, 128, 256.
+      הבחירה תלויה בזיכרון GPU ובגודל הדאטה.
+
+  # ===========================================
+  # SECTION 2: Epoch & Iteration
+  # ===========================================
+  - id: slide-020
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Epoch & Iteration"
+      - type: subtitle
+        text: "כמה פעמים עוברים על הנתונים?"
+
+  - id: slide-021
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "הקשר בין Epoch ל-Iteration"
+      - type: diagram
+        src: "/assets/diagrams/epoch_iteration_he.svg"
+
+  - id: slide-022
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "דוגמה מספרית"
+      - type: subtitle
+        text: "נניח שיש לנו 10,000 דוגמאות ו-batch size של 100"
+      - type: bullets
+        items:
+          - "מספר iterations ב-epoch אחד: 10,000 ÷ 100 = 100 iterations"
+          - "אם מאמנים 50 epochs: 50 × 100 = 5,000 iterations סה\"כ"
+          - "בכל iteration - עדכון אחד של המשקולות"
+          - "בכל epoch - המודל ראה את כל הדאטה פעם אחת"
+    notes: |
+      iterations_per_epoch = dataset_size / batch_size
+      total_iterations = epochs × iterations_per_epoch
+
+  # ===========================================
+  # SECTION 3: Learning Rate
+  # ===========================================
+  - id: slide-030
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Learning Rate"
+      - type: subtitle
+        text: "קצב הלמידה - הפרמטר הקריטי ביותר"
+
+  - id: slide-031
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "השפעת Learning Rate על האימון"
+      - type: diagram
+        src: "/assets/diagrams/learning_rate_he.svg"
+
+  - id: slide-032
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "בחירת Learning Rate"
+      - type: items
+        items:
+          - title: "גבוה מדי (0.1+)"
+            description: "המודל מדלג על המינימום, לא מתכנס או מתפוצץ"
+            icon: "💥"
+          - title: "נמוך מדי (0.00001)"
+            description: "התכנסות איטית מאוד, עלול להיתקע במינימום מקומי"
+            icon: "🐌"
+          - title: "אופטימלי (0.001-0.01)"
+            description: "התכנסות יציבה למינימום טוב"
+            icon: "✅"
+          - title: "Learning Rate Scheduling"
+            description: "התחלה גבוהה והורדה הדרגתית - הגישה המומלצת"
+            icon: "📉"
+    notes: |
+      ערכי התחלה נפוצים: 0.001 (Adam), 0.01 (SGD).
+      טכניקות: Step decay, Cosine annealing, Warmup.
+
+  # ===========================================
+  # SECTION 4: Train / Validation / Test
+  # ===========================================
+  - id: slide-040
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "חלוקת הנתונים"
+      - type: subtitle
+        text: "Train / Validation / Test Split"
+
+  - id: slide-041
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "שלוש קבוצות נתונים"
+      - type: diagram
+        src: "/assets/diagrams/train_val_test_split_he.svg"
+
+  - id: slide-042
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "תפקיד כל קבוצה"
+      - type: items
+        items:
+          - title: "Training Set (60-80%)"
+            description: "הנתונים שעליהם המודל לומד ומעדכן משקולות"
+            icon: "📚"
+          - title: "Validation Set (10-20%)"
+            description: "בדיקה במהלך האימון - לכיוונון hyperparameters ועצירה מוקדמת"
+            icon: "🔍"
+          - title: "Test Set (10-20%)"
+            description: "הערכה סופית בלבד - לא משפיע על האימון בשום צורה"
+            icon: "🏆"
+    notes: |
+      חלוקה נפוצה: 70/15/15 או 80/10/10.
+      חשוב: Test set נשאר \"סגור\" עד הסוף!
+      Cross-validation - טכניקה מתקדמת לדאטה קטן.
+
+  # ===========================================
+  # SECTION 5: Loss & Accuracy
+  # ===========================================
+  - id: slide-050
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Loss & Accuracy"
+      - type: subtitle
+        text: "איך מודדים את ביצועי המודל?"
+
+  - id: slide-051
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "עקומות אימון טיפוסיות"
+      - type: diagram
+        src: "/assets/diagrams/loss_accuracy_curves_he.svg"
+
+  - id: slide-052
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "Loss vs Accuracy"
+      - type: items
+        items:
+          - title: "Loss (פונקציית הפסד)"
+            description: "מספר רציף שמודד את השגיאה - המטרה: למזער אותו"
+            icon: "📉"
+          - title: "Accuracy (דיוק)"
+            description: "אחוז התחזיות הנכונות - קל להבנה אך לא תמיד מספיק"
+            icon: "🎯"
+          - title: "פונקציות Loss נפוצות"
+            description: "Cross-Entropy (סיווג), MSE (רגרסיה)"
+            icon: "📊"
+          - title: "מדדים נוספים"
+            description: "Precision, Recall, F1-Score - לדאטה לא מאוזן"
+            icon: "⚖️"
+    notes: |
+      Loss הוא מה שהמודל מנסה למזער.
+      Accuracy הוא מה שאנחנו רוצים למקסם.
+      לפעמים הם לא מתואמים - צריך לבדוק שניהם.
+
+  # ===========================================
+  # SECTION 6: Overfitting & Underfitting
+  # ===========================================
+  - id: slide-060
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Overfitting & Underfitting"
+      - type: subtitle
+        text: "שתי הבעיות המרכזיות באימון"
+
+  - id: slide-061
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "זיהוי הבעיות"
+      - type: diagram
+        src: "/assets/diagrams/overfitting_underfitting_he.svg"
+
+  - id: slide-062
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "Underfitting - התאמת חסר"
+      - type: subtitle
+        text: "המודל לא מצליח ללמוד את הדפוסים בנתונים"
+      - type: items
+        items:
+          - title: "סימנים"
+            description: "Loss גבוה גם על Train וגם על Validation"
+            icon: "📊"
+          - title: "סיבות"
+            description: "מודל פשוט מדי, מעט epochs, learning rate גבוה מדי"
+            icon: "🔍"
+          - title: "פתרונות"
+            description: "מודל מורכב יותר, יותר epochs, כיוונון hyperparameters"
+            icon: "✅"
+
+  - id: slide-063
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "Overfitting - התאמת יתר"
+      - type: subtitle
+        text: "המודל \"שינן\" את נתוני האימון במקום ללמוד דפוסים כלליים"
+      - type: items
+        items:
+          - title: "סימנים"
+            description: "Loss נמוך על Train אבל גבוה על Validation"
+            icon: "📊"
+          - title: "סיבות"
+            description: "מודל מורכב מדי, מעט נתונים, אימון ארוך מדי"
+            icon: "🔍"
+          - title: "פתרונות"
+            description: "Regularization, Dropout, Data Augmentation, Early Stopping"
+            icon: "✅"
+    notes: |
+      Overfitting הוא הבעיה הנפוצה יותר.
+      טכניקות מניעה: L1/L2 regularization, Dropout, Batch Normalization.
+      Early Stopping - עוצרים כשה-validation loss מתחיל לעלות.
+
+  # ===========================================
+  # SUMMARY
+  # ===========================================
+  - id: slide-070
+    layout: itemsCards
+    direction: rtl
+    content:
+      - type: title
+        text: "סיכום"
+      - type: subtitle
+        text: "מושגי מפתח באימון מודלים"
+      - type: items
+        items:
+          - title: "Batch Size"
+            description: "32-256 הוא טווח נפוץ, תלוי בזיכרון ובדאטה"
+          - title: "Epochs"
+            description: "מספר המעברים על כל הדאטה - עד שה-validation מפסיק להשתפר"
+          - title: "Learning Rate"
+            description: "הפרמטר הקריטי ביותר - התחילו עם 0.001"
+          - title: "Data Split"
+            description: "70/15/15 - אל תיגעו ב-test עד הסוף!"
+          - title: "מעקב"
+            description: "עקבו אחר Loss ו-Accuracy על Train ו-Validation"
+
+  # ===========================================
+  # HANDS-ON
+  # ===========================================
+  - id: slide-080
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "תרגול מעשי"
+      - type: subtitle
+        text: "[🔗 פתח את המחברת ב-Google Colab](https://colab.research.google.com/drive/1pDWdhTvtBMljWKyE0q702ffszM8IQ4N9?usp=sharing)"
+
+  # ===========================================
+  # END
+  # ===========================================
+  - id: slide-099
+    layout: blank
+    content: []

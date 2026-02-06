@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" direction="rtl">
+  <defs>
+    <linearGradient id="encoderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1"/>
+      <stop offset="100%" style="stop-color:#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="decoderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="attentionGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#D97706"/>
+    </linearGradient>
+    <linearGradient id="ffnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EC4899"/>
+      <stop offset="100%" style="stop-color:#DB2777"/>
+    </linearGradient>
+    <marker id="arrowGray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748B"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="var(--color-surface, #FAFAFA)"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="var(--color-text, #1E293B)" direction="rtl">ארכיטקטורת הטרנספורמר</text>
+  <text x="600" y="68" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="var(--color-text-muted, #64748B)" direction="rtl">"Attention Is All You Need" (2017) - הבסיס לכל מודלי השפה המודרניים</text>
+
+  <!-- ==================== ENCODER (RIGHT SIDE) ==================== -->
+  <rect x="700" y="95" width="280" height="540" rx="15" fill="var(--color-surface, #EEF2FF)" stroke="#6366F1" stroke-width="3" filter="url(#shadow)"/>
+  <text x="840" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4338CA" direction="rtl">מקודד (Encoder)</text>
+
+  <!-- Encoder Input -->
+  <rect x="740" y="145" width="200" height="35" rx="8" fill="#C7D2FE"/>
+  <text x="840" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3730A3" direction="rtl">קלט + Positional Encoding</text>
+
+  <!-- Nx indicator -->
+  <text x="960" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6366F1" direction="ltr">×N</text>
+  <rect x="945" y="200" width="30" height="280" rx="5" fill="none" stroke="#6366F1" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Encoder Block -->
+  <rect x="720" y="195" width="220" height="290" rx="10" fill="var(--color-surface, #ffffff)" stroke="#A5B4FC" stroke-width="2"/>
+
+  <!-- Multi-Head Self-Attention -->
+  <rect x="740" y="210" width="180" height="55" rx="8" fill="url(#attentionGrad)" filter="url(#shadow)"/>
+  <text x="830" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" direction="rtl">Multi-Head</text>
+  <text x="830" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" direction="rtl">Self-Attention</text>
+
+  <!-- Add & Norm 1 -->
+  <rect x="740" y="275" width="180" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="830" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400E" direction="ltr">Add & Norm</text>
+
+  <!-- Feed Forward -->
+  <rect x="740" y="320" width="180" height="55" rx="8" fill="url(#ffnGrad)" filter="url(#shadow)"/>
+  <text x="830" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" direction="rtl">Feed Forward</text>
+  <text x="830" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" direction="rtl">Neural Network</text>
+
+  <!-- Add & Norm 2 -->
+  <rect x="740" y="385" width="180" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="830" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400E" direction="ltr">Add & Norm</text>
+
+  <!-- Skip connections (encoder) -->
+  <path d="M 725 237 L 710 237 L 710 290 L 725 290" stroke="#64748B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <path d="M 725 347 L 710 347 L 710 400 L 725 400" stroke="#64748B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+
+  <!-- Encoder Output arrow -->
+  <path d="M 840 500 L 840 530" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="840" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #64748B)" direction="rtl">פלט מקודד</text>
+
+  <!-- ==================== DECODER (LEFT SIDE) ==================== -->
+  <rect x="220" y="95" width="280" height="540" rx="15" fill="var(--color-surface, #ECFDF5)" stroke="#10B981" stroke-width="3" filter="url(#shadow)"/>
+  <text x="360" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#047857" direction="rtl">מפענח (Decoder)</text>
+
+  <!-- Decoder Input -->
+  <rect x="260" y="145" width="200" height="35" rx="8" fill="#A7F3D0"/>
+  <text x="360" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#065F46" direction="rtl">פלט (מוסט) + Positional</text>
+
+  <!-- Nx indicator -->
+  <text x="480" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#10B981" direction="ltr">×N</text>
+  <rect x="465" y="200" width="30" height="370" rx="5" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Decoder Block -->
+  <rect x="240" y="195" width="220" height="380" rx="10" fill="var(--color-surface, #ffffff)" stroke="#6EE7B7" stroke-width="2"/>
+
+  <!-- Masked Multi-Head Self-Attention -->
+  <rect x="260" y="210" width="180" height="55" rx="8" fill="url(#attentionGrad)" filter="url(#shadow)"/>
+  <text x="350" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" direction="rtl">Masked</text>
+  <text x="350" y="243" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" direction="rtl">Multi-Head</text>
+  <text x="350" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" direction="rtl">Self-Attention</text>
+
+  <!-- Add & Norm 1 -->
+  <rect x="260" y="275" width="180" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="350" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400E" direction="ltr">Add & Norm</text>
+
+  <!-- Cross-Attention (Encoder-Decoder) -->
+  <rect x="260" y="320" width="180" height="55" rx="8" fill="url(#attentionGrad)" filter="url(#shadow)"/>
+  <text x="350" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" direction="rtl">Multi-Head</text>
+  <text x="350" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" direction="rtl">Cross-Attention</text>
+
+  <!-- Add & Norm 2 -->
+  <rect x="260" y="385" width="180" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="350" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400E" direction="ltr">Add & Norm</text>
+
+  <!-- Feed Forward -->
+  <rect x="260" y="430" width="180" height="55" rx="8" fill="url(#ffnGrad)" filter="url(#shadow)"/>
+  <text x="350" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" direction="rtl">Feed Forward</text>
+  <text x="350" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" direction="rtl">Neural Network</text>
+
+  <!-- Add & Norm 3 -->
+  <rect x="260" y="495" width="180" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="350" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400E" direction="ltr">Add & Norm</text>
+
+  <!-- Skip connections (decoder) -->
+  <path d="M 245 237 L 230 237 L 230 290 L 245 290" stroke="#64748B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <path d="M 245 347 L 230 347 L 230 400 L 245 400" stroke="#64748B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <path d="M 245 457 L 230 457 L 230 510 L 245 510" stroke="#64748B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+
+  <!-- Cross-attention connection from encoder -->
+  <path d="M 700 400 L 600 400 L 600 347 L 440 347" stroke="#F59E0B" stroke-width="2.5" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="570" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#D97706" direction="ltr">K, V</text>
+
+  <!-- Output layers -->
+  <rect x="280" y="590" width="160" height="35" rx="8" fill="#E0E7FF" stroke="#6366F1" stroke-width="2"/>
+  <text x="360" y="612" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3730A3" direction="ltr">Linear</text>
+
+  <rect x="280" y="635" width="160" height="35" rx="8" fill="#C7D2FE" stroke="#6366F1" stroke-width="2"/>
+  <text x="360" y="657" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3730A3" direction="ltr">Softmax</text>
+
+  <!-- Final output -->
+  <path d="M 360 670 L 360 700" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#arrowGray)"/>
+  <text x="360" y="725" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="var(--color-text, #374151)" direction="rtl">הסתברויות פלט</text>
+
+  <!-- ==================== LEGEND ==================== -->
+  <rect x="30" y="95" width="170" height="200" rx="10" fill="var(--color-surface, #F8FAFC)" stroke="var(--color-border, #E2E8F0)" stroke-width="1"/>
+  <text x="115" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="var(--color-text, #374151)" direction="rtl">מקרא</text>
+
+  <rect x="45" y="135" width="60" height="20" rx="4" fill="url(#attentionGrad)"/>
+  <text x="115" y="150" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #374151)" direction="ltr">Attention</text>
+
+  <rect x="45" y="165" width="60" height="20" rx="4" fill="url(#ffnGrad)"/>
+  <text x="115" y="180" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #374151)" direction="ltr">FFN</text>
+
+  <rect x="45" y="195" width="60" height="20" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="115" y="210" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #374151)" direction="ltr">Add&Norm</text>
+
+  <path d="M 45 235 L 105 235" stroke="#64748B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <text x="115" y="240" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #374151)" direction="ltr">Skip</text>
+
+  <text x="115" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text-muted, #64748B)" direction="rtl">N = 6 שכבות</text>
+
+  <!-- ==================== BOTTOM EXPLANATION ==================== -->
+  <rect x="530" y="640" width="450" height="95" rx="10" fill="var(--color-surface, #F8FAFC)" stroke="var(--color-border, #E2E8F0)" stroke-width="2"/>
+  <text x="755" y="665" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="var(--color-text, #374151)" direction="rtl">💡 הרעיונות המרכזיים</text>
+  <text x="755" y="688" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #64748B)" direction="rtl">• Self-Attention - כל מילה "רואה" את כל המילים האחרות</text>
+  <text x="755" y="706" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #64748B)" direction="rtl">• עיבוד מקבילי - לא סדרתי כמו RNN (מהיר יותר!)</text>
+  <text x="755" y="724" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #64748B)" direction="rtl">• Skip Connections - מאפשרים רשתות עמוקות מאוד</text>
+
+</svg>

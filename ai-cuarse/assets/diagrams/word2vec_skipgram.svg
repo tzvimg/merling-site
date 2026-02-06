@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <defs>
+    <linearGradient id="inputGradSG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E53935;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C62828;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hiddenGradSG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E5A823;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGradSG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43A047;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowheadSG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="currentColor">Skip-gram Model</text>
+  <text x="450" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">Predict context words from the target word</text>
+
+  <!-- Example sentence -->
+  <g transform="translate(100, 85)">
+    <text x="350" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#666">Example: "The quick brown fox jumps over the lazy dog"</text>
+
+    <g transform="translate(80, 20)">
+      <rect x="0" y="0" width="50" height="28" rx="4" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+      <text x="25" y="19" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2E7D32">quick</text>
+      <text x="25" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32">context</text>
+
+      <rect x="60" y="0" width="55" height="28" rx="4" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+      <text x="87" y="19" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2E7D32">brown</text>
+      <text x="87" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32">context</text>
+
+      <rect x="125" y="0" width="40" height="28" rx="4" fill="#FFCDD2" stroke="#E53935" stroke-width="2"/>
+      <text x="145" y="19" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#C62828">fox</text>
+      <text x="145" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#C62828">input</text>
+
+      <rect x="175" y="0" width="55" height="28" rx="4" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+      <text x="202" y="19" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2E7D32">jumps</text>
+      <text x="202" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32">context</text>
+
+      <rect x="240" y="0" width="45" height="28" rx="4" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+      <text x="262" y="19" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2E7D32">over</text>
+      <text x="262" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32">context</text>
+    </g>
+  </g>
+
+  <!-- Neural Network Architecture -->
+  <!-- Input Layer (Target Word) -->
+  <g id="input-layer-sg">
+    <text x="130" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#C62828">Target Word</text>
+    <text x="130" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">(One-hot vector)</text>
+
+    <rect x="60" y="280" width="140" height="80" rx="8" fill="url(#inputGradSG)"/>
+    <text x="130" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">fox</text>
+    <text x="130" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FFCDD2">(V dimensions)</text>
+  </g>
+
+  <!-- Connections: Input to Hidden -->
+  <g opacity="0.5">
+    <line x1="200" y1="320" x2="330" y2="320" stroke="#888" stroke-width="2"/>
+  </g>
+
+  <!-- Projection/Hidden Layer -->
+  <g id="hidden-layer-sg">
+    <text x="400" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E5A823">Embedding Layer</text>
+    <text x="400" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">(Word vector)</text>
+
+    <rect x="330" y="260" width="140" height="120" rx="8" fill="url(#hiddenGradSG)"/>
+    <text x="400" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Word</text>
+    <text x="400" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Embedding</text>
+    <text x="400" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">for "fox"</text>
+    <text x="400" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#555">(d dimensions)</text>
+  </g>
+
+  <!-- Connections: Hidden to Output -->
+  <g opacity="0.5">
+    <line x1="470" y1="290" x2="600" y2="230" stroke="#888" stroke-width="1.5"/>
+    <line x1="470" y1="310" x2="600" y2="290" stroke="#888" stroke-width="1.5"/>
+    <line x1="470" y1="330" x2="600" y2="350" stroke="#888" stroke-width="1.5"/>
+    <line x1="470" y1="350" x2="600" y2="410" stroke="#888" stroke-width="1.5"/>
+  </g>
+
+  <!-- Output Layer (Context Words) -->
+  <g id="output-layer-sg">
+    <text x="710" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E7D32">Context Predictions</text>
+    <text x="710" y="192" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">(Softmax for each position)</text>
+
+    <rect x="600" y="210" width="220" height="50" rx="5" fill="url(#outputGradSG)"/>
+    <text x="710" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">P(w | fox) for position -2</text>
+    <text x="710" y="248" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">→ "quick"</text>
+
+    <rect x="600" y="270" width="220" height="50" rx="5" fill="url(#outputGradSG)"/>
+    <text x="710" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">P(w | fox) for position -1</text>
+    <text x="710" y="308" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">→ "brown"</text>
+
+    <rect x="600" y="330" width="220" height="50" rx="5" fill="url(#outputGradSG)"/>
+    <text x="710" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">P(w | fox) for position +1</text>
+    <text x="710" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">→ "jumps"</text>
+
+    <rect x="600" y="390" width="220" height="50" rx="5" fill="url(#outputGradSG)"/>
+    <text x="710" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">P(w | fox) for position +2</text>
+    <text x="710" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">→ "over"</text>
+  </g>
+
+  <!-- Arrows with labels -->
+  <g transform="translate(220, 305)">
+    <line x1="0" y1="15" x2="90" y2="15" stroke="#666" stroke-width="2" marker-end="url(#arrowheadSG)"/>
+    <text x="45" y="5" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">W (V×d)</text>
+  </g>
+
+  <g transform="translate(490, 305)">
+    <line x1="0" y1="15" x2="90" y2="15" stroke="#666" stroke-width="2" marker-end="url(#arrowheadSG)"/>
+    <text x="45" y="5" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">W' (d×V)</text>
+  </g>
+
+  <!-- Key insight box -->
+  <rect x="100" y="455" width="700" height="55" rx="8" fill="#FFF3E0" stroke="#F57C00" stroke-width="2"/>
+  <text x="450" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E65100">Skip-gram Training Objective</text>
+  <text x="450" y="498" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#333">Maximize P(context | target) = P(quick, brown, jumps, over | fox)</text>
+</svg>
