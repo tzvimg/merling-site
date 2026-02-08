@@ -2,6 +2,7 @@ meta:
   title: "בינה מלאכותית: שיעור 02"
   author: "Tzvi Merling"
   aspectRatio: "responsive"
+  direction: rtl
 
 slides:
   # ===========================================
@@ -40,6 +41,8 @@ slides:
   - id: slide-031
     layout: itemsCompact
     direction: rtl
+    animation:
+      type: step
     content:
       - type: title
         text: "AlexNet (2012)"

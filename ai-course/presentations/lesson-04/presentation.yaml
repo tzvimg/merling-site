@@ -2,6 +2,7 @@ meta:
   title: "בינה מלאכותית: שיעור 04"
   author: "Tzvi Merling"
   aspectRatio: "responsive"
+  direction: rtl
 
 slides:
   # ===========================================
