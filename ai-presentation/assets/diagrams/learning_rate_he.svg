@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" direction="rtl">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="hiddenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">השפעת Learning Rate על האימון</text>
+
+  <!-- Loss landscape visualization -->
+  <g id="landscape">
+    <!-- Background -->
+    <rect x="50" y="60" width="800" height="280" rx="10" fill="var(--color-surface, #fafafa)" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+    
+    <!-- Loss curve (bowl shape) -->
+    <path d="M 100 280 Q 200 320 300 250 Q 400 100 500 100 Q 600 100 700 250 Q 800 320 850 280" 
+          fill="none" stroke="var(--color-border, #ccc)" stroke-width="3"/>
+    
+    <!-- Minimum point -->
+    <circle cx="500" cy="100" r="8" fill="url(#outputGrad)" stroke="#27AE60" stroke-width="2"/>
+    <text x="500" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#27AE60" direction="rtl">מינימום</text>
+    
+    <!-- Y-axis label -->
+    <text x="70" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)" transform="rotate(-90, 70, 170)">Loss</text>
+    
+    <!-- X-axis label -->
+    <text x="450" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)">Weights</text>
+
+    <!-- Too High LR - Red path (overshooting) -->
+    <g id="high-lr">
+      <circle cx="200" cy="270" r="10" fill="#E74C3C"/>
+      <path d="M 210 265 L 350 120 L 650 120 L 800 270" fill="none" stroke="#E74C3C" stroke-width="2" stroke-dasharray="5,3"/>
+      <circle cx="350" cy="120" r="6" fill="#E74C3C"/>
+      <circle cx="650" cy="120" r="6" fill="#E74C3C"/>
+      <circle cx="800" cy="270" r="6" fill="#E74C3C"/>
+      <text x="200" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#E74C3C" direction="rtl">התחלה</text>
+    </g>
+
+    <!-- Too Low LR - Blue path (very slow) -->
+    <g id="low-lr">
+      <circle cx="150" cy="290" r="10" fill="#4A90D9"/>
+      <circle cx="180" cy="285" r="5" fill="#4A90D9"/>
+      <circle cx="205" cy="278" r="5" fill="#4A90D9"/>
+      <circle cx="225" cy="270" r="5" fill="#4A90D9"/>
+      <circle cx="242" cy="260" r="5" fill="#4A90D9"/>
+      <text x="200" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#4A90D9">...</text>
+    </g>
+
+    <!-- Optimal LR - Green path (smooth convergence) -->
+    <g id="optimal-lr">
+      <circle cx="250" cy="260" r="10" fill="#2ECC71"/>
+      <path d="M 260 255 Q 350 180 400 140 Q 450 110 500 100" fill="none" stroke="#2ECC71" stroke-width="2.5"/>
+      <circle cx="350" cy="175" r="5" fill="#2ECC71"/>
+      <circle cx="420" cy="130" r="5" fill="#2ECC71"/>
+      <circle cx="470" cy="108" r="5" fill="#2ECC71"/>
+    </g>
+  </g>
+
+  <!-- Legend boxes -->
+  <g id="legend">
+    <!-- High LR -->
+    <rect x="50" y="360" width="260" height="100" rx="8" fill="var(--color-surface, #fff)" stroke="#E74C3C" stroke-width="2"/>
+    <circle cx="290" cy="385" r="10" fill="#E74C3C"/>
+    <text x="270" y="390" text-anchor="start" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#E74C3C">LR גבוה מדי (0.1+)</text>
+    <text x="270" y="415" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">• מדלג על המינימום</text>
+    <text x="270" y="435" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">• לא מתכנס או מתפוצץ 💥</text>
+
+    <!-- Low LR -->
+    <rect x="320" y="360" width="260" height="100" rx="8" fill="var(--color-surface, #fff)" stroke="#4A90D9" stroke-width="2"/>
+    <circle cx="560" cy="385" r="10" fill="#4A90D9"/>
+    <text x="540" y="390" text-anchor="start" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#4A90D9">LR נמוך מדי (0.00001)</text>
+    <text x="540" y="415" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">• התכנסות איטית מאוד 🐌</text>
+    <text x="540" y="435" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">• עלול להיתקע במינימום מקומי</text>
+
+    <!-- Optimal LR -->
+    <rect x="590" y="360" width="260" height="100" rx="8" fill="var(--color-surface, #D5F5E3)" stroke="#2ECC71" stroke-width="2"/>
+    <circle cx="830" cy="385" r="10" fill="#2ECC71"/>
+    <text x="810" y="390" text-anchor="start" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#27AE60">LR אופטימלי (0.001)</text>
+    <text x="810" y="415" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">• התכנסות יציבה ✅</text>
+    <text x="810" y="435" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">• מגיע למינימום טוב</text>
+  </g>
+</svg>

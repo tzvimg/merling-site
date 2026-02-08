@@ -1,0 +1,46 @@
+<svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .card { rx="12" ry="12" stroke="#e0e0e0" stroke-width="1" }
+      .icon { font-size="32px" text-anchor="middle" dominant-baseline="middle" }
+      .title { font-size="18px" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="#333" }
+      .subtitle { font-size="14px" text-anchor="middle" dominant-baseline="middle" fill="#666" }
+    </style>
+  </defs>
+  
+  <!-- Card 1: Start Simple -->
+  <rect class="card" x="40" y="40" width="220" height="160" fill="#e3f2fd"/>
+  <text class="icon" x="150" y="90">🎯</text>
+  <text class="title" x="150" y="130">התחל פשוט</text>
+  <text class="subtitle" x="150" y="155">Start simple</text>
+  
+  <!-- Card 2: Test and Improve -->
+  <rect class="card" x="290" y="40" width="220" height="160" fill="#f3e5f5"/>
+  <text class="icon" x="400" y="90">🔄</text>
+  <text class="title" x="400" y="130">בדוק ושפר</text>
+  <text class="subtitle" x="400" y="155">Test and improve</text>
+  
+  <!-- Card 3: Save Templates -->
+  <rect class="card" x="540" y="40" width="220" height="160" fill="#e8f5e8"/>
+  <text class="icon" x="650" y="90">💾</text>
+  <text class="title" x="650" y="130">שמור טמפלטים</text>
+  <text class="subtitle" x="650" y="155">Save templates</text>
+  
+  <!-- Card 4: Measure Performance -->
+  <rect class="card" x="40" y="250" width="220" height="160" fill="#fff3e0"/>
+  <text class="icon" x="150" y="300">📊</text>
+  <text class="title" x="150" y="340">מדוד ביצועים</text>
+  <text class="subtitle" x="150" y="365">Measure performance</text>
+  
+  <!-- Card 5: Security -->
+  <rect class="card" x="290" y="250" width="220" height="160" fill="#ffebee"/>
+  <text class="icon" x="400" y="300">🔒</text>
+  <text class="title" x="400" y="340">אבטחה</text>
+  <text class="subtitle" x="400" y="365">Security</text>
+  
+  <!-- Card 6: Versioning -->
+  <rect class="card" x="540" y="250" width="220" height="160" fill="#f1f8e9"/>
+  <text class="icon" x="650" y="300">🔀</text>
+  <text class="title" x="650" y="340">גרסאות</text>
+  <text class="subtitle" x="650" y="365">Versioning</text>
+</svg>

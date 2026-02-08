@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" direction="rtl">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="tokenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="var(--color-text-muted, #888)"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">איך טקסט הופך לטוקנים?</text>
+
+  <!-- Step 1: Original Text -->
+  <rect x="50" y="70" width="800" height="60" rx="10" fill="url(#inputGrad)" stroke="#2E6AB3" stroke-width="2"/>
+  <text x="450" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" direction="ltr">Original Text</text>
+  <text x="450" y="118" text-anchor="middle" font-family="'Courier New', monospace" font-size="18" fill="#ffffff" direction="ltr">"The cat is playing outside"</text>
+
+  <!-- Arrow 1 -->
+  <path d="M 450 130 L 450 165" stroke="var(--color-text-muted, #888)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="520" y="155" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)" direction="ltr">Tokenizer</text>
+
+  <!-- Step 2: Word Split -->
+  <rect x="50" y="175" width="800" height="75" rx="10" fill="var(--color-surface, #f8f9fa)" stroke="var(--color-border, #ddd)" stroke-width="2"/>
+  <text x="450" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="var(--color-text-muted, #666)" direction="ltr">Split into pieces</text>
+  
+  <!-- Word boxes -->
+  <g transform="translate(80, 215)">
+    <rect x="0" y="0" width="70" height="28" rx="5" fill="url(#tokenGrad)"/>
+    <text x="35" y="19" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#333" direction="ltr">The</text>
+  </g>
+  <g transform="translate(160, 215)">
+    <rect x="0" y="0" width="70" height="28" rx="5" fill="url(#tokenGrad)"/>
+    <text x="35" y="19" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#333" direction="ltr">cat</text>
+  </g>
+  <g transform="translate(240, 215)">
+    <rect x="0" y="0" width="50" height="28" rx="5" fill="url(#tokenGrad)"/>
+    <text x="25" y="19" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#333" direction="ltr">is</text>
+  </g>
+  <g transform="translate(300, 215)">
+    <rect x="0" y="0" width="70" height="28" rx="5" fill="url(#tokenGrad)"/>
+    <text x="35" y="19" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#333" direction="ltr">play</text>
+  </g>
+  <g transform="translate(380, 215)">
+    <rect x="0" y="0" width="70" height="28" rx="5" fill="#E74C3C"/>
+    <text x="35" y="19" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#fff" direction="ltr">##ing</text>
+  </g>
+  <g transform="translate(460, 215)">
+    <rect x="0" y="0" width="90" height="28" rx="5" fill="url(#tokenGrad)"/>
+    <text x="45" y="19" text-anchor="middle" font-family="'Courier New', monospace" font-size="13" fill="#333" direction="ltr">outside</text>
+  </g>
+
+  <!-- Annotation for subword -->
+  <path d="M 415 250 L 415 275 L 340 275" stroke="#E74C3C" stroke-width="1.5" stroke-dasharray="4,2" fill="none"/>
+  <text x="335" y="290" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="#E74C3C" direction="ltr">Subword token (suffix)</text>
+
+  <!-- Arrow 2 -->
+  <path d="M 450 310 L 450 345" stroke="var(--color-text-muted, #888)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="520" y="335" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)" direction="ltr">Vocabulary Lookup</text>
+
+  <!-- Step 3: Token IDs -->
+  <rect x="50" y="355" width="800" height="70" rx="10" fill="url(#outputGrad)" stroke="#27AE60" stroke-width="2"/>
+  <text x="450" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" direction="ltr">Token IDs (numbers for the model)</text>
+  
+  <!-- ID boxes -->
+  <g transform="translate(120, 395)">
+    <rect x="0" y="0" width="55" height="24" rx="4" fill="#ffffff"/>
+    <text x="27" y="17" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#27AE60" direction="ltr">1996</text>
+  </g>
+  <g transform="translate(190, 395)">
+    <rect x="0" y="0" width="55" height="24" rx="4" fill="#ffffff"/>
+    <text x="27" y="17" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#27AE60" direction="ltr">4937</text>
+  </g>
+  <g transform="translate(260, 395)">
+    <rect x="0" y="0" width="55" height="24" rx="4" fill="#ffffff"/>
+    <text x="27" y="17" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#27AE60" direction="ltr">2003</text>
+  </g>
+  <g transform="translate(330, 395)">
+    <rect x="0" y="0" width="55" height="24" rx="4" fill="#ffffff"/>
+    <text x="27" y="17" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#27AE60" direction="ltr">2377</text>
+  </g>
+  <g transform="translate(400, 395)">
+    <rect x="0" y="0" width="55" height="24" rx="4" fill="#ffffff"/>
+    <text x="27" y="17" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#27AE60" direction="ltr">2075</text>
+  </g>
+  <g transform="translate(470, 395)">
+    <rect x="0" y="0" width="55" height="24" rx="4" fill="#ffffff"/>
+    <text x="27" y="17" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="bold" fill="#27AE60" direction="ltr">2648</text>
+  </g>
+
+  <!-- Legend -->
+  <rect x="600" y="260" width="230" height="85" rx="8" fill="var(--color-surface, #fff)" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+  <text x="715" y="282" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">מקרא</text>
+  <rect x="780" y="295" width="35" height="16" rx="3" fill="url(#tokenGrad)"/>
+  <text x="700" y="307" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מילה שלמה</text>
+  <rect x="780" y="318" width="35" height="16" rx="3" fill="#E74C3C"/>
+  <text x="670" y="330" text-anchor="end" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">חלק מילה (סיומת)</text>
+
+  <!-- Bottom note -->
+  <text x="450" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="var(--color-text-muted, #666)" direction="rtl">💡 המודל לא רואה טקסט - הוא רואה רק מספרים!</text>
+</svg>

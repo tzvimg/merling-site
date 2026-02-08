@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400" viewBox="0 0 700 400">
+<defs>
+<linearGradient id="inputG" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#4A90D9"/>
+<stop offset="100%" style="stop-color:#2E6AB3"/>
+</linearGradient>
+<linearGradient id="hiddenG" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#F7C948"/>
+<stop offset="100%" style="stop-color:#E5A823"/>
+</linearGradient>
+<linearGradient id="outputG" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#2ECC71"/>
+<stop offset="100%" style="stop-color:#27AE60"/>
+</linearGradient>
+</defs>
+<g id="input-x1">
+<text x="60" y="70" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="var(--color-text, #333333)">X1</text>
+<line x1="85" y1="70" x2="115" y2="70" stroke="#4A90D9" stroke-width="1.5"/>
+<polygon points="115,70 106.33974596215562,75.0 106.33974596215562,65.0" fill="#4A90D9"/>
+<circle cx="145" cy="70" r="28" fill="url(#inputG)" stroke="#2E6AB3" stroke-width="2"/>
+<text x="145" y="70" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF">*</text>
+</g>
+<g id="input-x2">
+<text x="60" y="180" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="var(--color-text, #333333)">X2</text>
+<line x1="85" y1="180" x2="115" y2="180" stroke="#4A90D9" stroke-width="1.5"/>
+<polygon points="115,180 106.33974596215562,185.0 106.33974596215562,175.0" fill="#4A90D9"/>
+<circle cx="145" cy="180" r="28" fill="url(#inputG)" stroke="#2E6AB3" stroke-width="2"/>
+<text x="145" y="180" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF">*</text>
+</g>
+<g id="input-xn">
+<text x="60" y="320" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="var(--color-text, #333333)">Xn</text>
+<line x1="85" y1="320" x2="115" y2="320" stroke="#4A90D9" stroke-width="1.5"/>
+<polygon points="115,320 106.33974596215562,325.0 106.33974596215562,315.0" fill="#4A90D9"/>
+<circle cx="145" cy="320" r="28" fill="url(#inputG)" stroke="#2E6AB3" stroke-width="2"/>
+<text x="145" y="320" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF">*</text>
+</g>
+<g id="weights">
+<text x="175" y="115" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="var(--color-text, #333333)">W1</text>
+<text x="175" y="225" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="var(--color-text, #333333)">W2</text>
+<text x="155" y="365" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="var(--color-text, #333333)">Wn</text>
+</g>
+<g id="connections-to-sum">
+<line x1="173" y1="85" x2="290" y2="165" stroke="#E5A823" stroke-width="1.5"/>
+<line x1="173" y1="180" x2="290" y2="180" stroke="#E5A823" stroke-width="1.5"/>
+<line x1="173" y1="305" x2="290" y2="195" stroke="#E5A823" stroke-width="1.5"/>
+</g>
+<circle cx="295" cy="180" r="5" fill="#E5A823" stroke="#E5A823" stroke-width="1"/>
+<g id="summation">
+<line x1="300" y1="180" x2="330" y2="180" stroke="#E5A823" stroke-width="1.5"/>
+<circle cx="370" cy="180" r="40" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="2"/>
+<text x="370" y="180" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="32" fill="#FFFFFF">+</text>
+</g>
+<g id="bias">
+<line x1="370" y1="280" x2="370" y2="225" stroke="#E5A823" stroke-width="1.5"/>
+<polygon points="370,225 375.0,233.6602540378444 365.0,233.6602540378444" fill="#E5A823"/>
+<text x="380" y="295" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="var(--color-text, #333333)">b</text>
+</g>
+<g id="sum-to-activation">
+<line x1="410" y1="180" x2="470" y2="180" stroke="#27AE60" stroke-width="1.5"/>
+<polygon points="470,180 461.33974596215563,185.0 461.33974596215563,175.0" fill="#27AE60"/>
+</g>
+<g id="activation">
+<circle cx="510" cy="180" r="40" fill="url(#outputG)" stroke="#27AE60" stroke-width="2"/>
+<text x="510" y="180" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="20" fill="#FFFFFF">&gt;0</text>
+<text x="530" y="135" text-anchor="start" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="normal" fill="var(--color-text, #333333)">Z</text>
+</g>
+<g id="output">
+<line x1="550" y1="180" x2="650" y2="180" stroke="#27AE60" stroke-width="1.5"/>
+<polygon points="650,180 641.3397459621556,185.0 641.3397459621556,175.0" fill="#27AE60"/>
+</g>
+</svg>

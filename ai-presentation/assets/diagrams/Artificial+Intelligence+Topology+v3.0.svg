@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1350 900"
+   version="1.1"
+   id="svg30"
+   sodipodi:docname="Artificial+Intelligence+Topology+v3.0.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview30"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.76222222"
+     inkscape:cx="674.34402"
+     inkscape:cy="450"
+     inkscape:window-width="1600"
+     inkscape:window-height="930"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg30" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      text { font-family: Arial, sans-serif; }
+    </style>
+  </defs>
+  <!-- AI outer ellipse -->
+  <ellipse
+     cx="675"
+     cy="450"
+     rx="620"
+     ry="380"
+     fill="#a8afc4"
+     opacity="0.6"
+     id="ellipse1" />
+  <text
+     x="667.1283"
+     y="134.28572"
+     text-anchor="middle"
+     font-size="42px"
+     font-weight="bold"
+     fill="var(--color-text, #2c3e50)"
+     id="text1">Artificial Intelligence</text>
+  <!-- Symbolic AI circle -->
+  <ellipse
+     cx="163.11954"
+     cy="451.51602"
+     fill="#6ba89e"
+     opacity="0.8"
+     id="circle1"
+     rx="85.568512"
+     ry="130.17493"
+     style="stroke-width:1.05541" />
+  <text
+     x="150"
+     y="330"
+     text-anchor="middle"
+     font-size="22"
+     fill="var(--color-text, #1a5c52)"
+     font-weight="bold"
+     id="text2">Symbolic</text>
+  <text
+     x="150"
+     y="358"
+     text-anchor="middle"
+     font-size="22"
+     fill="var(--color-text, #1a5c52)"
+     font-weight="bold"
+     id="text3">AI</text>
+  <!-- Rule-Based Expert Systems -->
+  <ellipse
+     cx="163.52769"
+     cy="450"
+     rx="76.472305"
+     ry="45"
+     fill="#e8a87c"
+     opacity="0.85"
+     id="ellipse3"
+     style="stroke-width:0.948512" />
+  <text
+     x="155"
+     y="442"
+     text-anchor="middle"
+     font-size="14"
+     fill="var(--color-text, #8b4513)"
+     font-weight="bold"
+     id="text4">Rule-Based</text>
+  <text
+     x="155"
+     y="462"
+     text-anchor="middle"
+     font-size="14"
+     fill="var(--color-text, #8b4513)"
+     font-weight="bold"
+     id="text5">Expert Systems</text>
+  <!-- Machine Learning ellipse -->
+  <ellipse
+     cx="750"
+     cy="470"
+     rx="480"
+     ry="320"
+     fill="#c5d5e8"
+     opacity="0.6"
+     id="ellipse5" />
+  <text
+     x="764.43146"
+     y="209.0379"
+     text-anchor="middle"
+     font-size="36px"
+     font-weight="bold"
+     fill="var(--color-text, #2c3e50)"
+     id="text6">Machine Learning</text>
+  <!-- Reinforcement Learning -->
+  <ellipse
+     cx="700.8017"
+     cy="334.94171"
+     rx="166.39941"
+     ry="109.51895"
+     fill="#7ec8e8"
+     opacity="0.7"
+     id="ellipse6"
+     style="stroke-width:1.23234" />
+  <text
+     x="672.59473"
+     y="272.49564"
+     text-anchor="middle"
+     font-size="20px"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text7">Reinforcement</text>
+  <text
+     x="672.59473"
+     y="298.49564"
+     text-anchor="middle"
+     font-size="20px"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text8">Learning</text>
+  <!-- Supervised Learning -->
+  <ellipse
+     cx="554.12537"
+     cy="480"
+     rx="204.12537"
+     ry="70"
+     fill="#7ec8e8"
+     opacity="0.7"
+     id="ellipse8"
+     style="stroke-width:1.25307" />
+  <text
+     x="480"
+     y="472"
+     text-anchor="middle"
+     font-size="18"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text9">Supervised</text>
+  <text
+     x="480"
+     y="496"
+     text-anchor="middle"
+     font-size="18"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text10">Learning</text>
+  <!-- Unsupervised Learning -->
+  <ellipse
+     cx="957.02625"
+     cy="480"
+     rx="192.97375"
+     ry="70"
+     fill="#7ec8e8"
+     opacity="0.7"
+     id="ellipse10"
+     style="stroke-width:1.21837" />
+  <text
+     x="1020"
+     y="472"
+     text-anchor="middle"
+     font-size="18"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text11">Unsupervised</text>
+  <text
+     x="1020"
+     y="496"
+     text-anchor="middle"
+     font-size="18"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text12">Learning</text>
+  <!-- Neural Networks -->
+  <ellipse
+     cx="961.54791"
+     cy="-77.55159"
+     rx="236.88165"
+     ry="131.00648"
+     fill="#e8c4a8"
+     opacity="0.7"
+     id="ellipse12"
+     style="stroke-width:1.99464"
+     transform="matrix(0.79488585,0.606759,-0.46382933,0.88592457,0,0)" />
+  <text
+     x="900"
+     y="592"
+     text-anchor="middle"
+     font-size="18"
+     fill="var(--color-text, #8b5a2b)"
+     font-weight="bold"
+     id="text13">Neural</text>
+  <text
+     x="900"
+     y="616"
+     text-anchor="middle"
+     font-size="18"
+     fill="var(--color-text, #8b5a2b)"
+     font-weight="bold"
+     id="text14">Networks</text>
+  <!-- Deep Learning -->
+  <ellipse
+     cx="580"
+     cy="620"
+     rx="130"
+     ry="70"
+     fill="#7ec8e8"
+     opacity="0.7"
+     id="ellipse14" />
+  <text
+     x="580"
+     y="612"
+     text-anchor="middle"
+     font-size="20"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text15">Deep</text>
+  <text
+     x="580"
+     y="638"
+     text-anchor="middle"
+     font-size="20"
+     fill="var(--color-text, #1a6b8a)"
+     font-weight="bold"
+     id="text16">Learning</text>
+  <!-- Deep Neural Networks -->
+  <ellipse
+     cx="750"
+     cy="590"
+     rx="100"
+     ry="50"
+     fill="#d4c4e8"
+     opacity="0.7"
+     id="ellipse16" />
+  <text
+     x="750"
+     y="582"
+     text-anchor="middle"
+     font-size="14"
+     fill="var(--color-text, #4a3a6b)"
+     id="text17">Deep Neural</text>
+  <text
+     x="750"
+     y="602"
+     text-anchor="middle"
+     font-size="14"
+     fill="var(--color-text, #4a3a6b)"
+     id="text18">Networks</text>
+  <!-- Convolutional Neural Networks -->
+  <ellipse
+     cx="611.1662"
+     cy="536.06415"
+     rx="90"
+     ry="35"
+     fill="#a8d4e8"
+     opacity="0.8"
+     id="ellipse18" />
+  <text
+     x="560"
+     y="534"
+     text-anchor="middle"
+     font-size="11"
+     fill="var(--color-text, #1a5c7a)"
+     id="text19">Convolutional</text>
+  <text
+     x="560"
+     y="550"
+     text-anchor="middle"
+     font-size="11"
+     fill="var(--color-text, #1a5c7a)"
+     id="text20">Neural Networks</text>
+  <!-- Generative AI -->
+  <ellipse
+     cx="750"
+     cy="470"
+     rx="140"
+     ry="100"
+     fill="#c8d8f0"
+     opacity="0.6"
+     id="ellipse20" />
+  <text
+     x="750"
+     y="480"
+     text-anchor="middle"
+     font-size="22"
+     fill="var(--color-text, #2855a8)"
+     font-weight="bold"
+     id="text21">Generative</text>
+  <text
+     x="750"
+     y="508"
+     text-anchor="middle"
+     font-size="22"
+     fill="var(--color-text, #2855a8)"
+     font-weight="bold"
+     id="text22">AI</text>
+  <!-- Variational Autoencoders -->
+  <!-- GANs -->
+  <!-- Transformer-Based Language Models -->
+  <ellipse
+     cx="720"
+     cy="390"
+     rx="110"
+     ry="40"
+     fill="#b8c8e8"
+     opacity="0.8"
+     id="ellipse26" />
+  <text
+     x="720"
+     y="384"
+     text-anchor="middle"
+     font-size="11"
+     fill="var(--color-text, #2a4a7a)"
+     id="text27">Transformer-Based</text>
+  <text
+     x="720"
+     y="400"
+     text-anchor="middle"
+     font-size="11"
+     fill="var(--color-text, #2a4a7a)"
+     id="text28">Language Models</text>
+  <!-- ChatGPT -->
+  <ellipse
+     cx="850"
+     cy="370"
+     rx="55"
+     ry="28"
+     fill="#a83232"
+     opacity="0.9"
+     id="ellipse28" />
+  <text
+     x="850"
+     y="375"
+     text-anchor="middle"
+     font-size="14"
+     fill="white"
+     font-weight="bold"
+     id="text29">ChatGPT</text>
+  <!-- Rev 3.0 -->
+</svg>

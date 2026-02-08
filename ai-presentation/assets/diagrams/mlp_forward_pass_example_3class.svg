@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680">
+  <defs>
+    <linearGradient id="inputG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="hiddenG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="outputG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E6AB3"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E5A823"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+  </defs>
+
+  
+
+  <!-- Title -->
+  <text x="550" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="currentColor">MLP Example: What Fruit Is This?</text>
+  <text x="550" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="currentColor">Classifying fruit based on physical features</text>
+
+  <!-- Input Vector Box -->
+  <g id="input-vector" transform="translate(30, 75)">
+    <rect x="0" y="0" width="130" height="185" fill="#E8F4FD" stroke="#2E6AB3" stroke-width="2" rx="8"/>
+    <text x="65" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2E6AB3">Fruit Features</text>
+
+    <!-- Input labels and values -->
+    <g transform="translate(10, 32)">
+      <text x="55" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="currentColor">Redness (0-10)</text>
+      <rect x="20" y="20" width="70" height="26" fill="#fff" stroke="#2E6AB3" rx="4"/>
+      <text x="55" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2E6AB3">8</text>
+
+      <text x="55" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="currentColor">Roundness (0-1)</text>
+      <rect x="20" y="65" width="70" height="26" fill="#fff" stroke="#2E6AB3" rx="4"/>
+      <text x="55" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2E6AB3">0.9</text>
+
+      <text x="55" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="currentColor">Size (cm)</text>
+      <rect x="20" y="110" width="70" height="26" fill="#fff" stroke="#2E6AB3" rx="4"/>
+      <text x="55" y="129" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2E6AB3">7</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(165, 165)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#2E6AB3" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  </g>
+
+  <!-- Hidden Layer Box -->
+  <g id="hidden-layer" transform="translate(210, 75)">
+    <rect x="0" y="0" width="130" height="185" fill="#FEF5DC" stroke="#E5A823" stroke-width="2" rx="8"/>
+    <text x="65" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#B8860B">Hidden Layer</text>
+    <text x="65" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#888">(learns patterns)</text>
+
+    <!-- Hidden neurons representation -->
+    <g transform="translate(15, 50)">
+      <circle cx="25" cy="20" r="18" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="1.5"/>
+      <circle cx="75" cy="20" r="18" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="1.5"/>
+      <circle cx="25" cy="65" r="18" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="1.5"/>
+      <circle cx="75" cy="65" r="18" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="1.5"/>
+
+      <text x="50" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#888">4 neurons</text>
+      <text x="50" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#888">finding features</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(345, 165)">
+    <line x1="0" y1="0" x2="35" y2="0" stroke="#E5A823" stroke-width="2" marker-end="url(#arrowOrange)"/>
+  </g>
+
+  <!-- Output Box -->
+  <g id="output-layer" transform="translate(390, 75)">
+    <rect x="0" y="0" width="150" height="185" fill="#E8F8EE" stroke="#27AE60" stroke-width="2" rx="8"/>
+    <text x="75" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#27AE60">Predictions</text>
+
+    <!-- Output values - 3 classes -->
+    <g transform="translate(15, 38)">
+      <!-- Apple - highest -->
+      <rect x="10" y="5" width="110" height="32" fill="#d4edda" stroke="#27AE60" stroke-width="2" rx="6"/>
+      <text x="30" y="26" font-family="Arial, sans-serif" font-size="12" fill="currentColor">Apple</text>
+      <text x="105" y="26" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#27AE60">78%</text>
+
+      <!-- Orange -->
+      <rect x="10" y="45" width="110" height="32" fill="#fff3e0" stroke="#ff9800" stroke-width="1.5" rx="6"/>
+      <text x="30" y="66" font-family="Arial, sans-serif" font-size="12" fill="currentColor">Orange</text>
+      <text x="105" y="66" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ff9800">18%</text>
+
+      <!-- Banana -->
+      <rect x="10" y="85" width="110" height="32" fill="#fffde7" stroke="#fbc02d" stroke-width="1.5" rx="6"/>
+      <text x="30" y="106" font-family="Arial, sans-serif" font-size="12" fill="currentColor">Banana</text>
+      <text x="105" y="106" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fbc02d">4%</text>
+    </g>
+  </g>
+
+  <!-- Result Box -->
+  <g id="result" transform="translate(555, 75)">
+    <rect x="0" y="0" width="170" height="185" fill="#ffebee" stroke="#e53935" stroke-width="3" rx="10"/>
+    <text x="85" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#c62828">Result</text>
+
+    <!-- Apple icon -->
+    <circle cx="85" cy="85" r="35" fill="#e53935"/>
+    <ellipse cx="85" cy="90" rx="28" ry="30" fill="#e53935"/>
+    <path d="M 85 55 Q 95 45 100 50" fill="none" stroke="#4a3728" stroke-width="3"/>
+    <ellipse cx="100" cy="52" rx="8" ry="5" fill="#4caf50"/>
+
+    <text x="85" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#c62828">APPLE!</text>
+    <text x="85" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="currentColor">78% confidence</text>
+  </g>
+
+  <!-- Explanation Box -->
+  <g id="explanation" transform="translate(740, 75)">
+    <rect x="0" y="0" width="330" height="185" fill="#fff5e6" stroke="#E5A823" stroke-width="2" rx="8"/>
+    <text x="165" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#B8860B">How It Works</text>
+
+    <text x="20" y="50" font-family="Arial, sans-serif" font-size="11" fill="currentColor">1. Input: Fruit measurements go in</text>
+    <text x="20" y="75" font-family="Arial, sans-serif" font-size="11" fill="currentColor">2. Hidden Layer: Network finds patterns</text>
+    <text x="35" y="92" font-family="Arial, sans-serif" font-size="10" fill="currentColor">"Red + round + medium = probably apple!"</text>
+    <text x="20" y="115" font-family="Arial, sans-serif" font-size="11" fill="currentColor">3. Output: Calculates 3 probabilities</text>
+    <text x="35" y="132" font-family="Arial, sans-serif" font-size="10" fill="currentColor">(must sum to 100% via softmax)</text>
+    <text x="20" y="155" font-family="Arial, sans-serif" font-size="11" fill="currentColor">4. Result: Picks the highest probability</text>
+
+    <line x1="20" y1="165" x2="310" y2="165" stroke="#E5A823" stroke-width="1"/>
+    <text x="165" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#888">The network learned from thousands of fruit examples!</text>
+  </g>
+
+  <!-- Network Diagram Below -->
+  <g id="network-diagram" transform="translate(0, 285)">
+    <!-- Background for diagram -->
+    <rect x="30" y="0" width="1040" height="380" fill="none" stroke="#ddd" rx="10"/>
+    <text x="550" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="currentColor">Network Visualization</text>
+
+    <!-- Connections Input to Hidden -->
+    <g opacity="0.4">
+      <line x1="325" y1="120" x2="505" y2="105" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="120" x2="505" y2="175" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="120" x2="505" y2="245" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="120" x2="505" y2="315" stroke="#4A90D9" stroke-width="1.5"/>
+
+      <line x1="325" y1="190" x2="505" y2="105" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="190" x2="505" y2="175" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="190" x2="505" y2="245" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="190" x2="505" y2="315" stroke="#4A90D9" stroke-width="1.5"/>
+
+      <line x1="325" y1="260" x2="505" y2="105" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="260" x2="505" y2="175" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="260" x2="505" y2="245" stroke="#4A90D9" stroke-width="1.5"/>
+      <line x1="325" y1="260" x2="505" y2="315" stroke="#4A90D9" stroke-width="1.5"/>
+    </g>
+
+    <!-- Connections Hidden to Output (3 outputs) -->
+    <g opacity="0.4">
+      <line x1="555" y1="105" x2="755" y2="105" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="105" x2="755" y2="210" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="105" x2="755" y2="315" stroke="#E5A823" stroke-width="1.5"/>
+
+      <line x1="555" y1="175" x2="755" y2="105" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="175" x2="755" y2="210" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="175" x2="755" y2="315" stroke="#E5A823" stroke-width="1.5"/>
+
+      <line x1="555" y1="245" x2="755" y2="105" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="245" x2="755" y2="210" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="245" x2="755" y2="315" stroke="#E5A823" stroke-width="1.5"/>
+
+      <line x1="555" y1="315" x2="755" y2="105" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="315" x2="755" y2="210" stroke="#E5A823" stroke-width="1.5"/>
+      <line x1="555" y1="315" x2="755" y2="315" stroke="#E5A823" stroke-width="1.5"/>
+    </g>
+
+    <!-- Input Neurons -->
+    <g id="inputs">
+      <circle cx="300" cy="120" r="25" fill="url(#inputG)" stroke="#2E6AB3" stroke-width="2"/>
+      <text x="300" y="120" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">8</text>
+      <text x="300" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#2E6AB3">Redness</text>
+
+      <circle cx="300" cy="190" r="25" fill="url(#inputG)" stroke="#2E6AB3" stroke-width="2"/>
+      <text x="300" y="190" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">0.9</text>
+      <text x="300" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#2E6AB3">Roundness</text>
+
+      <circle cx="300" cy="260" r="25" fill="url(#inputG)" stroke="#2E6AB3" stroke-width="2"/>
+      <text x="300" y="260" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">7</text>
+      <text x="300" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#2E6AB3">Size (cm)</text>
+
+      <text x="300" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2E6AB3">Input</text>
+    </g>
+
+    <!-- Hidden Neurons -->
+    <g id="hidden">
+      <circle cx="530" cy="105" r="25" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="2"/>
+      <text x="530" y="105" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333333">?</text>
+
+      <circle cx="530" cy="175" r="25" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="2"/>
+      <text x="530" y="175" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333333">?</text>
+
+      <circle cx="530" cy="245" r="25" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="2"/>
+      <text x="530" y="245" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333333">?</text>
+
+      <circle cx="530" cy="315" r="25" fill="url(#hiddenG)" stroke="#E5A823" stroke-width="2"/>
+      <text x="530" y="315" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#333333">?</text>
+
+      <text x="530" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#E5A823">Hidden</text>
+      <text x="530" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#888">(learned features)</text>
+    </g>
+
+    <!-- Output Neurons - 3 classes -->
+    <g id="outputs">
+      <!-- Apple (winner) -->
+      <circle cx="780" cy="105" r="30" fill="#e53935" stroke="#b71c1c" stroke-width="3"/>
+      <text x="780" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">78%</text>
+      <text x="780" y="117" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FFFFFF">Apple</text>
+
+      <!-- Orange -->
+      <circle cx="780" cy="210" r="30" fill="#ff9800" stroke="#e65100" stroke-width="2"/>
+      <text x="780" y="205" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">18%</text>
+      <text x="780" y="222" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#FFFFFF">Orange</text>
+
+      <!-- Banana -->
+      <circle cx="780" cy="315" r="30" fill="#fbc02d" stroke="#f57f17" stroke-width="2"/>
+      <text x="780" y="310" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#333333">4%</text>
+      <text x="780" y="327" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#333333">Banana</text>
+
+      <text x="780" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27AE60">Output</text>
+    </g>
+
+    <!-- Flow Labels -->
+    <g id="flow-labels">
+      <rect x="390" y="200" width="80" height="24" fill="#fff" stroke="#4A90D9" stroke-width="1.5" rx="5"/>
+      <text x="430" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#2E6AB3">× Weights</text>
+
+      <rect x="630" y="200" width="80" height="24" fill="#fff" stroke="#E5A823" stroke-width="1.5" rx="5"/>
+      <text x="670" y="216" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#B8860B">× Weights</text>
+    </g>
+
+    <!-- Legend -->
+    <g id="legend" transform="translate(870, 70)">
+      <rect x="0" y="0" width="180" height="280" fill="#fff" stroke="#ddd" stroke-width="1.5" rx="8"/>
+      <text x="90" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333333">Legend</text>
+
+      <circle cx="25" cy="50" r="12" fill="url(#inputG)"/>
+      <text x="45" y="54" font-family="Arial, sans-serif" font-size="10" fill="#333333">Input (measurements)</text>
+
+      <circle cx="25" cy="85" r="12" fill="url(#hiddenG)"/>
+      <text x="45" y="89" font-family="Arial, sans-serif" font-size="10" fill="#333333">Hidden (finds patterns)</text>
+
+      <circle cx="25" cy="120" r="12" fill="#e53935"/>
+      <circle cx="50" cy="120" r="12" fill="#ff9800"/>
+      <circle cx="75" cy="120" r="12" fill="#fbc02d"/>
+      <text x="95" y="124" font-family="Arial, sans-serif" font-size="10" fill="#333333">Outputs</text>
+
+      <line x1="15" y1="145" x2="165" y2="145" stroke="#ddd"/>
+
+      <text x="15" y="165" font-family="Arial, sans-serif" font-size="10" fill="#333333">3-Class Output:</text>
+      <text x="15" y="185" font-family="Arial, sans-serif" font-size="9" fill="#888">• Each class gets a score</text>
+      <text x="15" y="200" font-family="Arial, sans-serif" font-size="9" fill="#888">• Softmax makes them</text>
+      <text x="15" y="215" font-family="Arial, sans-serif" font-size="9" fill="#888">  sum to 100%</text>
+      <text x="15" y="230" font-family="Arial, sans-serif" font-size="9" fill="#888">• Highest wins!</text>
+
+      <line x1="15" y1="245" x2="165" y2="245" stroke="#ddd"/>
+      <text x="90" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#888">Lines = weighted</text>
+      <text x="90" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#888">connections</text>
+    </g>
+  </g>
+</svg>

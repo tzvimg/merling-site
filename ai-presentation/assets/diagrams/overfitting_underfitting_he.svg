@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" direction="rtl">
+  <defs>
+    <linearGradient id="goodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">Overfitting vs Underfitting - זיהוי הבעיות</text>
+
+  <!-- Three charts side by side -->
+  
+  <!-- Underfitting Chart (Right) -->
+  <g id="underfitting">
+    <rect x="600" y="60" width="280" height="220" rx="10" fill="var(--color-surface, #fff)" stroke="#E74C3C" stroke-width="2"/>
+    
+    <text x="740" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E74C3C" direction="rtl">❌ Underfitting</text>
+    <text x="740" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #666)" direction="rtl">התאמת חסר</text>
+    
+    <!-- Axes -->
+    <line x1="640" y1="240" x2="850" y2="240" stroke="var(--color-text-muted, #888)" stroke-width="1"/>
+    <line x1="640" y1="130" x2="640" y2="240" stroke="var(--color-text-muted, #888)" stroke-width="1"/>
+    <text x="745" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text-muted, #888)" direction="ltr">Epochs</text>
+    <text x="625" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text-muted, #888)" direction="ltr" transform="rotate(-90, 625, 185)">Loss</text>
+    
+    <!-- Both curves stay high -->
+    <path d="M 650 145 Q 700 160 750 175 Q 800 185 840 190" fill="none" stroke="#2E6AB3" stroke-width="2"/>
+    <path d="M 650 150 Q 700 168 750 185 Q 800 198 840 205" fill="none" stroke="#E5A823" stroke-width="2"/>
+    
+    <!-- Legend -->
+    <line x1="660" y1="265" x2="680" y2="265" stroke="#2E6AB3" stroke-width="2"/>
+    <text x="685" y="269" text-anchor="start" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text, #333)" direction="ltr">Train</text>
+    <line x1="760" y1="265" x2="780" y2="265" stroke="#E5A823" stroke-width="2"/>
+    <text x="785" y="269" text-anchor="start" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text, #333)" direction="ltr">Val</text>
+  </g>
+
+
+  <!-- Good Fit Chart (Center) -->
+  <g id="goodfit">
+    <rect x="310" y="60" width="280" height="220" rx="10" fill="var(--color-surface, #D5F5E3)" stroke="#27AE60" stroke-width="2"/>
+
+    <text x="450" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#27AE60" direction="rtl">✅ Good Fit</text>
+    <text x="450" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #666)" direction="rtl">התאמה טובה</text>
+
+    <!-- Axes -->
+    <line x1="350" y1="240" x2="560" y2="240" stroke="var(--color-text-muted, #888)" stroke-width="1"/>
+    <line x1="350" y1="130" x2="350" y2="240" stroke="var(--color-text-muted, #888)" stroke-width="1"/>
+    <text x="455" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text-muted, #888)" direction="ltr">Epochs</text>
+    <text x="335" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text-muted, #888)" direction="ltr" transform="rotate(-90, 335, 185)">Loss</text>
+
+    <!-- Both curves decrease together -->
+    <path d="M 360 145 Q 400 180 450 205 Q 500 220 550 225" fill="none" stroke="#2E6AB3" stroke-width="2"/>
+    <path d="M 360 150 Q 400 185 450 210 Q 500 225 550 228" fill="none" stroke="#E5A823" stroke-width="2"/>
+
+    <!-- Legend -->
+    <line x1="370" y1="265" x2="390" y2="265" stroke="#2E6AB3" stroke-width="2"/>
+    <text x="395" y="269" text-anchor="start" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text, #333)" direction="ltr">Train</text>
+    <line x1="470" y1="265" x2="490" y2="265" stroke="#E5A823" stroke-width="2"/>
+    <text x="495" y="269" text-anchor="start" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text, #333)" direction="ltr">Val</text>
+  </g>
+
+  <!-- Overfitting Chart (Left) -->
+  <g id="overfitting">
+    <rect x="20" y="60" width="280" height="220" rx="10" fill="var(--color-surface, #fff)" stroke="#E74C3C" stroke-width="2"/>
+
+    <text x="160" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E74C3C" direction="rtl">❌ Overfitting</text>
+    <text x="160" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #666)" direction="rtl">התאמת יתר</text>
+
+    <!-- Axes -->
+    <line x1="60" y1="240" x2="270" y2="240" stroke="var(--color-text-muted, #888)" stroke-width="1"/>
+    <line x1="60" y1="130" x2="60" y2="240" stroke="var(--color-text-muted, #888)" stroke-width="1"/>
+    <text x="165" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text-muted, #888)" direction="ltr">Epochs</text>
+    <text x="45" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text-muted, #888)" direction="ltr" transform="rotate(-90, 45, 185)">Loss</text>
+
+    <!-- Train keeps decreasing, Val goes up -->
+    <path d="M 70 145 Q 120 180 170 210 Q 220 230 260 235" fill="none" stroke="#2E6AB3" stroke-width="2"/>
+    <path d="M 70 150 Q 120 185 150 200 Q 180 195 210 180 Q 240 165 260 155" fill="none" stroke="#E5A823" stroke-width="2"/>
+
+    <!-- Gap annotation -->
+    <path d="M 230 235 L 230 165" stroke="#E74C3C" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="245" y="200" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#E74C3C" direction="rtl">פער!</text>
+    
+    <!-- Legend -->
+    <line x1="80" y1="265" x2="100" y2="265" stroke="#2E6AB3" stroke-width="2"/>
+    <text x="105" y="269" text-anchor="start" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text, #333)" direction="ltr">Train</text>
+    <line x1="180" y1="265" x2="200" y2="265" stroke="#E5A823" stroke-width="2"/>
+    <text x="205" y="269" text-anchor="start" font-family="Arial, sans-serif" font-size="9" fill="var(--color-text, #333)" direction="ltr">Val</text>
+  </g>
+
+  <!-- Description boxes -->
+  <g id="descriptions">
+    <!-- Underfitting description -->
+    <rect x="600" y="295" width="280" height="100" rx="8" fill="var(--color-surface, #fff)" stroke="#E74C3C" stroke-width="1"/>
+    <text x="740" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#E74C3C" direction="rtl">סימנים:</text>
+    <text x="860" y="340" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">• Loss גבוה על שניהם</text>
+    <text x="860" y="358" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">• המודל לא לומד</text>
+    <text x="860" y="376" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">פתרון: מודל מורכב יותר</text>
+
+    <!-- Good fit description -->
+    <rect x="310" y="295" width="280" height="100" rx="8" fill="var(--color-surface, #D5F5E3)" stroke="#27AE60" stroke-width="1"/>
+    <text x="450" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#27AE60" direction="rtl">סימנים:</text>
+    <text x="570" y="340" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">• שני הגרפים יורדים יחד</text>
+    <text x="570" y="358" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">• פער קטן ביניהם</text>
+    <text x="570" y="376" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">זה מה שאנחנו רוצים! ✅</text>
+
+    <!-- Overfitting description -->
+    <rect x="20" y="295" width="280" height="100" rx="8" fill="var(--color-surface, #fff)" stroke="#E74C3C" stroke-width="1"/>
+    <text x="160" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#E74C3C" direction="rtl">סימנים:</text>
+    <text x="280" y="340" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">• Train יורד, Val עולה</text>
+    <text x="280" y="358" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">• המודל "שינן" את הדאטה</text>
+    <text x="280" y="376" text-anchor="start" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text, #333)" direction="rtl">פתרון: Regularization, Dropout</text>
+  </g>
+
+  <!-- Solutions summary -->
+  <rect x="50" y="415" width="800" height="90" rx="10" fill="var(--color-surface, #f5f5f5)" stroke="var(--color-border, #ddd)" stroke-width="2"/>
+  
+  <text x="450" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">🛠️ פתרונות נפוצים</text>
+  
+  <text x="800" y="475" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="#E74C3C" direction="rtl">Underfitting: מודל גדול יותר, יותר epochs, LR נמוך יותר</text>
+  <text x="800" y="495" text-anchor="start" font-family="Arial, sans-serif" font-size="11" fill="#E74C3C" direction="rtl">Overfitting: Dropout, L1/L2 Regularization, Data Augmentation, Early Stopping</text>
+</svg>

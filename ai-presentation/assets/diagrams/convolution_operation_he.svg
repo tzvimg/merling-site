@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" direction="rtl">
+  <defs>
+    <linearGradient id="kernelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16A34A;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="var(--color-surface, #FAFAFA)"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="var(--color-text, #1E293B)" direction="rtl">פעולת הקונבולוציה</text>
+  <text x="600" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #64748B)" direction="rtl">איך רשת נוירונים "רואה" תמונה</text>
+
+  <!-- ===================== -->
+  <!-- KEY IDEA -->
+  <!-- ===================== -->
+  <rect x="50" y="90" width="350" height="90" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="225" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#B45309" direction="rtl">💡 הרעיון המרכזי</text>
+  <text x="225" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#92400E" direction="rtl">פילטר קטן (3×3) "מחליק" על התמונה</text>
+  <text x="225" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#92400E" direction="rtl">ומחפש תבניות מסוימות (קצוות, צורות)</text>
+
+  <!-- ===================== -->
+  <!-- MAIN VISUALIZATION -->
+  <!-- ===================== -->
+  
+  <text x="600" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="var(--color-text, #1E293B)" direction="rtl">הדגמה: זיהוי קצוות אנכיים</text>
+
+  <!-- INPUT IMAGE (5x5 grid) -->
+  <text x="180" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">תמונה (קלט)</text>
+  
+  <!-- 5x5 grid -->
+  <g transform="translate(80, 270)">
+    <!-- Row 0 -->
+    <rect x="0" y="0" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="20" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="40" y="0" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="60" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="80" y="0" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="100" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="120" y="0" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="140" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="160" y="0" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="180" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    
+    <!-- Row 1 -->
+    <rect x="0" y="40" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="20" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="40" y="40" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="60" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="80" y="40" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="100" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="120" y="40" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="140" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="160" y="40" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="180" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    
+    <!-- Row 2 -->
+    <rect x="0" y="80" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="20" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="40" y="80" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="60" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="80" y="80" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="100" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="120" y="80" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="140" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="160" y="80" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="180" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    
+    <!-- Row 3 -->
+    <rect x="0" y="120" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="20" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="40" y="120" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="60" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="80" y="120" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="100" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="120" y="120" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="140" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="160" y="120" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="180" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    
+    <!-- Row 4 -->
+    <rect x="0" y="160" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="20" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="40" y="160" width="40" height="40" fill="#1E293B" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="60" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">0</text>
+    <rect x="80" y="160" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="120" y="160" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="140" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    <rect x="160" y="160" width="40" height="40" fill="#F8FAFC" stroke="var(--color-border, #CBD5E1)" stroke-width="1"/>
+    <text x="180" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#1E293B">1</text>
+    
+    <!-- Highlight current position (3x3 window) -->
+    <rect x="0" y="0" width="120" height="120" fill="none" stroke="#F59E0B" stroke-width="4" rx="4"/>
+  </g>
+
+  <text x="180" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #6B7280)" direction="rtl">קצה אנכי בתמונה</text>
+
+  <!-- MULTIPLY SIGN -->
+  <text x="330" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#F59E0B">×</text>
+
+  <!-- KERNEL (3x3) -->
+  <text x="480" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#D97706" direction="rtl">פילטר (Kernel)</text>
+  
+  <g transform="translate(390, 290)">
+    <rect x="0" y="0" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="30" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">-1</text>
+    
+    <rect x="60" y="0" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="90" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">0</text>
+    
+    <rect x="120" y="0" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="150" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">1</text>
+    
+    <rect x="0" y="60" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="30" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">-1</text>
+    
+    <rect x="60" y="60" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="90" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">0</text>
+    
+    <rect x="120" y="60" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="150" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">1</text>
+    
+    <rect x="0" y="120" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="30" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">-1</text>
+    
+    <rect x="60" y="120" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="90" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">0</text>
+    
+    <rect x="120" y="120" width="60" height="60" fill="url(#kernelGrad)" stroke="#B45309" stroke-width="2" rx="4"/>
+    <text x="150" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" font-weight="bold">1</text>
+  </g>
+
+  <text x="480" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #6B7280)" direction="rtl">מזהה קצוות אנכיים</text>
+
+  <!-- EQUALS SIGN -->
+  <text x="630" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#22C55E">=</text>
+
+  <!-- CALCULATION -->
+  <rect x="680" y="280" width="280" height="200" rx="12" fill="var(--color-surface, #F0FDF4)" stroke="#22C55E" stroke-width="2"/>
+  <text x="820" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#16A34A" direction="rtl">החישוב:</text>
+  
+  <text x="820" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#166534">(0×-1) + (0×0) + (1×1) +</text>
+  <text x="820" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#166534">(0×-1) + (0×0) + (1×1) +</text>
+  <text x="820" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#166534">(0×-1) + (0×0) + (1×1)</text>
+  
+  <line x1="720" y1="415" x2="920" y2="415" stroke="#22C55E" stroke-width="2"/>
+  
+  <text x="820" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#16A34A">= 0 + 0 + 3 = 3</text>
+  <text x="820" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#22C55E" direction="rtl">ערך גבוה = יש קצה!</text>
+
+  <!-- OUTPUT (3x3) -->
+  <text x="1050" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#16A34A" direction="rtl">פלט (Feature Map)</text>
+  
+  <g transform="translate(980, 290)">
+    <rect x="0" y="0" width="50" height="50" fill="url(#outputGrad)" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="25" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">3</text>
+    
+    <rect x="50" y="0" width="50" height="50" fill="#D1FAE5" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="75" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#166534">0</text>
+    
+    <rect x="100" y="0" width="50" height="50" fill="#D1FAE5" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="125" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#166534">0</text>
+    
+    <rect x="0" y="50" width="50" height="50" fill="url(#outputGrad)" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="25" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">3</text>
+    
+    <rect x="50" y="50" width="50" height="50" fill="#D1FAE5" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="75" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#166534">0</text>
+    
+    <rect x="100" y="50" width="50" height="50" fill="#D1FAE5" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="125" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#166534">0</text>
+    
+    <rect x="0" y="100" width="50" height="50" fill="url(#outputGrad)" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="25" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">3</text>
+    
+    <rect x="50" y="100" width="50" height="50" fill="#D1FAE5" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="75" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#166534">0</text>
+    
+    <rect x="100" y="100" width="50" height="50" fill="#D1FAE5" stroke="#16A34A" stroke-width="2" rx="4"/>
+    <text x="125" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#166534">0</text>
+  </g>
+
+  <text x="1055" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #6B7280)" direction="rtl">זיהה את הקצה!</text>
+
+  <!-- ===================== -->
+  <!-- WHAT WE LEARNED -->
+  <!-- ===================== -->
+  <rect x="430" y="90" width="720" height="90" rx="12" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+  <text x="790" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#047857" direction="rtl">✓ למה זה עובד?</text>
+  <text x="790" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#065F46" direction="rtl">• אותו פילטר בודק את כל התמונה (Parameter Sharing) → פחות פרמטרים, יותר יעיל</text>
+  <text x="790" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#065F46" direction="rtl">• הרשת לומדת אילו פילטרים לבנות! (לא מתכנתים ידנית)</text>
+
+  <!-- ===================== -->
+  <!-- DIFFERENT FILTERS -->
+  <!-- ===================== -->
+  <text x="600" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="var(--color-text, #1E293B)" direction="rtl">🔍 פילטרים שונים מזהים דברים שונים</text>
+
+  <rect x="100" y="565" width="200" height="80" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="200" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2563EB" direction="rtl">קצוות אנכיים</text>
+  <text x="200" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="24">│</text>
+
+  <rect x="330" y="565" width="200" height="80" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="430" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2563EB" direction="rtl">קצוות אופקיים</text>
+  <text x="430" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="24">─</text>
+
+  <rect x="560" y="565" width="200" height="80" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="660" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2563EB" direction="rtl">פינות</text>
+  <text x="660" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="24">┌</text>
+
+  <rect x="790" y="565" width="200" height="80" rx="10" fill="#EFF6FF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="890" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#2563EB" direction="rtl">טקסטורות</text>
+  <text x="890" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="24">▦</text>
+
+  <!-- ===================== -->
+  <!-- BOTTOM NOTE -->
+  <!-- ===================== -->
+  <rect x="100" y="670" width="1000" height="55" rx="12" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="2"/>
+  <text x="600" y="695" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0369A1" direction="rtl">🧠 האנלוגיה: פילטר = עין שמחפשת תבנית מסוימת</text>
+  <text x="600" y="715" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0284C7" direction="rtl">CNN = הרבה עיניים שונות, כל אחת מחפשת משהו אחר, ויחד הן מבינות את התמונה</text>
+
+</svg>

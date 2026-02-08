@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" direction="rtl">
+  <defs>
+    <linearGradient id="forgetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16A34A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cellGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrowGray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#F59E0B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="var(--color-surface, #FAFAFA)"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="var(--color-text, #1E293B)" direction="rtl">LSTM - Long Short-Term Memory</text>
+  <text x="600" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="var(--color-text-muted, #64748B)" direction="rtl">הפתרון לבעיית ה-Vanishing Gradient (1997)</text>
+
+  <!-- ===================== -->
+  <!-- LEFT: KEY IDEA -->
+  <!-- ===================== -->
+  <rect x="50" y="95" width="320" height="110" rx="12" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <text x="210" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#B45309" direction="rtl">💡 הרעיון המרכזי</text>
+  <text x="210" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#92400E" direction="rtl">RNN רגיל: זיכרון אחד שמתעדכן כל הזמן</text>
+  <text x="210" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#92400E" direction="rtl">LSTM: "כביש מהיר" לזיכרון ארוך טווח</text>
+  <text x="210" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#D97706" direction="rtl">+ שערים שמחליטים מה לזכור/לשכוח</text>
+
+  <!-- ===================== -->
+  <!-- RIGHT: WHAT WE LEARNED -->
+  <!-- ===================== -->
+  <rect x="830" y="95" width="320" height="110" rx="12" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+  <text x="990" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="#047857" direction="rtl">✓ מה למדנו מ-LSTM</text>
+  <text x="990" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#065F46" direction="rtl">• שערים (Gates) שולטים בזרימת מידע</text>
+  <text x="990" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#065F46" direction="rtl">• הפרדה בין זיכרון קצר וארוך טווח</text>
+  <text x="990" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#10B981" direction="rtl">→ הרעיון הזה הוביל ל-Attention!</text>
+
+  <!-- ===================== -->
+  <!-- MAIN LSTM CELL DIAGRAM -->
+  <!-- ===================== -->
+  
+  <!-- Cell boundary -->
+  <rect x="150" y="230" width="900" height="340" rx="20" fill="var(--color-surface, #ffffff)" stroke="var(--color-border, #E5E7EB)" stroke-width="3" stroke-dasharray="10,5"/>
+  <text x="600" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="var(--color-text-muted, #6B7280)" direction="rtl">תא LSTM יחיד</text>
+
+  <!-- Cell State (the highway) -->
+  <line x1="180" y1="310" x2="1020" y2="310" stroke="#F59E0B" stroke-width="8"/>
+  <text x="600" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#D97706" direction="rtl">Cell State - "הכביש המהיר" לזיכרון ארוך טווח</text>
+  
+  <!-- Previous cell state label -->
+  <text x="160" y="315" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#B45309">Cₜ₋₁</text>
+  <!-- Next cell state label -->
+  <text x="1040" y="315" text-anchor="start" font-family="Arial, sans-serif" font-size="12" fill="#B45309">Cₜ</text>
+
+  <!-- ===================== -->
+  <!-- FORGET GATE -->
+  <!-- ===================== -->
+  <rect x="250" y="360" width="140" height="80" rx="12" fill="url(#forgetGrad)" filter="url(#shadow)"/>
+  <text x="320" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" direction="rtl">שער שכחה</text>
+  <text x="320" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Forget Gate</text>
+  <text x="320" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FEE2E2">σ → [0,1]</text>
+  
+  <!-- Forget gate connection to cell state -->
+  <line x1="320" y1="360" x2="320" y2="330" stroke="#EF4444" stroke-width="3"/>
+  <circle cx="320" cy="310" r="15" fill="var(--color-surface, #ffffff)" stroke="#EF4444" stroke-width="3"/>
+  <text x="320" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#EF4444">×</text>
+  
+  <!-- Forget gate explanation -->
+  <rect x="220" y="450" width="200" height="50" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+  <text x="320" y="472" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#991B1B" direction="rtl">🗑️ "מה לשכוח?"</text>
+  <text x="320" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7F1D1D" direction="rtl">0 = שכח הכל, 1 = זכור הכל</text>
+
+  <!-- ===================== -->
+  <!-- INPUT GATE -->
+  <!-- ===================== -->
+  <rect x="480" y="360" width="140" height="80" rx="12" fill="url(#inputGrad)" filter="url(#shadow)"/>
+  <text x="550" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" direction="rtl">שער קלט</text>
+  <text x="550" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Input Gate</text>
+  <text x="550" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#DCFCE7">σ × tanh</text>
+  
+  <!-- Input gate connection to cell state -->
+  <line x1="550" y1="360" x2="550" y2="330" stroke="#22C55E" stroke-width="3"/>
+  <circle cx="550" cy="310" r="15" fill="var(--color-surface, #ffffff)" stroke="#22C55E" stroke-width="3"/>
+  <text x="550" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#22C55E">+</text>
+  
+  <!-- Input gate explanation -->
+  <rect x="450" y="450" width="200" height="50" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="550" y="472" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#166534" direction="rtl">📥 "מה להוסיף?"</text>
+  <text x="550" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#15803D" direction="rtl">מידע חדש לזיכרון</text>
+
+  <!-- ===================== -->
+  <!-- OUTPUT GATE -->
+  <!-- ===================== -->
+  <rect x="780" y="360" width="140" height="80" rx="12" fill="url(#outputGrad)" filter="url(#shadow)"/>
+  <text x="850" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" direction="rtl">שער פלט</text>
+  <text x="850" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">Output Gate</text>
+  <text x="850" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#DBEAFE">σ × tanh(C)</text>
+  
+  <!-- Output gate connection -->
+  <line x1="850" y1="360" x2="850" y2="330" stroke="#3B82F6" stroke-width="3"/>
+  <circle cx="850" cy="310" r="15" fill="var(--color-surface, #ffffff)" stroke="#3B82F6" stroke-width="3"/>
+  <text x="850" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#3B82F6">×</text>
+  
+  <!-- Hidden state output -->
+  <line x1="920" y1="310" x2="920" y2="540" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrowGray)"/>
+  <text x="940" y="540" text-anchor="start" font-family="Arial, sans-serif" font-size="12" fill="#2563EB">hₜ</text>
+  
+  <!-- Output gate explanation -->
+  <rect x="750" y="450" width="200" height="50" rx="8" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="850" y="472" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#1E40AF" direction="rtl">📤 "מה להוציא?"</text>
+  <text x="850" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1D4ED8" direction="rtl">הפלט לשכבה הבאה</text>
+
+  <!-- ===================== -->
+  <!-- INPUTS -->
+  <!-- ===================== -->
+  
+  <!-- Previous hidden state -->
+  <rect x="200" y="520" width="100" height="40" rx="8" fill="#E0E7FF" stroke="#4F46E5" stroke-width="2"/>
+  <text x="250" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3730A3">hₜ₋₁</text>
+  <line x1="250" y1="520" x2="250" y2="440" stroke="#6B7280" stroke-width="2" marker-end="url(#arrowGray)"/>
+  
+  <!-- Current input -->
+  <rect x="500" y="520" width="100" height="40" rx="8" fill="#E0E7FF" stroke="#4F46E5" stroke-width="2"/>
+  <text x="550" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3730A3">xₜ</text>
+  <line x1="550" y1="520" x2="550" y2="440" stroke="#6B7280" stroke-width="2" marker-end="url(#arrowGray)"/>
+
+  <!-- Input labels -->
+  <text x="250" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #6B7280)" direction="rtl">מצב קודם</text>
+  <text x="550" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #6B7280)" direction="rtl">קלט נוכחי</text>
+
+  <!-- ===================== -->
+  <!-- BOTTOM: THE LIMITATION -->
+  <!-- ===================== -->
+  
+  <rect x="100" y="610" width="1000" height="80" rx="12" fill="#FEF2F2" stroke="#FECACA" stroke-width="2"/>
+  <text x="600" y="640" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#DC2626" direction="rtl">⚠️ למה זה עדיין לא מספיק?</text>
+  <text x="600" y="665" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#991B1B" direction="rtl">• עיבוד סדרתי - מילה אחרי מילה (איטי, לא ניתן למקבול)</text>
+  <text x="600" y="685" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#991B1B" direction="rtl">• עדיין קשה ללמוד תלויות ארוכות מאוד (מאות מילים)</text>
+
+  <!-- ===================== -->
+  <!-- ANALOGY BOX -->
+  <!-- ===================== -->
+  <rect x="100" y="705" width="1000" height="75" rx="12" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="2"/>
+  <text x="600" y="735" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0369A1" direction="rtl">🧠 אנלוגיה: LSTM כמו פנקס עם מחק</text>
+  <text x="600" y="760" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#0284C7" direction="rtl">שער שכחה = מחק | שער קלט = עט | שער פלט = מה לקרוא בקול | Cell State = הדף עצמו</text>
+
+</svg>

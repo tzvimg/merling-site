@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" direction="rtl">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="hiddenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <marker id="arrowGray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">שלוש גישות לעיבוד נתונים באימון</text>
+
+  <!-- Section 1: Stochastic (SGD) - Right side -->
+  <g id="stochastic">
+    <rect x="600" y="60" width="280" height="130" rx="10" fill="var(--color-surface, #E8F4FD)" stroke="#2E6AB3" stroke-width="2"/>
+    <text x="740" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E6AB3" direction="rtl">Stochastic (SGD)</text>
+    <text x="740" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)" direction="rtl">דוגמה אחת בכל פעם</text>
+    
+    <!-- Single sample -->
+    <rect x="700" y="120" width="80" height="25" rx="4" fill="url(#inputGrad)"/>
+    <text x="740" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fff">Sample 1</text>
+    
+    <!-- Arrow to update -->
+    <path d="M 740 150 L 740 170" stroke="#888" stroke-width="2" marker-end="url(#arrowGray)"/>
+    <text x="740" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text-muted, #888)" direction="rtl">עדכון</text>
+  </g>
+
+  <!-- Section 2: Mini-batch - Center -->
+  <g id="minibatch">
+    <rect x="310" y="60" width="280" height="130" rx="10" fill="var(--color-surface, #FEF9E7)" stroke="#E5A823" stroke-width="2"/>
+    <text x="450" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E5A823" direction="rtl">Mini-batch</text>
+    <text x="450" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)" direction="rtl">קבוצה קטנה (32-256)</text>
+    
+    <!-- Mini-batch samples -->
+    <rect x="340" y="120" width="50" height="25" rx="4" fill="url(#hiddenGrad)"/>
+    <rect x="400" y="120" width="50" height="25" rx="4" fill="url(#hiddenGrad)"/>
+    <rect x="460" y="120" width="50" height="25" rx="4" fill="url(#hiddenGrad)"/>
+    <rect x="520" y="120" width="50" height="25" rx="4" fill="url(#hiddenGrad)"/>
+    <text x="365" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">1</text>
+    <text x="425" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">2</text>
+    <text x="485" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">...</text>
+    <text x="545" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fff">32</text>
+    
+    <!-- Arrow to update -->
+    <path d="M 450 150 L 450 170" stroke="#888" stroke-width="2" marker-end="url(#arrowGray)"/>
+    <text x="450" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text-muted, #888)" direction="rtl">עדכון</text>
+  </g>
+
+  <!-- Section 3: Full Batch - Left side -->
+  <g id="fullbatch">
+    <rect x="20" y="60" width="280" height="130" rx="10" fill="var(--color-surface, #D5F5E3)" stroke="#27AE60" stroke-width="2"/>
+    <text x="160" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#27AE60" direction="rtl">Full Batch</text>
+    <text x="160" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)" direction="rtl">כל הנתונים</text>
+    
+    <!-- Full batch - many samples -->
+    <rect x="35" y="120" width="250" height="25" rx="4" fill="url(#outputGrad)"/>
+    <text x="160" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fff" direction="rtl">כל 10,000 הדוגמאות</text>
+    
+    <!-- Arrow to update -->
+    <path d="M 160 150 L 160 170" stroke="#888" stroke-width="2" marker-end="url(#arrowGray)"/>
+    <text x="160" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="var(--color-text-muted, #888)" direction="rtl">עדכון</text>
+  </g>
+
+  <!-- Comparison table -->
+  <g id="comparison">
+    <!-- Headers -->
+    <rect x="50" y="220" width="800" height="35" rx="5" fill="var(--color-surface, #f5f5f5)" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+    <text x="750" y="243" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">מאפיין</text>
+    <text x="580" y="243" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2E6AB3" direction="rtl">Stochastic</text>
+    <text x="400" y="243" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#E5A823" direction="rtl">Mini-batch</text>
+    <text x="200" y="243" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27AE60" direction="rtl">Full Batch</text>
+    
+    <!-- Row 1: Speed -->
+    <line x1="50" y1="255" x2="850" y2="255" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+    <text x="750" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מהירות עדכון</text>
+    <text x="580" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מהיר מאוד ⚡</text>
+    <text x="400" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מהיר</text>
+    <text x="200" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">איטי 🐌</text>
+    
+    <!-- Row 2: Stability -->
+    <line x1="50" y1="295" x2="850" y2="295" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+    <text x="750" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">יציבות</text>
+    <text x="580" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">רועש 📈📉</text>
+    <text x="400" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מאוזן ✅</text>
+    <text x="200" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">יציב מאוד</text>
+    
+    <!-- Row 3: Memory -->
+    <line x1="50" y1="335" x2="850" y2="335" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+    <text x="750" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">זיכרון נדרש</text>
+    <text x="580" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מינימלי</text>
+    <text x="400" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">בינוני</text>
+    <text x="200" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מקסימלי 💾</text>
+    
+    <!-- Row 4: GPU -->
+    <line x1="50" y1="375" x2="850" y2="375" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+    <text x="750" y="398" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">ניצול GPU</text>
+    <text x="580" y="398" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">נמוך</text>
+    <text x="400" y="398" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">אופטימלי ✅</text>
+    <text x="200" y="398" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text, #333)" direction="rtl">מקסימלי</text>
+    
+    <rect x="50" y="220" width="800" height="195" rx="5" fill="none" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+  </g>
+
+  <!-- Recommendation -->
+  <rect x="250" y="440" width="400" height="45" rx="8" fill="url(#hiddenGrad)" stroke="#E5A823" stroke-width="2"/>
+  <text x="450" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#fff" direction="rtl">💡 המלצה: Mini-batch הוא הסטנדרט בתעשייה</text>
+  <text x="450" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fff" direction="rtl">גדלים נפוצים: 32, 64, 128, 256</text>
+</svg>

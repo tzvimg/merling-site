@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 650">
+  <defs>
+    <!-- Paper shadow -->
+    <filter id="paperShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Subtle paper texture gradient -->
+    <linearGradient id="paperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEFEFE"/>
+      <stop offset="50%" style="stop-color:#FAFAFA"/>
+      <stop offset="100%" style="stop-color:#F5F5F5"/>
+    </linearGradient>
+
+    <!-- Gold/historic accent -->
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D4AF37"/>
+      <stop offset="50%" style="stop-color:#F4D03F"/>
+      <stop offset="100%" style="stop-color:#D4AF37"/>
+    </linearGradient>
+
+    <!-- Citation badge gradient -->
+    <linearGradient id="citationBadge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5"/>
+      <stop offset="100%" style="stop-color:#3730A3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background with subtle pattern -->
+  <rect width="500" height="650" fill="#E8E8E8"/>
+
+  <!-- Paper document -->
+  <g filter="url(#paperShadow)">
+    <rect x="30" y="30" width="440" height="590" rx="3" fill="url(#paperGrad)" stroke="#DDD" stroke-width="1"/>
+
+    <!-- Gold accent bar at top -->
+    <rect x="30" y="30" width="440" height="8" rx="3" ry="0" fill="url(#goldAccent)"/>
+
+    <!-- arXiv-style header -->
+    <text x="60" y="65" font-family="Courier New, monospace" font-size="11" fill="#666">arXiv:1706.03762v7 [cs.CL] 2 Aug 2023</text>
+
+    <!-- Main title -->
+    <text x="250" y="130" text-anchor="middle" font-family="Times New Roman, serif" font-size="28" font-weight="bold" fill="#1a1a1a">Attention Is All You Need</text>
+
+    <!-- Decorative line under title -->
+    <line x1="80" y1="150" x2="420" y2="150" stroke="#E0E0E0" stroke-width="1"/>
+
+    <!-- Authors - formatted like actual paper -->
+    <text x="250" y="185" text-anchor="middle" font-family="Times New Roman, serif" font-size="13" fill="#333">
+      Ashish Vaswani*   Noam Shazeer*   Niki Parmar*   Jakob Uszkoreit*
+    </text>
+    <text x="250" y="205" text-anchor="middle" font-family="Times New Roman, serif" font-size="13" fill="#333">
+      Llion Jones*   Aidan N. Gomez*†   Łukasz Kaiser*   Illia Polosukhin*‡
+    </text>
+
+    <!-- Google Brain / Research affiliation -->
+    <text x="250" y="235" text-anchor="middle" font-family="Times New Roman, serif" font-size="11" fill="#666">Google Brain   Google Research   University of Toronto</text>
+
+    <!-- Abstract header -->
+    <text x="60" y="280" font-family="Times New Roman, serif" font-size="14" font-weight="bold" fill="#1a1a1a">Abstract</text>
+
+    <!-- Abstract text (first paragraph excerpt) -->
+    <text x="60" y="305" font-family="Times New Roman, serif" font-size="11" fill="#444">
+      <tspan x="60" dy="0">The dominant sequence transduction models are based on complex</tspan>
+      <tspan x="60" dy="16">recurrent or convolutional neural networks that include an encoder</tspan>
+      <tspan x="60" dy="16">and a decoder. The best performing models also connect the encoder</tspan>
+      <tspan x="60" dy="16">and decoder through an attention mechanism. We propose a new</tspan>
+      <tspan x="60" dy="16">simple network architecture, the </tspan>
+      <tspan font-weight="bold">Transformer</tspan>
+      <tspan>, based solely on</tspan>
+      <tspan x="60" dy="16">attention mechanisms, dispensing with recurrence and convolutions</tspan>
+      <tspan x="60" dy="16">entirely. Experiments on two machine translation tasks show these</tspan>
+      <tspan x="60" dy="16">models to be superior in quality while being more parallelizable</tspan>
+      <tspan x="60" dy="16">and requiring significantly less time to train...</tspan>
+    </text>
+
+    <!-- Key quote highlight box -->
+    <rect x="50" y="435" width="400" height="50" rx="5" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+    <text x="250" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#92400E">
+      "We propose a new simple network architecture,
+    </text>
+    <text x="250" y="478" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#92400E">
+      the Transformer, based solely on attention mechanisms"
+    </text>
+
+    <!-- Citation count badge -->
+    <g transform="translate(350, 510)">
+      <rect x="0" y="0" width="110" height="45" rx="8" fill="url(#citationBadge)"/>
+      <text x="55" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FFF" font-weight="bold">CITATIONS</text>
+      <text x="55" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#FFF" font-weight="bold">140,000+</text>
+    </g>
+
+    <!-- Date badge -->
+    <g transform="translate(50, 510)">
+      <rect x="0" y="0" width="100" height="45" rx="8" fill="#1F2937"/>
+      <text x="50" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FFF" font-weight="bold">PUBLISHED</text>
+      <text x="50" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#FFF" font-weight="bold">June 2017</text>
+    </g>
+
+    <!-- Impact label -->
+    <g transform="translate(170, 510)">
+      <rect x="0" y="0" width="160" height="45" rx="8" fill="#DC2626"/>
+      <text x="80" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FFF" font-weight="bold">IMPACT</text>
+      <text x="80" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#FFF" font-weight="bold">Changed Everything</text>
+    </g>
+
+    <!-- Footer note -->
+    <text x="250" y="590" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#888">
+      The foundation of GPT, BERT, ChatGPT, Claude, and all modern LLMs
+    </text>
+  </g>
+
+  <!-- Historic marker ribbon -->
+  <g transform="translate(380, 10)">
+    <polygon points="0,0 90,0 90,80 45,60 0,80" fill="#DC2626"/>
+    <text x="45" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FFF" font-weight="bold">HISTORIC</text>
+    <text x="45" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#FFF" font-weight="bold">PAPER</text>
+  </g>
+</svg>

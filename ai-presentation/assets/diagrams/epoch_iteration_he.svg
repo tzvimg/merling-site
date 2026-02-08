@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" direction="rtl">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="hiddenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E6AB3"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E5A823"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">הקשר בין Epoch ל-Iteration</text>
+
+  <!-- Dataset visualization -->
+  <g id="dataset">
+    <text x="800" y="75" text-anchor="start" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="var(--color-text, #333)" direction="rtl">Dataset: 1,000 דוגמאות</text>
+    
+    <!-- Full dataset bar -->
+    <rect x="100" y="90" width="700" height="40" rx="5" fill="var(--color-surface, #f0f0f0)" stroke="var(--color-border, #ccc)" stroke-width="2"/>
+    
+    <!-- Batches inside -->
+    <rect x="105" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="195" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="285" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="375" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="465" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="555" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="645" y="95" width="85" height="30" rx="3" fill="url(#inputGrad)"/>
+    <rect x="735" y="95" width="60" height="30" rx="3" fill="url(#inputGrad)"/>
+    
+    <text x="147" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Batch 1</text>
+    <text x="237" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Batch 2</text>
+    <text x="327" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Batch 3</text>
+    <text x="417" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">...</text>
+    <text x="507" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">...</text>
+    <text x="597" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">...</text>
+    <text x="687" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">...</text>
+    <text x="765" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">10</text>
+    
+    <text x="450" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text-muted, #666)">Batch Size = 100 → 10 batches בכל epoch</text>
+  </g>
+
+  <!-- Epoch 1 -->
+  <g id="epoch1">
+    <rect x="100" y="175" width="700" height="70" rx="8" fill="var(--color-surface, #FEF9E7)" stroke="#E5A823" stroke-width="2"/>
+    <text x="700" y="200" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#E5A823">Epoch 1</text>
+    
+    <!-- Iterations -->
+    <g transform="translate(110, 210)">
+      <circle cx="30" cy="15" r="18" fill="url(#hiddenGrad)"/>
+      <text x="30" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">1</text>
+      
+      <path d="M 55 15 L 75 15" stroke="#E5A823" stroke-width="2" marker-end="url(#arrowOrange)"/>
+      
+      <circle cx="100" cy="15" r="18" fill="url(#hiddenGrad)"/>
+      <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">2</text>
+      
+      <path d="M 125 15 L 145 15" stroke="#E5A823" stroke-width="2" marker-end="url(#arrowOrange)"/>
+      
+      <circle cx="170" cy="15" r="18" fill="url(#hiddenGrad)"/>
+      <text x="170" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">3</text>
+      
+      <path d="M 195 15 L 215 15" stroke="#E5A823" stroke-width="2" marker-end="url(#arrowOrange)"/>
+      
+      <text x="250" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="var(--color-text-muted, #888)">...</text>
+      
+      <path d="M 275 15 L 295 15" stroke="#E5A823" stroke-width="2" marker-end="url(#arrowOrange)"/>
+      
+      <circle cx="320" cy="15" r="18" fill="url(#hiddenGrad)"/>
+      <text x="320" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">10</text>
+    </g>
+    
+    <text x="650" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #666)">10 iterations = מעבר על כל הדאטה פעם אחת</text>
+  </g>
+
+  <!-- Epoch 2 -->
+  <g id="epoch2">
+    <rect x="100" y="255" width="700" height="70" rx="8" fill="var(--color-surface, #E8F4FD)" stroke="#2E6AB3" stroke-width="2"/>
+    <text x="700" y="280" text-anchor="end" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E6AB3">Epoch 2</text>
+    
+    <!-- Iterations -->
+    <g transform="translate(110, 290)">
+      <circle cx="30" cy="15" r="18" fill="url(#inputGrad)"/>
+      <text x="30" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">11</text>
+      
+      <path d="M 55 15 L 75 15" stroke="#2E6AB3" stroke-width="2" marker-end="url(#arrowBlue)"/>
+      
+      <circle cx="100" cy="15" r="18" fill="url(#inputGrad)"/>
+      <text x="100" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">12</text>
+      
+      <path d="M 125 15 L 145 15" stroke="#2E6AB3" stroke-width="2" marker-end="url(#arrowBlue)"/>
+      
+      <circle cx="170" cy="15" r="18" fill="url(#inputGrad)"/>
+      <text x="170" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">13</text>
+      
+      <path d="M 195 15 L 215 15" stroke="#2E6AB3" stroke-width="2" marker-end="url(#arrowBlue)"/>
+      
+      <text x="250" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="var(--color-text-muted, #888)">...</text>
+      
+      <path d="M 275 15 L 295 15" stroke="#2E6AB3" stroke-width="2" marker-end="url(#arrowBlue)"/>
+      
+      <circle cx="320" cy="15" r="18" fill="url(#inputGrad)"/>
+      <text x="320" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">20</text>
+    </g>
+    
+    <text x="650" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="var(--color-text-muted, #666)">עוד 10 iterations = מעבר שני על כל הדאטה</text>
+  </g>
+
+  <!-- Formula box -->
+  <rect x="150" y="345" width="600" height="90" rx="10" fill="var(--color-surface, #fff)" stroke="var(--color-border, #ddd)" stroke-width="2"/>
+  
+  <text x="450" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="var(--color-text, #333)">📐 הנוסחאות</text>
+  
+  <text x="400" y="405" text-anchor="end" font-family="Arial, sans-serif" font-size="13" fill="var(--color-text, #333)">Iterations per Epoch = Dataset Size ÷ Batch Size</text>
+  <text x="400" y="425" text-anchor="end" font-family="Arial, sans-serif" font-size="13" fill="var(--color-text, #333)">Total Iterations = Epochs × Iterations per Epoch</text>
+  
+  <text x="300" y="405" text-anchor="start" font-family="Arial, sans-serif" font-size="12" fill="#E5A823">= 1000 ÷ 100 = 10</text>
+  <text x="300" y="425" text-anchor="start" font-family="Arial, sans-serif" font-size="12" fill="#2E6AB3">= 50 × 10 = 500</text>
+</svg>

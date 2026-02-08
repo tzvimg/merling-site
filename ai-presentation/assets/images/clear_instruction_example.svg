@@ -1,0 +1,47 @@
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="350" fill="#f8f9fa"/>
+  
+  <!-- Left side (Bad) -->
+  <g>
+    <!-- Speech bubble -->
+    <rect x="20" y="80" width="250" height="120" rx="15" fill="#ffebee" stroke="#f44336" stroke-width="2"/>
+    <polygon points="50,200 30,220 70,200" fill="#ffebee" stroke="#f44336" stroke-width="2"/>
+    
+    <!-- Text -->
+    <text x="145" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#333" direction="rtl">עזור לי עם קוד</text>
+    
+    <!-- X mark -->
+    <circle cx="145" cy="250" r="25" fill="#f44336"/>
+    <line x1="130" y1="235" x2="160" y2="265" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <line x1="160" y1="235" x2="130" y2="265" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Label -->
+    <text x="145" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f44336" font-weight="bold">לא ברור</text>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="300" y1="50" x2="300" y2="300" stroke="#ddd" stroke-width="2"/>
+  
+  <!-- Right side (Good) -->
+  <g>
+    <!-- Speech bubble -->
+    <rect x="330" y="50" width="250" height="150" rx="15" fill="#e8f5e8" stroke="#4caf50" stroke-width="2"/>
+    <polygon points="360,200 340,220 380,200" fill="#e8f5e8" stroke="#4caf50" stroke-width="2"/>
+    
+    <!-- Text -->
+    <text x="455" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333" direction="rtl">כתוב פונקציית Python</text>
+    <text x="455" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333" direction="rtl">שמקבלת רשימה</text>
+    <text x="455" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333" direction="rtl">ומחזירה ממוצע</text>
+    
+    <!-- Checkmark -->
+    <circle cx="455" cy="250" r="25" fill="#4caf50"/>
+    <polyline points="440,250 450,260 470,240" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Label -->
+    <text x="455" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#4caf50" font-weight="bold">ברור ומדויק</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#333" font-weight="bold" direction="rtl">הוראות ברורות vs. מעורפלות</text>
+</svg>

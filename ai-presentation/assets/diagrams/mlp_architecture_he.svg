@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="900"
+   height="550"
+   viewBox="0 0 900 550"
+   version="1.1"
+   id="svg95"
+   sodipodi:docname="mlp_architecture_he.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview95"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="7.05564"
+     inkscape:cx="837.41517"
+     inkscape:cy="140.02982"
+     inkscape:window-width="1600"
+     inkscape:window-height="930"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg95" />
+  <style>
+    .animated-line {
+      stroke-dasharray: 8 4;
+      animation: flow 1.2s linear infinite;
+    }
+    @keyframes flow {
+      to { stroke-dashoffset: -12; }
+    }
+  </style>
+  <defs
+     id="defs6">
+    <linearGradient
+       id="inputGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         style="stop-color:#4A90D9;stop-opacity:1"
+         id="stop1" />
+      <stop
+         offset="100%"
+         style="stop-color:#2E6AB3;stop-opacity:1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="hiddenGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         style="stop-color:#F7C948;stop-opacity:1"
+         id="stop3" />
+      <stop
+         offset="100%"
+         style="stop-color:#E5A823;stop-opacity:1"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="outputGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         style="stop-color:#2ECC71;stop-opacity:1"
+         id="stop5" />
+      <stop
+         offset="100%"
+         style="stop-color:#27AE60;stop-opacity:1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#inputGrad"
+       id="linearGradient95"
+       x1="12"
+       y1="30"
+       x2="28"
+       y2="46"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(848,80)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#hiddenGrad"
+       id="linearGradient96"
+       x1="12"
+       y1="50"
+       x2="28"
+       y2="66"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(848,80)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#outputGrad"
+       id="linearGradient97"
+       x1="12"
+       y1="70"
+       x2="28"
+       y2="86"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(848,80)" />
+  </defs>
+  <!-- Title -->
+  <text
+     x="450"
+     y="35"
+     text-anchor="middle"
+     font-family="Arial, sans-serif"
+     font-size="22"
+     font-weight="bold"
+     fill="currentColor"
+     direction="rtl"
+     id="text6">ארכיטקטורת Multi-Layer Perceptron (MLP)</text>
+  <!-- Connections: Input to Hidden 1 -->
+  <g
+     id="connections-input-h1"
+     opacity="0.6">
+    <line x1="175" y1="130" x2="295" y2="100" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line6" />
+    <line x1="175" y1="130" x2="295" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line7" />
+    <line x1="175" y1="130" x2="295" y2="260" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line8" />
+    <line x1="175" y1="130" x2="295" y2="340" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line9" />
+    <line x1="175" y1="130" x2="295" y2="420" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line10" />
+    <line x1="175" y1="220" x2="295" y2="100" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line11" />
+    <line x1="175" y1="220" x2="295" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line12" />
+    <line x1="175" y1="220" x2="295" y2="260" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line13" />
+    <line x1="175" y1="220" x2="295" y2="340" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line14" />
+    <line x1="175" y1="220" x2="295" y2="420" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line15" />
+    <line x1="175" y1="310" x2="295" y2="100" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line16" />
+    <line x1="175" y1="310" x2="295" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line17" />
+    <line x1="175" y1="310" x2="295" y2="260" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line18" />
+    <line x1="175" y1="310" x2="295" y2="340" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line19" />
+    <line x1="175" y1="310" x2="295" y2="420" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line20" />
+    <line x1="175" y1="400" x2="295" y2="100" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line21" />
+    <line x1="175" y1="400" x2="295" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line22" />
+    <line x1="175" y1="400" x2="295" y2="260" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line23" />
+    <line x1="175" y1="400" x2="295" y2="340" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line24" />
+    <line x1="175" y1="400" x2="295" y2="420" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line25" />
+  </g>
+  <!-- Connections: Hidden 1 to Hidden 2 -->
+  <g
+     id="connections-h1-h2"
+     opacity="0.6">
+    <line x1="345" y1="100" x2="445" y2="130" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line26" />
+    <line x1="345" y1="100" x2="445" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line27" />
+    <line x1="345" y1="100" x2="445" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line28" />
+    <line x1="345" y1="100" x2="445" y2="400" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line29" />
+    <line x1="345" y1="180" x2="445" y2="130" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line30" />
+    <line x1="345" y1="180" x2="445" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line31" />
+    <line x1="345" y1="180" x2="445" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line32" />
+    <line x1="345" y1="180" x2="445" y2="400" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line33" />
+    <line x1="345" y1="260" x2="445" y2="130" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line34" />
+    <line x1="345" y1="260" x2="445" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line35" />
+    <line x1="345" y1="260" x2="445" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line36" />
+    <line x1="345" y1="260" x2="445" y2="400" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line37" />
+    <line x1="345" y1="340" x2="445" y2="130" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line38" />
+    <line x1="345" y1="340" x2="445" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line39" />
+    <line x1="345" y1="340" x2="445" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line40" />
+    <line x1="345" y1="340" x2="445" y2="400" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line41" />
+    <line x1="345" y1="420" x2="445" y2="130" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line42" />
+    <line x1="345" y1="420" x2="445" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line43" />
+    <line x1="345" y1="420" x2="445" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line44" />
+    <line x1="345" y1="420" x2="445" y2="400" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line45" />
+  </g>
+  <!-- Connections: Hidden 2 to Hidden 3 -->
+  <g
+     id="connections-h2-h3"
+     opacity="0.6">
+    <line x1="495" y1="130" x2="595" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line46" />
+    <line x1="495" y1="130" x2="595" y2="265" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line47" />
+    <line x1="495" y1="130" x2="595" y2="350" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line48" />
+    <line x1="495" y1="220" x2="595" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line49" />
+    <line x1="495" y1="220" x2="595" y2="265" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line50" />
+    <line x1="495" y1="220" x2="595" y2="350" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line51" />
+    <line x1="495" y1="310" x2="595" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line52" />
+    <line x1="495" y1="310" x2="595" y2="265" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line53" />
+    <line x1="495" y1="310" x2="595" y2="350" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line54" />
+    <line x1="495" y1="400" x2="595" y2="180" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line55" />
+    <line x1="495" y1="400" x2="595" y2="265" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line56" />
+    <line x1="495" y1="400" x2="595" y2="350" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line57" />
+  </g>
+  <!-- Connections: Hidden 3 to Output -->
+  <g
+     id="connections-h3-output"
+     opacity="0.6">
+    <line x1="645" y1="180" x2="745" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line58" />
+    <line x1="645" y1="180" x2="745" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line59" />
+    <line x1="645" y1="265" x2="745" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line60" />
+    <line x1="645" y1="265" x2="745" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line61" />
+    <line x1="645" y1="350" x2="745" y2="220" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line62" />
+    <line x1="645" y1="350" x2="745" y2="310" stroke="var(--color-text-muted, #888)" stroke-width="1.5" class="animated-line" id="line63" />
+  </g>
+  <!-- Input Layer -->
+  <g
+     id="input-layer">
+    <circle
+       cx="150"
+       cy="130"
+       r="25"
+       fill="url(#inputGrad)"
+       stroke="#2E6AB3"
+       stroke-width="2"
+       id="circle63" />
+    <text
+       x="150"
+       y="130"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#FFFFFF"
+       id="text63">x₁</text>
+    <circle
+       cx="150"
+       cy="220"
+       r="25"
+       fill="url(#inputGrad)"
+       stroke="#2E6AB3"
+       stroke-width="2"
+       id="circle64" />
+    <text
+       x="150"
+       y="220"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#FFFFFF"
+       id="text64">x₂</text>
+    <circle
+       cx="150"
+       cy="310"
+       r="25"
+       fill="url(#inputGrad)"
+       stroke="#2E6AB3"
+       stroke-width="2"
+       id="circle65" />
+    <text
+       x="150"
+       y="310"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#FFFFFF"
+       id="text65">x₃</text>
+    <circle
+       cx="150"
+       cy="400"
+       r="25"
+       fill="url(#inputGrad)"
+       stroke="#2E6AB3"
+       stroke-width="2"
+       id="circle66" />
+    <text
+       x="150"
+       y="400"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#FFFFFF"
+       id="text66">x₄</text>
+  </g>
+  <!-- Hidden Layer 1 -->
+  <g
+     id="hidden-layer-1">
+    <circle
+       cx="320"
+       cy="100"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle67" />
+    <text
+       x="320"
+       y="100"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text67">h₁⁽¹⁾</text>
+    <circle
+       cx="320"
+       cy="180"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle68" />
+    <text
+       x="320"
+       y="180"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text68">h₂⁽¹⁾</text>
+    <circle
+       cx="320"
+       cy="260"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle69" />
+    <text
+       x="320"
+       y="260"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text69">h₃⁽¹⁾</text>
+    <circle
+       cx="320"
+       cy="340"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle70" />
+    <text
+       x="320"
+       y="340"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text70">h₄⁽¹⁾</text>
+    <circle
+       cx="320"
+       cy="420"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle71" />
+    <text
+       x="320"
+       y="420"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text71">h₅⁽¹⁾</text>
+  </g>
+  <!-- Hidden Layer 2 -->
+  <g
+     id="hidden-layer-2">
+    <circle
+       cx="470"
+       cy="130"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle72" />
+    <text
+       x="470"
+       y="130"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text72">h₁⁽²⁾</text>
+    <circle
+       cx="470"
+       cy="220"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle73" />
+    <text
+       x="470"
+       y="220"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text73">h₂⁽²⁾</text>
+    <circle
+       cx="470"
+       cy="310"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle74" />
+    <text
+       x="470"
+       y="310"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text74">h₃⁽²⁾</text>
+    <circle
+       cx="470"
+       cy="400"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle75" />
+    <text
+       x="470"
+       y="400"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text75">h₄⁽²⁾</text>
+  </g>
+  <!-- Hidden Layer 3 -->
+  <g
+     id="hidden-layer-3">
+    <circle
+       cx="620"
+       cy="180"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle76" />
+    <text
+       x="620"
+       y="180"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text76">h₁⁽³⁾</text>
+    <circle
+       cx="620"
+       cy="265"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle77" />
+    <text
+       x="620"
+       y="265"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text77">h₂⁽³⁾</text>
+    <circle
+       cx="620"
+       cy="350"
+       r="25"
+       fill="url(#hiddenGrad)"
+       stroke="#E5A823"
+       stroke-width="2"
+       id="circle78" />
+    <text
+       x="620"
+       y="350"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       font-weight="bold"
+       fill="var(--color-text, #333333)"
+       id="text78">h₃⁽³⁾</text>
+  </g>
+  <!-- Output Layer -->
+  <g
+     id="output-layer">
+    <circle
+       cx="770"
+       cy="220"
+       r="25"
+       fill="url(#outputGrad)"
+       stroke="#27AE60"
+       stroke-width="2"
+       id="circle79" />
+    <text
+       x="770"
+       y="220"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#FFFFFF"
+       id="text79">y₁</text>
+    <circle
+       cx="770"
+       cy="310"
+       r="25"
+       fill="url(#outputGrad)"
+       stroke="#27AE60"
+       stroke-width="2"
+       id="circle80" />
+    <text
+       x="770"
+       y="310"
+       text-anchor="middle"
+       dominant-baseline="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#FFFFFF"
+       id="text80">y₂</text>
+  </g>
+  <!-- Layer Labels -->
+  <g
+     id="layer-labels">
+    <text
+       x="150"
+       y="475"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#2E6AB3"
+       direction="rtl"
+       id="text81">שכבת קלט</text>
+    <text
+       x="150"
+       y="495"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       direction="rtl"
+       id="text82">(4 נוירונים)</text>
+    <text
+       x="320"
+       y="475"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#E5A823"
+       direction="rtl"
+       id="text83">שכבה נסתרת 1</text>
+    <text
+       x="320"
+       y="495"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       direction="rtl"
+       id="text84">(5 נוירונים)</text>
+    <text
+       x="470"
+       y="475"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#E5A823"
+       direction="rtl"
+       id="text85">שכבה נסתרת 2</text>
+    <text
+       x="470"
+       y="495"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       direction="rtl"
+       id="text86">(4 נוירונים)</text>
+    <text
+       x="620"
+       y="475"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#E5A823"
+       direction="rtl"
+       id="text87">שכבה נסתרת 3</text>
+    <text
+       x="620"
+       y="495"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       direction="rtl"
+       id="text88">(3 נוירונים)</text>
+    <text
+       x="770"
+       y="475"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="14"
+       font-weight="bold"
+       fill="#27AE60"
+       direction="rtl"
+       id="text89">שכבת פלט</text>
+    <text
+       x="770"
+       y="495"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       direction="rtl"
+       id="text90">(2 נוירונים)</text>
+  </g>
+  <!-- Information Flow Arrow -->
+  <g
+     id="flow-arrow">
+    <line
+       x1="100"
+       y1="530"
+       x2="820"
+       y2="530"
+       stroke="var(--color-text, #333)"
+       stroke-width="2"
+       marker-end="url(#arrowhead)"
+       id="line90" />
+    <defs
+       id="defs90">
+      <marker
+         id="arrowhead"
+         markerWidth="10"
+         markerHeight="7"
+         refX="9"
+         refY="3.5"
+         orient="auto">
+        <polygon
+           points="0 0, 10 3.5, 0 7"
+           fill="currentColor"
+           id="polygon90" />
+      </marker>
+    </defs>
+    <text
+       x="460"
+       y="545"
+       text-anchor="middle"
+       font-family="Arial, sans-serif"
+       font-size="12"
+       fill="currentColor"
+       direction="rtl"
+       id="text91">Forward Propagation (זרימת מידע)</text>
+  </g>
+  <!-- Legend -->
+  <rect
+     x="800"
+     y="80"
+     width="90"
+     height="100"
+     fill="var(--color-surface, #f8f8f8)"
+     stroke="var(--color-border, #dddddd)"
+     rx="5"
+     id="rect91" />
+  <text
+     x="845"
+     y="98"
+     text-anchor="middle"
+     font-family="Arial, sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     fill="#333333"
+     direction="rtl"
+     id="text92">מקרא</text>
+  <circle
+     cx="868"
+     cy="118"
+     r="8"
+     fill="url(#inputGrad)"
+     id="circle92"
+     style="fill:url(#linearGradient95)" />
+  <text
+     x="845"
+     y="122"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#333333"
+     direction="rtl"
+     id="text93">קלט</text>
+  <circle
+     cx="868"
+     cy="138"
+     r="8"
+     fill="url(#hiddenGrad)"
+     id="circle93"
+     style="fill:url(#linearGradient96)" />
+  <text
+     x="845"
+     y="142"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#333333"
+     direction="rtl"
+     id="text94">נסתר</text>
+  <circle
+     cx="868"
+     cy="158"
+     r="8"
+     fill="url(#outputGrad)"
+     id="circle94"
+     style="fill:url(#linearGradient97)" />
+  <text
+     x="845"
+     y="162"
+     font-family="Arial, sans-serif"
+     font-size="10px"
+     fill="#333333"
+     direction="rtl"
+     id="text95">פלט</text>
+</svg>

@@ -1,0 +1,106 @@
+<svg width="850" height="450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .accuracy { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .box { stroke-width: 2; rx: 8; ry: 8; }
+      .arrow { stroke-width: 3; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="450" fill="#f8f9fa"/>
+  
+  <!-- Main Title -->
+  <text x="425" y="30" class="title" fill="#333">השוואת טכניקות Prompting</text>
+  
+  <!-- Column 1: Zero-Shot -->
+  <g>
+    <!-- Header -->
+    <rect x="50" y="60" width="200" height="40" class="box" fill="#4A90D9" stroke="#3A7BC8"/>
+    <text x="150" y="85" class="label" fill="white">Zero-Shot</text>
+    
+    <!-- Input Box -->
+    <rect x="70" y="130" width="160" height="50" class="box" fill="white" stroke="#4A90D9"/>
+    <text x="150" y="160" class="text" fill="#333">שאלה בלבד</text>
+    
+    <!-- Arrow -->
+    <line x1="150" y1="190" x2="150" y2="230" class="arrow" stroke="#4A90D9"/>
+    
+    <!-- Output Box -->
+    <rect x="70" y="240" width="160" height="50" class="box" fill="#e3f2fd" stroke="#4A90D9"/>
+    <text x="150" y="270" class="text" fill="#333">תשובה</text>
+    
+    <!-- Label -->
+    <text x="150" y="320" class="text" fill="#666">ללא דוגמאות</text>
+    
+    <!-- Accuracy -->
+    <text x="150" y="350" class="accuracy" fill="#4A90D9">~60%</text>
+  </g>
+  
+  <!-- Column 2: Few-Shot -->
+  <g>
+    <!-- Header -->
+    <rect x="325" y="60" width="200" height="40" class="box" fill="#F7C948" stroke="#E6B73A"/>
+    <text x="425" y="85" class="label" fill="white">Few-Shot</text>
+    
+    <!-- Input Box -->
+    <rect x="345" y="130" width="160" height="50" class="box" fill="white" stroke="#F7C948"/>
+    <text x="425" y="150" class="text" fill="#333">דוגמה 1, דוגמה 2,</text>
+    <text x="425" y="170" class="text" fill="#333">שאלה</text>
+    
+    <!-- Arrow -->
+    <line x1="425" y1="190" x2="425" y2="230" class="arrow" stroke="#F7C948"/>
+    
+    <!-- Output Box -->
+    <rect x="345" y="240" width="160" height="50" class="box" fill="#fff8e1" stroke="#F7C948"/>
+    <text x="425" y="270" class="text" fill="#333">תשובה מדויקת</text>
+    
+    <!-- Label -->
+    <text x="425" y="320" class="text" fill="#666">2-5 דוגמאות</text>
+    
+    <!-- Accuracy -->
+    <text x="425" y="350" class="accuracy" fill="#F7C948">~75%</text>
+  </g>
+  
+  <!-- Column 3: Chain-of-Thought -->
+  <g>
+    <!-- Header -->
+    <rect x="600" y="60" width="200" height="40" class="box" fill="#2ECC71" stroke="#27AE60"/>
+    <text x="700" y="85" class="label" fill="white">Chain-of-Thought</text>
+    
+    <!-- Input Box -->
+    <rect x="620" y="130" width="160" height="50" class="box" fill="white" stroke="#2ECC71"/>
+    <text x="700" y="150" class="text" fill="#333">שאלה + "חשוב</text>
+    <text x="700" y="170" class="text" fill="#333">שלב אחר שלב"</text>
+    
+    <!-- Arrow with steps -->
+    <line x1="700" y1="190" x2="700" y2="210" class="arrow" stroke="#2ECC71"/>
+    <circle cx="700" cy="210" r="3" fill="#2ECC71"/>
+    <line x1="700" y1="215" x2="700" y2="235" class="arrow" stroke="#2ECC71"/>
+    
+    <!-- Output Box -->
+    <rect x="620" y="240" width="160" height="50" class="box" fill="#e8f5e8" stroke="#2ECC71"/>
+    <text x="700" y="260" class="text" fill="#333">תשובה עם</text>
+    <text x="700" y="280" class="text" fill="#333">הסבר</text>
+    
+    <!-- Label -->
+    <text x="700" y="320" class="text" fill="#666">חשיבה מפורטת</text>
+    
+    <!-- Accuracy -->
+    <text x="700" y="350" class="accuracy" fill="#2ECC71">~90%</text>
+  </g>
+  
+  <!-- Progress arrows between columns -->
+  <path d="M 260 200 Q 290 180 320 200" stroke="#999" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 535 200 Q 565 180 595 200" stroke="#999" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Bottom improvement indicator -->
+  <text x="425" y="400" class="text" fill="#666">שיפור ביצועים →</text>
+  
+</svg>
