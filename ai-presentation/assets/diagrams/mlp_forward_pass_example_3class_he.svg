@@ -10,7 +10,8 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
+   xmlns:svg="http://www.w3.org/2000/svg"
+   direction="rtl">
   <sodipodi:namedview
      id="namedview97"
      pagecolor="#505050"
@@ -130,6 +131,7 @@
      font-family="Arial, sans-serif"
      font-size="14"
      fill="var(--color-text, #333333)"
+     direction="rtl"
      id="text9">סיווג פירות לפי מאפיינים פיזיים</text>
   <g
      id="input-vector"
@@ -152,6 +154,7 @@
        font-size="13"
        font-weight="bold"
        fill="#2E6AB3"
+       direction="rtl"
        id="text10">מאפייני הפרי</text>
     <g
        transform="translate(10, 32)"
@@ -163,7 +166,8 @@
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
-         id="text11">(0-10) אדמומיות</text>
+         direction="rtl"
+         id="text11">אדמומיות (0-10)</text>
       <rect
          x="20"
          y="20"
@@ -181,6 +185,7 @@
          font-size="16"
          font-weight="bold"
          fill="#2E6AB3"
+         direction="ltr"
          id="text12">8</text>
       <text
          x="55"
@@ -189,7 +194,8 @@
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
-         id="text13">(0-1) עגלגלות</text>
+         direction="rtl"
+         id="text13">עגלגלות (0-1)</text>
       <rect
          x="20"
          y="65"
@@ -207,6 +213,7 @@
          font-size="16"
          font-weight="bold"
          fill="#2E6AB3"
+         direction="ltr"
          id="text14">0.9</text>
       <text
          x="55"
@@ -215,7 +222,8 @@
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
-         id="text15">(ס&quot;מ) גודל</text>
+         direction="rtl"
+         id="text15">גודל (ס&quot;מ)</text>
       <rect
          x="20"
          y="110"
@@ -233,6 +241,7 @@
          font-size="16"
          font-weight="bold"
          fill="#2E6AB3"
+         direction="ltr"
          id="text16">7</text>
     </g>
   </g>
@@ -270,6 +279,7 @@
        font-size="13"
        font-weight="bold"
        fill="#B8860B"
+       direction="rtl"
        id="text17">שכבה נסתרת</text>
     <text
        x="65"
@@ -278,6 +288,7 @@
        font-family="Arial, sans-serif"
        font-size="10"
        fill="var(--color-text-muted, #888)"
+       direction="rtl"
        id="text18">(לומדת דפוסים)</text>
     <g
        transform="translate(15, 50)"
@@ -321,6 +332,7 @@
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text-muted, #888)"
+         direction="rtl"
          id="text21">4 נוירונים</text>
       <text
          x="50"
@@ -329,6 +341,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
+         direction="rtl"
          id="text22">מוצאים מאפיינים</text>
     </g>
   </g>
@@ -366,6 +379,7 @@
        font-size="13"
        font-weight="bold"
        fill="#27AE60"
+       direction="rtl"
        id="text23">חיזויים</text>
     <g
        transform="translate(15, 38)"
@@ -383,9 +397,11 @@
       <text
          x="30"
          y="26"
+         text-anchor="end"
          font-family="Arial, sans-serif"
          font-size="12"
          fill="var(--color-text, #333333)"
+         direction="rtl"
          id="text24">תפוח</text>
       <text
          x="105"
@@ -395,6 +411,7 @@
          font-size="14"
          font-weight="bold"
          fill="#27AE60"
+         direction="ltr"
          id="text25">78%</text>
       <rect
          x="10"
@@ -409,9 +426,11 @@
       <text
          x="30"
          y="66"
+         text-anchor="end"
          font-family="Arial, sans-serif"
          font-size="12"
          fill="var(--color-text, #333333)"
+         direction="rtl"
          id="text26">תפוז</text>
       <text
          x="105"
@@ -421,6 +440,7 @@
          font-size="14"
          font-weight="bold"
          fill="#ff9800"
+         direction="ltr"
          id="text27">18%</text>
       <rect
          x="10"
@@ -435,9 +455,11 @@
       <text
          x="30"
          y="106"
+         text-anchor="end"
          font-family="Arial, sans-serif"
          font-size="12"
          fill="var(--color-text, #333333)"
+         direction="rtl"
          id="text28">בננה</text>
       <text
          x="105"
@@ -447,6 +469,7 @@
          font-size="14"
          font-weight="bold"
          fill="#fbc02d"
+         direction="ltr"
          id="text29">4%</text>
     </g>
   </g>
@@ -471,6 +494,7 @@
        font-size="14"
        font-weight="bold"
        fill="#c62828"
+       direction="rtl"
        id="text30">תוצאה</text>
     <circle
        cx="85"
@@ -506,7 +530,8 @@
        font-size="18"
        font-weight="bold"
        fill="#c62828"
-       id="text31">!תפוח</text>
+       direction="rtl"
+       id="text31">תפוח!</text>
     <text
        x="85"
        y="165"
@@ -514,7 +539,8 @@
        font-family="Arial, sans-serif"
        font-size="11"
        fill="var(--color-text, #333333)"
-       id="text32">78% ביטחון</text>
+       direction="rtl"
+       id="text32">ביטחון 78%</text>
   </g>
   <rect
      x="740"
@@ -534,50 +560,62 @@
      font-size="14px"
      font-weight="bold"
      fill="#b8860b"
+     direction="rtl"
      id="text33">איך זה עובד</text>
   <text
-     x="1027.5988"
-     y="122.02625"
+     x="1055"
+     y="122"
+     text-anchor="start"
      font-family="Arial, sans-serif"
      font-size="11px"
      fill="var(--color-text, #333333)"
-     id="text34"
-     style="text-align:end;text-anchor:end">קלט: מדידות הפרי נכנסות.1</text>
+     direction="rtl"
+     id="text34">1. קלט: מדידות הפרי נכנסות</text>
   <text
-     x="861.73401"
-     y="147.02625"
+     x="1055"
+     y="147"
+     text-anchor="start"
      font-family="Arial, sans-serif"
      font-size="11px"
      fill="var(--color-text, #333333)"
-     id="text35">שכבה נסתרת: הרשת מוצאת דפוסים .2</text>
+     direction="rtl"
+     id="text35">2. שכבה נסתרת: הרשת מוצאת דפוסים</text>
   <text
-     x="843.59094"
-     y="164.02625"
+     x="1055"
+     y="164"
+     text-anchor="start"
      font-family="Arial, sans-serif"
      font-size="10px"
      fill="var(--color-text, #333333)"
-     id="text36">&quot;!אדום + עגול + בינוני = כנראה תפוח&quot;</text>
+     direction="rtl"
+     id="text36">&quot;אדום + עגול + בינוני = כנראה תפוח!&quot;</text>
   <text
-     x="907.36145"
-     y="187.02625"
+     x="1055"
+     y="187"
+     text-anchor="start"
      font-family="Arial, sans-serif"
      font-size="11px"
      fill="var(--color-text, #333333)"
-     id="text37">פלט: מחשב 3 הסתברויות .3</text>
+     direction="rtl"
+     id="text37">3. פלט: מחשב 3 הסתברויות</text>
   <text
-     x="833.16907"
-     y="204.02625"
+     x="1055"
+     y="204"
+     text-anchor="start"
      font-family="Arial, sans-serif"
      font-size="10px"
      fill="var(--color-text, #333333)"
-     id="text38">(softmax חייבים להסתכם ל-100% דרך)</text>
+     direction="rtl"
+     id="text38">(חייבים להסתכם ל-100% דרך softmax)</text>
   <text
-     x="858.73157"
-     y="227.02625"
+     x="1055"
+     y="227"
+     text-anchor="start"
      font-family="Arial, sans-serif"
      font-size="11px"
      fill="var(--color-text, #333333)"
-     id="text39">תוצאה: בוחר את ההסתברות הגבוהה .4</text>
+     direction="rtl"
+     id="text39">4. תוצאה: בוחר את ההסתברות הגבוהה</text>
   <line
      x1="760"
      y1="240"
@@ -593,7 +631,8 @@
      font-family="Arial, sans-serif"
      font-size="10px"
      fill="var(--color-text-muted, #888888)"
-     id="text40">!הרשת למדה מאלפי דוגמאות של פירות</text>
+     direction="rtl"
+     id="text40">הרשת למדה מאלפי דוגמאות של פירות!</text>
   <g
      id="network-diagram"
      transform="translate(0, 285)">
@@ -614,6 +653,7 @@
        font-size="16"
        font-weight="bold"
        fill="var(--color-text, #333333)"
+       direction="rtl"
        id="text41">ויזואליזציה של הרשת</text>
     <g
        opacity="0.4"
@@ -834,6 +874,7 @@
          font-size="16"
          font-weight="bold"
          fill="#FFFFFF"
+         direction="ltr"
          id="text64">8</text>
       <text
          x="300"
@@ -842,6 +883,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="#2E6AB3"
+         direction="rtl"
          id="text65">אדמומיות</text>
       <circle
          cx="300"
@@ -860,6 +902,7 @@
          font-size="14"
          font-weight="bold"
          fill="#FFFFFF"
+         direction="ltr"
          id="text66">0.9</text>
       <text
          x="300"
@@ -868,6 +911,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="#2E6AB3"
+         direction="rtl"
          id="text67">עגלגלות</text>
       <circle
          cx="300"
@@ -886,6 +930,7 @@
          font-size="16"
          font-weight="bold"
          fill="#FFFFFF"
+         direction="ltr"
          id="text68">7</text>
       <text
          x="300"
@@ -894,7 +939,8 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="#2E6AB3"
-         id="text69">(ס&quot;מ) גודל</text>
+         direction="rtl"
+         id="text69">גודל (ס&quot;מ)</text>
       <text
          x="300"
          y="330"
@@ -903,6 +949,7 @@
          font-size="12"
          font-weight="bold"
          fill="#2E6AB3"
+         direction="rtl"
          id="text70">קלט</text>
     </g>
     <g
@@ -924,6 +971,7 @@
          font-size="10"
          font-weight="bold"
          fill="var(--color-text, #333333)"
+         direction="ltr"
          id="text71">?</text>
       <circle
          cx="530"
@@ -942,6 +990,7 @@
          font-size="10"
          font-weight="bold"
          fill="var(--color-text, #333333)"
+         direction="ltr"
          id="text72">?</text>
       <circle
          cx="530"
@@ -960,6 +1009,7 @@
          font-size="10"
          font-weight="bold"
          fill="var(--color-text, #333333)"
+         direction="ltr"
          id="text73">?</text>
       <circle
          cx="530"
@@ -978,6 +1028,7 @@
          font-size="10"
          font-weight="bold"
          fill="var(--color-text, #333333)"
+         direction="ltr"
          id="text74">?</text>
       <text
          x="530"
@@ -987,6 +1038,7 @@
          font-size="12"
          font-weight="bold"
          fill="#E5A823"
+         direction="rtl"
          id="text75">שכבה נסתרת</text>
       <text
          x="530"
@@ -995,6 +1047,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
+         direction="rtl"
          id="text76">(מאפיינים נלמדים)</text>
     </g>
     <g
@@ -1016,6 +1069,7 @@
          font-size="13"
          font-weight="bold"
          fill="#FFFFFF"
+         direction="ltr"
          id="text77">78%</text>
       <text
          x="780"
@@ -1024,6 +1078,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="#FFFFFF"
+         direction="rtl"
          id="text78">תפוח</text>
       <circle
          cx="780"
@@ -1042,6 +1097,7 @@
          font-size="13"
          font-weight="bold"
          fill="#FFFFFF"
+         direction="ltr"
          id="text79">18%</text>
       <text
          x="780"
@@ -1050,6 +1106,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="#FFFFFF"
+         direction="rtl"
          id="text80">תפוז</text>
       <circle
          cx="780"
@@ -1068,6 +1125,7 @@
          font-size="13"
          font-weight="bold"
          fill="var(--color-text, #333333)"
+         direction="ltr"
          id="text81">4%</text>
       <text
          x="780"
@@ -1076,6 +1134,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text, #333333)"
+         direction="rtl"
          id="text82">בננה</text>
       <text
          x="780"
@@ -1085,6 +1144,7 @@
          font-size="12"
          font-weight="bold"
          fill="#27AE60"
+         direction="rtl"
          id="text83">פלט</text>
     </g>
     <g
@@ -1107,6 +1167,7 @@
          font-size="10"
          font-weight="bold"
          fill="#2E6AB3"
+         direction="rtl"
          id="text84">× משקלים</text>
       <rect
          x="630"
@@ -1126,6 +1187,7 @@
          font-size="10"
          font-weight="bold"
          fill="#B8860B"
+         direction="rtl"
          id="text85">× משקלים</text>
     </g>
     <g
@@ -1149,6 +1211,7 @@
          font-size="12"
          font-weight="bold"
          fill="var(--color-text, #333333)"
+         direction="rtl"
          id="text86">מקרא</text>
       <circle
          cx="25"
@@ -1159,10 +1222,12 @@
       <text
          x="45"
          y="54"
+         text-anchor="end"
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
-         id="text87">(מדידות) קלט</text>
+         direction="rtl"
+         id="text87">קלט (מדידות)</text>
       <circle
          cx="25"
          cy="85"
@@ -1172,10 +1237,12 @@
       <text
          x="45"
          y="89"
+         text-anchor="end"
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
-         id="text88">(מוצא דפוסים) נסתר</text>
+         direction="rtl"
+         id="text88">נסתר (מוצא דפוסים)</text>
       <circle
          cx="25"
          cy="120"
@@ -1197,9 +1264,11 @@
       <text
          x="95"
          y="124"
+         text-anchor="end"
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
+         direction="rtl"
          id="text90">פלטים</text>
       <line
          x1="15"
@@ -1209,40 +1278,50 @@
          stroke="var(--color-border, #dddddd)"
          id="line90" />
       <text
-         x="15"
+         x="165"
          y="165"
+         text-anchor="start"
          font-family="Arial, sans-serif"
          font-size="10"
          fill="var(--color-text, #333333)"
-         id="text91">:פלט 3 מחלקות</text>
+         direction="rtl"
+         id="text91">פלט 3 מחלקות:</text>
       <text
-         x="15"
+         x="165"
          y="185"
+         text-anchor="start"
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
-         id="text92">כל מחלקה מקבלת ציון •</text>
+         direction="rtl"
+         id="text92">• כל מחלקה מקבלת ציון</text>
       <text
-         x="15"
+         x="165"
          y="200"
+         text-anchor="start"
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
-         id="text93">Softmax גורם להם •</text>
+         direction="rtl"
+         id="text93">• Softmax גורם להם</text>
       <text
-         x="15"
+         x="165"
          y="215"
+         text-anchor="start"
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
+         direction="rtl"
          id="text94">להסתכם ל-100%</text>
       <text
-         x="15"
+         x="165"
          y="230"
+         text-anchor="start"
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
-         id="text95">!הגבוה ביותר מנצח •</text>
+         direction="rtl"
+         id="text95">• הגבוה ביותר מנצח!</text>
       <line
          x1="15"
          y1="245"
@@ -1257,6 +1336,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
+         direction="rtl"
          id="text96">קווים = חיבורים</text>
       <text
          x="90"
@@ -1265,6 +1345,7 @@
          font-family="Arial, sans-serif"
          font-size="9"
          fill="var(--color-text-muted, #888)"
+         direction="rtl"
          id="text97">ממושקלים</text>
     </g>
   </g>

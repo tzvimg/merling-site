@@ -16,54 +16,88 @@
       <polygon points="8 0, 0 3, 8 6" fill="#C0392B"/>
     </marker>
   </defs>
-  <text x="500" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="var(--color-text, #1a1a1a)" direction="rtl">דוגמה ל-Backpropagation</text>
+
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="var(--color-text, #1a1a1a)">דוגמה ל-Backpropagation</text>
+
+  <!-- Forward Pass section -->
   <g>
     <rect x="40" y="60" width="920" height="150" fill="var(--color-surface, #e8f4fd)" stroke="#2e6ab3" stroke-width="1.5" rx="8"/>
-    <text x="500" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#2e6ab3">Forward Pass</text>
+    <text x="500" y="85" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#2e6ab3">Forward Pass</text>
+
+    <!-- Input node -->
     <circle cx="120" cy="150" r="35" fill="url(#inputG)"/>
-    <text x="120" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12px" fill="#ffffff">קלט</text>
-    <text x="120" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#ffffff">2</text>
+    <text x="120" y="145" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12px" fill="#ffffff">קלט</text>
+    <text x="120" y="162" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#ffffff">2</text>
+
+    <!-- Arrow with weight -->
     <line x1="160" y1="150" x2="280" y2="150" stroke="var(--color-text-muted, #666666)" stroke-width="3" marker-end="url(#fwd)"/>
     <g transform="translate(-10,-8.75)">
       <rect x="195" y="120" width="50" height="30" fill="#fef5dc" stroke="#e5a823" stroke-width="2" rx="5"/>
-      <text x="220" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="10px" fill="#b8860b">משקל</text>
-      <text x="220" y="146" text-anchor="middle" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#b8860b">0.5</text>
+      <text x="220" y="132" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="10px" fill="#b8860b">משקל</text>
+      <text x="220" y="146" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#b8860b">0.5</text>
     </g>
-    <text x="330" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="16px" fill="var(--color-text-muted, #666666)">2 × 0.5 =</text>
+
+    <!-- Computation -->
+    <text x="330" y="155" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="16px" fill="var(--color-text-muted, #666666)">2 × 0.5 =</text>
+
+    <!-- Output node -->
     <circle cx="450" cy="150" r="35" fill="url(#outputG)"/>
-    <text x="450" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12px" fill="#ffffff">פלט</text>
-    <text x="450" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#ffffff">1</text>
-    <text x="520" y="155" font-family="Arial, sans-serif" font-size="16px" fill="var(--color-text-muted, #666666)">מול</text>
+    <text x="450" y="145" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12px" fill="#ffffff">פלט</text>
+    <text x="450" y="162" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#ffffff">1</text>
+
+    <!-- "vs" label -->
+    <text x="520" y="155" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="16px" fill="var(--color-text-muted, #666666)">מול</text>
+
+    <!-- Target node -->
     <circle cx="590" cy="150" r="35" fill="var(--color-surface, #ffffff)" stroke="#c0392b" stroke-width="3"/>
-    <text x="590" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12px" fill="#c0392b">יעד</text>
-    <text x="590" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#c0392b">4</text>
-    <text x="680" y="155" font-family="Arial, sans-serif" font-size="16px" fill="var(--color-text-muted, #666666)">→</text>
+    <text x="590" y="145" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12px" fill="#c0392b">יעד</text>
+    <text x="590" y="162" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#c0392b">4</text>
+
+    <!-- Arrow to error -->
+    <text x="680" y="155" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="16px" fill="var(--color-text-muted, #666666)">→</text>
+
+    <!-- Error box -->
     <rect x="720" y="120" width="120" height="60" fill="var(--color-surface, #fdecec)" stroke="#c0392b" stroke-width="2" rx="8"/>
-    <text x="780" y="142" text-anchor="middle" font-family="Arial, sans-serif" font-size="12px" fill="#c0392b">שגיאה</text>
-    <text x="780" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#c0392b">1 − 4 = −3</text>
+    <text x="780" y="142" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12px" fill="#c0392b">שגיאה</text>
+    <text x="780" y="165" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#c0392b">1 − 4 = −3</text>
   </g>
+
+  <!-- Backward Pass section -->
   <g transform="translate(0, 230)">
     <rect x="40" y="0" width="920" height="120" fill="var(--color-surface, #FDECEC)" stroke="#C0392B" stroke-width="1.5" rx="8"/>
-    <text x="500" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#C0392B" direction="rtl">Backward Pass — כמה המשקל צריך להשתנות?</text>
-    <text x="150" y="75" font-family="Arial, sans-serif" font-size="14" fill="var(--color-text, #333)" >gradient = שגיאה × קלט = −3 × 2 = </text>
+    <text x="500" y="25" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#C0392B">Backward Pass — כמה המשקל צריך להשתנות?</text>
+
+    <!-- Gradient formula: left-aligned LTR math with Hebrew words inline -->
+    <text x="150" y="75" text-anchor="start" direction="ltr" font-family="Arial, sans-serif" font-size="14" fill="var(--color-text, #333)">gradient = שגיאה × קלט = −3 × 2 =</text>
     <rect x="430" y="50" width="50" height="40" fill="var(--color-surface, #fff)" stroke="#C0392B" stroke-width="2" rx="5"/>
-    <text x="455" y="77" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#C0392B">−6</text>
+    <text x="455" y="77" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#C0392B">−6</text>
+
+    <!-- Backward arrow -->
     <line x1="700" y1="75" x2="520" y2="75" stroke="#C0392B" stroke-width="3" marker-end="url(#back)"/>
-    <text x="610" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#C0392B">השגיאה זורמת אחורה</text>
+    <text x="610" y="70" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12" fill="#C0392B">השגיאה זורמת אחורה</text>
   </g>
+
+  <!-- Weight Update section -->
   <g>
     <rect x="40" y="370" width="920" height="110" fill="var(--color-surface, #e8f8ee)" stroke="#27ae60" stroke-width="1.5" rx="8"/>
-    <text x="500" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#27ae60">עדכון משקל</text>
-    <text x="91" y="423" font-family="Arial, sans-serif" font-size="14px" fill="var(--color-text, #333333)">learning rate = 0.1</text>
-    <text x="91" y="453" font-family="Arial, sans-serif" font-size="14px" fill="var(--color-text, #333333)">משקל חדש = 0.5 − (0.1 × −6) = 0.5 + 0.6 =</text>
+    <text x="500" y="395" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="14px" font-weight="bold" fill="#27ae60">עדכון משקל</text>
+
+    <!-- Formulas: left-aligned LTR math -->
+    <text x="91" y="423" text-anchor="start" direction="ltr" font-family="Arial, sans-serif" font-size="14px" fill="var(--color-text, #333333)">learning rate = 0.1</text>
+    <text x="91" y="453" text-anchor="start" direction="ltr" font-family="Arial, sans-serif" font-size="14px" fill="var(--color-text, #333333)">משקל חדש = 0.5 − (0.1 × −6) = 0.5 + 0.6 =</text>
+
+    <!-- Result box -->
     <g transform="translate(-64,-12)">
       <rect x="530" y="430" width="60" height="40" fill="var(--color-surface, #ffffff)" stroke="#27ae60" stroke-width="2" rx="5"/>
-      <text x="560" y="457" text-anchor="middle" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#27ae60">1.1</text>
+      <text x="560" y="457" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18px" font-weight="bold" fill="#27ae60">1.1</text>
     </g>
+
+    <!-- Explanation box -->
     <g transform="translate(-28,-12)">
       <rect x="650" y="425" width="280" height="50" fill="var(--color-surface, #ffffff)" stroke="#27ae60" stroke-width="1.5" rx="5"/>
-      <text x="790" y="447" text-anchor="middle" font-family="Arial, sans-serif" font-size="12px" fill="#27ae60" direction="rtl">המשקל עלה!</text>
-      <text x="790" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="12px" fill="var(--color-text-muted, #666666)">החיזוי הבא: 2 × 1.1 = 2.2 (קרוב יותר ל-4)</text>
+      <text x="790" y="447" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12px" fill="#27ae60">המשקל עלה!</text>
+      <text x="790" y="465" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12px" fill="var(--color-text-muted, #666666)">החיזוי הבא: 2 × 1.1 = 2.2 (קרוב יותר ל-4)</text>
     </g>
   </g>
 </svg>
