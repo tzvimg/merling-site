@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חוקר המשולשים עם סטיץ'!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --stitch-blue: #3B5FD4;
+    --stitch-dark: #2A3F8F;
+    --stitch-light: #7B9EF7;
+    --stitch-belly: #B8D4FF;
+    --pink-ear: #FF7EB3;
+    --tropical-pink: #FF6B9D;
+    --tropical-green: #34D399;
+    --tropical-yellow: #FBBF24;
+    --tropical-orange: #FB923C;
+    --sand: #FFF8F0;
+    --ocean: #E8F4FD;
+    --coconut: #3D2B1F;
+    --text: #1E293B;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ── Tropical Background Decorations ── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 10% 90%, rgba(59,95,212,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 20%, rgba(255,126,179,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(123,158,247,0.02) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Floating tropical elements */
+  .floating-deco {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.08;
+    font-size: 60px;
+    animation: floatDeco 20s ease-in-out infinite;
+  }
+  .floating-deco:nth-child(1) { top: 15%; left: 3%; animation-delay: 0s; }
+  .floating-deco:nth-child(2) { top: 45%; right: 2%; animation-delay: -5s; font-size: 45px; }
+  .floating-deco:nth-child(3) { bottom: 20%; left: 5%; animation-delay: -10s; font-size: 50px; }
+  .floating-deco:nth-child(4) { top: 70%; right: 6%; animation-delay: -15s; font-size: 55px; }
+
+  @keyframes floatDeco {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(5deg); }
+    75% { transform: translateY(10px) rotate(-3deg); }
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, var(--stitch-dark) 0%, var(--stitch-blue) 40%, var(--stitch-light) 100%);
+    color: white;
+    text-align: center;
+    padding: 12px 16px 14px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid var(--pink-ear);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20'%3E%3Cpath d='M0 20 Q30 0 60 20 Q90 0 120 20 Q150 0 180 20 Q210 0 240 20 Q270 0 300 20 Q330 0 360 20 Q390 0 420 20 Q450 0 480 20 Q510 0 540 20 Q570 0 600 20 Q630 0 660 20 Q690 0 720 20 Q750 0 780 20 Q810 0 840 20 Q870 0 900 20 Q930 0 960 20 Q990 0 1020 20 Q1050 0 1080 20 Q1110 0 1140 20 Q1170 0 1200 20' fill='%23FFF8F0'/%3E%3C/svg%3E") repeat-x;
+    background-size: 120px 20px;
+  }
+
+  .header-content { position: relative; z-index: 2; }
+
+  /* Stitch header image */
+  .stitch-header-img {
+    display: block;
+    margin: 0 auto 4px;
+    width: 65px;
+    height: auto;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    animation: stitchBounce 3s ease-in-out infinite;
+  }
+  @keyframes stitchBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    text-shadow: 3px 3px 0 rgba(0,0,0,.2), 0 0 20px rgba(123,158,247,0.3);
+    position: relative;
+  }
+  header p {
+    font-size: 1rem;
+    opacity: .92;
+    margin-top: 2px;
+  }
+
+  .header-flowers {
+    position: absolute;
+    font-size: 28px;
+    opacity: 0.25;
+    z-index: 1;
+  }
+  .header-flowers:nth-child(1) { top: 8px; left: 5%; transform: rotate(15deg); }
+  .header-flowers:nth-child(2) { bottom: 12px; right: 8%; transform: rotate(-20deg); font-size: 24px; }
+  .header-flowers:nth-child(3) { top: 12px; right: 20%; transform: rotate(30deg); font-size: 20px; }
+  .header-flowers:nth-child(4) { bottom: 18px; left: 15%; transform: rotate(-10deg); font-size: 22px; }
+
+  /* ── Progress Bar ── */
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 16px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .progress-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: .85rem;
+    border: 3px solid #C5D3E8;
+    background: white;
+    color: #94A3B8;
+    transition: all .35s;
+    cursor: pointer;
+    position: relative;
+  }
+  .progress-dot.done {
+    border-color: var(--tropical-green);
+    background: var(--tropical-green);
+    color: white;
+    box-shadow: 0 2px 8px rgba(52,211,153,0.3);
+  }
+  .progress-dot.active {
+    border-color: var(--stitch-blue);
+    background: linear-gradient(135deg, var(--stitch-blue), var(--stitch-light));
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px rgba(59,95,212,.25), 0 4px 12px rgba(59,95,212,.3);
+  }
+  .progress-line {
+    width: 28px; height: 3px;
+    background: #D4DEF0;
+    border-radius: 2px;
+    transition: background .35s;
+  }
+  .progress-line.done { background: var(--tropical-green); }
+
+  /* ── Main Container ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Lesson Card ── */
+  .lesson {
+    display: none;
+    animation: fadeUp .5s ease;
+  }
+  .lesson.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    background: white;
+    border-radius: 24px;
+    padding: 28px 24px;
+    margin-top: 20px;
+    box-shadow: 0 4px 24px rgba(59,95,212,.08), 0 1px 3px rgba(0,0,0,.04);
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '🐾';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    font-size: 30px;
+    opacity: 0.06;
+    transform: rotate(-20deg);
+  }
+  .card::after {
+    content: '🐾';
+    position: absolute;
+    bottom: -2px;
+    right: 10px;
+    font-size: 24px;
+    opacity: 0.06;
+    transform: rotate(25deg);
+  }
+
+  .card h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: var(--stitch-dark);
+  }
+  .card .subtitle {
+    font-size: 1.2rem;
+    color: #7B8DAF;
+    margin-bottom: 16px;
+  }
+  .card p, .card li {
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+  .card ul { padding-right: 22px; padding-left: 0; margin: 10px 0; }
+  .card li { margin-bottom: 6px; }
+  .card li::marker { color: var(--stitch-blue); }
+
+  .emoji-big { font-size: 2.2rem; display: inline-block; margin-left: 6px; margin-right: 0; vertical-align: middle; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, #EEF2FF, #E8F4FD);
+    border-right: 4px solid var(--stitch-blue);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 1.15rem;
+    position: relative;
+  }
+  .highlight-box::before {
+    content: '🌺';
+    position: absolute;
+    top: -6px;
+    left: 8px;
+    font-size: 16px;
+    opacity: 0.6;
+  }
+  .highlight-box.green { background: linear-gradient(135deg, #F0FDF4, #ECFDF5); border-color: var(--tropical-green); }
+  .highlight-box.green::before { content: '🌴'; }
+  .highlight-box.purple { background: linear-gradient(135deg, #F0E7FF, #EEF2FF); border-color: var(--stitch-light); }
+  .highlight-box.purple::before { content: '🛸'; }
+  .highlight-box.orange { background: linear-gradient(135deg, #FFF7ED, #FFFBEB); border-color: var(--tropical-orange); }
+  .highlight-box.orange::before { content: '🌊'; }
+
+  /* ── Canvas Area ── */
+  .canvas-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 18px auto;
+    aspect-ratio: 4/3;
+    background: linear-gradient(180deg, #F0F5FF 0%, #FAFCFF 100%);
+    border-radius: 20px;
+    border: 3px dashed var(--stitch-belly);
+    overflow: hidden;
+    touch-action: none;
+    cursor: default;
+  }
+  .canvas-wrap canvas {
+    width: 100%; height: 100%;
+    display: block;
+  }
+  .canvas-wrap .drag-hint {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--stitch-dark), var(--stitch-blue));
+    color: white;
+    font-size: .8rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    pointer-events: none;
+    animation: pulse 2s infinite;
+    box-shadow: 0 2px 8px rgba(59,95,212,.3);
+  }
+  @keyframes pulse {
+    0%,100%{ opacity:.7; transform: translateX(-50%) scale(1); }
+    50%{ opacity:1; transform: translateX(-50%) scale(1.05); }
+  }
+
+  /* ── Measurements Panel ── */
+  .measures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 1.05rem;
+  }
+  .measures .m-item {
+    background: linear-gradient(135deg, #F0F4FF, #F8FAFF);
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #E2E8F8;
+  }
+  .measures .m-label { font-weight: 800; white-space: nowrap; color: var(--stitch-dark); }
+  .measures .m-val { color: #5B6B8A; }
+
+  .type-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-top: 10px;
+    color: white;
+    transition: all .3s;
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 13px 30px;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+    color: white;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.15); }
+  .btn:active { transform: scale(.97); }
+  .btn-purple { background: linear-gradient(135deg, var(--stitch-blue), var(--stitch-light)); }
+  .btn-pink   { background: linear-gradient(135deg, var(--pink-ear), #FF9EC7); }
+  .btn-green  { background: linear-gradient(135deg, var(--tropical-green), #10B981); }
+  .btn-blue   { background: linear-gradient(135deg, #4B7BF5, #6B9EF7); }
+  .btn-orange { background: linear-gradient(135deg, var(--tropical-orange), #F97316); }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    justify-content: center;
+  }
+
+  .reset-btn {
+    background: none;
+    border: 2px solid #C5D3E8;
+    color: #7B8DAF;
+    padding: 8px 18px;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .reset-btn:hover { border-color: var(--stitch-blue); color: var(--stitch-blue); }
+
+  /* ── Quiz ── */
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .quiz-option {
+    background: white;
+    border: 3px solid #DEE5F5;
+    border-radius: 16px;
+    padding: 14px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all .2s;
+  }
+  .quiz-option:hover { border-color: var(--stitch-blue); background: #F0F4FF; transform: translateY(-2px); }
+  .quiz-option.correct { border-color: var(--tropical-green); background: #DCFCE7; }
+  .quiz-option.wrong   { border-color: var(--tropical-pink); background: #FEE2E2; }
+  .quiz-option canvas  { display: block; margin: 0 auto 8px; }
+
+  .quiz-feedback {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    min-height: 32px;
+    margin-top: 8px;
+  }
+
+  /* ── Stars / Confetti ── */
+  .stars {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin: 10px 0;
+    font-size: 1.6rem;
+  }
+  .star { opacity: .2; transition: opacity .3s, transform .3s; }
+  .star.on { opacity: 1; transform: scale(1.2); }
+
+  #confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── Stitch says bubble ── */
+  .stitch-says {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 16px 0;
+    direction: rtl;
+  }
+  .stitch-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(59,95,212,.25);
+    border: 3px solid var(--stitch-belly);
+    overflow: hidden;
+    background: var(--stitch-belly);
+  }
+  .stitch-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .stitch-bubble {
+    background: linear-gradient(135deg, #F0F4FF, #E8EEFF);
+    border-radius: 18px 4px 18px 18px;
+    padding: 14px 18px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    flex: 1;
+    border: 2px solid #DEE5F5;
+    position: relative;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.4rem; }
+    .card { padding: 20px 16px; border-radius: 20px; }
+    .quiz-grid { grid-template-columns: 1fr 1fr; }
+    .canvas-wrap { aspect-ratio: 1/1; }
+    .stitch-header-img { width: 80px; }
+  }
+
+  /* ── Fun hover wobble ── */
+  @keyframes wobble {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+  .card:hover .emoji-big { animation: wobble .5s ease; }
+</style>
+</head>
+<body>
+
+<!-- Floating tropical decorations -->
+<div class="floating-deco">🌺</div>
+<div class="floating-deco">🌴</div>
+<div class="floating-deco">🛸</div>
+<div class="floating-deco">🌊</div>
+
+<!-- Confetti layer -->
+<canvas id="confetti-canvas"></canvas>
+
+<header>
+  <span class="header-flowers">🌺</span>
+  <span class="header-flowers">🌴</span>
+  <span class="header-flowers">🌺</span>
+  <span class="header-flowers">🐾</span>
+  <div class="header-content">
+    <img class="stitch-header-img" src="https://pngimg.com/uploads/stitch/stitch_PNG73.png" alt="סטיץ'" />
+    <h1>חוקר המשולשים עם סטיץ'!</h1>
+    <p>אוהאנה אומרת: ללמוד ביחד זה הכי כיף! 🌺</p>
+  </div>
+</header>
+
+<!-- Progress -->
+<div class="progress-wrap" id="progress"></div>
+
+<div class="container">
+
+  <!-- ============ LESSON 0 : Welcome ============ -->
+  <div class="lesson" id="lesson-0">
+    <div class="card" style="border-color: var(--stitch-light);">
+      <h2><span class="emoji-big">👽</span> !אלוהה, חוקר</h2>
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          <strong>סטיץ' אומר:</strong> היי! אני ניסוי 626 ואני אוהב משולשים! היום נלמד ביחד על צורות עם <strong>3 צלעות</strong> ו-<strong>3 פינות</strong>. 🤙
+        </div>
+      </div>
+      <div class="highlight-box purple">
+        <strong>הידעתם?</strong> המילה "משולש" מגיעה מ"שלוש". לכל משולש יש בדיוק 3 צלעות ו-3 זוויות!
+      </div>
+      <p>תלמדו על <strong>4 סוגים מיוחדים</strong> של משולשים, ותוכלו <strong>לשחק איתם</strong> על ידי גרירת הפינות שלהם!</p>
+      <p style="margin-top:10px;">מוכנים? אוהאנה, יאללה! 🌴</p>
+      <div class="btn-row">
+        <button class="btn btn-purple" onclick="goTo(1)">!בואו נתחיל 🛸</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 1 : Equilateral ============ -->
+  <div class="lesson" id="lesson-1">
+    <div class="card" style="border-color: var(--tropical-green);">
+      <h2><span class="emoji-big">🌴</span> משולש שווה צלעות</h2>
+      <p class="subtitle">המשולש שבו "הכל שווה" - כמו אוהאנה!</p>
+      <p>למשולש <strong>שווה צלעות</strong> יש:</p>
+      <ul>
+        <li>כל <strong>3 הצלעות</strong> באותו <strong>אורך</strong></li>
+        <li>כל <strong>3 הזוויות</strong> <strong>שוות</strong> (60&deg; כל אחת)</li>
+      </ul>
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          זה המשולש הכי "הוגן" &mdash; כל צלע וכל זווית מקבלות בדיוק את אותו הדבר! בדיוק כמו שאני מחלק גלידה עם לילו! 🍦
+        </div>
+      </div>
+
+      <div class="canvas-wrap" id="cw-equi">
+        <canvas id="c-equi"></canvas>
+        <div class="drag-hint">🐾 !גררו את הפינות</div>
+      </div>
+      <div class="measures" id="m-equi"></div>
+      <div style="text-align:center;">
+        <div class="type-badge" id="badge-equi" style="background:var(--tropical-green);">שווה צלעות</div>
+      </div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTriangle('equi')">🔄 איפוס צורה</button>
+      </div>
+
+      <div class="highlight-box green" style="margin-top:16px;">
+        <strong>!נסו</strong> גררו פינה וצפו במדידות משתנות. האם תוכלו לשמור על שלוש הצלעות שוות?
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-green" onclick="goTo(2)">&#9664; הבא: שווה שוקיים</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 2 : Isosceles ============ -->
+  <div class="lesson" id="lesson-2">
+    <div class="card" style="border-color: var(--stitch-light);">
+      <h2><span class="emoji-big">🌺</span> משולש שווה שוקיים</h2>
+      <p class="subtitle">!שתי צלעות תאומות - כמו האוזניים של סטיץ'</p>
+      <p>למשולש <strong>שווה שוקיים</strong> יש:</p>
+      <ul>
+        <li><strong>2 צלעות</strong> באותו <strong>אורך</strong></li>
+        <li><strong>2 הזוויות</strong> שמול אותן צלעות גם <strong>שוות</strong></li>
+        <li>הצלע השלישית יכולה להיות שונה</li>
+      </ul>
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          זה נראה כמו גג של בית &mdash; שתי צלעות תואמות שנפגשות בראש! כמו הבית של לילו בהוואי! 🏠
+        </div>
+      </div>
+
+      <div class="canvas-wrap" id="cw-iso">
+        <canvas id="c-iso"></canvas>
+        <div class="drag-hint">🐾 !גררו את הפינות</div>
+      </div>
+      <div class="measures" id="m-iso"></div>
+      <div style="text-align:center;">
+        <div class="type-badge" id="badge-iso" style="background:var(--stitch-blue);">שווה שוקיים</div>
+      </div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTriangle('iso')">🔄 איפוס צורה</button>
+      </div>
+
+      <div class="highlight-box" style="margin-top:16px;">
+        <strong>!נסו</strong> האם תוכלו לגרור את הפינה העליונה למעלה או למטה ולשמור על שתי הצלעות באותו אורך?
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-blue" onclick="goTo(3)">&#9664; הבא: שונה צלעות</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 3 : Scalene ============ -->
+  <div class="lesson" id="lesson-3">
+    <div class="card" style="border-color: var(--tropical-orange);">
+      <h2><span class="emoji-big">🌊</span> משולש שונה צלעות</h2>
+      <p class="subtitle">!כל צלע שונה - כמו כל ניסוי שונה</p>
+      <p>למשולש <strong>שונה צלעות</strong> יש:</p>
+      <ul>
+        <li>כל <strong>3 הצלעות</strong> באורכים <strong>שונים</strong></li>
+        <li>כל <strong>3 הזוויות</strong> גם <strong>שונות</strong></li>
+      </ul>
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          זה המשולש הכי פרוע &mdash; אין שתי צלעות או זוויות שוות! פרוע כמוני! 😜
+        </div>
+      </div>
+
+      <div class="canvas-wrap" id="cw-scal">
+        <canvas id="c-scal"></canvas>
+        <div class="drag-hint">🐾 !גררו את הפינות</div>
+      </div>
+      <div class="measures" id="m-scal"></div>
+      <div style="text-align:center;">
+        <div class="type-badge" id="badge-scal" style="background:var(--tropical-orange);">שונה צלעות</div>
+      </div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTriangle('scal')">🔄 איפוס צורה</button>
+      </div>
+
+      <div class="highlight-box orange" style="margin-top:16px;">
+        <strong>!נסו</strong> הזיזו את הפינות כך שלכל שלוש הצלעות יהיו מספרים שונים. זה משולש שונה צלעות!
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-orange" onclick="goTo(4)">&#9664; הבא: משולש ישר זווית</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 4 : Right Triangle ============ -->
+  <div class="lesson" id="lesson-4">
+    <div class="card" style="border-color: var(--pink-ear);">
+      <h2><span class="emoji-big">🛸</span> משולש ישר זווית</h2>
+      <p class="subtitle">!יש לו פינה מרובעת מושלמת</p>
+      <p>למשולש <strong>ישר זווית</strong> יש:</p>
+      <ul>
+        <li>זווית אחת שהיא בדיוק <strong>90&deg;</strong> &mdash; <strong>פינה מרובעת</strong> מושלמת</li>
+        <li>שתי הזוויות האחרות מסתכמות ב-90&deg;</li>
+        <li>הצלע הארוכה ביותר (מול הזווית הישרה) נקראת <strong>יתר</strong></li>
+      </ul>
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          הסתכלו על פינת ספר &mdash; הפינה המרובעת הזו היא זווית של 90&deg;! חפשו את סמל הריבוע הקטן! 📐
+        </div>
+      </div>
+
+      <div class="canvas-wrap" id="cw-right">
+        <canvas id="c-right"></canvas>
+        <div class="drag-hint">🐾 !גררו את הפינות</div>
+      </div>
+      <div class="measures" id="m-right"></div>
+      <div style="text-align:center;">
+        <div class="type-badge" id="badge-right" style="background:var(--pink-ear);">משולש ישר זווית</div>
+      </div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTriangle('right')">🔄 איפוס צורה</button>
+      </div>
+
+      <div class="highlight-box" style="margin-top:16px; border-color:var(--pink-ear); background: linear-gradient(135deg, #FFF0F5, #FFE8F0);">
+        <strong>!נסו</strong> חפשו את סמל הריבוע הקטן בפינה &mdash; זה אומר שזה 90&deg;. האם תוכלו לשמור עליו תוך כדי הזזת פינות אחרות?
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-pink" onclick="goTo(5)">&#9664; הבא: חקירה חופשית</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 5 : Free Explore ============ -->
+  <div class="lesson" id="lesson-5">
+    <div class="card" style="border-color: var(--stitch-light);">
+      <h2><span class="emoji-big">🎨</span> מצב חקירה חופשית</h2>
+      <p class="subtitle">!צרו כל משולש שתרצו</p>
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          עכשיו תורכם! גררו את הפינות כדי ליצור <strong>כל צורה</strong> שתרצו. צפו בתווית משתנה כשאתם יוצרים סוגי משולשים שונים! 🤩
+        </div>
+      </div>
+
+      <div class="canvas-wrap" id="cw-free" style="border-color:var(--stitch-light);">
+        <canvas id="c-free"></canvas>
+        <div class="drag-hint">🐾 !גררו את הפינות</div>
+      </div>
+      <div class="measures" id="m-free"></div>
+      <div style="text-align:center;">
+        <div class="type-badge" id="badge-free" style="background:var(--stitch-blue);">שונה צלעות</div>
+      </div>
+      <div class="btn-row">
+        <button class="reset-btn" onclick="resetTriangle('free')">🔄 איפוס צורה</button>
+      </div>
+
+      <div class="highlight-box purple" style="margin-top:16px;">
+        <strong>:אתגר מסטיץ'</strong> האם תוכלו ליצור כל סוג? נסו ליצור משולש שווה צלעות, שווה שוקיים, שונה צלעות וישר זווית!
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-purple" onclick="goTo(6)">!ענו על החידון 🏆</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 6 : Quiz ============ -->
+  <div class="lesson" id="lesson-6">
+    <div class="card" style="border-color: var(--tropical-yellow);">
+      <h2><span class="emoji-big">🏆</span> !חידון המשולשים של סטיץ'</h2>
+      <p class="subtitle">!בואו נראה מה אתם זוכרים</p>
+
+      <div id="quiz-area"></div>
+      <div class="quiz-feedback" id="quiz-fb"></div>
+      <div class="stars" id="quiz-stars"></div>
+
+      <div class="btn-row" id="quiz-btns">
+        <button class="btn btn-purple" id="quiz-next-btn" onclick="nextQuestion()" style="display:none;">&#9664; השאלה הבאה</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 7 : Congrats ============ -->
+  <div class="lesson" id="lesson-7">
+    <div class="card" style="border-color: var(--tropical-yellow); text-align:center;">
+      <h2 style="font-size:2rem;"><span class="emoji-big">🎉</span> !הצלחתם <span class="emoji-big">🎉</span></h2>
+      <div class="stitch-says" style="justify-content:center;">
+        <div class="stitch-avatar" style="width:70px;height:70px;"><img src="https://pngimg.com/uploads/stitch/stitch_PNG53.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble" style="text-align:right;">
+          <strong>סטיץ' גאה בכם!</strong> אתם עכשיו <strong>מומחי משולשים</strong>! אוהאנה משמעה משפחה, ומשפחה אומרת שאף אחד לא נשכח... ושום משולש לא נשכח! 💙
+        </div>
+      </div>
+      <div class="stars" id="final-stars" style="font-size:2.2rem;"></div>
+      <p id="final-score" style="font-size:1.1rem; margin:10px 0;"></p>
+
+      <div class="highlight-box green" style="text-align:right;">
+        <strong>:למדתם</strong>
+        <ul style="margin-top:6px;">
+          <li><strong>שווה צלעות</strong> &mdash; כל הצלעות והזוויות שוות 🌴</li>
+          <li><strong>שווה שוקיים</strong> &mdash; שתי צלעות זהות 🌺</li>
+          <li><strong>שונה צלעות</strong> &mdash; כל הצלעות שונות 🌊</li>
+          <li><strong>ישר זווית</strong> &mdash; יש לו זווית של 90&deg; 🛸</li>
+        </ul>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-green" onclick="goTo(5)">חקרו עוד 🎨</button>
+        <button class="btn btn-pink" onclick="restartQuiz(); goTo(6);">חידון מחדש 🔄</button>
+        <button class="btn btn-orange" onclick="goTo(8)">בואו נצייר! 🖌️</button>
+        <button class="btn btn-purple" onclick="goTo(0)">התחלה מחדש 🏠</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LESSON 8 : Paint with Rectangles ============ -->
+  <div class="lesson" id="lesson-8">
+    <div class="card" style="border-color: var(--tropical-orange);">
+      <h2><span class="emoji-big">🖌️</span> סטודיו הציור של סטיץ'!</h2>
+      <p class="subtitle">!צרו ציורים ממשולשים צבעוניים</p>
+
+      <div class="stitch-says">
+        <div class="stitch-avatar"><img src="https://pngimg.com/uploads/stitch/stitch_PNG14.png" alt="סטיץ'"></div>
+        <div class="stitch-bubble">
+          בחרו צבע, ואז לחצו וגררו על הקנבס כדי לצייר משולשים! אפשר ליצור בתים, כוכבים, חייזרים... מה שתרצו! 🎨
+        </div>
+      </div>
+
+      <!-- Mode Toggle -->
+      <div style="display:flex; gap:8px; justify-content:center; margin:12px 0;">
+        <button class="btn btn-purple" id="mode-draw-btn" onclick="setPaintMode('draw')" style="padding:10px 24px;">🔺 ציור</button>
+        <button class="btn btn-orange" id="mode-select-btn" onclick="setPaintMode('select')" style="padding:10px 24px; opacity:0.5;">✋ בחירה</button>
+      </div>
+
+      <!-- Color Picker (draw mode) -->
+      <div id="paint-colors" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:12px 0;"></div>
+
+      <!-- Opacity Slider (draw mode) -->
+      <div id="paint-opacity-row" style="display:flex; align-items:center; justify-content:center; gap:12px; margin:10px 0;">
+        <label style="font-weight:700; font-size:1.1rem;">שקיפות:</label>
+        <input type="range" id="paint-opacity" min="20" max="100" value="100" style="width:120px; accent-color:var(--stitch-blue);">
+      </div>
+
+      <!-- Select mode hint -->
+      <div id="select-hint" style="display:none; text-align:center; margin:10px 0; font-size:1.1rem; color:#7B8DAF; font-weight:600;">
+        לחצו על משולש כדי לבחור אותו. גררו אותו להזזה, או השתמשו בנקודות לשינוי גודל וסיבוב.
+      </div>
+
+      <!-- Paint Canvas -->
+      <div class="canvas-wrap" id="cw-paint" style="border-color:var(--tropical-orange); max-width:700px; aspect-ratio:4/3; cursor:crosshair;">
+        <canvas id="c-paint"></canvas>
+        <div class="drag-hint" id="paint-hint">🔺 !לחצו וגררו כדי לצייר משולשים</div>
+      </div>
+
+      <div class="btn-row">
+        <button class="reset-btn" onclick="clearPaint()">🗑️ נקה הכל</button>
+        <button class="reset-btn" onclick="undoPaint()">↩️ בטל אחרון</button>
+        <button class="reset-btn" id="delete-sel-btn" onclick="deleteSelected()" style="display:none;">🗑️ מחק נבחר</button>
+      </div>
+
+      <div class="highlight-box orange" style="margin-top:16px;">
+        <strong>טיפ מסטיץ':</strong> נסו לצייר בית עם גג משולש, עץ, כוכב, או אולי חייזר כמוני! שלבו צבעים, כיוונים וגדלים שונים!
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-purple" onclick="goTo(0)">חזרה להתחלה 🏠</button>
+        <button class="btn btn-green" onclick="goTo(5)">חקירה חופשית 🎨</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  GLOBALS
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const TOTAL_LESSONS = 9;   // 0..8
+let currentLesson = 0;
+let highestVisited = 0;
+
+// Triangle instances  { key: { pts, canvas, ctx, wrap, measEl, badgeEl, defaults } }
+const tris = {};
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  NAVIGATION
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function buildProgress() {
+  const wrap = document.getElementById('progress');
+  wrap.innerHTML = '';
+  const labels = ['🐾','1','2','3','4','5','Q','🌟','🖌️'];
+  for (let i = 0; i < TOTAL_LESSONS; i++) {
+    if (i > 0) {
+      const line = document.createElement('div');
+      line.className = 'progress-line' + (i <= currentLesson ? ' done' : '');
+      wrap.appendChild(line);
+    }
+    const dot = document.createElement('div');
+    dot.className = 'progress-dot';
+    if (i < currentLesson) dot.classList.add('done');
+    if (i === currentLesson) dot.classList.add('active');
+    dot.textContent = labels[i];
+    dot.onclick = () => { goTo(i); };
+    wrap.appendChild(dot);
+  }
+}
+
+function goTo(n) {
+  currentLesson = n;
+  if (n > highestVisited) highestVisited = n;
+  document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
+  const el = document.getElementById('lesson-' + n);
+  if (el) el.classList.add('active');
+  buildProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Resize canvases when shown
+  requestAnimationFrame(() => {
+    Object.values(tris).forEach(t => resizeCanvas(t));
+    if (n === 8) resizePaintCanvas();
+  });
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  TRIANGLE ENGINE
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function dist(a, b) { return Math.hypot(b[0]-a[0], b[1]-a[1]); }
+
+// Convert CSS pixels to cm using screen DPI (96 dpi standard, 1 inch = 2.54 cm)
+function pxToCm(px) { return (px / 96 * 2.54).toFixed(1); }
+
+function angleDeg(a, b, c) {
+  // angle at vertex b
+  const ab = [a[0]-b[0], a[1]-b[1]];
+  const cb = [c[0]-b[0], c[1]-b[1]];
+  const dot = ab[0]*cb[0] + ab[1]*cb[1];
+  const cross = ab[0]*cb[1] - ab[1]*cb[0];
+  let ang = Math.atan2(Math.abs(cross), dot) * 180 / Math.PI;
+  return ang;
+}
+
+function classify(pts) {
+  const sides = [
+    dist(pts[0], pts[1]),
+    dist(pts[1], pts[2]),
+    dist(pts[2], pts[0])
+  ];
+  const angles = [
+    angleDeg(pts[2], pts[0], pts[1]),
+    angleDeg(pts[0], pts[1], pts[2]),
+    angleDeg(pts[1], pts[2], pts[0])
+  ];
+  const eq = (a,b) => Math.abs(a - b) < 4;   // tolerance in px
+  const eqA = (a,b) => Math.abs(a - b) < 3;  // degrees
+
+  let isRight = angles.some(a => Math.abs(a - 90) < 3.5);
+  let sameCount = 0;
+  if (eq(sides[0],sides[1])) sameCount++;
+  if (eq(sides[1],sides[2])) sameCount++;
+  if (eq(sides[0],sides[2])) sameCount++;
+
+  let type;
+  if (sameCount === 3) type = 'שווה צלעות';
+  else if (sameCount >= 1) type = 'שווה שוקיים';
+  else type = 'שונה צלעות';
+
+  if (isRight) type = type + ' ישר זווית';
+
+  return { sides, angles, type, isRight };
+}
+
+function typeColor(type) {
+  if (type.includes('שווה צלעות')) return '#34D399';
+  if (type.includes('ישר זווית'))  return '#FF7EB3';
+  if (type.includes('שווה שוקיים'))return '#4B7BF5';
+  return '#FB923C';
+}
+
+// ── Create a triangle instance ──
+function createTriangle(key, canvasId, wrapId, measId, badgeId, defaultPts) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const wrap = document.getElementById(wrapId);
+  const measEl = document.getElementById(measId);
+  const badgeEl = document.getElementById(badgeId);
+
+  const t = { key, pts: defaultPts.map(p=>[...p]), canvas, ctx, wrap, measEl, badgeEl, defaults: defaultPts, dragging: -1 };
+  tris[key] = t;
+
+  resizeCanvas(t);
+  draw(t);
+
+  // Pointer events (mouse + touch)
+  const getPos = (e) => {
+    const r = canvas.getBoundingClientRect();
+    let clientX, clientY;
+    if (e.touches && e.touches.length > 0) {
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else if (e.changedTouches && e.changedTouches.length > 0) {
+      clientX = e.changedTouches[0].clientX;
+      clientY = e.changedTouches[0].clientY;
+    } else {
+      clientX = e.clientX;
+      clientY = e.clientY;
+    }
+    // Points are stored in CSS-coordinate space (draw uses setTransform for DPR)
+    const scaleX = (canvas.width / (window.devicePixelRatio||1)) / r.width;
+    const scaleY = (canvas.height / (window.devicePixelRatio||1)) / r.height;
+    return [(clientX - r.left) * scaleX, (clientY - r.top) * scaleY];
+  };
+
+  const TOUCH_RADIUS = 40;
+  const MOUSE_RADIUS = 28;
+
+  const onDown = (e) => {
+    const isTouch = e.touches != null;
+    const [mx, my] = getPos(e);
+    const hitRadius = isTouch ? TOUCH_RADIUS : MOUSE_RADIUS;
+    for (let i = 0; i < 3; i++) {
+      if (dist([mx,my], t.pts[i]) < hitRadius) {
+        t.dragging = i;
+        if (isTouch) e.preventDefault();
+        break;
+      }
+    }
+  };
+  const onMove = (e) => {
+    if (t.dragging < 0) return;
+    e.preventDefault();
+    const [mx, my] = getPos(e);
+    const W = t.canvas.width / (window.devicePixelRatio||1);
+    const H = t.canvas.height / (window.devicePixelRatio||1);
+    t.pts[t.dragging] = [
+      Math.max(20, Math.min(W - 20, mx)),
+      Math.max(20, Math.min(H - 20, my))
+    ];
+    draw(t);
+  };
+  const onUp = () => { t.dragging = -1; };
+
+  canvas.addEventListener('mousedown', onDown);
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('mouseup', onUp);
+  canvas.addEventListener('mouseleave', onUp);
+  canvas.addEventListener('touchstart', onDown, {passive:false});
+  canvas.addEventListener('touchmove', onMove, {passive:false});
+  canvas.addEventListener('touchend', onUp);
+}
+
+function resizeCanvas(t) {
+  const r = t.wrap.getBoundingClientRect();
+  if (r.width === 0) return;
+  const dpr = window.devicePixelRatio || 1;
+  t.canvas.width = r.width * dpr;
+  t.canvas.height = r.height * dpr;
+  t.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw(t);
+}
+
+function draw(t) {
+  const c = t.ctx;
+  const W = t.canvas.width / (window.devicePixelRatio||1);
+  const H = t.canvas.height / (window.devicePixelRatio||1);
+  c.clearRect(0, 0, W, H);
+
+  const info = classify(t.pts);
+  const col = typeColor(info.type);
+
+  // Fill
+  c.beginPath();
+  c.moveTo(t.pts[0][0], t.pts[0][1]);
+  c.lineTo(t.pts[1][0], t.pts[1][1]);
+  c.lineTo(t.pts[2][0], t.pts[2][1]);
+  c.closePath();
+  c.fillStyle = col + '22';
+  c.fill();
+
+  // Stroke
+  c.lineWidth = 3;
+  c.strokeStyle = col;
+  c.stroke();
+
+  // Right-angle indicator
+  if (info.isRight) {
+    for (let i = 0; i < 3; i++) {
+      if (Math.abs(info.angles[i] - 90) < 3.5) {
+        drawRightAngle(c, t.pts, i, col);
+      }
+    }
+  }
+
+  // Angle arcs
+  for (let i = 0; i < 3; i++) {
+    if (info.isRight && Math.abs(info.angles[i] - 90) < 3.5) continue;
+    drawAngleArc(c, t.pts, i, info.angles[i], col);
+  }
+
+  // Side labels
+  const labels = ['a','b','c'];
+  const pairs = [[0,1],[1,2],[2,0]];
+  c.font = '700 15px Nunito, sans-serif';
+  c.fillStyle = '#475569';
+  pairs.forEach(([i,j], idx) => {
+    const mx = (t.pts[i][0]+t.pts[j][0])/2;
+    const my = (t.pts[i][1]+t.pts[j][1])/2;
+    const dx = t.pts[j][1]-t.pts[i][1];
+    const dy = -(t.pts[j][0]-t.pts[i][0]);
+    const len = Math.hypot(dx,dy)||1;
+    const off = 14;
+    c.fillText(labels[idx]+' = '+pxToCm(info.sides[idx]), mx+dx/len*off-12, my+dy/len*off+4);
+  });
+
+  // Vertices (draggable circles) - Stitch blue themed
+  const vLabels = ['A','B','C'];
+  t.pts.forEach((p, i) => {
+    // Outer glow
+    c.beginPath();
+    c.arc(p[0], p[1], 18, 0, Math.PI*2);
+    c.fillStyle = col + '33';
+    c.fill();
+    // Main circle
+    c.beginPath();
+    c.arc(p[0], p[1], 13, 0, Math.PI*2);
+    c.fillStyle = col;
+    c.fill();
+    c.strokeStyle = 'white';
+    c.lineWidth = 2;
+    c.stroke();
+    c.fillStyle = 'white';
+    c.font = 'bold 13px Nunito, sans-serif';
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillText(vLabels[i], p[0], p[1]);
+    c.textAlign = 'start';
+    c.textBaseline = 'alphabetic';
+  });
+
+  // Update measurements
+  if (t.measEl) {
+    t.measEl.innerHTML = `
+      <div class="m-item"><span class="m-label">צלע a:</span><span class="m-val">${pxToCm(info.sides[0])} ס"מ</span></div>
+      <div class="m-item"><span class="m-label">צלע b:</span><span class="m-val">${pxToCm(info.sides[1])} ס"מ</span></div>
+      <div class="m-item"><span class="m-label">צלע c:</span><span class="m-val">${pxToCm(info.sides[2])} ס"מ</span></div>
+      <div class="m-item"><span class="m-label">זווית A:</span><span class="m-val">${Math.round(info.angles[0])}&deg;</span></div>
+      <div class="m-item"><span class="m-label">זווית B:</span><span class="m-val">${Math.round(info.angles[1])}&deg;</span></div>
+      <div class="m-item"><span class="m-label">זווית C:</span><span class="m-val">${Math.round(info.angles[2])}&deg;</span></div>
+    `;
+  }
+  if (t.badgeEl) {
+    t.badgeEl.textContent = info.type;
+    t.badgeEl.style.background = col;
+  }
+}
+
+function drawRightAngle(c, pts, idx, col) {
+  const b = pts[idx];
+  const a = pts[(idx+2)%3];
+  const cc = pts[(idx+1)%3];
+  const size = 16;
+  const ba = [a[0]-b[0], a[1]-b[1]];
+  const bc = [cc[0]-b[0], cc[1]-b[1]];
+  const la = Math.hypot(...ba)||1;
+  const lc = Math.hypot(...bc)||1;
+  const ua = [ba[0]/la*size, ba[1]/la*size];
+  const uc = [bc[0]/lc*size, bc[1]/lc*size];
+
+  c.beginPath();
+  c.moveTo(b[0]+ua[0], b[1]+ua[1]);
+  c.lineTo(b[0]+ua[0]+uc[0], b[1]+ua[1]+uc[1]);
+  c.lineTo(b[0]+uc[0], b[1]+uc[1]);
+  c.lineWidth = 2;
+  c.strokeStyle = col;
+  c.stroke();
+}
+
+function drawAngleArc(c, pts, idx, deg, col) {
+  const b = pts[idx];
+  const a = pts[(idx+2)%3];
+  const cc = pts[(idx+1)%3];
+  const startAngle = Math.atan2(a[1]-b[1], a[0]-b[0]);
+  const endAngle = Math.atan2(cc[1]-b[1], cc[0]-b[0]);
+  c.beginPath();
+  c.arc(b[0], b[1], 22, startAngle, endAngle, angleCCW(startAngle, endAngle, deg));
+  c.lineWidth = 1.5;
+  c.strokeStyle = col + '88';
+  c.stroke();
+}
+
+function angleCCW(start, end, deg) {
+  let diff = (end - start + 2*Math.PI) % (2*Math.PI);
+  return diff > Math.PI;
+}
+
+function resetTriangle(key) {
+  const t = tris[key];
+  if (!t) return;
+  const W = t.canvas.width / (window.devicePixelRatio||1);
+  const H = t.canvas.height / (window.devicePixelRatio||1);
+  t.pts = scaleDefaults(t.defaults, W, H);
+  draw(t);
+}
+
+function scaleDefaults(defaults, W, H) {
+  return defaults.map(([xr, yr]) => [xr * W, yr * H]);
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  QUIZ
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const quizData = [
+  { q: 'לאיזה משולש יש את כל 3 הצלעות באותו אורך?',
+    img: null,
+    opts: ['שווה צלעות','שווה שוקיים','שונה צלעות','ישר זווית'],
+    ans: 0 },
+  { q: 'לאיזה משולש יש בדיוק 2 צלעות זהות?',
+    opts: ['שונה צלעות','שווה צלעות','שווה שוקיים','ישר זווית'],
+    ans: 2 },
+  { q: 'לאיזה משולש יש זווית של 90 מעלות?',
+    opts: ['שווה שוקיים','ישר זווית','שווה צלעות','שונה צלעות'],
+    ans: 1 },
+  { q: 'לאיזה משולש כל הצלעות שונות?',
+    opts: ['שווה צלעות','ישר זווית','שווה שוקיים','שונה צלעות'],
+    ans: 3 },
+  { q: 'מה שם הצלע הארוכה ביותר במשולש ישר זווית?',
+    opts: ['בסיס','יתר','קודקוד','היקף'],
+    ans: 1 },
+  { q: '...כל הזוויות במשולש שווה צלעות הן',
+    opts: ['90 מעלות','45 מעלות','60 מעלות','30 מעלות'],
+    ans: 2 },
+];
+
+let quizIdx = 0;
+let quizScore = 0;
+let quizAnswered = false;
+
+function restartQuiz() {
+  quizIdx = 0;
+  quizScore = 0;
+  quizAnswered = false;
+  document.getElementById('quiz-fb').textContent = '';
+  document.getElementById('quiz-stars').innerHTML = '';
+  document.getElementById('quiz-next-btn').style.display = 'none';
+  showQuestion();
+}
+
+function showQuestion() {
+  const area = document.getElementById('quiz-area');
+  if (quizIdx >= quizData.length) { finishQuiz(); return; }
+  const qd = quizData[quizIdx];
+  quizAnswered = false;
+  document.getElementById('quiz-fb').textContent = `שאלה ${quizIdx+1} מתוך ${quizData.length}`;
+  document.getElementById('quiz-next-btn').style.display = 'none';
+
+  let html = `<p style="font-weight:700; font-size:1.1rem; margin-bottom:12px;">${qd.q}</p>`;
+  html += '<div class="quiz-grid">';
+  qd.opts.forEach((opt, i) => {
+    html += `<div class="quiz-option" data-idx="${i}" onclick="pickAnswer(${i})">${opt}</div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+
+  // Stars
+  const starsEl = document.getElementById('quiz-stars');
+  starsEl.innerHTML = '';
+  for (let i = 0; i < quizData.length; i++) {
+    const s = document.createElement('span');
+    s.className = 'star' + (i < quizScore ? ' on' : '');
+    s.textContent = '\u2B50';
+    starsEl.appendChild(s);
+  }
+}
+
+function pickAnswer(idx) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  const qd = quizData[quizIdx];
+  const opts = document.querySelectorAll('#quiz-area .quiz-option');
+  opts[qd.ans].classList.add('correct');
+  const fb = document.getElementById('quiz-fb');
+  if (idx === qd.ans) {
+    quizScore++;
+    fb.textContent = '!נכון! כל הכבוד! סטיץ\' שמח \u2B50';
+    fb.style.color = '#16A34A';
+  } else {
+    opts[idx].classList.add('wrong');
+    fb.textContent = 'לא בדיוק \u2014 התשובה היא ' + qd.opts[qd.ans] + '. נסו שוב בפעם הבאה!';
+    fb.style.color = '#DC2626';
+  }
+  // Update stars
+  const starsEl = document.getElementById('quiz-stars');
+  starsEl.innerHTML = '';
+  for (let i = 0; i < quizData.length; i++) {
+    const s = document.createElement('span');
+    s.className = 'star' + (i < quizScore ? ' on' : '');
+    s.textContent = '\u2B50';
+    starsEl.appendChild(s);
+  }
+
+  document.getElementById('quiz-next-btn').style.display = 'inline-flex';
+}
+
+function nextQuestion() {
+  quizIdx++;
+  showQuestion();
+}
+
+function finishQuiz() {
+  document.getElementById('quiz-area').innerHTML = '';
+  document.getElementById('quiz-fb').textContent = '';
+  document.getElementById('quiz-next-btn').style.display = 'none';
+
+  // Final screen
+  const fs = document.getElementById('final-stars');
+  fs.innerHTML = '';
+  for (let i = 0; i < quizData.length; i++) {
+    const s = document.createElement('span');
+    s.className = 'star' + (i < quizScore ? ' on' : '');
+    s.textContent = '\u2B50';
+    fs.appendChild(s);
+  }
+  document.getElementById('final-score').textContent = `ענית נכון על ${quizScore} מתוך ${quizData.length}!`;
+  goTo(7);
+  launchConfetti();
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  CONFETTI - Stitch themed!
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+function launchConfetti() {
+  const cv = document.getElementById('confetti-canvas');
+  const ctx = cv.getContext('2d');
+  cv.width = window.innerWidth;
+  cv.height = window.innerHeight;
+  const pieces = [];
+  const colors = ['#3B5FD4','#7B9EF7','#FF7EB3','#34D399','#FBBF24','#B8D4FF','#FB923C'];
+  for (let i = 0; i < 150; i++) {
+    pieces.push({
+      x: Math.random()*cv.width,
+      y: -Math.random()*cv.height,
+      w: 6+Math.random()*6,
+      h: 10+Math.random()*8,
+      r: Math.random()*Math.PI*2,
+      vx: (Math.random()-.5)*3,
+      vy: 2+Math.random()*4,
+      vr: (Math.random()-.5)*.2,
+      c: colors[Math.floor(Math.random()*colors.length)]
+    });
+  }
+  let frame = 0;
+  function tick() {
+    ctx.clearRect(0,0,cv.width,cv.height);
+    pieces.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.r += p.vr;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.r);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    });
+    frame++;
+    if (frame < 180) requestAnimationFrame(tick);
+    else ctx.clearRect(0,0,cv.width,cv.height);
+  }
+  tick();
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  INIT
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+window.addEventListener('DOMContentLoaded', () => {
+  buildProgress();
+  goTo(0);
+
+  setTimeout(() => {
+    createTriangle('equi', 'c-equi', 'cw-equi', 'm-equi', 'badge-equi', [
+      [0.5, 0.08], [0.1, 0.88], [0.9, 0.88]
+    ]);
+    createTriangle('iso', 'c-iso', 'cw-iso', 'm-iso', 'badge-iso', [
+      [0.5, 0.06], [0.12, 0.9], [0.88, 0.9]
+    ]);
+    createTriangle('scal', 'c-scal', 'cw-scal', 'm-scal', 'badge-scal', [
+      [0.25, 0.08], [0.05, 0.88], [0.92, 0.75]
+    ]);
+    createTriangle('right', 'c-right', 'cw-right', 'm-right', 'badge-right', [
+      [0.08, 0.08], [0.08, 0.9], [0.9, 0.9]
+    ]);
+    createTriangle('free', 'c-free', 'cw-free', 'm-free', 'badge-free', [
+      [0.5, 0.08], [0.08, 0.88], [0.92, 0.88]
+    ]);
+  }, 100);
+
+  setTimeout(() => {
+    Object.keys(tris).forEach(key => {
+      const t = tris[key];
+      const W = t.canvas.width / (window.devicePixelRatio||1);
+      const H = t.canvas.height / (window.devicePixelRatio||1);
+      t.pts = scaleDefaults(t.defaults, W, H);
+      draw(t);
+    });
+  }, 200);
+
+  showQuestion();
+  initPaint();
+});
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  PAINT WITH TRIANGLES
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const paintColors = [
+  '#3B5FD4','#7B9EF7','#FF7EB3','#34D399','#FBBF24',
+  '#FB923C','#EF4444','#A855F7','#06B6D4','#84CC16',
+  '#F472B6','#1E293B','#FFFFFF'
+];
+let paintColor = paintColors[0];
+let paintTris = [];      // {cx, cy, size, color, opacity, rotation}
+let paintDragging = false;
+let paintStart = null;
+let paintCanvas, paintCtx, paintWrap;
+let paintMode = 'draw';  // 'draw' or 'select'
+let selectedIdx = -1;    // index of selected triangle
+let dragAction = null;   // 'move', 'resize-0', 'resize-1', 'resize-2', 'rotate'
+let dragOffset = [0, 0]; // offset for move dragging
+
+function initPaint() {
+  paintCanvas = document.getElementById('c-paint');
+  paintCtx = paintCanvas.getContext('2d');
+  paintWrap = document.getElementById('cw-paint');
+
+  // Build color palette
+  const colorsEl = document.getElementById('paint-colors');
+  paintColors.forEach(c => {
+    const btn = document.createElement('div');
+    btn.style.cssText = `width:38px;height:38px;border-radius:50%;background:${c};cursor:pointer;border:3px solid ${c===paintColor?'#1E293B':'#E2E8F0'};transition:all .2s;box-shadow:0 2px 6px rgba(0,0,0,.12);`;
+    if (c === '#FFFFFF') btn.style.border = '3px solid #CBD5E1';
+    btn.onclick = () => {
+      paintColor = c;
+      colorsEl.querySelectorAll('div').forEach(d => d.style.borderColor = '#E2E8F0');
+      btn.style.borderColor = '#1E293B';
+      if (c === '#FFFFFF') btn.style.borderColor = '#1E293B';
+      // If a triangle is selected, change its color
+      if (selectedIdx >= 0 && paintTris[selectedIdx]) {
+        paintTris[selectedIdx].color = c;
+        drawPaint();
+      }
+    };
+    colorsEl.appendChild(btn);
+  });
+
+  resizePaintCanvas();
+
+  // Unified event helpers
+  const getPos = (e) => {
+    const r = paintCanvas.getBoundingClientRect();
+    let cx, cy;
+    if (e.touches && e.touches.length > 0) {
+      cx = e.touches[0].clientX; cy = e.touches[0].clientY;
+    } else if (e.changedTouches && e.changedTouches.length > 0) {
+      cx = e.changedTouches[0].clientX; cy = e.changedTouches[0].clientY;
+    } else {
+      cx = e.clientX; cy = e.clientY;
+    }
+    const sx = (paintCanvas.width / (window.devicePixelRatio||1)) / r.width;
+    const sy = (paintCanvas.height / (window.devicePixelRatio||1)) / r.height;
+    return [(cx - r.left) * sx, (cy - r.top) * sy];
+  };
+
+  const onDown = (e) => {
+    const pos = getPos(e);
+    if (e.touches) e.preventDefault();
+
+    if (paintMode === 'draw') {
+      paintDragging = true;
+      paintStart = pos;
+    } else {
+      // SELECT MODE
+      // Check handles of selected triangle first
+      if (selectedIdx >= 0 && paintTris[selectedIdx]) {
+        const handle = hitHandle(pos, paintTris[selectedIdx]);
+        if (handle) {
+          dragAction = handle;
+          paintDragging = true;
+          paintStart = pos;
+          return;
+        }
+      }
+      // Check if clicking on a triangle (search from top/last drawn)
+      let found = -1;
+      for (let i = paintTris.length - 1; i >= 0; i--) {
+        if (pointInTri(pos, paintTris[i])) { found = i; break; }
+      }
+      if (found >= 0) {
+        selectedIdx = found;
+        dragAction = 'move';
+        paintDragging = true;
+        paintStart = pos;
+        dragOffset = [pos[0] - paintTris[found].cx, pos[1] - paintTris[found].cy];
+        document.getElementById('delete-sel-btn').style.display = 'inline-flex';
+      } else {
+        selectedIdx = -1;
+        dragAction = null;
+        document.getElementById('delete-sel-btn').style.display = 'none';
+      }
+      drawPaint();
+    }
+  };
+
+  const onMove = (e) => {
+    if (!paintDragging) return;
+    e.preventDefault();
+    const cur = getPos(e);
+
+    if (paintMode === 'draw') {
+      drawPaint(cur);
+    } else if (selectedIdx >= 0 && paintTris[selectedIdx]) {
+      const t = paintTris[selectedIdx];
+      if (dragAction === 'move') {
+        t.cx = cur[0] - dragOffset[0];
+        t.cy = cur[1] - dragOffset[1];
+      } else if (dragAction === 'rotate') {
+        t.rotation = Math.atan2(cur[1] - t.cy, cur[0] - t.cx);
+      } else if (dragAction && dragAction.startsWith('resize-')) {
+        // Size = distance from center to cursor
+        t.size = Math.max(15, Math.hypot(cur[0] - t.cx, cur[1] - t.cy));
+      }
+      drawPaint();
+    }
+  };
+
+  const onUp = (e) => {
+    if (!paintDragging) return;
+    paintDragging = false;
+
+    if (paintMode === 'draw') {
+      const end = getPos(e);
+      const opacity = parseInt(document.getElementById('paint-opacity').value) / 100;
+      const dx = end[0] - paintStart[0];
+      const dy = end[1] - paintStart[1];
+      let size = Math.hypot(dx, dy);
+      let rotation = Math.atan2(dy, dx);
+      if (size < 8) { size = 35; rotation = -Math.PI / 2; }
+      paintTris.push({ cx: paintStart[0], cy: paintStart[1], size, color: paintColor, opacity, rotation });
+      paintStart = null;
+      drawPaint();
+    } else {
+      dragAction = null;
+    }
+  };
+
+  paintCanvas.addEventListener('mousedown', onDown);
+  paintCanvas.addEventListener('mousemove', onMove);
+  paintCanvas.addEventListener('mouseup', onUp);
+  paintCanvas.addEventListener('mouseleave', (e) => { if (paintDragging) onUp(e); });
+  paintCanvas.addEventListener('touchstart', onDown, {passive:false});
+  paintCanvas.addEventListener('touchmove', onMove, {passive:false});
+  paintCanvas.addEventListener('touchend', onUp);
+}
+
+function setPaintMode(mode) {
+  paintMode = mode;
+  selectedIdx = -1;
+  dragAction = null;
+  const drawBtn = document.getElementById('mode-draw-btn');
+  const selBtn = document.getElementById('mode-select-btn');
+  const colorsEl = document.getElementById('paint-colors');
+  const opacityRow = document.getElementById('paint-opacity-row');
+  const selectHint = document.getElementById('select-hint');
+  const hint = document.getElementById('paint-hint');
+  const delBtn = document.getElementById('delete-sel-btn');
+  const wrap = document.getElementById('cw-paint');
+
+  if (mode === 'draw') {
+    drawBtn.style.opacity = '1';
+    selBtn.style.opacity = '0.5';
+    colorsEl.style.display = 'flex';
+    opacityRow.style.display = 'flex';
+    selectHint.style.display = 'none';
+    hint.textContent = '🔺 !לחצו וגררו כדי לצייר משולשים';
+    hint.style.display = '';
+    delBtn.style.display = 'none';
+    wrap.style.cursor = 'crosshair';
+  } else {
+    drawBtn.style.opacity = '0.5';
+    selBtn.style.opacity = '1';
+    colorsEl.style.display = 'flex';
+    opacityRow.style.display = 'none';
+    selectHint.style.display = 'block';
+    hint.style.display = 'none';
+    wrap.style.cursor = 'pointer';
+  }
+  drawPaint();
+}
+
+function resizePaintCanvas() {
+  if (!paintWrap) return;
+  const r = paintWrap.getBoundingClientRect();
+  if (r.width === 0) return;
+  const dpr = window.devicePixelRatio || 1;
+  paintCanvas.width = r.width * dpr;
+  paintCanvas.height = r.height * dpr;
+  paintCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  drawPaint();
+}
+
+// Get triangle vertices: equilateral centered at (cx,cy), tip toward rotation angle
+function triPoints(cx, cy, size, rotation) {
+  const pts = [];
+  for (let i = 0; i < 3; i++) {
+    const angle = rotation + (i * 2 * Math.PI / 3);
+    pts.push([cx + size * Math.cos(angle), cy + size * Math.sin(angle)]);
+  }
+  return pts;
+}
+
+function drawTriPath(c, pts) {
+  c.beginPath();
+  c.moveTo(pts[0][0], pts[0][1]);
+  c.lineTo(pts[1][0], pts[1][1]);
+  c.lineTo(pts[2][0], pts[2][1]);
+  c.closePath();
+}
+
+// Point-in-triangle test
+function pointInTri(pos, t) {
+  const pts = triPoints(t.cx, t.cy, t.size, t.rotation);
+  const [px, py] = pos;
+  const [x1,y1] = pts[0], [x2,y2] = pts[1], [x3,y3] = pts[2];
+  const d1 = (px-x2)*(y1-y2)-(x1-x2)*(py-y2);
+  const d2 = (px-x3)*(y2-y3)-(x2-x3)*(py-y3);
+  const d3 = (px-x1)*(y3-y1)-(x3-x1)*(py-y1);
+  const hasNeg = (d1<0)||(d2<0)||(d3<0);
+  const hasPos = (d1>0)||(d2>0)||(d3>0);
+  return !(hasNeg && hasPos);
+}
+
+// Hit-test handles: returns 'resize-0','resize-1','resize-2','rotate' or null
+const HANDLE_R = 14;
+function hitHandle(pos, t) {
+  const pts = triPoints(t.cx, t.cy, t.size, t.rotation);
+  // Rotation handle: extended from tip (pts[0])
+  const rx = t.cx + (t.size + 28) * Math.cos(t.rotation);
+  const ry = t.cy + (t.size + 28) * Math.sin(t.rotation);
+  if (Math.hypot(pos[0]-rx, pos[1]-ry) < HANDLE_R + 4) return 'rotate';
+  // Vertex handles (resize)
+  for (let i = 0; i < 3; i++) {
+    if (Math.hypot(pos[0]-pts[i][0], pos[1]-pts[i][1]) < HANDLE_R) return 'resize-'+i;
+  }
+  return null;
+}
+
+function drawPaint(preview) {
+  const c = paintCtx;
+  const W = paintCanvas.width / (window.devicePixelRatio||1);
+  const H = paintCanvas.height / (window.devicePixelRatio||1);
+
+  // White background
+  c.fillStyle = '#FFFFFF';
+  c.fillRect(0, 0, W, H);
+
+  // Draw grid
+  c.strokeStyle = '#F0F0F0';
+  c.lineWidth = 0.5;
+  for (let x = 0; x < W; x += 30) { c.beginPath(); c.moveTo(x,0); c.lineTo(x,H); c.stroke(); }
+  for (let y = 0; y < H; y += 30) { c.beginPath(); c.moveTo(0,y); c.lineTo(W,y); c.stroke(); }
+
+  // Draw saved triangles
+  paintTris.forEach((t, idx) => {
+    const pts = triPoints(t.cx, t.cy, t.size, t.rotation);
+    c.globalAlpha = t.opacity;
+    c.fillStyle = t.color;
+    drawTriPath(c, pts);
+    c.fill();
+    c.strokeStyle = 'rgba(0,0,0,0.15)';
+    c.lineWidth = 1.5;
+    c.stroke();
+
+    // Selection highlight
+    if (paintMode === 'select' && idx === selectedIdx) {
+      c.globalAlpha = 1;
+      // Highlight border
+      c.setLineDash([5, 4]);
+      c.strokeStyle = '#1E293B';
+      c.lineWidth = 2.5;
+      drawTriPath(c, pts);
+      c.stroke();
+      c.setLineDash([]);
+
+      // Vertex resize handles (white circles with colored border)
+      for (let i = 0; i < 3; i++) {
+        c.beginPath();
+        c.arc(pts[i][0], pts[i][1], HANDLE_R, 0, Math.PI*2);
+        c.fillStyle = 'white';
+        c.fill();
+        c.strokeStyle = '#3B5FD4';
+        c.lineWidth = 3;
+        c.stroke();
+        // Arrow icon inside
+        c.fillStyle = '#3B5FD4';
+        c.font = 'bold 13px sans-serif';
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.fillText('⇔', pts[i][0], pts[i][1]);
+      }
+
+      // Rotation handle (circle beyond the tip)
+      const rx = t.cx + (t.size + 28) * Math.cos(t.rotation);
+      const ry = t.cy + (t.size + 28) * Math.sin(t.rotation);
+      // Line from tip to rotation handle
+      c.beginPath();
+      c.moveTo(pts[0][0], pts[0][1]);
+      c.lineTo(rx, ry);
+      c.strokeStyle = '#FB923C';
+      c.lineWidth = 2;
+      c.setLineDash([3,3]);
+      c.stroke();
+      c.setLineDash([]);
+      // Handle circle
+      c.beginPath();
+      c.arc(rx, ry, HANDLE_R, 0, Math.PI*2);
+      c.fillStyle = 'white';
+      c.fill();
+      c.strokeStyle = '#FB923C';
+      c.lineWidth = 3;
+      c.stroke();
+      c.fillStyle = '#FB923C';
+      c.font = 'bold 15px sans-serif';
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      c.fillText('↻', rx, ry);
+
+      c.textAlign = 'start';
+      c.textBaseline = 'alphabetic';
+    }
+  });
+  c.globalAlpha = 1;
+
+  // Draw preview triangle while dragging in draw mode
+  if (paintMode === 'draw' && preview && paintStart) {
+    const opacity = parseInt(document.getElementById('paint-opacity').value) / 100;
+    const dx = preview[0] - paintStart[0];
+    const dy = preview[1] - paintStart[1];
+    const size = Math.hypot(dx, dy);
+    const rotation = Math.atan2(dy, dx);
+    if (size > 3) {
+      const pts = triPoints(paintStart[0], paintStart[1], size, rotation);
+      c.globalAlpha = opacity * 0.6;
+      c.fillStyle = paintColor;
+      drawTriPath(c, pts);
+      c.fill();
+      c.globalAlpha = 1;
+      c.setLineDash([4, 4]);
+      c.strokeStyle = '#1E293B';
+      c.lineWidth = 1.5;
+      drawTriPath(c, pts);
+      c.stroke();
+      c.setLineDash([]);
+      // Direction line
+      c.beginPath();
+      c.moveTo(paintStart[0], paintStart[1]);
+      c.lineTo(preview[0], preview[1]);
+      c.strokeStyle = 'rgba(0,0,0,0.3)';
+      c.lineWidth = 1;
+      c.setLineDash([3,3]);
+      c.stroke();
+      c.setLineDash([]);
+    }
+  }
+}
+
+function clearPaint() {
+  paintTris = [];
+  selectedIdx = -1;
+  document.getElementById('delete-sel-btn').style.display = 'none';
+  drawPaint();
+}
+
+function undoPaint() {
+  if (selectedIdx === paintTris.length - 1) selectedIdx = -1;
+  paintTris.pop();
+  document.getElementById('delete-sel-btn').style.display = 'none';
+  drawPaint();
+}
+
+function deleteSelected() {
+  if (selectedIdx >= 0 && selectedIdx < paintTris.length) {
+    paintTris.splice(selectedIdx, 1);
+    selectedIdx = -1;
+    document.getElementById('delete-sel-btn').style.display = 'none';
+    drawPaint();
+  }
+}
+
+window.addEventListener('resize', () => {
+  Object.values(tris).forEach(t => {
+    const oldW = t.canvas.width / (window.devicePixelRatio||1);
+    const oldH = t.canvas.height / (window.devicePixelRatio||1);
+    resizeCanvas(t);
+    const newW = t.canvas.width / (window.devicePixelRatio||1);
+    const newH = t.canvas.height / (window.devicePixelRatio||1);
+    if (oldW > 0 && oldH > 0) {
+      t.pts = t.pts.map(([x,y]) => [x/oldW*newW, y/oldH*newH]);
+    }
+    draw(t);
+  });
+  resizePaintCanvas();
+});
+</script>
+</body>
+</html>
