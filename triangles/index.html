@@ -104,12 +104,12 @@
 
   header h1 {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     text-shadow: 3px 3px 0 rgba(0,0,0,.2), 0 0 20px rgba(123,158,247,0.3);
     position: relative;
   }
   header p {
-    font-size: 1rem;
+    font-size: 1.15rem;
     opacity: .92;
     margin-top: 2px;
   }
@@ -222,18 +222,18 @@
 
   .card h2 {
     font-family: 'Fredoka One', cursive;
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size: 2.4rem;
+    margin-bottom: 10px;
     color: var(--stitch-dark);
   }
   .card .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #7B8DAF;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .card p, .card li {
-    font-size: 1.25rem;
-    line-height: 1.7;
+    font-size: 1.4rem;
+    line-height: 1.75;
   }
   .card ul { padding-right: 22px; padding-left: 0; margin: 10px 0; }
   .card li { margin-bottom: 6px; }
@@ -245,9 +245,9 @@
     background: linear-gradient(135deg, #EEF2FF, #E8F4FD);
     border-right: 4px solid var(--stitch-blue);
     border-radius: 12px;
-    padding: 14px 18px;
-    margin: 14px 0;
-    font-size: 1.15rem;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 1.3rem;
     position: relative;
   }
   .highlight-box::before {
@@ -309,7 +309,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     margin-top: 12px;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
   .measures .m-item {
     background: linear-gradient(135deg, #F0F4FF, #F8FAFF);
@@ -328,7 +328,7 @@
     padding: 8px 20px;
     border-radius: 30px;
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.15rem;
     margin-top: 10px;
     color: white;
     transition: all .3s;
@@ -341,12 +341,12 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 13px 30px;
+    padding: 14px 32px;
     border: none;
     border-radius: 16px;
     font-family: 'Nunito', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: transform .15s, box-shadow .15s;
     color: white;
@@ -406,7 +406,7 @@
     text-align: center;
     cursor: pointer;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     transition: all .2s;
   }
   .quiz-option:hover { border-color: var(--stitch-blue); background: #F0F4FF; transform: translateY(-2px); }
@@ -417,7 +417,7 @@
   .quiz-feedback {
     text-align: center;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     min-height: 32px;
     margin-top: 8px;
   }
@@ -466,21 +466,54 @@
   .stitch-bubble {
     background: linear-gradient(135deg, #F0F4FF, #E8EEFF);
     border-radius: 18px 4px 18px 18px;
-    padding: 14px 18px;
-    font-size: 1.2rem;
-    line-height: 1.6;
+    padding: 16px 20px;
+    font-size: 1.35rem;
+    line-height: 1.65;
     flex: 1;
     border: 2px solid #DEE5F5;
     position: relative;
   }
 
   /* ── Responsive ── */
-  @media (max-width: 600px) {
-    header h1 { font-size: 1.4rem; }
-    .card { padding: 20px 16px; border-radius: 20px; }
-    .quiz-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 768px) {
+    header h1 { font-size: 1.8rem; }
+    header p { font-size: 1.05rem; }
+    .card h2 { font-size: 2rem; }
+    .card .subtitle { font-size: 1.2rem; }
+    .card p, .card li { font-size: 1.25rem; }
+    .highlight-box { font-size: 1.15rem; }
+    .stitch-bubble { font-size: 1.2rem; }
+    .btn { font-size: 1.15rem; padding: 12px 24px; }
+    .measures { grid-template-columns: 1fr 1fr; font-size: 1.05rem; }
+    .quiz-option { font-size: 1.2rem; padding: 12px; }
+    .quiz-feedback { font-size: 1.2rem; }
+    .btn-row { gap: 8px; }
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 10px 12px 12px; }
+    header h1 { font-size: 1.5rem; }
+    header p { font-size: 0.95rem; }
+    .stitch-header-img { width: 55px; }
+    .container { padding: 0 10px 30px; }
+    .card { padding: 18px 14px; border-radius: 18px; }
+    .card h2 { font-size: 1.7rem; }
+    .card .subtitle { font-size: 1.1rem; }
+    .card p, .card li { font-size: 1.15rem; }
+    .highlight-box { font-size: 1.05rem; padding: 12px 14px; }
+    .stitch-bubble { font-size: 1.1rem; padding: 12px 14px; }
+    .stitch-avatar { width: 44px; height: 44px; }
+    .btn { font-size: 1.05rem; padding: 11px 20px; }
     .canvas-wrap { aspect-ratio: 1/1; }
-    .stitch-header-img { width: 80px; }
+    .measures { grid-template-columns: 1fr 1fr; font-size: 1rem; gap: 6px; }
+    .measures .m-item { padding: 6px 8px; }
+    .quiz-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .quiz-option { font-size: 1.1rem; padding: 10px; }
+    .progress-dot { width: 34px; height: 34px; font-size: .75rem; }
+    .progress-line { width: 16px; }
+    .progress-wrap { gap: 4px; padding: 14px 10px; }
+    .btn-row { flex-direction: column; align-items: stretch; }
+    .btn-row .btn { justify-content: center; }
   }
 
   /* ── Fun hover wobble ── */
@@ -952,11 +985,10 @@ function createTriangle(key, canvasId, wrapId, measId, badgeId, defaultPts) {
   const measEl = document.getElementById(measId);
   const badgeEl = document.getElementById(badgeId);
 
-  const t = { key, pts: defaultPts.map(p=>[...p]), canvas, ctx, wrap, measEl, badgeEl, defaults: defaultPts, dragging: -1 };
+  const t = { key, pts: defaultPts.map(p=>[...p]), canvas, ctx, wrap, measEl, badgeEl, defaults: defaultPts, dragging: -1, initialized: false };
   tris[key] = t;
 
   resizeCanvas(t);
-  draw(t);
 
   // Pointer events (mouse + touch)
   const getPos = (e) => {
@@ -1020,9 +1052,21 @@ function resizeCanvas(t) {
   const r = t.wrap.getBoundingClientRect();
   if (r.width === 0) return;
   const dpr = window.devicePixelRatio || 1;
+  const oldW = t.canvas.width / dpr;
+  const oldH = t.canvas.height / dpr;
   t.canvas.width = r.width * dpr;
   t.canvas.height = r.height * dpr;
   t.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const W = r.width;
+  const H = r.height;
+  if (!t.initialized) {
+    // First time visible — scale ratio defaults to pixel coords
+    t.pts = scaleDefaults(t.defaults, W, H);
+    t.initialized = true;
+  } else if (oldW > 0 && oldH > 0) {
+    // Rescale existing points proportionally on resize
+    t.pts = t.pts.map(([x,y]) => [x/oldW*W, y/oldH*H]);
+  }
   draw(t);
 }
 
@@ -1067,7 +1111,7 @@ function draw(t) {
   // Side labels
   const labels = ['a','b','c'];
   const pairs = [[0,1],[1,2],[2,0]];
-  c.font = '700 15px Nunito, sans-serif';
+  c.font = '700 16px Nunito, sans-serif';
   c.fillStyle = '#475569';
   pairs.forEach(([i,j], idx) => {
     const mx = (t.pts[i][0]+t.pts[j][0])/2;
@@ -1360,16 +1404,6 @@ window.addEventListener('DOMContentLoaded', () => {
       [0.5, 0.08], [0.08, 0.88], [0.92, 0.88]
     ]);
   }, 100);
-
-  setTimeout(() => {
-    Object.keys(tris).forEach(key => {
-      const t = tris[key];
-      const W = t.canvas.width / (window.devicePixelRatio||1);
-      const H = t.canvas.height / (window.devicePixelRatio||1);
-      t.pts = scaleDefaults(t.defaults, W, H);
-      draw(t);
-    });
-  }, 200);
 
   showQuestion();
   initPaint();
@@ -1762,17 +1796,7 @@ function deleteSelected() {
 }
 
 window.addEventListener('resize', () => {
-  Object.values(tris).forEach(t => {
-    const oldW = t.canvas.width / (window.devicePixelRatio||1);
-    const oldH = t.canvas.height / (window.devicePixelRatio||1);
-    resizeCanvas(t);
-    const newW = t.canvas.width / (window.devicePixelRatio||1);
-    const newH = t.canvas.height / (window.devicePixelRatio||1);
-    if (oldW > 0 && oldH > 0) {
-      t.pts = t.pts.map(([x,y]) => [x/oldW*newW, y/oldH*newH]);
-    }
-    draw(t);
-  });
+  Object.values(tris).forEach(t => resizeCanvas(t));
   resizePaintCanvas();
 });
 </script>
