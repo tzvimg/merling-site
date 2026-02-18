@@ -1,0 +1,6 @@
+graph LR
+  In((In)) --> LLM[LLM]
+  LLM --> Out((Out))
+  LLM -.Query/Results.-> Retrieval[Retrieval]
+  LLM -.Call/Response.-> Tools[Tools]
+  LLM -.Read/Write.-> Memory[Memory]

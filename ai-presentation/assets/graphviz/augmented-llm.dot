@@ -1,0 +1,24 @@
+digraph {
+  bgcolor="transparent";
+  rankdir=TD;
+  node [shape=box, style="rounded,filled", fontcolor="#000000", fontsize=14];
+  edge [fontcolor="#THEME#", fontsize=11];
+  ranksep=1.2;
+  nodesep=0.8;
+  
+  In [shape=circle, label="In", fillcolor="#f9a8a8"];
+  Out [shape=circle, label="Out", fillcolor="#f9a8a8"];
+  LLM [label="LLM", fillcolor="#a8d5a8"];
+  Retrieval [label="Retrieval", fillcolor="#a8c8f9"];
+  Tools [label="Tools", fillcolor="#d8a8f9"];
+  Memory [label="Memory", fillcolor="#f9d8a8"];
+  
+  {rank=same; In; LLM; Out;}
+  {rank=same; Retrieval; Tools; Memory;}
+  
+  In -> LLM [color="#818cf8"];
+  LLM -> Out [color="#818cf8"];
+  LLM -> Retrieval [label="Query/\nResults", style=dashed, color="#a78bfa", dir=both];
+  LLM -> Tools [label="Call/\nResponse", style=dashed, color="#a78bfa", dir=both];
+  LLM -> Memory [label="Read/\nWrite", style=dashed, color="#a78bfa", dir=both];
+}

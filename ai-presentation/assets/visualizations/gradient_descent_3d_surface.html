@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Gradient Descent Visualization</title>
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a1a;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: #e0e0e0;
+  }
+  .top-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: rgba(20, 20, 50, 0.95);
+    border-bottom: 1px solid rgba(120, 80, 255, 0.2);
+    flex-wrap: wrap;
+    z-index: 10;
+  }
+  .top-bar button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(100, 60, 220, 0.7);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .top-bar button:hover { background: rgba(120, 80, 255, 0.9); }
+  .top-bar button.active { background: rgba(200, 80, 80, 0.8); }
+  .lr-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    direction: ltr;
+  }
+  .lr-group label { font-size: 13px; color: #aaa; }
+  .lr-group input[type="range"] {
+    width: 130px;
+    accent-color: #7c3aed;
+  }
+  .lr-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #a78bfa;
+    min-width: 44px;
+    text-align: center;
+  }
+  .preset-btns { display: flex; gap: 4px; }
+  .preset-btns button {
+    padding: 4px 10px;
+    font-size: 12px;
+    background: rgba(60, 60, 100, 0.7);
+    border-radius: 6px;
+  }
+  .preset-btns button.selected { background: rgba(100, 60, 220, 0.8); }
+  #plot { flex: 1; width: 100%; }
+  .info-panel {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 10;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(20, 20, 50, 0.92);
+    backdrop-filter: blur(8px);
+    font-size: 13px;
+    direction: ltr;
+    line-height: 1.6;
+    border: 1px solid rgba(120, 80, 255, 0.15);
+    max-width: 500px;
+  }
+  .info-panel .label { color: #888; }
+  .info-panel .val { color: #a78bfa; font-weight: 600; }
+  .info-panel .warn { color: #f59e0b; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button id="btnRun" onclick="toggleRun()">▶ הפעל</button>
+  <button onclick="resetVis()">↺ איפוס</button>
+  <div class="lr-group">
+    <label>Learning Rate:</label>
+    <input type="range" id="lrSlider" min="0" max="8" step="1" value="4" oninput="updateLR()">
+    <span class="lr-value" id="lrDisplay">0.1</span>
+  </div>
+  <div class="preset-btns">
+    <button onclick="setLR(0.01)">0.01</button>
+    <button onclick="setLR(0.05)">0.05</button>
+    <button onclick="setLR(0.1)" class="selected">0.1</button>
+    <button onclick="setLR(0.5)">0.5</button>
+    <button onclick="setLR(1.0)">1.0</button>
+  </div>
+</div>
+
+<div id="plot"></div>
+<div class="info-panel" id="info">
+  <span class="label">Click</span> <span class="val">הפעל</span> <span class="label">to start</span>
+</div>
+
+<script>
+// --- Config ---
+const lrSteps = [0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 0.8, 1.0];
+let lr = 0.1;
+let running = false;
+let animId = null;
+
+// --- Loss surface ---
+// Rich terrain with dominant bowl — gradient winds through ridges to reach global minimum near (0,0)
+function f(x, y) {
+  return (
+    0.15 * (x * x + y * y) +
+    Math.sin(x) * Math.cos(y) * 0.5 +
+    Math.sin(0.5 * x + 0.3 * y) * 0.6 +
+    Math.cos(1.2 * x - 0.8 * y) * 0.4 +
+    0.3 * Math.sin(2 * x) * Math.sin(2 * y)
+  );
+}
+
+function gradient(x, y) {
+  const h = 0.0005;
+  const dfdx = (f(x + h, y) - f(x - h, y)) / (2 * h);
+  const dfdy = (f(x, y + h) - f(x, y - h)) / (2 * h);
+  return [dfdx, dfdy];
+}
+
+// --- Surface mesh ---
+const N = 80;
+const range = 4;
+const xVals = [], yVals = [];
+for (let i = 0; i <= N; i++) {
+  xVals.push(-range + (2 * range * i) / N);
+  yVals.push(-range + (2 * range * i) / N);
+}
+
+const zSurface = [];
+let zMin = Infinity, zMax = -Infinity;
+for (let j = 0; j <= N; j++) {
+  const row = [];
+  for (let i = 0; i <= N; i++) {
+    const v = f(xVals[i], yVals[j]);
+    row.push(v);
+    if (v < zMin) zMin = v;
+    if (v > zMax) zMax = v;
+  }
+  zSurface.push(row);
+}
+
+// --- State ---
+const startX = 3.5, startY = 3.5;
+let ballX = startX, ballY = startY;
+let pathX = [], pathY = [], pathZ = [];
+let step = 0;
+const maxSteps = 500;
+
+// --- Plotly traces ---
+const surfaceTrace = {
+  type: 'surface',
+  x: xVals, y: yVals, z: zSurface,
+  colorscale: [
+    [0, '#1e3a8a'], [0.15, '#2563eb'], [0.3, '#06b6d4'],
+    [0.45, '#10b981'], [0.6, '#eab308'], [0.75, '#f97316'],
+    [0.9, '#ef4444'], [1, '#991b1b']
+  ],
+  opacity: 0.88,
+  showscale: false,
+  contours: {
+    z: { show: true, usecolormap: true, highlightcolor: '#fff', project: { z: true } }
+  },
+  lighting: { ambient: 0.45, diffuse: 0.6, specular: 0.25, roughness: 0.5 },
+  hoverinfo: 'none',
+  name: 'Loss Surface'
+};
+
+// Contour floor
+const contourTrace = {
+  type: 'surface',
+  x: xVals, y: yVals,
+  z: zSurface.map(row => row.map(() => zMin - 0.8)),
+  surfacecolor: zSurface,
+  colorscale: surfaceTrace.colorscale,
+  opacity: 0.3,
+  showscale: false,
+  contours: { z: { show: true, color: 'rgba(255,255,255,0.25)', width: 1 } },
+  hoverinfo: 'none',
+  name: 'Contour'
+};
+
+// 3D path
+const pathTrace = {
+  type: 'scatter3d',
+  x: [], y: [], z: [],
+  mode: 'lines+markers',
+  line: { color: '#a855f7', width: 5 },
+  marker: { size: 3, color: '#a855f7', opacity: 0.6 },
+  hoverinfo: 'none',
+  name: 'Path'
+};
+
+// Projected path on floor
+const projPathTrace = {
+  type: 'scatter3d',
+  x: [], y: [], z: [],
+  mode: 'lines',
+  line: { color: 'rgba(168,85,247,0.4)', width: 3, dash: 'dot' },
+  hoverinfo: 'none',
+  name: 'Projected Path'
+};
+
+// Current ball
+const ballTrace = {
+  type: 'scatter3d',
+  x: [], y: [], z: [],
+  mode: 'markers',
+  marker: { size: 9, color: '#f43f5e', line: { color: '#fff', width: 2 } },
+  hoverinfo: 'text',
+  text: [],
+  name: 'Current'
+};
+
+// Gradient arrow (shown as a short line from ball)
+const arrowTrace = {
+  type: 'scatter3d',
+  x: [], y: [], z: [],
+  mode: 'lines',
+  line: { color: '#fbbf24', width: 6 },
+  hoverinfo: 'none',
+  name: 'Gradient'
+};
+
+const layout = {
+  scene: {
+    xaxis: { title: 'θ₁', range: [-range, range], gridcolor: 'rgba(255,255,255,0.08)', showbackground: false },
+    yaxis: { title: 'θ₂', range: [-range, range], gridcolor: 'rgba(255,255,255,0.08)', showbackground: false },
+    zaxis: { title: 'Loss', range: [zMin - 1, zMax + 0.5], gridcolor: 'rgba(255,255,255,0.08)', showbackground: false },
+    camera: { eye: { x: 1.8, y: -1.8, z: 1.2 }, center: { x: 0, y: 0, z: -0.1 } },
+    aspectratio: { x: 1, y: 1, z: 0.7 },
+    bgcolor: 'rgba(0,0,0,0)'
+  },
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  margin: { l: 0, r: 0, t: 0, b: 0 },
+  showlegend: false
+};
+
+const config = { responsive: true, displayModeBar: false, scrollZoom: true };
+
+const traces = [surfaceTrace, contourTrace, pathTrace, projPathTrace, ballTrace, arrowTrace];
+const PATH_IDX = 2, PROJ_IDX = 3, BALL_IDX = 4, ARROW_IDX = 5;
+
+Plotly.newPlot('plot', traces, layout, config);
+
+const plotEl = document.getElementById('plot');
+
+// --- Visualization logic ---
+// Mutate trace data directly + single Plotly.redraw to avoid blocking mouse events
+function updateAll() {
+  const z = f(ballX, ballY);
+  const [gx, gy] = gradient(ballX, ballY);
+
+  // Path trace
+  traces[PATH_IDX].x = pathX;
+  traces[PATH_IDX].y = pathY;
+  traces[PATH_IDX].z = pathZ;
+
+  // Projected path on floor
+  traces[PROJ_IDX].x = pathX;
+  traces[PROJ_IDX].y = pathY;
+  traces[PROJ_IDX].z = pathX.map(() => zMin - 0.8);
+
+  // Ball
+  traces[BALL_IDX].x = [ballX];
+  traces[BALL_IDX].y = [ballY];
+  traces[BALL_IDX].z = [z];
+  traces[BALL_IDX].text = [`Step ${step}\nθ₁=${ballX.toFixed(2)}, θ₂=${ballY.toFixed(2)}\nLoss=${z.toFixed(4)}`];
+
+  // Gradient arrow
+  const arrowScale = Math.min(lr * 3, 1.5);
+  const ax = ballX - gx * arrowScale;
+  const ay = ballY - gy * arrowScale;
+  traces[ARROW_IDX].x = [ballX, ax];
+  traces[ARROW_IDX].y = [ballY, ay];
+  traces[ARROW_IDX].z = [z, f(ax, ay)];
+
+  Plotly.redraw('plot');
+}
+
+function doStep() {
+  if (!running) return;
+
+  const [gx, gy] = gradient(ballX, ballY);
+  ballX -= lr * gx;
+  ballY -= lr * gy;
+
+  // Clamp
+  ballX = Math.max(-range + 0.1, Math.min(range - 0.1, ballX));
+  ballY = Math.max(-range + 0.1, Math.min(range - 0.1, ballY));
+
+  pathX.push(ballX);
+  pathY.push(ballY);
+  pathZ.push(f(ballX, ballY));
+  step++;
+
+  updateAll();
+  updateInfo();
+
+  const gradMag = Math.sqrt(gx * gx + gy * gy);
+
+  // Converged
+  if (gradMag < 0.005 || step >= maxSteps) {
+    running = false;
+    document.getElementById('btnRun').textContent = '▶ הפעל';
+    document.getElementById('btnRun').classList.remove('active');
+    updateInfo(false, gradMag < 0.005);
+    return;
+  }
+
+  // Diverged
+  if (Math.abs(ballX) >= range - 0.15 || Math.abs(ballY) >= range - 0.15) {
+    running = false;
+    document.getElementById('btnRun').textContent = '▶ הפעל';
+    document.getElementById('btnRun').classList.remove('active');
+    updateInfo(true);
+    return;
+  }
+
+  animId = setTimeout(() => requestAnimationFrame(doStep), 120);
+}
+
+function toggleRun() {
+  if (running) {
+    running = false;
+    clearTimeout(animId);
+    document.getElementById('btnRun').textContent = '▶ המשך';
+    document.getElementById('btnRun').classList.remove('active');
+    return;
+  }
+
+  running = true;
+  document.getElementById('btnRun').textContent = '⏸ עצור';
+  document.getElementById('btnRun').classList.add('active');
+
+  if (pathX.length === 0) {
+    pathX.push(ballX);
+    pathY.push(ballY);
+    pathZ.push(f(ballX, ballY));
+  }
+
+  requestAnimationFrame(doStep);
+}
+
+function resetVis() {
+  running = false;
+  clearTimeout(animId);
+  ballX = startX;
+  ballY = startY;
+  pathX = [];
+  pathY = [];
+  pathZ = [];
+  step = 0;
+
+  document.getElementById('btnRun').textContent = '▶ הפעל';
+  document.getElementById('btnRun').classList.remove('active');
+
+  // Clear traces and show start ball via direct mutation
+  traces[PATH_IDX].x = []; traces[PATH_IDX].y = []; traces[PATH_IDX].z = [];
+  traces[PROJ_IDX].x = []; traces[PROJ_IDX].y = []; traces[PROJ_IDX].z = [];
+  traces[ARROW_IDX].x = []; traces[ARROW_IDX].y = []; traces[ARROW_IDX].z = [];
+
+  const z0 = f(startX, startY);
+  traces[BALL_IDX].x = [startX]; traces[BALL_IDX].y = [startY]; traces[BALL_IDX].z = [z0];
+  traces[BALL_IDX].text = [`Start\nθ₁=${startX.toFixed(2)}, θ₂=${startY.toFixed(2)}\nLoss=${z0.toFixed(4)}`];
+
+  Plotly.redraw('plot');
+
+  document.getElementById('info').innerHTML =
+    '<span class="label">Click</span> <span class="val">הפעל</span> <span class="label">to start | Drag to rotate | Scroll to zoom</span>';
+}
+
+function updateInfo(diverged, converged) {
+  const z = f(ballX, ballY);
+  const [gx, gy] = gradient(ballX, ballY);
+  const gradMag = Math.sqrt(gx * gx + gy * gy);
+  let html = `<span class="label">Step:</span> <span class="val">${step}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">θ₁:</span> <span class="val">${ballX.toFixed(3)}</span> &nbsp; `;
+  html += `<span class="label">θ₂:</span> <span class="val">${ballY.toFixed(3)}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">Loss:</span> <span class="val">${z.toFixed(4)}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">|∇|:</span> <span class="val">${gradMag.toFixed(4)}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">lr:</span> <span class="val">${lr}</span>`;
+  if (diverged) {
+    html += `<br><span class="warn">⚠ Diverged! Learning rate too high.</span>`;
+  }
+  if (converged) {
+    html += `<br><span class="val">✓ Converged to minimum!</span>`;
+  }
+  document.getElementById('info').innerHTML = html;
+}
+
+// --- LR controls ---
+function updateLR() {
+  const idx = parseInt(document.getElementById('lrSlider').value);
+  lr = lrSteps[idx];
+  document.getElementById('lrDisplay').textContent = lr;
+  highlightPreset();
+}
+
+function setLR(val) {
+  lr = val;
+  const idx = lrSteps.indexOf(val);
+  if (idx >= 0) document.getElementById('lrSlider').value = idx;
+  document.getElementById('lrDisplay').textContent = lr;
+  highlightPreset();
+}
+
+function highlightPreset() {
+  document.querySelectorAll('.preset-btns button').forEach(b => {
+    b.classList.toggle('selected', parseFloat(b.textContent) === lr);
+  });
+}
+
+// Init
+resetVis();
+</script>
+</body>
+</html>

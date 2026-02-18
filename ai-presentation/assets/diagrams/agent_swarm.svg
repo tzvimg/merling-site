@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+  
+  <!-- Connections -->
+  <line x1="200" y1="150" x2="100" y2="80" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead)" />
+  <line x1="200" y1="150" x2="300" y2="80" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead)" />
+  <line x1="200" y1="150" x2="100" y2="220" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead)" />
+  <line x1="200" y1="150" x2="300" y2="220" stroke="#999" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrowhead)" />
+  <line x1="100" y1="80" x2="300" y2="80" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2" />
+  <line x1="100" y1="80" x2="100" y2="220" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2" />
+  <line x1="300" y1="80" x2="300" y2="220" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2" />
+  <line x1="100" y1="220" x2="300" y2="220" stroke="#ccc" stroke-width="1" stroke-dasharray="2,2" />
+  
+  <!-- Center Agent -->
+  <circle cx="200" cy="150" r="30" fill="#4285f4" stroke="#1967d2" stroke-width="2"/>
+  <text x="200" y="155" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Agent</text>
+  
+  <!-- Surrounding Agents -->
+  <circle cx="100" cy="80" r="25" fill="#34a853" stroke="#0d652d" stroke-width="2"/>
+  <text x="100" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Agent</text>
+  
+  <circle cx="300" cy="80" r="25" fill="#34a853" stroke="#0d652d" stroke-width="2"/>
+  <text x="300" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Agent</text>
+  
+  <circle cx="100" cy="220" r="25" fill="#34a853" stroke="#0d652d" stroke-width="2"/>
+  <text x="100" y="225" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Agent</text>
+  
+  <circle cx="300" cy="220" r="25" fill="#34a853" stroke="#0d652d" stroke-width="2"/>
+  <text x="300" y="225" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Agent</text>
+  
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" fill="#333" font-size="16" font-weight="bold">Swarm Architecture</text>
+  <text x="200" y="285" text-anchor="middle" fill="#666" font-size="12">Peer-to-peer coordination</text>
+</svg>

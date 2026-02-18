@@ -14,9 +14,8 @@ slides:
     background: "/assets/images/prompt_engineering_cover.png"
     content:
       - type: title
-        text: "הנדסת פרומפטים"
-      - type: subtitle
-        text: "Advanced Prompt Engineering"
+        text: ""
+      
 
   # ===========================================
   # SECTION 1: Academic Foundations

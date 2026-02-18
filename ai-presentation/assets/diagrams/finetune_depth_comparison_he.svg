@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 550" direction="rtl">
+  <defs>
+    <linearGradient id="frozenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#BDC3C7"/>
+      <stop offset="100%" style="stop-color:#95A5A6"/>
+    </linearGradient>
+    <linearGradient id="trainableGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="loraGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <filter id="shadow" x="-3%" y="-3%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Column headers -->
+  <!-- Full Fine-Tuning (rightmost) -->
+  <text x="925" y="45" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2E6AB3">Full Fine-Tuning</text>
+  <text x="925" y="68" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="13" fill="var(--color-text-muted, #666)">כוונון כל השכבות</text>
+
+  <!-- Partial Fine-Tuning (middle) -->
+  <text x="550" y="45" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2E6AB3">Partial Fine-Tuning</text>
+  <text x="550" y="68" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="13" fill="var(--color-text-muted, #666)">כוונון חלק מהשכבות</text>
+
+  <!-- LoRA (leftmost) -->
+  <text x="175" y="45" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#E5A823">LoRA</text>
+  <text x="175" y="68" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="13" fill="var(--color-text-muted, #666)">מטריצות קטנות בצד</text>
+
+  <!-- === Full Fine-Tuning Column === -->
+  <g id="full-ft" filter="url(#shadow)">
+    <rect x="835" y="90" width="180" height="320" rx="12" fill="var(--color-surface, #ffffff)" stroke="#2E6AB3" stroke-width="2"/>
+    <!-- All layers trainable (blue) -->
+    <rect x="855" y="110" width="140" height="50" rx="8" fill="url(#trainableGrad)"/>
+    <text x="925" y="140" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer 1</text>
+    <rect x="855" y="172" width="140" height="50" rx="8" fill="url(#trainableGrad)"/>
+    <text x="925" y="202" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer 2</text>
+    <rect x="855" y="234" width="140" height="50" rx="8" fill="url(#trainableGrad)"/>
+    <text x="925" y="264" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer 3</text>
+    <rect x="855" y="296" width="140" height="50" rx="8" fill="url(#trainableGrad)"/>
+    <text x="925" y="326" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer N</text>
+    <text x="925" y="382" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12" fill="#2E6AB3" font-weight="bold">100% פרמטרים</text>
+  </g>
+
+  <!-- === Partial Fine-Tuning Column === -->
+  <g id="partial-ft" filter="url(#shadow)">
+    <rect x="460" y="90" width="180" height="320" rx="12" fill="var(--color-surface, #ffffff)" stroke="#2E6AB3" stroke-width="2"/>
+    <!-- Bottom layers frozen (gray) -->
+    <rect x="480" y="110" width="140" height="50" rx="8" fill="url(#frozenGrad)"/>
+    <text x="550" y="140" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer 1 🔒</text>
+    <rect x="480" y="172" width="140" height="50" rx="8" fill="url(#frozenGrad)"/>
+    <text x="550" y="202" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer 2 🔒</text>
+    <!-- Top layers trainable (blue) -->
+    <rect x="480" y="234" width="140" height="50" rx="8" fill="url(#trainableGrad)"/>
+    <text x="550" y="264" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer 3</text>
+    <rect x="480" y="296" width="140" height="50" rx="8" fill="url(#trainableGrad)"/>
+    <text x="550" y="326" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Layer N</text>
+    <text x="550" y="382" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12" fill="#2E6AB3" font-weight="bold">~30% פרמטרים</text>
+  </g>
+
+  <!-- === LoRA Column === -->
+  <g id="lora" filter="url(#shadow)">
+    <rect x="85" y="90" width="180" height="320" rx="12" fill="var(--color-surface, #ffffff)" stroke="#E5A823" stroke-width="2"/>
+    <!-- All layers frozen (gray) with small LoRA adapters (yellow) -->
+    <rect x="105" y="110" width="105" height="50" rx="8" fill="url(#frozenGrad)"/>
+    <text x="157" y="140" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Layer 1 🔒</text>
+    <rect x="218" y="118" width="32" height="34" rx="6" fill="url(#loraGrad)"/>
+    <text x="234" y="140" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff">LoRA</text>
+
+    <rect x="105" y="172" width="105" height="50" rx="8" fill="url(#frozenGrad)"/>
+    <text x="157" y="202" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Layer 2 🔒</text>
+    <rect x="218" y="180" width="32" height="34" rx="6" fill="url(#loraGrad)"/>
+    <text x="234" y="202" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff">LoRA</text>
+
+    <rect x="105" y="234" width="105" height="50" rx="8" fill="url(#frozenGrad)"/>
+    <text x="157" y="264" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Layer 3 🔒</text>
+    <rect x="218" y="242" width="32" height="34" rx="6" fill="url(#loraGrad)"/>
+    <text x="234" y="264" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff">LoRA</text>
+
+    <rect x="105" y="296" width="105" height="50" rx="8" fill="url(#frozenGrad)"/>
+    <text x="157" y="326" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Layer N 🔒</text>
+    <rect x="218" y="304" width="32" height="34" rx="6" fill="url(#loraGrad)"/>
+    <text x="234" y="326" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff">LoRA</text>
+
+    <text x="175" y="382" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12" fill="#E5A823" font-weight="bold">~1% פרמטרים</text>
+  </g>
+
+  <!-- Legend -->
+  <g id="legend" transform="translate(0, 440)">
+    <rect x="310" y="0" width="480" height="55" rx="10" fill="var(--color-surface, #f8f8f8)" stroke="var(--color-border, #ddd)" stroke-width="1"/>
+
+    <rect x="680" y="15" width="24" height="24" rx="4" fill="url(#trainableGrad)"/>
+    <text x="660" y="32" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text, #333)">ניתן לאימון</text>
+
+    <rect x="510" y="15" width="24" height="24" rx="4" fill="url(#frozenGrad)"/>
+    <text x="490" y="32" text-anchor="middle" direction="rtl" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text, #333)">קפוא</text>
+
+    <rect x="395" y="15" width="24" height="24" rx="4" fill="url(#loraGrad)"/>
+    <text x="365" y="32" text-anchor="middle" direction="ltr" font-family="Arial, sans-serif" font-size="12" fill="var(--color-text, #333)">LoRA</text>
+  </g>
+</svg>

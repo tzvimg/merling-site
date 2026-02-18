@@ -1,0 +1,63 @@
+digraph multi_agent {
+  rankdir=TD;
+  node [shape=box, style=filled];
+  
+  subgraph cluster_single {
+    label="Single Agent";
+    style=filled;
+    color=lightyellow;
+    
+    agent1 [label="Coder", fillcolor=lightblue];
+    tool1 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.4];
+    tool2 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.4];
+    tool3 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.4];
+    
+    agent1 -> tool1 [style=dashed];
+    agent1 -> tool2 [style=dashed];
+    agent1 -> tool3 [style=dashed];
+  }
+  
+  subgraph cluster_multi {
+    label="Multi-Agent";
+    style=filled;
+    color=white;
+    
+    supervisor [label="Manager", fillcolor=lightcyan];
+    
+    subgraph cluster_team1 {
+      label="Research Team";
+      color=lightcyan;
+      
+      agent2 [label="Researcher", fillcolor=lightblue];
+      agent3 [label="Analyst", fillcolor=lightblue];
+      t1 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+      t2 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+      t3 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+      
+      agent2 -> t1 [style=dashed];
+      agent2 -> t2 [style=dashed];
+      agent3 -> t3 [style=dashed];
+    }
+    
+    subgraph cluster_team2 {
+      label="Dev Team";
+      color=lightcyan;
+      
+      agent4 [label="Coder", fillcolor=lightblue];
+      agent5 [label="Tester", fillcolor=lightblue];
+      t4 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+      t5 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+      
+      agent4 -> t4 [style=dashed];
+      agent5 -> t5 [style=dashed];
+    }
+    
+    agent6 [label="Writer", fillcolor=lightblue];
+    
+    supervisor -> agent2 [style=dashed, lhead=cluster_team1];
+    supervisor -> agent4 [style=dashed, lhead=cluster_team2];
+    supervisor -> agent6 [style=dashed];
+  }
+  
+  compound=true;
+}

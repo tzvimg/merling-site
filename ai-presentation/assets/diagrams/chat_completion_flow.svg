@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="llmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7C948"/>
+      <stop offset="100%" style="stop-color:#E5A823"/>
+    </linearGradient>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E6AB3"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27AE60"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- ====== Turn background bands ====== -->
+  <rect x="0" y="80" width="900" height="230" rx="0" fill="var(--color-surface-alt, #fafafa)" opacity="0.5"/>
+  <rect x="0" y="540" width="900" height="250" rx="0" fill="var(--color-surface-alt, #fafafa)" opacity="0.5"/>
+
+  <!-- ====== Lifeline headers ====== -->
+  <rect x="85" y="20" width="140" height="44" rx="10" fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="155" y="48" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">Client</text>
+
+  <rect x="575" y="20" width="140" height="44" rx="10" fill="url(#llmGrad)" filter="url(#shadow)"/>
+  <text x="645" y="48" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">LLM API</text>
+
+  <!-- Lifelines -->
+  <line x1="155" y1="64" x2="155" y2="850" stroke="var(--color-border, #ccc)" stroke-width="1.5" stroke-dasharray="7,5"/>
+  <line x1="645" y1="64" x2="645" y2="850" stroke="var(--color-border, #ccc)" stroke-width="1.5" stroke-dasharray="7,5"/>
+
+  <!-- ============================================================ -->
+  <!-- TURN 1                                                        -->
+  <!-- ============================================================ -->
+  <text x="42" y="155" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+        fill="var(--color-text-muted, #888)">Turn 1</text>
+
+  <!-- Request box -->
+  <rect x="175" y="110" width="445" height="75" rx="8"
+        fill="var(--color-surface, #E8F4FD)" stroke="#4A90D9" stroke-width="1.5" opacity="0.6"/>
+
+  <text x="290" y="140" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#2E6AB3" font-weight="bold">system: "Talk like a pirate"</text>
+  <text x="290" y="170" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#2E6AB3" font-weight="bold">user: "How are you today?"</text>
+
+  <!-- Request arrow -->
+  <path d="M 170 148 L 580 148" stroke="#2E6AB3" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- Response arrow -->
+  <path d="M 630 245" stroke="#27AE60" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 630 245 L 170 245" stroke="#27AE60" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="290" y="240" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#27AE60" font-weight="bold">assistant: "Ahoy! I be doin' fine…"</text>
+
+  <!-- Separator -->
+  <line x1="70" y1="310" x2="730" y2="310" stroke="var(--color-border, #ddd)" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ============================================================ -->
+  <!-- TURN 2                                                        -->
+  <!-- ============================================================ -->
+  <text x="42" y="415" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+        fill="var(--color-text-muted, #888)">Turn 2</text>
+
+  <!-- Request box -->
+  <rect x="175" y="350" width="445" height="125" rx="8"
+        fill="var(--color-surface, #E8F4FD)" stroke="#4A90D9" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Old messages (muted) -->
+  <text x="290" y="378" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #aaa)">system: "Talk like a pirate"</text>
+  <text x="290" y="400" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #aaa)">user: "How are you today?"</text>
+  <text x="290" y="422" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #aaa)">assistant: "Ahoy! I be doin' fine…"</text>
+
+  <!-- New message (bold) -->
+  <text x="290" y="458" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#2E6AB3" font-weight="bold">user: "Tell me a joke"</text>
+
+  <!-- Request arrow -->
+  <path d="M 170 433 L 580 433" stroke="#2E6AB3" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- Callout: all messages resent -->
+  <rect x="740" y="378" width="145" height="50" rx="8" fill="#FEF9E7" stroke="#E5A823" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="812" y="400" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#E5A823">⚠ All previous</text>
+  <text x="812" y="418" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#E5A823">messages resent!</text>
+
+  <!-- Response arrow -->
+  <path d="M 630 520 L 170 520" stroke="#27AE60" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="290" y="515" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#27AE60" font-weight="bold">assistant: "Arrr, why did the pirate…"</text>
+
+  <!-- Separator -->
+  <line x1="70" y1="570" x2="730" y2="570" stroke="var(--color-border, #ddd)" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ============================================================ -->
+  <!-- TURN N                                                        -->
+  <!-- ============================================================ -->
+  <text x="42" y="670" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+        fill="var(--color-text-muted, #888)">Turn N</text>
+
+  <!-- Request box -->
+  <rect x="175" y="610" width="445" height="110" rx="8"
+        fill="var(--color-surface, #E8F4FD)" stroke="#4A90D9" stroke-width="1.5" opacity="0.6"/>
+
+  <text x="290" y="638" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #aaa)">system: "Talk like a pirate"</text>
+  <text x="290" y="662" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #aaa)">user → assistant → user → assistant → …</text>
+  <text x="290" y="700" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#2E6AB3" font-weight="bold">user: "new message"</text>
+
+  <!-- Request arrow -->
+  <path d="M 170 675 L 580 675" stroke="#2E6AB3" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- Callout: payload grows -->
+  <rect x="740" y="638" width="145" height="50" rx="8" fill="#FDEDEC" stroke="#E74C3C" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="812" y="660" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#E74C3C">📈 Payload grows</text>
+  <text x="812" y="678" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#E74C3C">with each turn</text>
+
+  <!-- Response arrow -->
+  <path d="M 630 775 L 170 775" stroke="#27AE60" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="290" y="770" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="18" fill="#27AE60" font-weight="bold">assistant: "response"</text>
+
+  <!-- ====== Legend ====== -->
+  <line x1="200" y1="855" x2="235" y2="855" stroke="#2E6AB3" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+  <text x="245" y="859" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #888)">Request</text>
+
+  <line x1="360" y1="855" x2="395" y2="855" stroke="#27AE60" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <text x="405" y="859" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #888)">Response</text>
+
+  <rect x="520" y="847" width="16" height="16" rx="3" fill="var(--color-surface, #E8F4FD)" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="544" y="859" text-anchor="start" direction="ltr"
+        font-family="Arial, sans-serif" font-size="16" fill="var(--color-text-muted, #888)">Messages array</text>
+</svg>

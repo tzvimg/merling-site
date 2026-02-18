@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <defs>
+    <linearGradient id="hostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9"/>
+      <stop offset="100%" style="stop-color:#2E6AB3"/>
+    </linearGradient>
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5B9BD5"/>
+      <stop offset="100%" style="stop-color:#3A7CC0"/>
+    </linearGradient>
+    <linearGradient id="serverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ECC71"/>
+      <stop offset="100%" style="stop-color:#27AE60"/>
+    </linearGradient>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E8913A"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="20" font-weight="bold"
+        fill="var(--color-text, #1a1a1a)">MCP Architecture</text>
+
+  <!-- ============================================ -->
+  <!-- MCP Host (left side) -->
+  <!-- ============================================ -->
+  <rect x="30" y="55" width="310" height="430" rx="16"
+        fill="var(--color-surface, #EDF3FA)" stroke="#2E6AB3" stroke-width="2.5"
+        filter="url(#shadow)"/>
+
+  <!-- Host header bar -->
+  <rect x="30" y="55" width="310" height="48" rx="16"
+        fill="url(#hostGrad)"/>
+  <!-- Clip bottom corners of header -->
+  <rect x="30" y="87" width="310" height="16" fill="url(#hostGrad)"/>
+
+  <text x="185" y="85" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="15" font-weight="bold"
+        fill="#ffffff">MCP Host (AI Application)</text>
+
+  <!-- Host subtitle -->
+  <text x="185" y="122" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11"
+        fill="var(--color-text-muted, #666)">e.g. Claude Desktop, VS Code, Claude Code</text>
+
+  <!-- Client 1 -->
+  <rect x="65" y="145" width="240" height="70" rx="10"
+        fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="185" y="177" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+        fill="#ffffff">MCP Client 1</text>
+  <text x="185" y="197" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="10"
+        fill="rgba(255,255,255,0.8)">↔ stdio</text>
+
+  <!-- Client 2 -->
+  <rect x="65" y="235" width="240" height="70" rx="10"
+        fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="185" y="267" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+        fill="#ffffff">MCP Client 2</text>
+  <text x="185" y="287" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="10"
+        fill="rgba(255,255,255,0.8)">↔ stdio</text>
+
+  <!-- Client 3 -->
+  <rect x="65" y="325" width="240" height="70" rx="10"
+        fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="185" y="357" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+        fill="#ffffff">MCP Client 3</text>
+  <text x="185" y="377" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="10"
+        fill="rgba(255,255,255,0.8)">↔ HTTP (SSE)</text>
+
+  <!-- JSON-RPC label -->
+  <text x="185" y="440" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="10"
+        fill="var(--color-text-muted, #888)">Protocol: JSON-RPC 2.0</text>
+
+  <!-- ============================================ -->
+  <!-- Connection arrows -->
+  <!-- ============================================ -->
+
+  <!-- Client 1 → Server A -->
+  <line x1="305" y1="180" x2="520" y2="120" stroke="#E8913A" stroke-width="2.5"
+        marker-end="url(#arrowOrange)" opacity="0.85"/>
+
+  <!-- Client 2 → Server B -->
+  <line x1="305" y1="270" x2="520" y2="270" stroke="#E8913A" stroke-width="2.5"
+        marker-end="url(#arrowOrange)" opacity="0.85"/>
+
+  <!-- Client 3 → Server C -->
+  <line x1="305" y1="360" x2="520" y2="420" stroke="#E8913A" stroke-width="2.5"
+        stroke-dasharray="8,4" marker-end="url(#arrowOrange)" opacity="0.85"/>
+
+  <!-- Connection labels -->
+  <text x="412" y="140" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9"
+        fill="var(--color-text-muted, #999)" transform="rotate(-12, 412, 140)">dedicated</text>
+  <text x="412" y="260" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9"
+        fill="var(--color-text-muted, #999)">dedicated</text>
+  <text x="412" y="400" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9"
+        fill="var(--color-text-muted, #999)" transform="rotate(12, 412, 400)">remote</text>
+
+  <!-- ============================================ -->
+  <!-- MCP Servers (right side) -->
+  <!-- ============================================ -->
+
+  <!-- Server A: Filesystem (Local) -->
+  <rect x="525" y="62" width="340" height="120" rx="12"
+        fill="var(--color-surface, #E8FAE8)" stroke="#27AE60" stroke-width="2"
+        filter="url(#shadow)"/>
+  <rect x="525" y="62" width="340" height="38" rx="12"
+        fill="url(#serverGrad)"/>
+  <rect x="525" y="84" width="340" height="16" fill="url(#serverGrad)"/>
+  <text x="695" y="87" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="13" font-weight="bold"
+        fill="#ffffff">Server A — Local (Filesystem)</text>
+  <text x="553" y="87" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="12" fill="#ffffff">📁</text>
+
+  <!-- Transport badge -->
+  <rect x="790" y="107" width="60" height="20" rx="10"
+        fill="#2E6AB3" opacity="0.15"/>
+  <text x="820" y="121" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9" font-weight="bold"
+        fill="#2E6AB3">stdio</text>
+
+  <!-- Primitives for Server A -->
+  <rect x="545" y="130" width="80" height="28" rx="6" fill="#4A90D9" opacity="0.15"/>
+  <text x="585" y="149" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#2E6AB3">🔧 Tools</text>
+
+  <rect x="640" y="130" width="100" height="28" rx="6" fill="#F7C948" opacity="0.15"/>
+  <text x="690" y="149" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#C8960E">📦 Resources</text>
+
+  <rect x="755" y="130" width="90" height="28" rx="6" fill="#2ECC71" opacity="0.15"/>
+  <text x="800" y="149" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#1E8449">💬 Prompts</text>
+
+  <!-- Server B: Database (Local) -->
+  <rect x="525" y="212" width="340" height="120" rx="12"
+        fill="var(--color-surface, #E8FAE8)" stroke="#27AE60" stroke-width="2"
+        filter="url(#shadow)"/>
+  <rect x="525" y="212" width="340" height="38" rx="12"
+        fill="url(#serverGrad)"/>
+  <rect x="525" y="234" width="340" height="16" fill="url(#serverGrad)"/>
+  <text x="695" y="237" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="13" font-weight="bold"
+        fill="#ffffff">Server B — Local (Database)</text>
+  <text x="553" y="237" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="12" fill="#ffffff">🗄️</text>
+
+  <!-- Transport badge -->
+  <rect x="790" y="257" width="60" height="20" rx="10"
+        fill="#2E6AB3" opacity="0.15"/>
+  <text x="820" y="271" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9" font-weight="bold"
+        fill="#2E6AB3">stdio</text>
+
+  <!-- Primitives for Server B -->
+  <rect x="545" y="280" width="80" height="28" rx="6" fill="#4A90D9" opacity="0.15"/>
+  <text x="585" y="299" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#2E6AB3">🔧 Tools</text>
+
+  <rect x="640" y="280" width="100" height="28" rx="6" fill="#F7C948" opacity="0.15"/>
+  <text x="690" y="299" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#C8960E">📦 Resources</text>
+
+  <rect x="755" y="280" width="90" height="28" rx="6" fill="#2ECC71" opacity="0.15"/>
+  <text x="800" y="299" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#1E8449">💬 Prompts</text>
+
+  <!-- Server C: Remote (Sentry) -->
+  <rect x="525" y="362" width="340" height="120" rx="12"
+        fill="var(--color-surface, #E8FAE8)" stroke="#27AE60" stroke-width="2"
+        stroke-dasharray="6,3" filter="url(#shadow)"/>
+  <rect x="525" y="362" width="340" height="38" rx="12"
+        fill="url(#serverGrad)"/>
+  <rect x="525" y="384" width="340" height="16" fill="url(#serverGrad)"/>
+  <text x="695" y="387" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="13" font-weight="bold"
+        fill="#ffffff">Server C — Remote (e.g. Sentry)</text>
+  <text x="553" y="387" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="12" fill="#ffffff">☁️</text>
+
+  <!-- Transport badge -->
+  <rect x="775" y="407" width="75" height="20" rx="10"
+        fill="#E74C3C" opacity="0.15"/>
+  <text x="812" y="421" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9" font-weight="bold"
+        fill="#C0392B">HTTP (SSE)</text>
+
+  <!-- Primitives for Server C -->
+  <rect x="545" y="430" width="80" height="28" rx="6" fill="#4A90D9" opacity="0.15"/>
+  <text x="585" y="449" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#2E6AB3">🔧 Tools</text>
+
+  <rect x="640" y="430" width="100" height="28" rx="6" fill="#F7C948" opacity="0.15"/>
+  <text x="690" y="449" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#C8960E">📦 Resources</text>
+
+  <rect x="755" y="430" width="90" height="28" rx="6" fill="#2ECC71" opacity="0.15"/>
+  <text x="800" y="449" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="11" fill="#1E8449">💬 Prompts</text>
+
+  <!-- Bottom attribution -->
+  <text x="450" y="510" text-anchor="middle" direction="ltr"
+        font-family="Arial, sans-serif" font-size="9"
+        fill="var(--color-text-muted, #aaa)">Source: modelcontextprotocol.io — Anthropic (2024)</text>
+</svg>

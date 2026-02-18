@@ -1,0 +1,65 @@
+digraph multi_agent {
+    rankdir=LR;
+    node [shape=box, style=filled];
+    
+    subgraph cluster_single {
+        label="Single Agent System";
+        style=filled;
+        color=lightyellow;
+        
+        agent1 [label="Agent", fillcolor=lightblue];
+        tool1 [label="Tool", shape=circle, style=dashed, fillcolor=lightyellow];
+        tool2 [label="Tool", shape=circle, style=dashed, fillcolor=lightyellow];
+        tool3 [label="Tool", shape=circle, style=dashed, fillcolor=lightyellow];
+        
+        agent1 -> tool1 [style=dashed];
+        agent1 -> tool2 [style=dashed];
+        agent1 -> tool3 [style=dashed];
+        
+        note1 [label="Like an API\nor to write/read\nfrom docs", shape=plaintext];
+    }
+    
+    subgraph cluster_multi {
+        label="Multi-Agent System";
+        style=filled;
+        color=white;
+        
+        supervisor [label="Supervisor", fillcolor=lightcyan];
+        
+        subgraph cluster_team1 {
+            label="Team";
+            style=filled;
+            color=lightcyan;
+            
+            agent2 [label="Agent", fillcolor=lightblue];
+            agent3 [label="Agent", fillcolor=lightblue];
+            t1 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+            t2 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+            t3 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+            
+            agent2 -> t1 [style=dashed];
+            agent2 -> t2 [style=dashed];
+            agent3 -> t3 [style=dashed];
+        }
+        
+        subgraph cluster_team2 {
+            label="Team";
+            style=filled;
+            color=lightcyan;
+            
+            agent4 [label="Agent", fillcolor=lightblue];
+            agent5 [label="Agent", fillcolor=lightblue];
+            t4 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+            t5 [label="", shape=circle, style=dashed, fillcolor=lightyellow, width=0.3];
+            
+            agent4 -> t4 [style=dashed];
+            agent5 -> t5 [style=dashed];
+        }
+        
+        agent6 [label="Agent", fillcolor=lightblue];
+        
+        supervisor -> cluster_team1 [label="routes to the\ncorrect team", style=dashed];
+        supervisor -> cluster_team2 [style=dashed];
+        supervisor -> agent6 [label="routes to the\ncorrect agent", style=dashed];
+    }
+}

@@ -1,0 +1,786 @@
+meta:
+  title: "AI Agents: Lesson 05"
+  author: "Gilad Liber"
+  aspectRatio: "responsive"
+
+slides:
+  # ===========================================
+  # TITLE
+  # ===========================================
+  - id: slide-001
+    layout: title
+    content:
+      - type: title
+        text: "From Chat to Agents"
+      - type: subtitle
+        text: "The evolution from ChatGPT to autonomous AI agents"
+    notes: |
+      Original presentation by Gilad Liber, 11/2025
+
+  # ===========================================
+  # SECTION 1: Foundations
+  # ===========================================
+
+  - id: slide-011
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "What is LLM?"
+      - type: bullets
+        items:
+          - "Machine learning model (neural networks - Transformer)"
+          - "Just predicts the next word (token)!"
+          - "\"Once upon a time …\""
+          - "Trained on massive amount of data"
+          - "No real \"thinking\" or \"agent\" capabilities"
+          - "Multiple topics/instructions in input influence output"
+          - "But with that \"simple\" capability we can do a lot…"
+      - type: diagram
+        src: "/assets/diagrams/llm_logos_spread.svg"
+        alt: "Famous LLM models"
+    notes: |
+      Key point: LLMs are fundamentally next-token predictors, not agents.
+      Right side shows the major LLM products available today.
+
+  - id: slide-012
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Chat Completion"
+      
+      - type: diagram
+        src: "/assets/diagrams/chat_completion_flow.svg"
+        alt: "Chat completion message flow"
+      - type: bullets
+        items:
+          - "In most cases a chat completion is needed for AI flows"
+          - "The ChatCompletion API receives a list of messages from \"user\" and \"assistant\""
+      - type: code
+        language: text
+        code: |
+          User: write a poem about flowers. 
+          Assistant:
+      - type: bullets
+        items:
+          - "A general system/developer message can be also added"
+      - type: code
+        language: text
+        code: |
+          System: Talk like a pirate
+          User: How are you today?
+          Assistant:
+      - type: bullets
+        items:
+          - "All old messages are sent again on each iteration!"
+          - "Current LLMs APIs format is chat based"
+
+  - id: slide-013
+    badge: "09/2024"
+    layout: text
+    # animation:
+    #   type: step
+    content:
+      - type: title
+        text: "Reasoning Models"
+      - type: bullets
+        items:
+          - "In order to make the LLM \"think\" people used prompt engineering like \"chain of thought\""
+          - "All new models (OpenAI, DeepSeek, Grok, Gemini, Claude) have built-in support for reasoning capabilities"
+          - "They were specifically trained to show their work and follow a more structured thought process"
+      - type: code
+        language: text
+        code: |
+          User: How can we solve the world's water crisis?
+          Assistant: <think>Let me think. In order to solve
+          the problem we can…</think> Final solution is…
+      - type: bullets
+        items:
+          - "You pay for the \"thinking\" tokens as well!"
+          - "Some agents (like ChatGPT) hide their logical reasoning output"
+          - "Leaderboards track models' intelligence"
+
+    notes: |
+      Demo: ChatGPT, DeepSeek reasoning modes.
+      Reasoning models introduced around 9/2024.
+
+  # ===========================================
+  # SECTION 2: The Augmented LLM
+  # ===========================================
+  - id: slide-020
+    layout: title
+    content:
+      - type: title
+        text: "The Augmented LLM"
+      - type: subtitle
+        text: "Retrieval, Tools & Memory"
+
+  - id: slide-021
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "The Augmented LLM"
+      - type: bullets
+        items:
+          - "Using several techniques we can enhance our LLM with useful augmentations:"
+          - "**Retrieval** — inject external knowledge"
+          - "**Tools** (also called \"function calling\") — interact with the world"
+          - "**Memory** — persist information across sessions"
+      - type: graphviz
+        contentUrl: "/assets/graphviz/augmented-llm.dot"
+
+  - id: slide-022
+    layout: text
+    content:
+      - type: title
+        text: "Agents Frameworks"
+      - type: bullets
+        items:
+          - "Each LLM vendor has its own API"
+          - "LiteLLM library can be used in order to use a unified API"
+          - "Usually a framework is needed to encapsulate tools calling and store chat messages history and memory"
+          - "Support pre-defined retrievals"
+          - "Support pre-defined tools"
+
+  - id: slide-023
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Retrieval (RAG)"
+      - type: bullets
+        items:
+          - "New knowledge is not known to the LLM (determined by training time)"
+          - "Some data can be private or we want to focus the LLM on a specific area"
+          - "Data is prepared in chunks in advance and according to user message the relevant chunks (by similarity) are added to chat"
+          - "[Original paper: Lewis et al., 2020](https://arxiv.org/pdf/2005.11401)"
+      - type: code
+        language: text
+        code: |
+          System: You are a helpful assistant. Here is some
+          more context: {{RAG content}}
+          User: On which platforms CSME is supported?
+      - type: diagram
+        src: "/assets/diagrams/rag_architecture.svg"
+        alt: "RAG architecture diagram"
+
+  - id: slide-024
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Memory"
+      - type: bullets
+        items:
+          - "LLMs are **stateless**, know only what is sent in current chat (**short-term memory**)"
+          - "**Memory** allows us to detect useful facts in user's messages and store them in a database for future conversations (**long term memory**)"
+          - "Memory is retrieved from DB and added to the **system message** in every new chat"
+          - "**Mem0** is a popular open-source infrastructure for this feature"
+          - "**Memory vs RAG**: RAG adds **external knowledge**, memory adds **user-specific knowledge**"
+      - type: video
+        src: "/assets/videos/lesson-05-slide-024-ai-memory.mp4"
+        alt: "Memory architecture"
+    notes: |
+      Demo: ChatGPT memory features
+
+  # ===========================================
+  # SECTION 3: Tools Calling
+  # ===========================================
+  - id: slide-030
+    layout: title
+    content:
+      - type: title
+        text: "Tools Calling"
+      - type: subtitle
+        text: "Function Calling & Structured Output"
+
+  - id: slide-037
+    badge: "08/2024"
+    layout: text
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "Structured Output"
+      - type: bullets
+        items:
+          - "Using function calling mechanism LLM can also generate a response that contains a strict JSON schema"
+          - "This is an enhancement to old \"json mode\""
+          - "OpenAI trained new models to understand complicated schemas and how best to produce outputs that match them (93% accuracy)"
+          - "They also constrained the models to output specific tokens according to the supplied schema (100% accuracy)"
+          - "Only works with new models (gpt-4o-mini-2024-07-18 and above)"
+    notes: |
+      Structured output introduced 8/2024
+
+  - id: slide-031
+    badge: "06/2023"
+    layout: text-image
+    columns: "1fr 1fr"
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "Tools Calling"
+      - type: bullets
+        items:
+          - "Tools allow LLMs to request more data from user"
+          - "New LLM models have been fine-tuned to detect when a function needs to be called and to respond with JSON that adheres to the function signature"
+          - "Available functions are defined in the input prompt by a strict schema"
+          - "When LLM wants to run a tool it responds with a dedicated \"tool-use\" content type"
+          - "The function response is returned back to LLM as a new \"tool_result\" message"
+          - "All LLM vendors support function calling (since 6/2023)"
+      - type: image
+        src: "/assets/images/lesson-05/slide10_picture_4.png"
+        alt: "Tools calling overview"
+
+  - id: slide-032
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "Tools Calling - Flow"
+      - type: image
+        src: "/assets/images/lesson-05/slide11_picture_2.png"
+        alt: "Tools calling flow diagram"
+
+  - id: slide-033
+    layout: text
+    content:
+      - type: title
+        text: "Tools Calling – Tool Definition"
+      - type: code
+        language: json
+        code: |
+          {
+            "name": "get_weather",
+            "description": "Get the current weather in a given location",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "type": "string",
+                  "description": "The city and state, e.g. San Francisco"
+                },
+                "unit": {
+                  "type": "string",
+                  "enum": ["celsius", "fahrenheit"],
+                  "description": "The unit of temperature"
+                }
+              },
+              "required": ["location"]
+            }
+          }
+
+  - id: slide-034
+    layout: text
+    content:
+      - type: title
+        text: "Tools Calling – System Prompt"
+      - type: text
+        text: "A special system prompt is constructed from the tool definitions, tool configuration, and any user-specified system prompt"
+      - type: code
+        language: json
+        code: |
+          {
+            "role": "system",
+            "content": [{
+              "type": "text",
+              "content": "In this environment you have access to a
+              set of tools you can use to answer the user's
+              question.
+              {{ FORMATTING INSTRUCTIONS }}
+              {{ TOOL DEFINITIONS IN JSON SCHEMA }}
+              {{ USER SYSTEM PROMPT }}
+              {{ TOOL CONFIGURATION }}"
+            }]
+          }
+
+  - id: slide-035
+    layout: text
+    content:
+      - type: title
+        text: "Tools Calling – Tool Use"
+      - type: code
+        language: json
+        code: |
+          {
+            "role": "user",
+            "content": [{
+              "type": "text",
+              "text": "What is the weather in San Francisco?"
+            }]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "<thinking>To answer this question, I will
+                use the get_weather tool...</thinking>"
+              },
+              {
+                "type": "tool_use",
+                "id": "toolu_01A09q90qw90lq917835lq9",
+                "name": "get_weather",
+                "input": {"location": "San Francisco, CA"}
+              }
+            ]
+          }
+
+  - id: slide-036
+    layout: text
+    content:
+      - type: title
+        text: "Tools Calling – Tool Result"
+      - type: text
+        text: "User adds a new message to the chat with the tool result and sends to LLM:"
+      - type: code
+        language: json
+        code: |
+          {
+            "role": "user",
+            "content": [{
+              "type": "tool_result",
+              "tool_use_id": "toolu_01A09q90qw90lq917835lq9",
+              "content": "15 degrees"
+            }]
+          }
+      - type: bullets
+        items:
+          - "Provide extremely detailed descriptions"
+          - "The actual function definition/parsing format is defined by the LLM vendors"
+          - "The vendor's API library translates it for end user"
+    notes: |
+      Demo: ChatGPT tool use
+
+  # ===========================================
+  # SECTION 4: Protocols
+  # ===========================================
+  - id: slide-040
+    layout: title
+    content:
+      - type: title
+        text: "Protocols"
+      - type: subtitle
+        text: "MCP, A2A & Payment Protocols"
+
+  - id: slide-041
+    badge: "11/2024"
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Model Context Protocol (MCP)"
+      - type: bullets
+        items:
+          - "Introduced by Anthropic in 11/2024 and adopted by all industry in 3/2025"
+          - "Not adding real new functionality…"
+          - "Standardization: a universal way (client-server) for AI models to support tools and get access to common prompts and resources"
+          - "No custom code needed: AI clients can connect to new databases, APIs, and tools without requiring custom integration"
+      - type: image
+        src: "/assets/images/lesson-05/slide17_picture_3.png"
+        alt: "MCP architecture"
+
+  - id: slide-041b
+    layout: fullDiagram
+    content:
+      - type: title
+        text: "MCP Architecture"
+      - type: diagram
+        src: "/assets/diagrams/mcp_architecture.svg"
+        alt: "MCP client-server architecture diagram"
+
+  - id: slide-042
+    layout: text
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "Model Context Protocol (MCP) – Details"
+      - type: bullets
+        items:
+          - "A lot of open source MCP servers were already published by industry"
+          - "A lot of clients already support it"
+          - "SDK available for Python/TS/Java/Kotlin/C#"
+          - "Mostly used for tools and less for prompts/resources"
+          - "Can be used as \"runtime RAG\" instead of legacy static RAG"
+          - "Supports two types of connections: Local (stdio) and Remote (SSE)"
+          - "Can be debugged manually using MCP SDK inspector"
+    notes: |
+      Demo: Claude Desktop with MCP
+
+  - id: slide-043b
+    badge: "2025-2026"
+    layout: text
+    content:
+      - type: title
+        text: "Agent Skills"
+      - type: bullets
+        items:
+          - "**Skills** = modular instruction packages that define how an agent handles specific tasks"
+          - "A folder containing markdown files with step-by-step procedures, scripts, and resources"
+          - "**Composability**: Skills can use other skills — building complex behaviors from simple ones"
+          - "**Progressive disclosure**: Agent loads only relevant skills as needed, not everything upfront"
+          - "**Wrapping behaviors**: Package domain expertise into reusable units (e.g., \"code review\", \"API testing\")"
+          - "Think of skills as \"apps\" for AI agents — extending capabilities without custom code"
+          - "Open standard introduced by Anthropic, adopted across industry"
+    notes: |
+      Skills enable modular, scalable agent architectures where complex behaviors emerge from composing simpler, reusable components.
+
+  - id: slide-044
+    badge: "04/2025"
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Agent2Agent Protocol (A2A)"
+      - type: bullets
+        items:
+          - "Introduced by Google (as part of their new agent framework) — 4/2025"
+          - "Similar concept to an older Agent Network Protocol (ANP)"
+          - "Standard protocol for agents talking to each other"
+          - "Query services (agent's card over JSON/HTTP)"
+          - "Calling functions"
+          - "A2A is a complement to MCP"
+      - type: image
+        src: "/assets/images/lesson-05/slide20_picture_4.png"
+        alt: "A2A protocol diagram"
+
+  - id: slide-045
+    badge: "09/2025"
+    layout: text
+    content:
+      - type: title
+        text: "Payment Protocols (ACP, AP2)"
+      - type: bullets
+        items:
+          - "In order to allow agents to autonomously make payments, new protocols were established (9/2025)"
+          - "**ACP** (Agents Commerce Protocol, OpenAI) — defines the conversation between merchants and agents about products and checkout (\"Instant Checkout\")"
+          - "**AP2** (Agents Payment Protocol, Google) — provides authorization and authenticity from buyer to merchant (mandates and verifiable credentials)"
+
+  # ===========================================
+  # SECTION 5: Agentic Systems
+  # ===========================================
+  - id: slide-050
+    layout: title
+    content:
+      - type: title
+        text: "Agents"
+      - type: subtitle
+        text: "Workflows & Autonomous Systems"
+
+  - id: slide-051
+    layout: text
+    content:
+      - type: title
+        text: "Agentic Systems Types"
+      - type: bullets
+        items:
+          - "**Agentic systems** — all variants of autonomous systems or prescriptive implementations of AI"
+          - "**Workflows** — systems where LLMs and tools are orchestrated through predefined code paths"
+          - "**Agents** — systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks"
+          - "Workflows are sometimes called \"multi agents system\""
+
+  - id: slide-052
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Workflow: Prompt Chaining"
+      - type: text
+        text: "This workflow is ideal for situations where the task can be easily and cleanly decomposed into fixed subtasks. The main goal is to trade off latency for higher accuracy, by making each LLM call an easier task."
+      - type: bullets
+        items:
+          - "Generating marketing copy, then translating into a different language"
+          - "Writing an outline, checking criteria, then writing the document based on the outline"
+      - type: image
+        src: "/assets/images/lesson-05/slide24_picture_4.png"
+        alt: "Prompt chaining workflow"
+
+  - id: slide-053
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Workflow: Parallelization"
+      - type: text
+        text: "LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically."
+      - type: bullets
+        items:
+          - "**Sectioning:** Breaking a task into independent subtasks run in parallel"
+          - "**Voting:** Running the same task multiple times to get diverse outputs"
+          - "Implementing guardrails where one model processes queries while another screens for inappropriate content"
+          - "Reviewing code for vulnerabilities with several different prompts"
+      - type: image
+        src: "/assets/images/lesson-05/slide26_picture_4.png"
+        alt: "Parallelization workflow"
+
+  - id: slide-054
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Workflow: Routing"
+      - type: text
+        text: "Routing classifies an input and directs it to a specialized followup task. This allows separation of concerns and building more specialized prompts."
+      - type: bullets
+        items:
+          - "Directing different types of customer service queries into different downstream processes"
+          - "Routing easy/common questions to smaller/cheap models and hard/unusual questions to more capable models"
+      - type: image
+        src: "/assets/images/lesson-05/slide28_picture_5.png"
+        alt: "Routing workflow"
+
+  - id: slide-055
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Workflow: Orchestrator-Workers"
+      - type: text
+        text: "A central LLM dynamically breaks down tasks, delegates them to worker LLMs, and synthesizes their results."
+      - type: image
+        src: "/assets/images/lesson-05/slide30_picture_4.png"
+        alt: "Orchestrator-workers workflow"
+
+  - id: slide-056
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Workflow: Evaluator-Optimizer"
+      - type: text
+        text: "One LLM call generates a response while another provides evaluation and feedback in a loop."
+      - type: image
+        src: "/assets/images/lesson-05/slide31_content_placeholder_4.png"
+        alt: "Evaluator-optimizer workflow"
+
+  - id: slide-057
+    layout: text
+    content:
+      - type: title
+        text: "Workflows Automation with AI"
+      - type: text
+        text: "A lot of existing workflow automation tools added support for AI agents. Help you connect apps and services together to automate repetitive tasks, orchestrate workflows, and enhance productivity — all with minimal or no coding."
+
+  # ===========================================
+  # SECTION 6: Real Agents
+  # ===========================================
+  - id: slide-060
+    layout: title
+    content:
+      - type: title
+        text: "(Real) Agents"
+      - type: subtitle
+        text: "Autonomous LLMs using tools in a loop"
+
+  - id: slide-061
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "(Real) Agents"
+      - type: bullets
+        items:
+          - "A single LLM using tools based on environmental feedback in a loop"
+          - "Begins with a command/discussion from human users"
+          - "Agents plan and operate independently, potentially returning to the human for further information or judgement"
+      - type: image
+        src: "/assets/images/lesson-05/slide33_picture_4.png"
+        alt: "Agent loop diagram"
+
+  - id: slide-062
+    badge: "2023–2025"
+    layout: text
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "Coding Agents"
+      - type: text
+        text: "\"Vibe coding\" — natural language prompts to instruct AI tools to generate, refine, and debug code, allowing developers to focus on the \"vibe\" or intent of the software."
+      - type: bullets
+        items:
+          - "Cursor (2023)"
+          - "Windsurf (1/2024)"
+          - "Base44 (1/2025)"
+          - "GitHub Copilot (5/2025)"
+          - "Google Antigravity (11/2025)"
+
+  - id: slide-063
+    badge: "01/2025"
+    layout: text
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "\"Computer Use\" Agents"
+      - type: text
+        text: "Autonomously uses your browser to perform tasks — clicking, typing, filling forms, ordering groceries, booking flights. Interact with your tabs/history or any other service that browser has access to."
+      - type: bullets
+        items:
+          - "OpenAI \"Operator\" (1/2025)"
+          - "Perplexity \"Comet\" browser (7/2025)"
+          - "Anthropic \"Claude for Chrome\" (8/2025)"
+          - "OpenAI \"Atlas\" browser (10/2025)"
+
+  - id: slide-064
+    badge: "03/2025"
+    layout: text
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "Research Agents"
+      - type: text
+        text: "Agents with a sandbox computer environment. Full access to file system, SW installation and internet browsing."
+      - type: bullets
+        items:
+          - "ChatGPT DeepResearch"
+          - "Manus (3/2025)"
+          - "GitHub coding agent (5/2025)"
+          - "Kimi-K2 \"OK computer\" (9/2025)"
+    notes: |
+      Demo: Manus, GitHub agent
+
+  # ===========================================
+  # SECTION 8: Updates Nov 2025 - Feb 2026
+  # ===========================================
+  - id: slide-080
+    badge: "11-12/2025"
+    layout: title
+    content:
+      - type: title
+        text: "The Great Model Race: Nov-Dec 2025"
+      - type: subtitle
+        text: "Four frontier models in 25 days — the most intense period in AI history"
+    notes: |
+      Content rephrased for compliance with licensing restrictions. This unprecedented release schedule showed the acceleration of AI development and fierce competition between major labs.
+
+  - id: slide-081
+    badge: "11/2025"
+    layout: text-image
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "Google Gemini 3 Pro"
+      - type: bullets
+        items:
+          - "Released November 18, 2025 — Google's most capable multimodal model"
+          - "**Multimodal native**: handles text, images, video, audio, and code together"
+          - "**Context window**: up to 1 million tokens (entire books or long videos)"
+          - "**Benchmarks**: 81% on MMMU-Pro, 87.6% on Video-MMMU"
+          - "**Agentic capabilities**: executes complete multi-step workflows autonomously"
+          - "Integrated into Google Search, reaching 2+ billion users instantly"
+      - type: image
+        src: "/assets/images/logos/gemini.png"
+        alt: "Google Gemini Logo"
+    notes: |
+      Content rephrased for compliance with licensing restrictions. Gemini 3 Pro marked a significant milestone in multimodal AI, combining reasoning with native understanding across all media types.
+
+  - id: slide-082
+    badge: "11-12/2025"
+    layout: text-image
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "Claude Opus 4.5 & GPT-5.2"
+      - type: bullets
+        items:
+          - "**Claude Opus 4.5** (Nov 24):"
+          - "  • Designed for coding and agentic tasks"
+          - "  • 67% price reduction vs predecessor ($5 input, $25 output per million tokens)"
+          - "  • Led across 7 of 8 programming languages on SWE-bench Multilingual"
+          - "**GPT-5.2** (Dec 11):"
+          - "  • Three variants: Instant, Thinking (standard/extended), and Pro"
+          - "  • 30% fewer factual errors, perfect score on AIME 2025 math benchmark"
+          - "  • GPT-5.2-Codex variant specialized for coding"
+      - type: image
+        src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=95"
+        alt: "AI and coding innovation"
+    notes: |
+      Content rephrased for compliance with licensing restrictions. Both releases showed the shift toward specialized capabilities and more affordable pricing for enterprise adoption.
+
+  - id: slide-064b
+    badge: "2025-2026"
+    layout: text-image
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Multi-Agent Systems: Teams & Swarms"
+      - type: bullets
+        items:
+          - "**Sub-agents**: Specialized agents delegated by a manager agent for specific subtasks"
+          - "**Agent Teams**: Role-based collaboration (e.g., Researcher + Writer + Coder working together)"
+          - "**Swarms**: Multiple autonomous agents coordinating without central control"
+          - "**Hierarchical**: Manager decomposes goals and delegates to specialist workers"
+          - "**Patterns**: Sequential chains, parallel execution, conversation-based coordination"
+          - "**Frameworks**: CrewAI (role-based teams), AutoGen (conversations), LangGraph (stateful graphs)"
+          - "82% of executives plan to integrate multi-agent systems within 3 years"
+      - type: graphviz
+        contentUrl: "/assets/graphviz/multi-agent.dot"
+    notes: |
+      Multi-agent systems distribute intelligence across specialized agents. Each handles specific roles while collaborating to solve complex problems impossible for single agents.
+
+  - id: slide-084
+    badge: "2026"
+    layout: text-image
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "AI Agents Go Enterprise"
+      - type: bullets
+        items:
+          - "**Gartner prediction**: 40% of enterprise apps will embed AI agents by 2026 (up from <1% in 2024)"
+          - "**Shift from copilots to autonomous agents** — systems that progress work once intent is defined"
+          - "Moving from pilots to production with real guardrails and accountability"
+          - "**Multi-agent systems** coordinating across tools and workflows"
+          - "15% of day-to-day work decisions will be made autonomously by 2028"
+          - "Enterprise focus: latency, cost, and accountability over novelty"
+      - type: image
+        src: "/assets/images/logos/copilot.png"
+        alt: "Enterprise AI"
+    notes: |
+      Content rephrased for compliance with licensing restrictions. 2026 marks the transition from AI experimentation to operational deployment at scale in enterprises.
+
+  - id: slide-087
+    badge: "02/2026"
+    layout: text-image
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "Claude Opus 4.6: Latest Frontier"
+      - type: bullets
+        items:
+          - "Released February 5, 2026 by Anthropic"
+          - "**Adaptive thinking**: dynamically adjusts reasoning depth based on task complexity"
+          - "**1M token context window** (beta) — first for Opus family"
+          - "**128K max output tokens** — longest output capability"
+          - "**Agent Teams**: coordinate multiple specialized agents"
+          - "Highest agentic coding scores Anthropic has achieved"
+          - "Targets research workflows and complex enterprise tasks"
+      - type: image
+        src: "/assets/images/logos/claude.png"
+        alt: "Claude Logo"
+    notes: |
+      Content rephrased for compliance with licensing restrictions. Claude Opus 4.6 represents the current state-of-the-art, combining massive context with adaptive reasoning.
+
+  # ===========================================
+  # SECTION 7: Future & Closing
+  # ===========================================
+  - id: slide-070
+    layout: text
+    content:
+      - type: title
+        text: "Future?"
+      - type: bullets
+        items:
+          - "\"SaaS is dead. All software applications that we know today are just fancy interfaces sitting on databases\" — Satya Nadella, Microsoft's CEO (BG2 podcast, 12/2024)"
+          - "\"I think we will be there in three to six months, where AI is writing 90% of the code. And then, in 12 months, we may be in a world where AI is writing essentially all of the code\" — Dario Amodei, Anthropic's CEO (3/2025)"
+
+  - id: slide-099
+    layout: title
+    content:
+      - type: title
+        text: "Q & A"

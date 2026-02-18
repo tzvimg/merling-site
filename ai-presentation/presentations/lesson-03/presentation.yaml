@@ -44,6 +44,9 @@ slides:
           - title: "Overfitting & Underfitting"
             description: "מה יכול להשתבש?"
             icon: "⊘"
+          - title: "Fine-Tuning"
+            description: "איך מתאימים מודל קיים למשימה שלנו?"
+            icon: "🎯"
 
   # ===========================================
   # SECTION 1: Batch & Mini-batch
@@ -147,6 +150,24 @@ slides:
         text: "השפעת Learning Rate על האימון"
       - type: diagram
         src: "/assets/diagrams/learning_rate_he.svg"
+
+  - id: slide-031b
+    layout: iframe
+    direction: rtl
+    content:
+      - type: title
+        text: "Gradient Descent - ויזואליזציה אינטראקטיבית"
+      - type: iframe
+        src: "/assets/visualizations/gradient_descent_3d.html"
+
+  - id: slide-031c
+    layout: iframe
+    direction: rtl
+    content:
+      - type: title
+        text: "Gradient Descent - ויזואליזציה תלת-ממדית"
+      - type: iframe
+        src: "/assets/visualizations/gradient_descent_3d_surface.html"
 
   - id: slide-032
     layout: itemsCompact
@@ -327,6 +348,192 @@ slides:
       Early Stopping - עוצרים כשה-validation loss מתחיל לעלות.
 
   # ===========================================
+  # SECTION 7: Fine-Tuning
+  # ===========================================
+  - id: slide-064
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "Fine-Tuning"
+      - type: subtitle
+        text: "איך מתאימים מודל קיים למשימה חדשה?"
+
+  # --- 7a: How OpenAI built ChatGPT ---
+  - id: slide-065
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "מ-GPT ל-ChatGPT"
+      - type: subtitle
+        text: "איך OpenAI הפכו מחולל טקסט למודל שיחה?"
+      - type: text
+        text: |
+          **GPT** אומן על טקסטים מהאינטרנט — הוא יודע להשלים משפטים, אבל לא יודע לנהל שיחה.
+
+          **ChatGPT** עבר תהליך של כוונון עדין (Fine-Tuning) בשלושה שלבים שהפכו אותו לעוזר אישי.
+    notes: |
+      GPT-3 שוחרר ב-2020 כ-API להשלמת טקסט.
+      ChatGPT שוחרר בנובמבר 2022 ושבר שיאים של אימוץ - מיליון משתמשים ב-5 ימים.
+      ההבדל העיקרי הוא לא בגודל המודל אלא בתהליך הכוונון.
+
+  - id: slide-065b
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "שלבי הכוונון של ChatGPT"
+      - type: diagram
+        src: "/assets/diagrams/chatgpt_rlhf_pipeline_he.svg"
+    notes: |
+      שלב 1 - Pre-Training: אימון על טריליוני מילים מהאינטרנט. המודל לומד שפה, ידע כללי, וקוד.
+      שלב 2 - SFT: מאמנים עם אלפי דוגמאות של שאלה-תשובה שנכתבו ע"י אנשים.
+      שלב 3 - Reward Model: אנשים מדרגים תשובות מ"טוב" ל"גרוע", ומאמנים מודל שמנבא את הציון.
+      שלב 4 - RLHF: המודל לומד לייצר תשובות שמקבלות ציון גבוה מה-Reward Model.
+
+  - id: slide-065c
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "RLHF — למה זה עובד?"
+      - type: items
+        items:
+          - title: "בטיחות"
+            description: "המודל לומד להימנע מתשובות מזיקות או לא מדויקות"
+            icon: "🛡️"
+          - title: "שימושיות"
+            description: "תשובות מובנות, ברורות ורלוונטיות למשתמש"
+            icon: "💡"
+          - title: "ציות להוראות"
+            description: "המודל לומד לעקוב אחרי הנחיות ולא רק להשלים טקסט"
+            icon: "📋"
+          - title: "יישור ערכים"
+            description: "Alignment — המודל פועל לפי הכוונות של המשתמש"
+            icon: "🎯"
+    notes: |
+      RLHF הוא מה שהופך מודל שפה גנרי ל-assistant.
+      בלי RLHF, המודל עשוי לייצר תוכן מזיק, לשקר, או לא להבין מה רוצים ממנו.
+      Anthropic משתמשים בשיטה דומה שנקראת RLAIF - RL from AI Feedback.
+
+  # --- 7b: Fine-Tuning Depth ---
+  - id: slide-066
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "עומק הכוונון"
+      - type: subtitle
+        text: "כמה מהמודל לשנות?"
+      - type: text
+        text: |
+          כשמכוונים מודל קיים, צריך להחליט **כמה שכבות לאמן מחדש**.
+
+          ככל שמאמנים יותר שכבות — המודל מתאים יותר למשימה, אבל צריך **יותר דאטה, יותר זמן, ויותר כסף**.
+
+  - id: slide-066b
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "שלוש גישות לכוונון עדין"
+      - type: diagram
+        src: "/assets/diagrams/finetune_depth_comparison_he.svg"
+    notes: |
+      Full Fine-Tuning: מאמנים את כל הפרמטרים. הכי חזק, הכי יקר. דורש הרבה דאטה.
+      Partial Fine-Tuning: מקפיאים שכבות תחתונות (שלמדו features כלליות) ומאמנים רק עליונות.
+      LoRA: מוסיפים מטריצות קטנות (rank decomposition) בצד כל שכבה. 1% מהפרמטרים, 90% מהביצועים.
+
+  - id: slide-066c
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "השוואת שיטות כוונון"
+      - type: items
+        items:
+          - title: "Full Fine-Tuning"
+            description: "100% פרמטרים | GPU חזק | הרבה דאטה | ביצועים מקסימליים"
+            icon: "🔧"
+          - title: "Partial (Freeze Layers)"
+            description: "~30% פרמטרים | פחות זיכרון | מתאים כשיש מעט דאטה"
+            icon: "❄️"
+          - title: "LoRA"
+            description: "~1% פרמטרים | מהיר וזול | ניתן לשלב כמה LoRA על אותו מודל"
+            icon: "⚡"
+          - title: "מגמה בתעשייה"
+            description: "LoRA הפך לסטנדרט — רוב הכוונונים היום משתמשים בו"
+            icon: "📈"
+    notes: |
+      LoRA = Low-Rank Adaptation. הומצא ב-2021 ע"י מחקר של Microsoft.
+      הרעיון: במקום לשנות מטריצת משקולות W, מוסיפים שתי מטריצות קטנות A ו-B כך ש-W' = W + AB.
+      QLoRA: גרסה חסכונית יותר שמשלבת quantization (הורדת דיוק ל-4-bit) עם LoRA.
+
+  # --- 7c: Practical Fine-Tuning ---
+  - id: slide-067
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "איך עושים Fine-Tuning בפועל?"
+      - type: diagram
+        src: "/assets/diagrams/finetune_practical_steps_he.svg"
+    notes: |
+      שלב 1 - הכנת דאטה: הכי חשוב! פורמט JSONL עם שדות prompt ו-completion (או messages).
+      שלב 2 - בחירה: OpenAI API לפשטות, HuggingFace + LoRA לשליטה מלאה.
+      שלב 3 - אימון: ב-OpenAI זה כמה שורות קוד. ב-HuggingFace יותר שליטה אבל יותר עבודה.
+      שלב 4 - הערכה: השוואה למודל הבסיס, בדיקה על דוגמאות מאתגרות.
+
+  - id: slide-067b
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "דוגמה מעשית — OpenAI Fine-Tuning"
+      - type: items
+        items:
+          - title: "פורמט הדאטה"
+            description: "קובץ JSONL — כל שורה: {messages: [{role, content}, ...]}"
+            icon: "📄"
+          - title: "העלאה ואימון"
+            description: "openai api fine_tuning.jobs.create — שורה אחת!"
+            icon: "🚀"
+          - title: "עלות"
+            description: "GPT-4o-mini: ~$3 לאימון על 1000 דוגמאות"
+            icon: "💰"
+          - title: "שימוש"
+            description: "אותו API, רק עם model ID חדש — ft:gpt-4o-mini:my-org"
+            icon: "✨"
+    notes: |
+      OpenAI Fine-Tuning API הוא הדרך הכי פשוטה להתחיל.
+      מינימום 10 דוגמאות, מומלץ 50-100 לתחילת עבודה.
+      LoRA זמין גם דרך HuggingFace PEFT או Unsloth.
+
+  - id: slide-067c
+    layout: itemsCompact
+    direction: rtl
+    content:
+      - type: title
+        text: "מתי כדאי לעשות Fine-Tuning?"
+      - type: items
+        items:
+          - title: "כן ✅"
+            description: "סגנון כתיבה ספציפי, פורמט פלט קבוע, תחום מקצועי צר, שפה/ז'רגון ייחודי"
+            icon: "✅"
+          - title: "לא ❌"
+            description: "ידע עדכני (תשתמשו ב-RAG), משימה חד-פעמית, אין מספיק דוגמאות"
+            icon: "❌"
+          - title: "טיפ חשוב"
+            description: "תמיד נסו Prompt Engineering קודם — Fine-Tuning רק כשזה לא מספיק"
+            icon: "💡"
+    notes: |
+      Fine-Tuning הוא לא תמיד הפתרון.
+      Prompt Engineering + Few-shot examples פותר הרבה בעיות בלי אימון.
+      RAG (Retrieval Augmented Generation) עדיף כשצריך ידע עדכני או ספציפי.
+      Fine-Tuning עדיף כשצריך לשנות את ה-behavior של המודל.
+
+  # ===========================================
   # SUMMARY
   # ===========================================
   - id: slide-070
@@ -349,6 +556,8 @@ slides:
             description: "70/15/15 - אל תיגעו ב-test עד הסוף!"
           - title: "מעקב"
             description: "עקבו אחר Loss ו-Accuracy על Train ו-Validation"
+          - title: "Fine-Tuning"
+            description: "LoRA הוא הסטנדרט — כוונון חסכוני עם ~1% מהפרמטרים"
 
   # ===========================================
   # HANDS-ON

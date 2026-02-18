@@ -1,0 +1,833 @@
+meta:
+  title: "AI Agents: שיעור 05"
+  author: "גלעד ליבר"
+  aspectRatio: "responsive"
+
+slides:
+  # ===========================================
+  # TITLE
+  # ===========================================
+  - id: slide-001
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "מ-Chat ל-Agents"
+      - type: subtitle
+        text: "האבולוציה מ-ChatGPT לסוכני AI אוטונומיים"
+    notes: |
+      מצגת מקורית מאת גלעד ליבר, 11/2025
+
+  # ===========================================
+  # SECTION 1: Foundations
+  # ===========================================
+
+  - id: slide-011
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "מה זה LLM?"
+      - type: bullets
+        items:
+          - "מודל למידת מכונה (רשתות נוירונים - Transformer)"
+          - "רק חוזה את המילה (token) הבאה!"
+          - "\"היה היה פעם …\""
+          - "אומן על כמויות עצומות של מידע"
+          - "אין יכולת \"חשיבה\" או \"סוכן\" אמיתית"
+          - "נושאים/הוראות מרובים בקלט משפיעים על הפלט"
+          - "אבל עם היכולת ה\"פשוטה\" הזאת אפשר לעשות המון…"
+      - type: diagram
+        src: "/assets/diagrams/llm_logos_spread.svg"
+        alt: "מודלי LLM מוכרים"
+    notes: |
+      נקודה מרכזית: מודלי LLM הם בבסיסם חוזי token הבא, לא סוכנים.
+      בצד ימין מוצגים מוצרי ה-LLM המרכזיים הזמינים כיום.
+
+  - id: slide-012
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "השלמת צ'אט - Chat Completion"
+
+      - type: diagram
+        src: "/assets/diagrams/chat_completion_flow.svg"
+        alt: "תרשים זרימת Chat Completion"
+      - type: bullets
+        items:
+          - "ברוב המקרים נדרש Chat Completion לזרימות AI"
+          - "ה-ChatCompletion API מקבל רשימת הודעות מ-\"user\" ו-\"assistant\""
+      - type: code
+        language: text
+        code: |
+          User: write a poem about flowers.
+          Assistant:
+      - type: bullets
+        items:
+          - "ניתן להוסיף גם הודעת system/developer כללית"
+      - type: code
+        language: text
+        code: |
+          System: Talk like a pirate
+          User: How are you today?
+          Assistant:
+      - type: bullets
+        items:
+          - "כל ההודעות הישנות נשלחות שוב בכל איטרציה!"
+          - "פורמט ה-API הנוכחי של מודלי LLM מבוסס צ'אט"
+
+  - id: slide-013
+    badge: "09/2024"
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "מודלי חשיבה - Reasoning Models"
+      - type: bullets
+        items:
+          - "כדי לגרום ל-LLM \"לחשוב\", אנשים השתמשו ב-Prompt Engineering כמו \"Chain of Thought\""
+          - "כל המודלים החדשים (OpenAI, DeepSeek, Grok, Gemini, Claude) כוללים תמיכה מובנית ביכולות Reasoning"
+          - "הם אומנו ספציפית להציג את תהליך העבודה שלהם ולעקוב אחר תהליך חשיבה מובנה יותר"
+      - type: code
+        language: text
+        code: |
+          User: How can we solve the world's water crisis?
+          Assistant: <think>Let me think. In order to solve
+          the problem we can…</think> Final solution is…
+      - type: bullets
+        items:
+          - "משלמים גם על ה-tokens של ה\"חשיבה\"!"
+          - "חלק מהסוכנים (כמו ChatGPT) מסתירים את פלט ה-Reasoning שלהם"
+          - "טבלאות דירוג (Leaderboards) עוקבות אחר רמת האינטליגנציה של המודלים"
+
+    notes: |
+      דמו: ChatGPT, DeepSeek - מצבי Reasoning.
+      מודלי Reasoning הוצגו בסביבות 9/2024.
+
+  # ===========================================
+  # SECTION 2: The Augmented LLM
+  # ===========================================
+  - id: slide-020
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "ה-LLM המורחב"
+      - type: subtitle
+        text: "Retrieval, Tools ו-Memory"
+
+  - id: slide-021
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "ה-LLM המורחב"
+      - type: bullets
+        items:
+          - "באמצעות מספר טכניקות ניתן לשפר את ה-LLM שלנו עם הרחבות שימושיות:"
+          - "**Retrieval** — הזרקת ידע חיצוני"
+          - "**Tools** (נקרא גם \"Function Calling\") — אינטראקציה עם העולם"
+          - "**Memory** — שמירת מידע בין שיחות"
+      - type: graphviz
+        contentUrl: "/assets/graphviz/augmented-llm.dot"
+
+  - id: slide-022
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "תשתיות - LLM Frameworks"
+      - type: bullets
+        items:
+          - "לכל ספק LLM יש API משלו"
+          - "ספריית LiteLLM מאפשרת שימוש ב-API אחיד"
+          - "בדרך כלל נדרש Framework לעטיפת קריאות Tools ושמירת היסטוריית הודעות וזיכרון"
+          - "תמיכה ב-Retrievals מוגדרים מראש"
+          - "תמיכה ב-Tools מוגדרים מראש"
+
+  - id: slide-023
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "אחזור מידע - Retrieval (RAG)"
+      - type: bullets
+        items:
+          - "ידע חדש אינו מוכר ל-LLM (נקבע לפי זמן האימון)"
+          - "חלק מהמידע יכול להיות פרטי או שנרצה למקד את ה-LLM בתחום ספציפי"
+          - "המידע מוכן מראש בחלקים (chunks), ולפי הודעת המשתמש החלקים הרלוונטיים (לפי דמיון) מתווספים לצ'אט"
+          - "[מאמר מקורי: Lewis et al., 2020](https://arxiv.org/pdf/2005.11401)"
+      - type: code
+        language: text
+        code: |
+          System: You are a helpful assistant. Here is some
+          more context: {{RAG content}}
+          User: On which platforms CSME is supported?
+      - type: diagram
+        src: "/assets/diagrams/rag_architecture.svg"
+        alt: "תרשים ארכיטקטורת RAG"
+
+  - id: slide-024
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "זיכרון - Memory"
+      - type: bullets
+        items:
+          - "מודלי LLM הם **Stateless**, יודעים רק מה שנשלח בצ'אט הנוכחי (**זיכרון לטווח קצר**)"
+          - "**Memory** מאפשר לנו לזהות עובדות שימושיות בהודעות המשתמש ולאחסן אותן במסד נתונים לשיחות עתידיות (**זיכרון לטווח ארוך**)"
+          - "ה-Memory מאוחזר מ-DB ומתווסף ל-**System Message** בכל צ'אט חדש"
+          - "**Mem0** הוא תשתית קוד פתוח פופולרית ליכולת זו"
+          - "**Memory מול RAG**: RAG מוסיף **ידע חיצוני**, Memory מוסיף **ידע ספציפי למשתמש**"
+      - type: video
+        src: "/assets/videos/lesson-05-slide-024-ai-memory.mp4"
+        alt: "ארכיטקטורת Memory"
+    notes: |
+      דמו: יכולות Memory של ChatGPT
+
+  # ===========================================
+  # SECTION 3: Tools Calling
+  # ===========================================
+  - id: slide-030
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "קריאת כלים - Tools Calling"
+      - type: subtitle
+        text: "Function Calling ו-Structured Output"
+
+  - id: slide-037
+    badge: "08/2024"
+    layout: text
+    direction: rtl
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "פלט מובנה - Structured Output"
+      - type: bullets
+        items:
+          - "באמצעות מנגנון Function Calling, ה-LLM יכול גם לייצר תגובה שמכילה JSON Schema קפדני"
+          - "זהו שיפור ל-\"JSON Mode\" הישן"
+          - "OpenAI אימנו מודלים חדשים להבין סכמות מסובכות ולייצר פלטים שתואמים אותן (דיוק של 93%)"
+          - "הם גם הגבילו את המודלים לייצר tokens ספציפיים בהתאם לסכמה שסופקה (דיוק של 100%)"
+          - "עובד רק עם מודלים חדשים (gpt-4o-mini-2024-07-18 ומעלה)"
+    notes: |
+      Structured Output הוצג ב-8/2024
+
+  - id: slide-031
+    badge: "06/2023"
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "קריאת כלים - Tools Calling"
+      - type: bullets
+        items:
+          - "Tools מאפשרים ל-LLM לבקש מידע נוסף מהמשתמש"
+          - "מודלי LLM חדשים עברו Fine-Tuning לזהות מתי צריך לקרוא לפונקציה ולהגיב עם JSON שתואם את חתימת הפונקציה"
+          - "הפונקציות הזמינות מוגדרות ב-Prompt הקלט באמצעות סכמה קפדנית"
+          - "כשה-LLM רוצה להריץ Tool, הוא מגיב עם סוג תוכן ייעודי של \"tool-use\""
+          - "תגובת הפונקציה מוחזרת ל-LLM כהודעת \"tool_result\" חדשה"
+          - "כל ספקי ה-LLM תומכים ב-Function Calling (מאז 6/2023)"
+      - type: image
+        src: "/assets/images/lesson-05/slide10_picture_4.png"
+        alt: "סקירת Tools Calling"
+
+  - id: slide-032
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "קריאת כלים - Tools Calling - זרימה"
+      - type: image
+        src: "/assets/images/lesson-05/slide11_picture_2.png"
+        alt: "תרשים זרימת Tools Calling"
+
+  - id: slide-033
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "קריאת כלים – הגדרת Tool"
+      - type: code
+        language: json
+        code: |
+          {
+            "name": "get_weather",
+            "description": "Get the current weather in a given location",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "type": "string",
+                  "description": "The city and state, e.g. San Francisco"
+                },
+                "unit": {
+                  "type": "string",
+                  "enum": ["celsius", "fahrenheit"],
+                  "description": "The unit of temperature"
+                }
+              },
+              "required": ["location"]
+            }
+          }
+
+  - id: slide-034
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "קריאת כלים – System Prompt"
+      - type: text
+        text: "System Prompt מיוחד נבנה מהגדרות ה-Tool, תצורת ה-Tool, וכל System Prompt שהמשתמש ציין"
+      - type: code
+        language: json
+        code: |
+          {
+            "role": "system",
+            "content": [{
+              "type": "text",
+              "content": "In this environment you have access to a
+              set of tools you can use to answer the user's
+              question.
+              {{ FORMATTING INSTRUCTIONS }}
+              {{ TOOL DEFINITIONS IN JSON SCHEMA }}
+              {{ USER SYSTEM PROMPT }}
+              {{ TOOL CONFIGURATION }}"
+            }]
+          }
+
+  - id: slide-035
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "קריאת כלים – Tool Use"
+      - type: code
+        language: json
+        code: |
+          {
+            "role": "user",
+            "content": [{
+              "type": "text",
+              "text": "What is the weather in San Francisco?"
+            }]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "<thinking>To answer this question, I will
+                use the get_weather tool...</thinking>"
+              },
+              {
+                "type": "tool_use",
+                "id": "toolu_01A09q90qw90lq917835lq9",
+                "name": "get_weather",
+                "input": {"location": "San Francisco, CA"}
+              }
+            ]
+          }
+
+  - id: slide-036
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "קריאת כלים – Tool Result"
+      - type: text
+        text: "המשתמש מוסיף הודעה חדשה לצ'אט עם תוצאת ה-Tool ושולח ל-LLM:"
+      - type: code
+        language: json
+        code: |
+          {
+            "role": "user",
+            "content": [{
+              "type": "tool_result",
+              "tool_use_id": "toolu_01A09q90qw90lq917835lq9",
+              "content": "15 degrees"
+            }]
+          }
+      - type: bullets
+        items:
+          - "ספקו תיאורים מפורטים ביותר"
+          - "פורמט הגדרת/פענוח הפונקציה בפועל מוגדר על ידי ספקי ה-LLM"
+          - "ספריית ה-API של הספק מתרגמת את זה למשתמש הקצה"
+    notes: |
+      דמו: שימוש ב-Tools של ChatGPT
+
+  # ===========================================
+  # SECTION 4: Protocols
+  # ===========================================
+  - id: slide-040
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "פרוטוקולים"
+      - type: subtitle
+        text: "MCP, A2A ופרוטוקולי תשלום"
+
+  - id: slide-041
+    badge: "11/2024"
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Model Context Protocol (MCP)"
+      - type: bullets
+        items:
+          - "הוצג על ידי Anthropic ב-11/2024 ואומץ על ידי כל התעשייה ב-3/2025"
+          - "לא מוסיף פונקציונליות חדשה באמת…"
+          - "סטנדרטיזציה: דרך אוניברסלית (Client-Server) למודלי AI לתמוך ב-Tools ולקבל גישה ל-Prompts ו-Resources נפוצים"
+          - "לא נדרש קוד מותאם: לקוחות AI יכולים להתחבר למסדי נתונים, APIs ו-Tools חדשים ללא אינטגרציה מותאמת"
+      - type: image
+        src: "/assets/images/lesson-05/slide17_picture_3.png"
+        alt: "ארכיטקטורת MCP"
+
+  - id: slide-041b
+    layout: fullDiagram
+    direction: rtl
+    content:
+      - type: title
+        text: "ארכיטקטורת MCP"
+      - type: diagram
+        src: "/assets/diagrams/mcp_architecture.svg"
+        alt: "תרשים ארכיטקטורת Client-Server של MCP"
+
+  - id: slide-042
+    layout: text
+    direction: rtl
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "Model Context Protocol (MCP) – פרטים"
+      - type: bullets
+        items:
+          - "שרתי MCP רבים בקוד פתוח כבר פורסמו על ידי התעשייה"
+          - "לקוחות רבים כבר תומכים בו"
+          - "SDK זמין ל-Python/TS/Java/Kotlin/C#"
+          - "משמש בעיקר ל-Tools ופחות ל-Prompts/Resources"
+          - "ניתן לשמש כ-\"Runtime RAG\" במקום RAG סטטי מסורתי"
+          - "תומך בשני סוגי חיבורים: מקומי (stdio) ומרוחק (SSE)"
+          - "ניתן לדבג ידנית באמצעות MCP SDK Inspector"
+    notes: |
+      דמו: Claude Desktop עם MCP
+
+  - id: slide-043b
+    badge: "2025-2026"
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "יכולות סוכן - Agent Skills"
+      - type: bullets
+        items:
+          - "**Skills** = חבילות הוראות מודולריות שמגדירות איך סוכן מטפל במשימות ספציפיות"
+          - "תיקייה המכילה קבצי Markdown עם נהלים שלב-אחר-שלב, סקריפטים ומשאבים"
+          - "**Composability**: Skills יכולים להשתמש ב-Skills אחרים — בניית התנהגויות מורכבות מפשוטות"
+          - "**Progressive Disclosure**: הסוכן טוען רק Skills רלוונטיים לפי הצורך, לא הכל מראש"
+          - "**Wrapping Behaviors**: אריזת מומחיות תחומית ליחידות לשימוש חוזר (למשל \"Code Review\", \"API Testing\")"
+          - "חשבו על Skills כ-\"אפליקציות\" לסוכני AI — הרחבת יכולות ללא קוד מותאם"
+          - "סטנדרט פתוח שהוצג על ידי Anthropic ואומץ בכל התעשייה"
+    notes: |
+      Skills מאפשרים ארכיטקטורות סוכנים מודולריות וסקיילביליות שבהן התנהגויות מורכבות נוצרות מהרכבת רכיבים פשוטים ולשימוש חוזר.
+
+  - id: slide-044
+    badge: "04/2025"
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "Agent2Agent Protocol (A2A)"
+      - type: bullets
+        items:
+          - "הוצג על ידי Google (כחלק מ-Agent Framework החדש שלהם) — 4/2025"
+          - "קונספט דומה ל-Agent Network Protocol (ANP) הישן יותר"
+          - "פרוטוקול סטנדרטי לתקשורת בין סוכנים"
+          - "שאילתת שירותים (Agent Card דרך JSON/HTTP)"
+          - "קריאת פונקציות"
+          - "A2A הוא משלים ל-MCP"
+      - type: image
+        src: "/assets/images/lesson-05/slide20_picture_4.png"
+        alt: "תרשים פרוטוקול A2A"
+
+  - id: slide-045
+    badge: "09/2025"
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "פרוטוקולי תשלום (ACP, AP2)"
+      - type: bullets
+        items:
+          - "כדי לאפשר לסוכנים לבצע תשלומים באופן אוטונומי, הוקמו פרוטוקולים חדשים (9/2025)"
+          - "**ACP** (Agents Commerce Protocol, OpenAI) — מגדיר את השיחה בין סוחרים לסוכנים לגבי מוצרים ותשלום (\"Instant Checkout\")"
+          - "**AP2** (Agents Payment Protocol, Google) — מספק הרשאה ואותנטיות מקונה לסוחר (Mandates ו-Verifiable Credentials)"
+
+  # ===========================================
+  # SECTION 5: Agentic Systems
+  # ===========================================
+  - id: slide-050
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "סוכנים - Agents"
+      - type: subtitle
+        text: "Workflows ומערכות אוטונומיות"
+
+  - id: slide-051
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "סוגי מערכות Agentic"
+      - type: bullets
+        items:
+          - "**Agentic Systems** — כל הווריאציות של מערכות אוטונומיות או מימושים מתוכננים מראש של AI"
+          - "**Workflows** — מערכות שבהן LLMs ו-Tools מתואמים דרך נתיבי קוד מוגדרים מראש"
+          - "**Agents** — מערכות שבהן LLMs מכוונים באופן דינמי את התהליכים ושימוש ב-Tools שלהם, תוך שמירה על שליטה באופן ביצוע המשימות"
+          - "Workflows נקראים לפעמים \"Multi Agents System\""
+
+  - id: slide-052
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "שרשור - Prompt Chaining"
+      - type: text
+        text: "Workflow זה אידיאלי למצבים שבהם ניתן לפרק את המשימה בקלות לתת-משימות קבועות. המטרה העיקרית היא להחליף חביון (Latency) בדיוק גבוה יותר, על ידי הפיכת כל קריאת LLM למשימה קלה יותר."
+      - type: bullets
+        items:
+          - "יצירת טקסט שיווקי ואז תרגום לשפה אחרת"
+          - "כתיבת מתאר, בדיקת קריטריונים, ואז כתיבת המסמך על בסיס המתאר"
+      - type: image
+        src: "/assets/images/lesson-05/slide24_picture_4.png"
+        alt: "Workflow של Prompt Chaining"
+
+  - id: slide-053
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "מקבוליות - Parallelization"
+      - type: text
+        text: "מודלי LLM יכולים לפעמים לעבוד בו-זמנית על משימה והפלטים שלהם מאוגדים באופן תכנותי."
+      - type: bullets
+        items:
+          - "**Sectioning:** פירוק משימה לתת-משימות עצמאיות שרצות במקביל"
+          - "**Voting:** הרצת אותה משימה מספר פעמים לקבלת פלטים מגוונים"
+          - "מימוש Guardrails כאשר מודל אחד מעבד שאילתות בעוד אחר סורק תוכן לא הולם"
+          - "סקירת קוד לחולשות אבטחה עם מספר Prompts שונים"
+      - type: image
+        src: "/assets/images/lesson-05/slide26_picture_4.png"
+        alt: "Workflow של Parallelization"
+
+  - id: slide-054
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "ניתוב - Routing"
+      - type: text
+        text: "Routing מסווג קלט ומפנה אותו למשימת המשך מתמחה. זה מאפשר הפרדת אחריות ובניית Prompts מתמחים יותר."
+      - type: bullets
+        items:
+          - "הפניית סוגים שונים של פניות שירות לקוחות לתהליכים שונים"
+          - "הפניית שאלות קלות/נפוצות למודלים קטנים/זולים ושאלות קשות/חריגות למודלים מתקדמים יותר"
+      - type: image
+        src: "/assets/images/lesson-05/slide28_picture_5.png"
+        alt: "Workflow של Routing"
+
+  - id: slide-055
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "מתזמר-עובדים - Orchestrator-Workers"
+      - type: text
+        text: "LLM מרכזי מפרק משימות באופן דינמי, מאציל אותן ל-LLMs עובדים, ומסנתז את התוצאות שלהם."
+      - type: image
+        src: "/assets/images/lesson-05/slide30_picture_4.png"
+        alt: "Workflow של Orchestrator-Workers"
+
+  - id: slide-056
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "מעריך-משפר - Evaluator-Optimizer"
+      - type: text
+        text: "קריאת LLM אחת מייצרת תגובה בעוד אחרת מספקת הערכה ומשוב בלולאה."
+      - type: image
+        src: "/assets/images/lesson-05/slide31_content_placeholder_4.png"
+        alt: "Workflow של Evaluator-Optimizer"
+
+  - id: slide-057
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "אוטומציית Workflows עם AI"
+      - type: text
+        text: "כלי אוטומציית Workflows רבים הקיימים הוסיפו תמיכה בסוכני AI. עוזרים לחבר אפליקציות ושירותים יחד לאוטומציה של משימות חוזרות, תיאום Workflows ושיפור הפרודוקטיביות — הכל עם מינימום או ללא קוד."
+
+  # ===========================================
+  # SECTION 6: Real Agents
+  # ===========================================
+  - id: slide-060
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "סוכנים (אמיתיים) - Agents"
+      - type: subtitle
+        text: "מודלי LLM אוטונומיים המשתמשים ב-Tools בלולאה"
+
+  - id: slide-061
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "סוכנים (אמיתיים) - Agents"
+      - type: bullets
+        items:
+          - "LLM בודד המשתמש ב-Tools על בסיס משוב מהסביבה בלולאה"
+          - "מתחיל עם פקודה/דיון ממשתמש אנושי"
+          - "סוכנים מתכננים ופועלים באופן עצמאי, עם אפשרות לחזור לאדם לקבלת מידע נוסף או שיקול דעת"
+      - type: image
+        src: "/assets/images/lesson-05/slide33_picture_4.png"
+        alt: "תרשים לולאת Agent"
+
+  - id: slide-062
+    badge: "2023–2025"
+    layout: text
+    direction: rtl
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "סוכני קוד - Coding Agents"
+      - type: text
+        text: "\"Vibe Coding\" — הוראות בשפה טבעית לכלי AI ליצירה, שיפור ודיבוג של קוד, מה שמאפשר למפתחים להתמקד ב-\"vibe\" או בכוונה של התוכנה."
+      - type: bullets
+        direction: ltr
+        items:
+          - "Cursor (2023)"
+          - "Windsurf (1/2024)"
+          - "Base44 (1/2025)"
+          - "GitHub Copilot (5/2025)"
+          - "Google Antigravity (11/2025)"
+
+  - id: slide-063
+    badge: "01/2025"
+    layout: text
+    direction: rtl
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "סוכני \"Computer Use\""
+      - type: text
+        text: "משתמש בדפדפן שלך באופן אוטונומי לביצוע משימות — לחיצה, הקלדה, מילוי טפסים, הזמנת מצרכים, הזמנת טיסות. אינטראקציה עם הטאבים/היסטוריה שלך או כל שירות אחר שלדפדפן יש גישה אליו."
+      - type: bullets
+        direction: ltr
+        items:
+          - "OpenAI \"Operator\" (1/2025)"
+          - "Perplexity \"Comet\" browser (7/2025)"
+          - "Anthropic \"Claude for Chrome\" (8/2025)"
+          - "OpenAI \"Atlas\" browser (10/2025)"
+
+  - id: slide-064
+    badge: "03/2025"
+    layout: text
+    direction: rtl
+    animation:
+      type: step
+    content:
+      - type: title
+        text: "סוכני מחקר - Research Agents"
+      - type: text
+        text: "סוכנים עם סביבת מחשב Sandbox. גישה מלאה למערכת קבצים, התקנת תוכנה וגלישה באינטרנט."
+      - type: bullets
+        direction: ltr
+        items:
+          - "ChatGPT DeepResearch"
+          - "Manus (3/2025)"
+          - "GitHub coding agent (5/2025)"
+          - "Kimi-K2 \"OK computer\" (9/2025)"
+    notes: |
+      דמו: Manus, GitHub agent
+
+  # ===========================================
+  # SECTION 8: Updates Nov 2025 - Feb 2026
+  # ===========================================
+  - id: slide-080
+    badge: "11-12/2025"
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "מרוץ המודלים הגדול: נוב-דצמ 2025"
+      - type: subtitle
+        text: "ארבעה מודלים מתקדמים ב-25 ימים — התקופה האינטנסיבית ביותר בהיסטוריית ה-AI"
+    notes: |
+      התוכן נוסח מחדש לעמידה בהגבלות רישוי. לוח זמנים חסר תקדים זה הראה את האצת פיתוח ה-AI והתחרות העזה בין המעבדות הגדולות.
+
+  - id: slide-081
+    badge: "11/2025"
+    layout: text-image
+    direction: rtl
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "Google Gemini 3 Pro"
+      - type: bullets
+        items:
+          - "שוחרר ב-18 בנובמבר 2025 — המודל המולטימודלי המתקדם ביותר של Google"
+          - "**Multimodal Native**: מטפל בטקסט, תמונות, וידאו, אודיו וקוד יחד"
+          - "**חלון הקשר**: עד מיליון tokens (ספרים שלמים או סרטונים ארוכים)"
+          - "**Benchmarks**: 81% ב-MMMU-Pro, 87.6% ב-Video-MMMU"
+          - "**יכולות Agentic**: מבצע Workflows מרובי שלבים באופן אוטונומי"
+          - "משולב ב-Google Search, מגיע ל-2+ מיליארד משתמשים מיידית"
+      - type: image
+        src: "/assets/images/logos/gemini.png"
+        alt: "לוגו Google Gemini"
+    notes: |
+      התוכן נוסח מחדש לעמידה בהגבלות רישוי. Gemini 3 Pro סימן אבן דרך משמעותית ב-AI מולטימודלי, בשילוב Reasoning עם הבנה מקורית בכל סוגי המדיה.
+
+  - id: slide-082
+    badge: "11-12/2025"
+    layout: text-image
+    direction: rtl
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "Claude Opus 4.5 ו-GPT-5.2"
+      - type: bullets
+        items:
+          - "**Claude Opus 4.5** (נוב 24):"
+          - "  • תוכנן למשימות קוד ו-Agentic"
+          - "  • הפחתת מחיר של 67% לעומת הקודם ($5 קלט, $25 פלט למיליון tokens)"
+          - "  • מוביל ב-7 מתוך 8 שפות תכנות ב-SWE-bench Multilingual"
+          - "**GPT-5.2** (דצמ 11):"
+          - "  • שלושה וריאנטים: Instant, Thinking (רגיל/מורחב), ו-Pro"
+          - "  • 30% פחות שגיאות עובדתיות, ציון מושלם ב-AIME 2025 (Benchmark מתמטי)"
+          - "  • וריאנט GPT-5.2-Codex מתמחה בקוד"
+      - type: image
+        src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=95"
+        alt: "חדשנות AI וקוד"
+    notes: |
+      התוכן נוסח מחדש לעמידה בהגבלות רישוי. שתי ההשקות הראו את המעבר ליכולות מתמחות ותמחור נגיש יותר לאימוץ ארגוני.
+
+  - id: slide-064b
+    badge: "2025-2026"
+    layout: text-image
+    direction: rtl
+    columns: "1fr 1fr"
+    content:
+      - type: title
+        text: "מערכות Multi-Agent: צוותות ונחילים"
+      - type: bullets
+        items:
+          - "**Sub-agents**: סוכנים מתמחים שמואצלים על ידי סוכן מנהל לתת-משימות ספציפיות"
+          - "**Agent Teams**: שיתוף פעולה מבוסס תפקידים (למשל Researcher + Writer + Coder עובדים יחד)"
+          - "**Swarms**: מספר סוכנים אוטונומיים שמתאמים ללא שליטה מרכזית"
+          - "**Hierarchical**: מנהל מפרק יעדים ומאציל לעובדים מתמחים"
+          - "**Patterns**: שרשראות סדרתיות, הרצה מקבילית, תיאום מבוסס שיחה"
+          - "**Frameworks**: CrewAI (צוותות מבוססי תפקידים), AutoGen (שיחות), LangGraph (גרפים עם מצב)"
+          - "82% מהמנהלים מתכננים לשלב מערכות Multi-Agent תוך 3 שנים"
+      - type: graphviz
+        contentUrl: "/assets/graphviz/multi-agent.dot"
+    notes: |
+      מערכות Multi-Agent מפזרות אינטליגנציה בין סוכנים מתמחים. כל אחד מטפל בתפקידים ספציפיים תוך שיתוף פעולה לפתרון בעיות מורכבות שבלתי אפשריות לסוכן בודד.
+
+  - id: slide-084
+    badge: "2026"
+    layout: text-image
+    direction: rtl
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "סוכני AI נכנסים לארגונים"
+      - type: bullets
+        items:
+          - "**תחזית Gartner**: 40% מהאפליקציות הארגוניות ישלבו סוכני AI עד 2026 (לעומת פחות מ-1% ב-2024)"
+          - "**מעבר מ-Copilots לסוכנים אוטונומיים** — מערכות שמקדמות עבודה ברגע שהכוונה מוגדרת"
+          - "מעבר מפיילוטים לפרודקשן עם Guardrails ואחריותיות אמיתיים"
+          - "**מערכות Multi-Agent** שמתאמות בין Tools ו-Workflows"
+          - "15% מהחלטות העבודה היומיומיות יתקבלו באופן אוטונומי עד 2028"
+          - "מיקוד ארגוני: חביון, עלות ואחריותיות מעל חדשנות"
+      - type: image
+        src: "/assets/images/logos/copilot.png"
+        alt: "AI ארגוני"
+    notes: |
+      התוכן נוסח מחדש לעמידה בהגבלות רישוי. 2026 מסמנת את המעבר מניסוי ב-AI לפריסה תפעולית בקנה מידה בארגונים.
+
+  - id: slide-087
+    badge: "02/2026"
+    layout: text-image
+    direction: rtl
+    columns: "2fr 1fr"
+    content:
+      - type: title
+        text: "Claude Opus 4.6: חזית הטכנולוגיה"
+      - type: bullets
+        items:
+          - "שוחרר ב-5 בפברואר 2026 על ידי Anthropic"
+          - "**Adaptive Thinking**: מתאים באופן דינמי את עומק החשיבה לפי מורכבות המשימה"
+          - "**חלון הקשר של מיליון tokens** (בטא) — ראשון למשפחת Opus"
+          - "**128K tokens פלט מקסימלי** — יכולת הפלט הארוכה ביותר"
+          - "**Agent Teams**: תיאום מספר סוכנים מתמחים"
+          - "הציונים הגבוהים ביותר ב-Agentic Coding שהושגו על ידי Anthropic"
+          - "מכוון ל-Workflows מחקריים ומשימות ארגוניות מורכבות"
+      - type: image
+        src: "/assets/images/logos/claude.png"
+        alt: "לוגו Claude"
+    notes: |
+      התוכן נוסח מחדש לעמידה בהגבלות רישוי. Claude Opus 4.6 מייצג את חזית הטכנולוגיה הנוכחית, בשילוב הקשר מסיבי עם Reasoning אדפטיבי.
+
+  # ===========================================
+  # SECTION 7: Future & Closing
+  # ===========================================
+  - id: slide-070
+    layout: text
+    direction: rtl
+    content:
+      - type: title
+        text: "העתיד?"
+      - type: bullets
+        items:
+          - "\"SaaS מת. כל אפליקציות התוכנה שאנחנו מכירים היום הן סך הכל ממשקים מפוארים שיושבים על מסדי נתונים\" — Satya Nadella, CEO של Microsoft (פודקאסט BG2, 12/2024)"
+          - "\"אני חושב שנגיע לשם תוך שלושה עד שישה חודשים, שבהם AI כותב 90% מהקוד. ותוך 12 חודשים, ייתכן שנהיה בעולם שבו AI כותב למעשה את כל הקוד\" — Dario Amodei, CEO של Anthropic (3/2025)"
+          - "\"אני אומר למנהל ה-IT שלנו: מחלקת ה-IT של החברה הולכת להפוך למחלקת משאבי האנוש של Agentic AI בעתיד\" — Jensen Huang, CEO של NVIDIA (דאבוס, 1/2026)"
+
+  - id: slide-099
+    layout: title
+    direction: rtl
+    content:
+      - type: title
+        text: "שאלות ותשובות"

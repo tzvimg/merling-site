@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradient Descent Visualization</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a1a;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: #e0e0e0;
+  }
+  .top-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(20, 20, 50, 0.95);
+    border-bottom: 1px solid rgba(120, 80, 255, 0.2);
+    flex-wrap: wrap;
+    z-index: 10;
+  }
+  .top-bar button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(100, 60, 220, 0.7);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .top-bar button:hover { background: rgba(120, 80, 255, 0.9); }
+  .top-bar button.active { background: rgba(200, 80, 80, 0.8); }
+  .lr-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    direction: ltr;
+  }
+  .lr-group label { font-size: 13px; color: #aaa; }
+  .lr-group input[type="range"] {
+    width: 140px;
+    accent-color: #7c3aed;
+  }
+  .lr-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #a78bfa;
+    min-width: 44px;
+    text-align: center;
+  }
+  .preset-btns { display: flex; gap: 4px; }
+  .preset-btns button {
+    padding: 4px 10px;
+    font-size: 12px;
+    background: rgba(60, 60, 100, 0.7);
+    border-radius: 6px;
+  }
+  .preset-btns button.selected { background: rgba(100, 60, 220, 0.8); }
+  .canvas-wrap {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .info-panel {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(20, 20, 50, 0.9);
+    backdrop-filter: blur(8px);
+    font-size: 13px;
+    direction: ltr;
+    line-height: 1.6;
+    border: 1px solid rgba(120, 80, 255, 0.15);
+  }
+  .info-panel .label { color: #888; }
+  .info-panel .val { color: #a78bfa; font-weight: 600; }
+  .info-panel .warn { color: #f59e0b; }
+  .legend {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: rgba(20, 20, 50, 0.9);
+    backdrop-filter: blur(8px);
+    font-size: 12px;
+    direction: ltr;
+    border: 1px solid rgba(120, 80, 255, 0.15);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button id="btnRun" onclick="toggleRun()">▶ הפעל</button>
+  <button onclick="resetVis()">↺ איפוס</button>
+  <div class="lr-group">
+    <label>Learning Rate:</label>
+    <input type="range" id="lrSlider" min="0" max="8" step="1" value="3" oninput="updateLR()">
+    <span class="lr-value" id="lrDisplay">0.1</span>
+  </div>
+  <div class="preset-btns">
+    <button onclick="setLR(0.01)">0.01</button>
+    <button onclick="setLR(0.05)">0.05</button>
+    <button onclick="setLR(0.1)" class="selected" id="preset_default">0.1</button>
+    <button onclick="setLR(0.5)">0.5</button>
+    <button onclick="setLR(1.0)">1.0</button>
+  </div>
+</div>
+
+<div class="canvas-wrap">
+  <canvas id="canvas"></canvas>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#06b6d4"></div> Loss curve f(x)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f43f5e"></div> Current position</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(251,191,36,0.7)"></div> Gradient arrow</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(168,85,247,0.5)"></div> Path history</div>
+  </div>
+  <div class="info-panel" id="info">
+    <span class="label">Click</span> <span class="val">הפעל</span> <span class="label">to start</span>
+  </div>
+</div>
+
+<script>
+// --- Config ---
+const lrSteps = [0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 0.8, 1.0];
+let lr = 0.1;
+let running = false;
+let animId = null;
+
+// Loss function: interesting shape with a global minimum and local features
+function f(x) {
+  return 0.04 * Math.pow(x, 4) - 0.3 * Math.pow(x, 3) + 0.1 * x * x + 1.5 * x + 2;
+}
+function df(x) {
+  return 0.16 * Math.pow(x, 3) - 0.9 * x * x + 0.2 * x + 1.5;
+}
+
+// Domain
+const xMin = -3, xMax = 8;
+
+// State
+let ballX = -2.0;
+const startX = -2.0;
+let path = [];
+let step = 0;
+const maxSteps = 500;
+
+// Canvas setup
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let W, H, plotL, plotR, plotT, plotB;
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  W = rect.width * dpr;
+  H = rect.height * dpr;
+  canvas.width = W;
+  canvas.height = H;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
+  plotL = 60 * dpr;
+  plotR = W - 30 * dpr;
+  plotT = 30 * dpr;
+  plotB = H - 50 * dpr;
+  draw();
+}
+window.addEventListener('resize', resize);
+
+// Coordinate transforms
+function toCanvasX(x) { return plotL + (x - xMin) / (xMax - xMin) * (plotR - plotL); }
+function toCanvasY(y) {
+  const yMin = getYMin() - 1;
+  const yMax = getYMax() + 1;
+  return plotB - (y - yMin) / (yMax - yMin) * (plotB - plotT);
+}
+function getYMin() {
+  let m = Infinity;
+  for (let x = xMin; x <= xMax; x += 0.05) m = Math.min(m, f(x));
+  return m;
+}
+function getYMax() {
+  let m = -Infinity;
+  for (let x = xMin; x <= xMax; x += 0.05) m = Math.max(m, f(x));
+  return m;
+}
+
+// --- Drawing ---
+function draw() {
+  const dpr = window.devicePixelRatio || 1;
+  ctx.clearRect(0, 0, W, H);
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  const yLo = getYMin() - 1, yHi = getYMax() + 1;
+  for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+    const cx = toCanvasX(x);
+    ctx.beginPath(); ctx.moveTo(cx, plotT); ctx.lineTo(cx, plotB); ctx.stroke();
+  }
+  const yStep = Math.ceil((yHi - yLo) / 8);
+  for (let y = Math.ceil(yLo); y <= yHi; y += yStep || 1) {
+    const cy = toCanvasY(y);
+    ctx.beginPath(); ctx.moveTo(plotL, cy); ctx.lineTo(plotR, cy); ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(plotL, plotB); ctx.lineTo(plotR, plotB); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(plotL, plotT); ctx.lineTo(plotL, plotB); ctx.stroke();
+
+  // Axis labels
+  ctx.fillStyle = '#777';
+  ctx.font = `${12 * dpr}px "Segoe UI", sans-serif`;
+  ctx.textAlign = 'center';
+  for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+    ctx.fillText(x, toCanvasX(x), plotB + 18 * dpr);
+  }
+  ctx.textAlign = 'right';
+  for (let y = Math.ceil(yLo); y <= yHi; y += yStep || 1) {
+    ctx.fillText(y.toFixed(0), plotL - 8 * dpr, toCanvasY(y) + 4 * dpr);
+  }
+
+  // Axis titles
+  ctx.fillStyle = '#999';
+  ctx.font = `${13 * dpr}px "Segoe UI", sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillText('x (parameter)', (plotL + plotR) / 2, plotB + 40 * dpr);
+  ctx.save();
+  ctx.translate(18 * dpr, (plotT + plotB) / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('f(x) (loss)', 0, 0);
+  ctx.restore();
+
+  // Loss curve
+  ctx.beginPath();
+  ctx.strokeStyle = '#06b6d4';
+  ctx.lineWidth = 3 * dpr;
+  ctx.shadowColor = '#06b6d4';
+  ctx.shadowBlur = 8 * dpr;
+  for (let px = plotL; px <= plotR; px++) {
+    const x = xMin + (px / dpr - plotL / dpr) / ((plotR - plotL) / dpr) * (xMax - xMin);
+    const y = f(x);
+    if (px === plotL) ctx.moveTo(px, toCanvasY(y));
+    else ctx.lineTo(px, toCanvasY(y));
+  }
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Path history
+  if (path.length > 1) {
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+    ctx.lineWidth = 2 * dpr;
+    ctx.setLineDash([4 * dpr, 4 * dpr]);
+    ctx.beginPath();
+    for (let i = 0; i < path.length; i++) {
+      const cx = toCanvasX(path[i]);
+      const cy = toCanvasY(f(path[i]));
+      if (i === 0) ctx.moveTo(cx, cy);
+      else ctx.lineTo(cx, cy);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Step dots
+    for (let i = 0; i < path.length; i++) {
+      const cx = toCanvasX(path[i]);
+      const cy = toCanvasY(f(path[i]));
+      ctx.beginPath();
+      ctx.arc(cx, cy, 3 * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(168, 85, 247, ${0.2 + 0.6 * (i / path.length)})`;
+      ctx.fill();
+    }
+  }
+
+  // Gradient arrow at current position
+  const grad = df(ballX);
+  const arrowScale = Math.min(Math.abs(grad) * 0.3, 2.0) * Math.sign(grad);
+  const bx = toCanvasX(ballX);
+  const by = toCanvasY(f(ballX));
+
+  // Tangent line
+  ctx.strokeStyle = 'rgba(251, 191, 36, 0.3)';
+  ctx.lineWidth = 1.5 * dpr;
+  ctx.beginPath();
+  const tanLen = 1.5;
+  ctx.moveTo(toCanvasX(ballX - tanLen), toCanvasY(f(ballX) - grad * tanLen));
+  ctx.lineTo(toCanvasX(ballX + tanLen), toCanvasY(f(ballX) + grad * tanLen));
+  ctx.stroke();
+
+  // Gradient direction arrow (horizontal, showing where x will move)
+  const arrowDx = -lr * grad; // the actual step
+  const arrowPixelDx = (arrowDx / (xMax - xMin)) * (plotR - plotL);
+  const clampedArrow = Math.sign(arrowPixelDx) * Math.min(Math.abs(arrowPixelDx), 150 * dpr);
+  if (Math.abs(clampedArrow) > 5) {
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.8)';
+    ctx.fillStyle = 'rgba(251, 191, 36, 0.8)';
+    ctx.lineWidth = 2.5 * dpr;
+    ctx.beginPath();
+    ctx.moveTo(bx, by);
+    ctx.lineTo(bx + clampedArrow, by);
+    ctx.stroke();
+    // Arrowhead
+    const headSize = 8 * dpr;
+    const dir = Math.sign(clampedArrow);
+    ctx.beginPath();
+    ctx.moveTo(bx + clampedArrow, by);
+    ctx.lineTo(bx + clampedArrow - dir * headSize, by - headSize * 0.5);
+    ctx.lineTo(bx + clampedArrow - dir * headSize, by + headSize * 0.5);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // Ball (current position)
+  ctx.beginPath();
+  ctx.arc(bx, by, 10 * dpr, 0, Math.PI * 2);
+  ctx.fillStyle = '#f43f5e';
+  ctx.shadowColor = '#f43f5e';
+  ctx.shadowBlur = 15 * dpr;
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 2 * dpr;
+  ctx.stroke();
+
+  // Ball label
+  ctx.fillStyle = '#fff';
+  ctx.font = `bold ${11 * dpr}px "Segoe UI", sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.fillText(`x=${ballX.toFixed(2)}`, bx, by - 16 * dpr);
+}
+
+// --- Animation ---
+function doStep() {
+  const grad = df(ballX);
+  ballX = ballX - lr * grad;
+  // Clamp
+  ballX = Math.max(xMin + 0.1, Math.min(xMax - 0.1, ballX));
+  path.push(ballX);
+  step++;
+
+  draw();
+  updateInfo();
+
+  // Check convergence
+  if (Math.abs(grad) < 0.001 || step >= maxSteps) {
+    running = false;
+    document.getElementById('btnRun').textContent = '▶ הפעל';
+    document.getElementById('btnRun').classList.remove('active');
+    return;
+  }
+
+  // Check divergence (ball out of range)
+  if (ballX <= xMin + 0.15 || ballX >= xMax - 0.15) {
+    running = false;
+    document.getElementById('btnRun').textContent = '▶ הפעל';
+    document.getElementById('btnRun').classList.remove('active');
+    updateInfo(true);
+    return;
+  }
+
+  const speed = Math.max(30, 100 - step * 0.3);
+  animId = setTimeout(() => requestAnimationFrame(doStep), speed);
+}
+
+function toggleRun() {
+  if (running) {
+    running = false;
+    clearTimeout(animId);
+    document.getElementById('btnRun').textContent = '▶ המשך';
+    document.getElementById('btnRun').classList.remove('active');
+    return;
+  }
+  running = true;
+  document.getElementById('btnRun').textContent = '⏸ עצור';
+  document.getElementById('btnRun').classList.add('active');
+
+  if (path.length === 0) path.push(ballX);
+  requestAnimationFrame(doStep);
+}
+
+function resetVis() {
+  running = false;
+  clearTimeout(animId);
+  ballX = startX;
+  path = [];
+  step = 0;
+  document.getElementById('btnRun').textContent = '▶ הפעל';
+  document.getElementById('btnRun').classList.remove('active');
+  document.getElementById('info').innerHTML =
+    '<span class="label">Click</span> <span class="val">הפעל</span> <span class="label">to start</span>';
+  draw();
+}
+
+function updateInfo(diverged) {
+  const grad = df(ballX);
+  const loss = f(ballX);
+  let html = `<span class="label">Step:</span> <span class="val">${step}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">x:</span> <span class="val">${ballX.toFixed(4)}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">Loss:</span> <span class="val">${loss.toFixed(4)}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">Gradient:</span> <span class="val">${grad.toFixed(4)}</span> &nbsp;|&nbsp; `;
+  html += `<span class="label">lr:</span> <span class="val">${lr}</span>`;
+  if (diverged) {
+    html += `<br><span class="warn">⚠ Diverged! Learning rate too high — the ball overshot.</span>`;
+  }
+  if (!running && !diverged && step > 0 && Math.abs(grad) < 0.01) {
+    html += `<br><span class="val">✓ Converged to minimum!</span>`;
+  }
+  document.getElementById('info').innerHTML = html;
+}
+
+// --- LR controls ---
+function updateLR() {
+  const idx = parseInt(document.getElementById('lrSlider').value);
+  lr = lrSteps[idx];
+  document.getElementById('lrDisplay').textContent = lr;
+  highlightPreset();
+}
+
+function setLR(val) {
+  lr = val;
+  const idx = lrSteps.indexOf(val);
+  if (idx >= 0) document.getElementById('lrSlider').value = idx;
+  document.getElementById('lrDisplay').textContent = lr;
+  highlightPreset();
+}
+
+function highlightPreset() {
+  document.querySelectorAll('.preset-btns button').forEach(b => {
+    b.classList.toggle('selected', parseFloat(b.textContent) === lr);
+  });
+}
+
+// --- Click on curve to set start position ---
+canvas.addEventListener('click', (e) => {
+  if (running) return;
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  const px = (e.clientX - rect.left) * dpr;
+  const x = xMin + (px - plotL) / (plotR - plotL) * (xMax - xMin);
+  if (x >= xMin + 0.1 && x <= xMax - 0.1) {
+    ballX = x;
+    path = [];
+    step = 0;
+    document.getElementById('info').innerHTML =
+      `<span class="label">Start at x=</span><span class="val">${x.toFixed(2)}</span> <span class="label">— click</span> <span class="val">הפעל</span>`;
+    draw();
+  }
+});
+
+// Init
+resize();
+</script>
+</body>
+</html>

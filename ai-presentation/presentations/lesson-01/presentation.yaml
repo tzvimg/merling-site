@@ -323,6 +323,16 @@ slides:
       - type: diagram
         src: "/assets/diagrams/mlp_backpropagation_example_he.svg"
 
+  - id: slide-036
+    layout: iframe
+    direction: rtl
+    content:
+      - type: title
+        text: "רשתות נוירונים בפעולה"
+      - type: iframe
+        src: "/assets/videos/neural_networks_in_action.html"
+        aspectRatio: "16:9"
+
   # ===========================================
   # SECTION 5: Learning Paradigms
   # ===========================================
